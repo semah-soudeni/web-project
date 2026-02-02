@@ -3,57 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/events.css">
     <title>Upcoming Events</title>
 </head>
 <body>
-    <div class="container navigation">
-        <div class="row">
-            <div class="col text-left"><a href="index.html">⟵ Back to Clubs</a></div>
-            <div class="col text-center">
-                <a href="clubs.html">Clubs</a>
-                <a href="events.html">Events</a>
-                <a href="map.html">Map</a>
+    <nav class="navigation">
+        <div class="nav-container">
+            <a href="../index.html" class="back-link">←Back to Clubs</a>
+            <div class="nav-menu">
+                <a href="clubs.html" class="nav-link">Clubs</a>
+                <a href="events.html" class="nav-link">Events</a>
+                <a href="map.html" class="nav-link">Map</a>
             </div>
-            <div class="col text-right" style="text-align: right;">
-                <button id="sign-in">Sign In</button>
-                <button id="sign-up">Sign Up</button>
+            <div class="nav-login">
+                <button class="signin-btn">Sign In</button>
+                <button class="signup-btn">Sign Up</button>
             </div>
         </div>
-    </div>
-    <header>
-        <h1>Upcoming Events</h1>
-        <p>Discover and participate in exciting events from all our clubs</p>
-    </header>
-    <nav>
-
     </nav>
-    <main>
-        <div class="event-container">
-            <div class="event-date">
-                05 FEB
-            </div>
-            <div class="event-info">
-                <div class="container event-tags">
-                    <div class="row">
-                        <p class="col">ACM Club</p>
-                        <p class="col">2:00 PM - 5:00 PM</p>
-                    </div>
-                </div>
-                <div class="event-text">
-                    <h3>Web Development Workshop</h3>
-                    <p>
-                        Learn the fundamentals of modern web development using HTML, CSS, and JavaScript. Perfect for beginners and intermediate developers looking to enhance their skills.
-                    </p>
-                </div>
-                <div class="event-register">
-                    <p>Computer Lab, Building A</p>
-                    <button>Register</button>
-                </div>
+
+    <section class="header-section">
+        <div class="header-container">
+            <h1 class="header-title">Upcoming Events</h1>
+            <p class="header-subtitle">Discover and participate in exciting events from all our clubs</p>
+        </div>
+    </section>
+
+    <section class="filter-section">
+        <div class="container">
+            <div class="filters">
+                <button class="filter-btn active" data-club="all">All Clubs</button>
+                <button class="filter-btn" data-club="tech">Tech Club</button>
+                <button class="filter-btn" data-club="music">Music Society</button>
+                <button class="filter-btn" data-club="arts">Arts & Design</button>
+                <button class="filter-btn" data-club="sports">Sports Club</button>
+                <button class="filter-btn" data-club="literature">Literature Club</button>
+                <button class="filter-btn" data-club="debate">Debate Society</button>
             </div>
         </div>
-        
-    </main>
+    </section>
+
+    
 </body>
 </html>
