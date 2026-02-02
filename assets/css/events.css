@@ -263,3 +263,36 @@ body {
     box-shadow: var(--shadow);
     transform: translateY(-3px);
 }
+
+.filter-section {
+    background-color: white;
+    padding: 2rem 0;
+    position: sticky;
+    top: 70px;
+    border: var(--shadow);
+}
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.filter-btn {
+    color: var(--text-secondary);
+    background-color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px;
+    font-size: 1rem;
+    border: 2px solid var(--border-color);
+    transition: all 0.2s;
+}
+.filter-btn:hover {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+}
+.filter-btn.active {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+}
