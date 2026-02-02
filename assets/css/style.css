@@ -1,0 +1,27 @@
+.navigation {
+    margin: 0;
+    height: 70px;
+    background-color: red;
+    padding: 20px 150px;
+    max-width: 100%;
+}
+
+a {
+    text-decoration: none;
+    padding: 10px;
+}
+
+button {
+    padding: 5px 20px;
+    border-radius: 10px;
+}
+
+button#sign-in {
+    background-color: white;
+    border: none rgb(59, 152, 239);
+}
+
+button#sign-up {
+    background-color: lightblue;
+    border: none rgb(59, 152, 239);
+}
