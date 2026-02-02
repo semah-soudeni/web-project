@@ -3,3 +3,60 @@
     margin: 0;
     padding: 0;
 }
+
+nav {
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    align-items: center;
+    box-shadow: 0 3px 25px 5px #abaaaa7d;
+
+}
+
+ul {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+}
+
+.right {
+    width: 200px;
+    margin-right: 40px;
+}
+
+.left {
+    width: 300px;
+    margin-left: 80px;
+}
+
+h1{ 
+
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    width: 90%;
+    display: flex;
+}
+
+.img {
+    width: 80%;
+    background-image: url(../img/events-image-tech-club-2x.avif);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+   
+}
+.jnab {
+     box-shadow: -5px 0 10px gray;
+}
+
+.jnab h2 {
+    margin: 30px 0 20px 0;
+}
