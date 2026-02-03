@@ -268,3 +268,14 @@ body {
   background-color: var(--accent-color);
   border-color: white;
 }
+
+.class2 {
+  margin-bottom: 30px;
+  border-radius: 10px;
+}
+
+.About:first-child ,
+.what,
+.staff{
+  background-color: #efefef8f;
+}
