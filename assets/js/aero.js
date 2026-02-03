@@ -147,7 +147,7 @@ function draw() {
   ctx.restore()
   //console.log(heading)
 
-  bgctx.fillStyle = '#3182ce';
+  bgctx.fillStyle = '#2e7eae';
   bgctx.fillRect(0, 0, bgcanvas.width, bgcanvas.height);
   for(let p of planes){
     drawPlane(p.x, p.y, p.h)
@@ -171,7 +171,7 @@ function drawPlane(x, y, h){
   bgctx.save()
   bgctx.translate(x, y)
   bgctx.rotate(h)
-  bgctx.fillStyle = '#ffffff';
+  bgctx.fillStyle = '#eeeeee';
   bgctx.fillRect(-15, -3, 30, 6)
   bgctx.fillRect(5, -15, 7, 30)
   bgctx.fillRect(-15, -5, 4, 10)
