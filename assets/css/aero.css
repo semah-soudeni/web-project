@@ -20,9 +20,11 @@
   --border-color: #e2e8f0;
   --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+  --bubble1: #ffffffa0;
+  --bubble2: #efefefa0;
 
   /* Club colors */
-  --tech-color: #3182ce;
+  --tech-color: #3182cea0;
   --music-color: #e53e3e;
   --arts-color: #805ad5;
   --sports-color: #38a169;
@@ -30,11 +32,21 @@
   --debate-color: #dd6b20;
 }
 
+.background-canvas {
+  position: fixed;
+  top: 72px;
+  left: 0;
+  width: 100%;
+  height: calc(100%-72px);
+  z-index: -2;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   background-color: var(--bg-light);
   color: var(--text-primary);
   line-height: 1.6;
+  margin: 0;
 }
 
 .navigation {
@@ -206,7 +218,7 @@ body {
 .bubble1 {
   flex: 1;
   border-radius: 25px;
-  background-color: #ffffff;
+  background-color: var(--bubble1);
   padding: 10px;
   box-shadow: var(--shadow);
   transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
@@ -220,7 +232,7 @@ body {
 .bubble2 {
   flex: 1;
   border-radius: 25px;
-  background-color: #efefef;
+  background-color: var(--bubble2);
   padding: 10px;
   box-shadow: var(--shadow);
   transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;

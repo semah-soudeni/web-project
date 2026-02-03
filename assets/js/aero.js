@@ -1,5 +1,7 @@
 const canvas = document.getElementById('scroll-follower')
 const ctx = canvas.getContext('2d')
+const bgcanvas = document.getElementById('bg-canvas')
+const bgctx = bgcanvas.getContext('2d')
 
 let maxSpeed = 0.04
 let scrollYReal = 0;
@@ -7,10 +9,21 @@ let scrollY = 0;
 let maxHeadingSpeed = 0.05
 let heading = Math.PI/2;
 
+let planes = []
+
+for(let i=0;i<50;i++){
+  let x = Math.random()*bgcanvas.width
+  let y = Math.random()*bgcanvas.height
+  let h = Math.random()*2*Math.PI
+  planes.push({x, y, h})
+}
+
 function resize(){
   const par = document.getElementsByClassName('parallax')[0]
   canvas.width = par.clientWidth
   canvas.height = par.clientHeight
+  bgcanvas.width = document.body.clientWidth
+  bgcanvas.height = document.body.clientHeight
   draw()
 }
 resize()
@@ -45,7 +58,7 @@ function draw() {
   ]
 
   ctx.fillStyle = '#184167';
-  ctx.strokeStyle = '#805ad5';
+  ctx.strokeStyle = '#402663';
   ctx.lineWidth = 3
   //ctx.fillRect(0, 0, w, h);
   //ctx.fillStyle = '#f0f0f0';
@@ -133,7 +146,36 @@ function draw() {
   ctx.fill()
   ctx.restore()
   //console.log(heading)
+
+  bgctx.fillStyle = '#3182ce';
+  bgctx.fillRect(0, 0, bgcanvas.width, bgcanvas.height);
+  for(let p of planes){
+    drawPlane(p.x, p.y, p.h)
+    p.x += 0.5*Math.cos(p.h)
+    p.y += 0.5*Math.sin(p.h)
+    if(p.x < 0)
+      p.x = bgcanvas.width
+    if(p.x > bgcanvas.width)
+      p.x = 0
+    if(p.y < 0)
+      p.y = bgcanvas.width
+    if(p.y > bgcanvas.height)
+      p.y = 0
+
+    p.h += 0.01 * (Math.random()*2. - 1.)
+  }
   requestAnimationFrame(draw);
+}
+
+function drawPlane(x, y, h){
+  bgctx.save()
+  bgctx.translate(x, y)
+  bgctx.rotate(h)
+  bgctx.fillStyle = '#ffffff';
+  bgctx.fillRect(-15, -3, 30, 6)
+  bgctx.fillRect(5, -15, 7, 30)
+  bgctx.fillRect(-15, -5, 4, 10)
+  bgctx.restore()
 }
 
 draw();
