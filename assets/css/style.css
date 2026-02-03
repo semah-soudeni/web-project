@@ -20,7 +20,7 @@
 
 main {
     background-color: var(--bg-light);
-    height: 98vh;
+    
 }
 .navigation {
     margin: 0;
@@ -149,4 +149,85 @@ h1{
 
 .link {
     width: 90%;
+}
+
+.link:hover {
+  transform: translate(0,-20px);
+  
+}
+
+.link {
+  transition: transform 1s ease;
+}
+
+.card:hover .jnab {
+    display: none;
+  /* transform: translateX(-100%); */
+  opacity: 0;
+}
+
+.card:hover .img{
+    width: 100%;
+    background: url(../img/imageedit_1_4665962645.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* opacity: 0.6; */
+}
+
+.img {
+    transition: all 0.5s ease;
+    /* animation: fadeIn 1s ease; */
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+  display: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 0px;
+  opacity: 0;
+  transform: scale(0.8);
+
+  transition: all 0.4s ease;
+}
+
+.logo img {
+  width: 120px;
+  height: auto;
+}
+
+.card:hover .logo {
+  display: block;
+  opacity: 1;
+  height: 100px;
+  position: relative;
+  transform: scale(3);
+}
+
+.card:hover .secu {
+    transform: scale(2);
+    display: block;
+  opacity: 1;
+  height: 100px;
+  position: relative;
+}
+
+
+
+@keyframes fadeIn {
+    from { width: 100%;}
+    to {
+        width: 70%;
+    }
+}
+
+
+
+.card:hover main {
+    background-color: black;
 }

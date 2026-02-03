@@ -161,10 +161,10 @@ body {
 
 .header-section {
   color: white;
-  background-color: #805ad5;
+  background-color: #5b5544d9;
   background-blend-mode: multiply;
   text-align: center;
-  padding: 4rem;
+  padding: 16rem;
   position: relative;
   z-index: 2;
 }
@@ -173,12 +173,12 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: url('/assets/img/aero.jpg');
+  background: url('/assets/img/580004880_1238126545003671_3061075572383496554_n.jpg');
   background-repeat: no-repeat;
-  background-size: 100% 100%;
-  filter: blur(2px);
-  opacity: 0.1;
-  z-inder:-1;
+  background-size: 100% 112%;
+  filter: blur(4px);
+  opacity: 0.2;
+  z-index:-1;
 }
 
 .header-title {
@@ -195,6 +195,7 @@ body {
 }
 
 .section-title {
+  margin: 20px 0;
   text-align: center;
   line-height: 2.5rem;
   font-size: 2rem;
@@ -202,7 +203,7 @@ body {
 
 .section-description {
   width: 60%;
-  margin: 0 auto;
+  margin: 40px auto;
   text-align: center;
   line-height: 1.75rem;
   font-size: 1.25rem;
@@ -278,4 +279,8 @@ body {
 .what,
 .staff{
   background-color: #efefef8f;
+}
+
+.About {
+  padding: 50px;
 }
