@@ -94,7 +94,7 @@ body {
     padding: 0.5rem 1.5rem;
     border: none;
     border-radius: 8px;
-    font-weight: 500px;
+    font-weight: 500;
     font-size: 1rem;
     cursor: pointer;
     transition: all 0.2s;
@@ -152,7 +152,7 @@ body {
 
 .month-title {
     color: var(--text-primary);
-    font-weight: 700px;
+    font-weight: 700;
     font-size: 2rem;
     margin-bottom: 2rem;
     padding-bottom: 0.4rem;
@@ -269,7 +269,7 @@ body {
     padding: 2rem 0;
     position: sticky;
     top: 70px;
-    border: var(--shadow);
+    box-shadow: var(--shadow);
 }
 .filters {
     display: flex;
