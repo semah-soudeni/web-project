@@ -1,4 +1,5 @@
 
+
 :root {
   --gray-50: #f8fafc;
   --gray-200: #e5e7eb;
@@ -16,6 +17,41 @@
 body {
   margin: 0;
   background: #f6fbfc;
+}
+
+/* Go Back Button */
+.back-btn {
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: white;
+  color: var(--gray-900);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease;
+  z-index: 100;
+}
+
+.back-btn svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  fill: none;
+}
+
+.back-btn:hover {
+  transform: translateY(-1px);
+  background: var(--gray-50);
 }
 
 /* Layout */
@@ -176,26 +212,43 @@ body {
   font-weight: 600;
   text-decoration: none;
 }
-.auth-footer a:hover {
-    color: #050789;
-    text-decoration: underline;
-}
 
 /* RIGHT */
 .auth-right {
-  flex: 1;
-  background:
-    linear-gradient(rgba(37, 99, 235, 0.85), rgba(30, 64, 175, 0.85)),
-    url("../img/580004880_1238126545003671_3061075572383496554_n.jpg")
-    center / cover no-repeat;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px;
-  text-align: center;
+    flex: 1;
+    background: linear-gradient(
+            135deg,
+            rgba(30, 64, 175, 0.85),
+            rgba(37, 99, 235, 0.85)
+        ),
+        url("../img/580004880_1238126545003671_3061075572383496554_n.jpg") center/cover;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
 }
-
+.auth-right::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+    pointer-events: none;
+}
+.image-content {
+    position: relative;
+    z-index: 1;
+    max-width: 520px;
+    animation: fadeIn 0.8s ease-out 0.3s backwards;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
 .auth-right h2 {
   font-size: 36px;
 }
@@ -213,7 +266,7 @@ body {
   font-size: 14px;
 }
 
-/* Animations */
+/* Animation */
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -229,6 +282,10 @@ body {
 @media (max-width: 900px) {
   .auth-right {
     display: none;
+  }
+
+  .back-btn {
+    background: var(--gray-50);
   }
 }
 
