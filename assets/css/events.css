@@ -15,14 +15,6 @@
     --border-color: #e2e8f0;
     --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
-    
-    /* Club colors */
-    --tech-color: #3182ce;
-    --music-color: #e53e3e;
-    --arts-color: #805ad5;
-    --sports-color: #38a169;
-    --literature-color: #d69e2e;
-    --debate-color: #dd6b20;
 }
 
 body {
@@ -270,6 +262,7 @@ body {
     position: sticky;
     top: 70px;
     box-shadow: var(--shadow);
+    z-index: 500;
 }
 .filters {
     display: flex;
