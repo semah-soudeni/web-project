@@ -92,6 +92,7 @@ h1{
     border-radius: 10px;
     background-color: white;
     margin-bottom: 50px;
+    position: relative;
 }
 
 .img {
@@ -143,20 +144,21 @@ h1{
 }
 
 .img {
-    transition: all 0.5s ease;
+    transition: all 0.9s ease;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: absolute;
+  /* top: 50%; */
+  left: 50%;
+  transform: translate(-50%,-50%);
   height: 0px;
   opacity: 0;
-  transform: scale(0.8);
-  transition: all 0.4s ease;
+  transform: scale(2);
+  transition: all 0.9s ease;
 }
 
 .logo img {
@@ -168,16 +170,16 @@ h1{
   display: block;
   opacity: 1;
   height: 100px;
-  position: relative;
+  position: absolute;
   transform: scale(3);
 }
 
 .card:hover .secu {
-    transform: scale(2);
-    display: block;
+  transform: scale(2);
+  display: block;
   opacity: 1;
   height: 100px;
-  position: relative;
+  position: absolute;
 }
 
 
