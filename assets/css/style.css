@@ -120,7 +120,7 @@ h1{
 
 .link {
     width: 90%;
-    transition: transform 1s ease;
+    transition: transform 0.5s ease;
 }
 
 .link:hover {
@@ -152,12 +152,10 @@ h1{
 
 .logo {
   position: absolute;
-  /* top: 50%; */
   left: 50%;
-  transform: translate(-50%,-50%);
-  height: 0px;
+  transform: translate(-50%,-50%) scale(2);
+  height: 0;
   opacity: 0;
-  transform: scale(2);
   transition: all 0.9s ease;
 }
 
@@ -167,28 +165,9 @@ h1{
 }
 
 .card:hover .logo {
-  display: block;
   opacity: 1;
   height: 100px;
-  position: absolute;
-  transform: scale(3);
-}
-
-.card:hover .secu {
-  transform: scale(2);
-  display: block;
-  opacity: 1;
-  height: 100px;
-  position: absolute;
-}
-
-
-
-@keyframes fadeIn {
-    from { width: 100%;}
-    to {
-        width: 70%;
-    }
+  transform: translate(-50%, -50%) scale(3);
 }
 
 .signin-btn, .signup-btn {
