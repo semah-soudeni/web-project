@@ -78,7 +78,8 @@ body {
     color: var(--accent-color);
 }
 
-.nav-link:active {
+.nav-link.active {
+    color: var(--accent-color);
     border-bottom-color: var(--accent-color);
 }
 
