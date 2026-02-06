@@ -5,7 +5,7 @@
 - [x] fix the clubs' hover effect
 - [ ] change the background images
 - [ ] add IEEE, ACM
-- [ ] add the "selected link" effect in the nav bar
+- [x] add the "selected link" effect in the nav bar
 
 ### sign-in & sign-up pages:
 - [x] fix the back button behavior
