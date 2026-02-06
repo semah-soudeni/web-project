@@ -15,8 +15,10 @@
 - [ ] add pointer effect to the filters
 
 ### map:
-- [ ] get or design a good map of the campus
+- [x] get or design a good map of the campus
 - [ ] build the page
+  - [x] Set up the layout for the page.
+  - [ ] Implement the functionality for the markers.
 
 ### admin page:
 - [ ] add a nav option for the admin
