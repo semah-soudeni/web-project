@@ -8,7 +8,7 @@
 - [ ] add the "selected link" effect in the nav bar
 
 ### sign-in & sign-up pages:
-- [ ] fix the back button behavior
+- [x] fix the back button behavior
 
 ### events page:
 - [ ] add the "selected link" effect in the nav bar
