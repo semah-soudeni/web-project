@@ -18,7 +18,8 @@
 - [x] get or design a good map of the campus
 - [ ] build the page
   - [x] Set up the layout for the page.
-  - [ ] Implement the functionality for the markers.
+  - [x] Implement the functionality for the markers.
+  - [ ] Fill in the side bars
 
 ### admin page:
 - [ ] add a nav option for the admin
