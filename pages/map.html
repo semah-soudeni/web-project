@@ -29,9 +29,38 @@
         </div>
     </section>
 
-    <div>
-      <img src="/assets/img/map.png" width="100%" alt="aerobotix logo" style="position: absolute;margin: 0;">
-    </div>
+    <div class="main">
+      <div onclick="openBar('aero')" style="position: relative;top: 75px;left: 23%;width: 50px">
+        <svg xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 -960 960 960" width="25px" fill="#000000">
+          <circle r="400" cx="450" cy="-410" fill="white" />
+          <circle r="350" cx="450" cy="-410" fill="#123caa" />
+        </svg>
+      </div>
+      <div onclick="openBar('ieee')" style="position: relative;top: 40px;left: 28%;width: 50px">
+        <svg xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 -960 960 960" width="25px" fill="#000000">
+          <circle r="400" cx="450" cy="-410" fill="white" />
+          <circle r="350" cx="450" cy="-410" fill="purple" />
+        </svg>
+      </div>
+      <div onclick="openBar('secu')" style="position: relative;top: 59px;left: 66%;width: 50px">
+        <svg xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 -960 960 960" width="25px" fill="#000000">
+          <circle r="400" cx="450" cy="-410" fill="white" />
+          <circle r="350" cx="450" cy="-410" fill="#e73c37" />
+        </svg>
+      </div>
+      <div onclick="openBar('acm')" style="position: relative;top: 25px;left: 72%;width: 50px">
+        <svg xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 -960 960 960" width="25px" fill="#000000">
+          <circle r="400" cx="450" cy="-410" fill="white" />
+          <circle r="350" cx="450" cy="-410" fill="blue" />
+        </svg>
+      </div>
 
+
+      <div class="sidebar" id="sidebar">
+        <button onclick="closeBar()"> --> </button>
+        <p id="test"></p>
+      </div>
+    </div>
+    <script src="/assets/js/map.js"></script>
 </body>
 </html>
