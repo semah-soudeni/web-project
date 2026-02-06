@@ -2,7 +2,7 @@
 ## to-do list:
 
 ### index page:
-- [ ] fix the clubs' hover effect
+- [x] fix the clubs' hover effect
 - [ ] change the background images
 - [ ] add IEEE, ACM
 - [ ] add the "selected link" effect in the nav bar
