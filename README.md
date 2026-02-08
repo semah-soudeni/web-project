@@ -6,6 +6,7 @@
 - [ ] change the background images
 - [x] add IEEE, ACM
 - [x] add the "selected link" effect in the nav bar
+- [x] fixed the flickering hover effect
 
 ### sign-in & sign-up pages:
 - [x] fix the back button behavior
