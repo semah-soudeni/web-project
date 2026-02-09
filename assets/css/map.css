@@ -24,6 +24,8 @@ body {
     line-height: 1.6;
     margin: 0;
     padding: 0;
+    overflow: hidden;
+    height: 100vh;
 }
 
 .navigation {
@@ -121,7 +123,7 @@ body {
 
 .header-section {
     color: white;
-    background-color: #805ad5;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     text-align: center;
     padding: 1rem;
 }
@@ -136,18 +138,20 @@ body {
 }
 
 .main {
-  background-image: url("/assets/img/map.png");
-  width: 100%;
-  height: 636px;
+    position: relative;
+    background: url("/assets/img/map.png") center/cover no-repeat;
+    width: 100%;
+    min-height: calc(100vh - 200px);
+    overflow: hidden;
 }
 
 .sidebar {
-  position: absolute;
-  top: 198px;
-  right: 0%;
-  width: 0%;
-  background: white;
-  height: 636px;
-  display: none;
-  transition: width 0.2s ease-in-out;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 0;
+    background-color: white;
+    transition: width 0.2s ease-in-out;
 }
+

@@ -13,7 +13,5 @@ function openBar(loc){
 
 function closeBar(){
   sidebar.style.width = '0%'
-  setTimeout(()=>{
-  sidebar.style.display = 'none'
-  }, 200)
+  
 }
