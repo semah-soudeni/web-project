@@ -60,10 +60,28 @@ float noise(vec2 x) {
   );
 }
 
+float sampleMask(vec2 uv) {
+  return texture2D(logo, uv).a;
+}
+
+float blurredMask(vec2 uv) {
+  vec2 o = vec2(0.006, 0.006);
+  float a = sampleMask(uv) * 0.28;
+  a += sampleMask(uv + vec2(o.x, 0.0)) * 0.12;
+  a += sampleMask(uv - vec2(o.x, 0.0)) * 0.12;
+  a += sampleMask(uv + vec2(0.0, o.y)) * 0.12;
+  a += sampleMask(uv - vec2(0.0, o.y)) * 0.12;
+  a += sampleMask(uv + vec2(o.x, o.y)) * 0.06;
+  a += sampleMask(uv + vec2(-o.x, o.y)) * 0.06;
+  a += sampleMask(uv + vec2(o.x, -o.y)) * 0.06;
+  a += sampleMask(uv + vec2(-o.x, -o.y)) * 0.06;
+  return a;
+}
+
 void main() {
   // Mask with logo
-  vec4 mask = texture2D(logo, vUv);
-  if (mask.a < 0.1) discard;
+  float maskA = blurredMask(vUv);
+  if (maskA < 0.1) discard;
 
   // ----- Mouse distortion -----
   vec2 uv = vUv;
@@ -103,7 +121,7 @@ void main() {
     hover
   );
 
-  gl_FragColor = vec4(finalColor, 1.0);
+  gl_FragColor = vec4(finalColor, maskA);
 }
 `;
 
@@ -122,7 +140,7 @@ const material = new THREE.ShaderMaterial({
 
 // ---------- Plane ----------
 const plane = new THREE.Mesh(
-  new THREE.PlaneGeometry(1.2, 1.2),
+  new THREE.PlaneGeometry(1.3, 1.5),
   material
 );
 scene.add(plane);
