@@ -78,7 +78,8 @@ body {
     color: var(--accent-color);
 }
 
-.nav-link:active {
+.nav-link.active {
+    color: var(--accent-color);
     border-bottom-color: var(--accent-color);
 }
 
@@ -118,7 +119,7 @@ body {
 
 .header-section {
     color: white;
-    background-color: #805ad5;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     text-align: center;
     padding: 4rem;
 }
@@ -195,13 +196,14 @@ body {
 
 .event-header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: 0.6rem; 
     margin-bottom: 1rem;
 }
 
 
 .club-tag {
+    display: inline-block;
     color: white;
     background-color: var(--accent-color);
     border-radius: 20px;
@@ -212,7 +214,8 @@ body {
 
 .event-hour {
     color: var(--text-secondary);
-    font-size: 0.9rem
+    font-size: 0.9rem;
+    margin-left: auto;
 }
 
 .event-title {
@@ -277,6 +280,7 @@ body {
     border-radius: 25px;
     font-size: 1rem;
     border: 2px solid var(--border-color);
+    cursor: pointer;
     transition: all 0.2s;
 }
 .filter-btn:hover {
