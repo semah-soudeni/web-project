@@ -24,5 +24,5 @@
 
 ### admin page:
 - [x] add a nav option for the admin
-- [x] design the page
+- [x] design the pageq
 - [ ] add a pop-up that appears when you hover on the icons in the navbar to indicate their purpose ("membership request", "broadcast a message")

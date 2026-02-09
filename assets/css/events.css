@@ -119,7 +119,7 @@ body {
 
 .header-section {
     color: white;
-    background-color: #805ad5;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);;
     text-align: center;
     padding: 4rem;
 }
@@ -212,6 +212,9 @@ body {
 }
 
 .event-hour {
+    display: flex;
+    gap: 0.3rem;
+    align-items: center;
     color: var(--text-secondary);
     font-size: 0.9rem
 }
