@@ -174,7 +174,39 @@ h1{
     z-index: 10;
 }
 
+.logoAnd {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.6s ease, opacity 0.6s ease;
+    z-index: 10;
+}
+
+.logoth {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.6s ease, opacity 0.6s ease;
+    z-index: 10;
+}
+
 .logo img {
+    width: 120px;
+    height: auto;
+}
+
+.logoth img {
+    width: 120px;
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.logoAnd img {
     width: 120px;
     height: auto;
 }
@@ -182,6 +214,16 @@ h1{
 .link:hover .logo {
     opacity: 1;
     transform: translate(-50%, -50%) scale(3);
+}
+
+.link:hover .logoAnd {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(2);
+}
+
+.link:hover .logoth {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(2);
 }
 
 .signin-btn, .signup-btn {
