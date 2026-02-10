@@ -196,13 +196,14 @@ body {
 
 .event-header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: 0.6rem; 
     margin-bottom: 1rem;
 }
 
 
 .club-tag {
+    display: inline-block;
     color: white;
     background-color: var(--accent-color);
     border-radius: 20px;
@@ -212,11 +213,9 @@ body {
 }
 
 .event-hour {
-    display: flex;
-    gap: 0.3rem;
-    align-items: center;
     color: var(--text-secondary);
-    font-size: 0.9rem
+    font-size: 0.9rem;
+    margin-left: auto;
 }
 
 .event-title {
