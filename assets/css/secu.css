@@ -542,3 +542,7 @@ span {
 footer {
     height: 200px;
 }
+
+body {
+    overflow-x: hidden;
+}
