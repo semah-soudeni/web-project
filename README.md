@@ -32,4 +32,7 @@
 - [ ] add a pop-up that appears when you hover on the icons in the navbar to indicate their purpose ("membership request", "broadcast a message")
 
 ### Securinets page:
-- [ ] fix the ugly design
+- [x] fix the ugly design
+- [ ] add footer
+- [ ] add glitch effect to text
+- [ ] make nav bar compatible with theme
