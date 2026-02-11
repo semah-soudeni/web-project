@@ -4,275 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cybersecurity Animated Background</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            overflow: hidden;
-            background: #0a0a0a;
-        }
-
-        .container {
-            position: relative;
-            width: 100vw;
-            height: 100vh;
-            background: linear-gradient(180deg, #000000 0%, #0a0a1e 50%, #000000 100%);
-        }
-
-        /* Animated grid background */
-        .grid-background {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(255, 0, 0, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 0, 0, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: gridMove 20s linear infinite;
-        }
-
-        @keyframes gridMove {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(50px); }
-        }
-
-        /* Particle container */
-        .particles {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-
-        .particle {
-            position: absolute;
-            background: #ff0000;
-            border-radius: 50%;
-            opacity: 0;
-            animation: particleFloat 15s infinite;
-        }
-
-        @keyframes particleFloat {
-            0% {
-                opacity: 0;
-                transform: translateY(100vh) scale(0);
-            }
-            10% {
-                opacity: 0.6;
-            }
-            90% {
-                opacity: 0.6;
-            }
-            100% {
-                opacity: 0;
-                transform: translateY(-100px) scale(1);
-            }
-        }
-
-        /* Scanning lines */
-        .scan-line {
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, 
-                transparent 0%, 
-                rgba(255, 0, 0, 0.8) 50%, 
-                transparent 100%);
-            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
-            animation: scan 8s linear infinite;
-        }
-
-        @keyframes scan {
-            0% { top: -10px; opacity: 0; }
-            5% { opacity: 1; }
-            95% { opacity: 1; }
-            100% { top: 110%; opacity: 0; }
-        }
-
-        /* Logo container */
-        .logo-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 10;
-        }
-
-        .logo-wrapper {
-            position: relative;
-            width: 400px;
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Logo image */
-        .logo {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            filter: drop-shadow(0 0 30px rgba(255, 0, 0, 0.6));
-            animation: logoPulse 3s ease-in-out infinite;
-        }
-
-        @keyframes logoPulse {
-            0%, 100% {
-                filter: drop-shadow(0 0 30px rgba(255, 0, 0, 0.6));
-                transform: scale(1);
-            }
-            50% {
-                filter: drop-shadow(0 0 50px rgba(255, 0, 0, 0.9));
-                transform: scale(1.02);
-            }
-        }
-
-        /* Glowing rings around logo */
-        .glow-ring {
-            position: absolute;
-            border: 2px solid rgba(255, 0, 0, 0.3);
-            border-radius: 50%;
-            animation: ringExpand 4s ease-out infinite;
-        }
-
-        .glow-ring:nth-child(2) {
-            animation-delay: 1s;
-        }
-
-        .glow-ring:nth-child(3) {
-            animation-delay: 2s;
-        }
-
-        @keyframes ringExpand {
-            0% {
-                width: 100px;
-                height: 100px;
-                opacity: 0.8;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-            }
-            100% {
-                width: 600px;
-                height: 600px;
-                opacity: 0;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-            }
-        }
-
-        /* Glitch effect */
-        .glitch {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            animation: glitchAnimation 10s infinite;
-        }
-
-        @keyframes glitchAnimation {
-            0%, 90%, 92%, 94%, 96%, 98%, 100% {
-                opacity: 0;
-            }
-            91%, 93%, 95%, 97%, 99% {
-                opacity: 0.7;
-            }
-        }
-
-        .glitch img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .glitch:nth-child(1) img {
-            filter: drop-shadow(0 0 30px rgba(255, 0, 0, 0.8));
-            transform: translate(-3px, 0);
-        }
-
-        .glitch:nth-child(2) img {
-            filter: drop-shadow(0 0 30px rgba(0, 255, 255, 0.8));
-            transform: translate(3px, 0);
-        }
-
-        /* Binary code rain */
-        .binary-rain {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            opacity: 0.1;
-        }
-
-        .binary-column {
-            position: absolute;
-            top: -100%;
-            font-family: 'Courier New', monospace;
-            font-size: 14px;
-            color: #ff0000;
-            white-space: nowrap;
-            animation: binaryFall linear infinite;
-        }
-
-        @keyframes binaryFall {
-            0% {
-                top: -100%;
-            }
-            100% {
-                top: 100%;
-            }
-        }
-
-        /* Data streams */
-        .data-stream {
-            position: absolute;
-            height: 2px;
-            background: linear-gradient(90deg, 
-                transparent 0%, 
-                rgba(255, 0, 0, 0.6) 50%, 
-                transparent 100%);
-            animation: streamMove linear infinite;
-        }
-
-        @keyframes streamMove {
-            0% {
-                left: -100%;
-            }
-            100% {
-                left: 100%;
-            }
-        }
-
-        /* Hexagon pattern overlay */
-        .hex-pattern {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l25.98 15v30L30 60 4.02 45V15z' fill='none' stroke='rgba(255,0,0,0.05)' stroke-width='1'/%3E%3C/svg%3E");
-            opacity: 0.3;
-            animation: hexRotate 60s linear infinite;
-        }
-
-        @keyframes hexRotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    </style>
+    <link rel="stylesheet" href="../../assets/css/secu.css">
 </head>
 <body>
+     <nav class="navigation">
+        <div class="nav-container">
+            <a href="/index.html" class="back-link">←Back to Clubs</a>
+            <div class="nav-menu">
+                <a href="/index.html" class="nav-link">Clubs</a>
+                <a href="/pages/events.html" class="nav-link">Events</a>
+                <a href="/pages/map.html" class="nav-link">Map</a>
+            </div>
+            <div class="nav-login">
+                  <button onclick="window.location.href='/pages/signin.html'" class="signin-btn">Sign In</button>
+                  <button onclick="window.location.href='/pages/signup.html'" class="signup-btn">Sign Up</button>
+            </div>
+        </div>
+    </nav>
     <div class="container">
+        <header>
+            <h1>Securinets Insat</h1>
+            <!-- <h2>National Association of Cybersecurity</h2> -->
+            <h2>The Hub of CybersecurityInnovation and Learning</h2>
+        </header>
         <!-- Grid background -->
         <div class="grid-background"></div>
 
         <!-- Hexagon pattern -->
-        <div class="hex-pattern"></div>
+        <!-- <div class="hex-pattern"></div> -->
 
         <!-- Binary rain -->
         <div class="binary-rain" id="binaryRain"></div>
@@ -306,63 +65,105 @@
                 </div>
             </div>
         </div>
+        <div class="stat">
+            <div class="numb">
+                <h2>200+</h2>
+                <p>active memebers</p>
+            </div>
+            <div class="numb">
+                <h2>50+</h2>
+                <p>Hours of workshops <br>and training</p>
+            </div>
+            <div class="numb">
+                <h2>10+</h2>
+                <p>Award in national and international ctfs</p>
+            </div>
+            <div class="numb">
+                <h2>20K+</h2>
+                <p>followers on social media platforms</p>
+            </div>
+        </div>
+        <div class="content">
+            <h2>Why Securinets</h2>
+            <div class="sec1">
+                <div class="desc">
+                    <div class="par1">
+                        <h3>Build a strong foundation</h3>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos repudiandae recusandae, enim quo mollitia dolorem sed, nostrum, neque autem totam sunt. Animi dolorum dolore laudantium nesciunt possimus illum consectetur quo!</p>
+                    </div>
+                    <div class="par2">
+                        <h3>Learn by dong</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem officiis sequi repudiandae maxime consectetur tempore enim exercitationem nam id totam laboriosam voluptas rerum quis porro reiciendis, est, commodi magni modi.</p>
+                    </div>
+
+                    <div class="par3">
+                        <h3>Unlock career opportunities</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum earum voluptatum explicabo sapiente porro quidem aspernatur molestias, a maxime cum et ducimus voluptate! Cumque maxime totam et fugiat perspiciatis vel.</p>
+                    </div>
+                </div>
+            </div>
+            <h2>OUR categories</h2>
+            <div class="sec2">
+                <div class="card">
+                    <h3>Cryptography</h3>
+                </div>
+                <div class="card">
+                    <h3>OSINT</h3>
+                </div>
+                <div class="card">
+                    <h3>Digital Forensics</h3>
+                </div>
+                <div class="card">
+                    <h3>Reverse engineering</h3>
+                </div>
+                <div class="card">
+                    <h3>Binary exploitation</h3>
+                </div>
+                <div class="card">
+                    <h3>Web exploitation</h3>
+                </div>
+            </div>
+            <h2>OUR Team</h2>
+            <div class="sec3">
+                <div>
+                    <img src="/assets/img/secu-logo.png" alt="">
+                    <p>John Doe</p>
+                </div>
+                <div>
+                    <img src="/assets/img/secu-logo.png" alt="">
+                    <p>John Doe</p>
+                </div>
+                <div>
+                    <img src="/assets/img/secu-logo.png" alt="">
+                    <p>John Doe</p>
+                </div>
+                <div>
+                    <img src="/assets/img/secu-logo.png" alt="">
+                    <p>John Doe</p>
+                </div>
+                <div>
+                    <img src="/assets/img/secu-logo.png" alt="">
+                    <p>John Doe</p>
+                </div>
+                <div>
+                    <img src="/assets/img/secu-logo.png" alt="">
+                    <p>John Doe</p>
+                </div>
+                
+            </div>
+            <div class="sec4">
+                <h1>Ready to  Secure <br><span>Your Place</span></h1>
+                <p>join the securinets family and Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur, quasi nemo! Unde quam voluptates amet asperiores ut numquam ab, architecto earum dolore inventore laudantium quos voluptatibus aliquid facilis dicta! Libero.</p>
+                <button>join us!</button>
+
+            </div>
+
+        </div>
+        <footer></footer>
     </div>
 
-    <script>
-        // Create particles
-        const particlesContainer = document.getElementById('particles');
-        for (let i = 0; i < 50; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.width = Math.random() * 4 + 2 + 'px';
-            particle.style.height = particle.style.width;
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 15 + 's';
-            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
-            particlesContainer.appendChild(particle);
-        }
-
-        // Create binary rain
-        const binaryRain = document.getElementById('binaryRain');
-        for (let i = 0; i < 30; i++) {
-            const column = document.createElement('div');
-            column.className = 'binary-column';
-            column.style.left = Math.random() * 100 + '%';
-            column.style.animationDuration = (Math.random() * 10 + 15) + 's';
-            column.style.animationDelay = Math.random() * 10 + 's';
-            
-            let binaryText = '';
-            for (let j = 0; j < 30; j++) {
-                binaryText += Math.random() > 0.5 ? '1' : '0';
-                if (j % 8 === 7) binaryText += '<br>';
-            }
-            column.innerHTML = binaryText;
-            
-            binaryRain.appendChild(column);
-        }
-
-        // Create data streams
-        const dataStreamsContainer = document.getElementById('dataStreams');
-        for (let i = 0; i < 10; i++) {
-            const stream = document.createElement('div');
-            stream.className = 'data-stream';
-            stream.style.top = Math.random() * 100 + '%';
-            stream.style.width = Math.random() * 200 + 100 + 'px';
-            stream.style.animationDuration = (Math.random() * 5 + 3) + 's';
-            stream.style.animationDelay = Math.random() * 5 + 's';
-            dataStreamsContainer.appendChild(stream);
-        }
-
-        // Additional glitch effect on random intervals
-        setInterval(() => {
-            if (Math.random() > 0.95) {
-                const logo = document.getElementById('mainLogo');
-                logo.style.transform = `translate(${Math.random() * 6 - 3}px, ${Math.random() * 6 - 3}px)`;
-                setTimeout(() => {
-                    logo.style.transform = 'translate(0, 0)';
-                }, 50);
-            }
-        }, 100);
-    </script>
+    
+    
 </body>
+<script src="../../assets/js/secu.js"></script>
 </html>
