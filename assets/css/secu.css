@@ -21,12 +21,17 @@ body {
 }
 
 .navigation {
-    background-color: white;
+    background-color: black;
     position: sticky;
     top: 0;
     z-index: 1000;
     box-shadow: var(--shadow);
     width: 100%;
+    color: white;
+}
+
+a{
+    color: white;
 }
 
 .nav-container {
@@ -40,14 +45,14 @@ body {
 
 .back-link {
     text-decoration: none;
-    color: var(--accent-color);
+    color:red;
     font-size: 1rem;
     font-weight: 500;
     transition: all 0.2s;
 }
 
 .back-link:hover {
-    color: var(--hover-color);
+    color: rgb(165, 5, 5);
     transform: translate(-5px);
 }
 
@@ -63,7 +68,7 @@ body {
 
 .nav-link {
     text-decoration: none;
-    color: var(--secondary-color);
+    color: white;
     font-weight: 500;
     font-size: 1rem;
     border-bottom: 2px solid transparent;
@@ -71,12 +76,12 @@ body {
 }
 
 .nav-link:hover {
-    color: var(--accent-color);
+    color: red;
 }
 
 .nav-link.active {
-    color: var(--accent-color);
-    border-bottom-color: var(--accent-color);
+    color: red  ;
+    border-bottom:2px solid red;
 }
 
 .signin-btn, .signup-btn {
@@ -90,27 +95,28 @@ body {
 }
 
 .signup-btn {
-    border: 2px solid var(--accent-color);
-    color: white;
-    background-color: var(--accent-color);
+    border: 2px solid red;
+    color: transparent;
+    background-color: red;
     transition: all 0.2s;
+    color: white;
 }
 
 .signup-btn:hover {
-    background-color: var(--hover-color);
-    border-color: var(--hover-color);
+    background-color: rgb(160, 32, 32);
+    border-color: rgb(82, 15, 15);
 }
 
 .signin-btn {
-    border: 2px solid var(--accent-color);
-    color: var(--accent-color);
-    background-color: white;
+    border: 2px solid red;
+    color: red;
+    background-color: transparent;
 }
 
 .signin-btn:hover {
     color: white;
-    background-color: var(--accent-color);
-    border-color: var(--accent-color);
+    background-color: red;
+    border-color: red;
 }
 
 section {
