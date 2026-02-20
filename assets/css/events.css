@@ -182,12 +182,12 @@ body {
     font-weight: 800;
 }
 .month-badge {
-    font-size: 1rem;
+    font-size: 1.5rem;
     margin-top: 0.5rem;
     letter-spacing: 1px;
 }
 
-.event-info {
+.event-content {
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -199,8 +199,8 @@ body {
     align-items: center;
     gap: 0.6rem; 
     margin-bottom: 1rem;
+    justify-content: space-between;
 }
-
 
 .club-tag {
     display: inline-block;

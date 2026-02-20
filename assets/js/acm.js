@@ -12,7 +12,7 @@ canvas.height = window.innerHeight;
 // ----------------
 // Particle Config
 // ----------------
-const symbols = ["{ }", "< >", ";", "()", "function", "let", "const", "if", "return", "for","nigga","ka7louch"];
+const symbols = ["{ }", "< >", ";", "()", "function", "let", "const", "if", "return", "for"];
 const numParticles = 50;
 const particles = [];
 
