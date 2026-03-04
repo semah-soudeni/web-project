@@ -11,11 +11,13 @@ let heading = Math.PI/2;
 
 let planes = []
 
-for(let i=0;i<50;i++){
+for(let i=0;i<25;i++){
   let x = Math.random()*bgcanvas.width
   let y = Math.random()*bgcanvas.height
-  let h = Math.random()*2*Math.PI
+  let h = Math.random()*bgcanvas.height
   planes.push({x, y, h})
+  console.log(h);
+  // console.log(y);
 }
 
 function resize(){
@@ -169,7 +171,7 @@ function draw() {
 
 function drawPlane(x, y, h){
   bgctx.save()
-  bgctx.translate(x, y)
+  bgctx.translate(x, y,h)
   bgctx.rotate(h)
   bgctx.fillStyle = '#eeeeee';
   bgctx.fillRect(-15, -3, 30, 6)

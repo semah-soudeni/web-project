@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/map.css">
+    <title>Upcoming Events</title>
+</head>
+<body>
+    <nav class="navigation">
+        <div class="nav-container">
+            <a href="../index.html" class="back-link">←Back to Clubs</a>
+            <div class="nav-menu">
+                <a href="/index.html" class="nav-link">Clubs</a>
+                <a href="/pages/events.html" class="nav-link">Events</a>
+                <a href="/pages/map.html" class="nav-link active">Map</a>
+            </div>
+            <div class="nav-login">
+                <button onclick="window.location.href='/pages/signin.html'" class="signin-btn">Sign In</button>
+                <button onclick="window.location.href='/pages/signup.html'" class="signup-btn">Sign Up</button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="header-section">
+        <div class="header-container">
+            <h1 class="header-title">This is the map of the campus</h1>
+            <p class="header-subtitle">Click any of the marks to discover the club there.</p>
+        </div>
+    </section>
+
+    <div class="main">
+      <div onclick="openBar('aero')" style="position: absolute;top: 10%;left: 22%;width: 50px">
+        <svg xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 -960 960 960" width="25px" fill="#000000">
+          <circle r="400" cx="450" cy="-410" fill="white" />
+          <circle r="350" cx="450" cy="-410" fill="#123caa" />
+        </svg>
+      </div>
+      <div onclick="openBar('ieee')" style="position: absolute;top: 10%;left: 27%;width: 50px">
+        <svg xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 -960 960 960" width="25px" fill="#000000">
+          <circle r="400" cx="450" cy="-410" fill="white" />
+          <circle r="350" cx="450" cy="-410" fill="purple" />
+        </svg>
+      </div>
+      <div onclick="openBar('secu')" style="position: absolute;top: 19%;left: 59%;width: 50px">
+        <svg xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 -960 960 960" width="25px" fill="#000000">
+          <circle r="400" cx="450" cy="-410" fill="white" />
+          <circle r="350" cx="450" cy="-410" fill="#e73c37" />
+        </svg>
+      </div>
+      <div onclick="openBar('acm')" style="position: absolute;top: 19%;left: 64%;width: 50px">
+        <svg xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 -960 960 960" width="25px" fill="#000000">
+          <circle r="400" cx="450" cy="-410" fill="white" />
+          <circle r="350" cx="450" cy="-410" fill="blue" />
+        </svg>
+      </div>
+
+
+      <div class="sidebar" id="sidebar">
+        <button onclick="closeBar()"> --> </button>
+        <p id="test"></p>
+      </div>
+    </div>
+    <script src="/assets/js/map.js"></script>
+</body>
+</html>

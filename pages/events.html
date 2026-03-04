@@ -12,8 +12,8 @@
             <a href="../index.html" class="back-link">←Back to Clubs</a>
             <div class="nav-menu">
                 <a href="../index.html" class="nav-link">Clubs</a>
-                <a href="events.html" class="nav-link">Events</a>
-                <a href="under-construction.html" class="nav-link">Map</a>
+                <a href="events.html" class="nav-link active">Events</a>
+                <a href="/pages/map.html" class="nav-link">Map</a>
             </div>
             <div class="nav-login">
                 <button onclick="window.location.href='../pages/signin.html'" class="signin-btn">Sign In</button>
@@ -32,46 +32,21 @@
     <section class="filter-section">
         <div class="container">
             <div class="filters">
-                <button class="filter-btn active">All Clubs</button>
-                <button class="filter-btn">Tech Club</button>
-                <button class="filter-btn">Music Society</button>
-                <button class="filter-btn">Arts & Design</button>
-                <button class="filter-btn">Sports Club</button>
-                <button class="filter-btn">Literature Club</button>
-                <button class="filter-btn">Debate Society</button>
+                <button class="filter-btn active" data-club="all">All Clubs</button>
+                <button class="filter-btn" data-club="aero">Aerobotix</button>
+                <button class="filter-btn" data-club="secu">Securinets</button>
+                <button class="filter-btn" data-club="ieee">IEEE</button>
+                <button class="filter-btn" data-club="acm">ACM</button>
+                <button class="filter-btn" data-club="android">Android Club</button>
+                <button class="filter-btn" data-club="cim">CIM</button>
             </div>
         </div>
     </section>
-
-    <section class="events-section">
+    <section class="event-section">
         <div class="container">
-            <div class="month-section">
-                <h2 class="month-title">February 2026</h2>
-
-                <div class="event-card">
-                    <div class="date-badge">
-                        <div class="day-badge">05</div>
-                        <div class="month-badge">FEB</div>
-                    </div>
-                    <div class="event-info">
-                        <div class="event-header">
-                            <div class="club-tag">Tech Club</div>
-                            <div class="event-hour">2:00 PM - 5:00 PM</div>
-                        </div>
-                        
-                        <h3 class="event-title">
-                            Web Development Workshop
-                        </h3>
-                        <p class="event-desc">
-                            Learn the fundamentals of modern web development using HTML, CSS, and JavaScript. Perfect for beginners and intermediate developers looking to enhance their skills.
-                        </p>
-                        <div class="event-footer">
-                            <div class="event-location">
-                                📍Computer Lab, Building A
-                            </div>
-                            <button class="register-btn">Register</button>
-                        </div>
-                    </div>
+            <div id="events-container">
+                <div class="loading">
+                    <p>Loading events...</p>
                 </div>
             </div>
         </div>
@@ -209,5 +184,12 @@
     <p>aaa</p>
     <p>aaa</p>
     <p>aaa</p>
+<<<<<<< Updated upstream
+=======
+    <script src="../assets/js/events.js"></script>
+>>>>>>> d46135502525002875eefaf70f4b5ed1e2561180
+=======
+    <script src="../assets/js/events.js"></script>
+>>>>>>> Stashed changes
 </body>
 </html>

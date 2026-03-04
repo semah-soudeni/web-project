@@ -283,7 +283,6 @@ body {
     display: block;
 }
 
-/* Password strength */
 .password-strength {
     margin-top: 6px;
     display: none;
@@ -324,7 +323,6 @@ body {
     color: var(--gray-600);
 }
 
-/* Terms checkbox */
 .checkbox-group {
     display: flex;
     align-items: flex-start;
@@ -358,7 +356,6 @@ body {
     text-decoration: underline;
 }
 
-/* Submit button */
 .submit-btn {
     width: 100%;
     padding: 13px 20px;
@@ -409,7 +406,6 @@ body {
     to { transform: rotate(360deg); }
 }
 
-/* Login link */
 .login-link {
     margin-top: 24px;
     text-align: center;
@@ -429,7 +425,6 @@ body {
     text-decoration: underline;
 }
 
-/* ===== RIGHT: IMAGE ===== */
 .image-side {
     flex: 1;
     background: linear-gradient(
@@ -437,7 +432,7 @@ body {
             rgba(30, 64, 175, 0.85),
             rgba(37, 99, 235, 0.85)
         ),
-        url("../img/488219334_1281274747335226_5024869974834027993_n.jpg") center/cover;
+        url("/assets/img/signup-bg.jpg") center/cover;
     color: white;
     display: flex;
     flex-direction: column;
@@ -506,7 +501,6 @@ body {
     height: 20px;
 }
 
-/* ===== Responsive ===== */
 @media (max-width: 1024px) {
     .signup {
         padding: 40px;
@@ -553,7 +547,6 @@ body {
     }
 }
 
-/* Success message */
 .success-message {
     display: none;
     padding: 16px;
