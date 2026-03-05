@@ -9,7 +9,7 @@ resizeCanvas();
 window.addEventListener("resize", resizeCanvas);
 
 let truckX = -200;
-const truckSpeed = 4.5; // Faster truck
+const truckSpeed = 1.5; // Slower truck
 
 function drawGround() {
     ctx.fillStyle = "#2a2a2a";
@@ -47,40 +47,66 @@ function drawTruck() {
     drawWheel(truckX + 105, baseY, 18);
 }
 
-function drawHammer(x, y) {
+function drawShovel(x, y) {
+    // Handle
     ctx.fillStyle = "#8D6E63";
-    ctx.fillRect(x, y - 40, 8, 40);
+    ctx.fillRect(x, y - 50, 6, 50);
 
+    // Blade
     ctx.fillStyle = "#B0BEC5";
-    ctx.fillRect(x - 15, y - 50, 40, 10);
+    ctx.beginPath();
+    ctx.moveTo(x - 8, y - 70);
+    ctx.lineTo(x + 14, y - 70);
+    ctx.lineTo(x + 8, y - 45);
+    ctx.lineTo(x - 2, y - 45);
+    ctx.fill();
+
+    // Grip
+    ctx.fillStyle = "#8D6E63";
+    ctx.fillRect(x - 4, y - 5, 14, 5);
 }
 
-function drawWrench(x, y) {
-    ctx.strokeStyle = "#B0BEC5";
-    ctx.lineWidth = 6;
+function drawAxe(x, y) {
+    // Handle
+    ctx.fillStyle = "#8D6E63";
+    ctx.fillRect(x, y - 50, 6, 50);
+
+    // Head
+    ctx.fillStyle = "#B0BEC5";
     ctx.beginPath();
-    ctx.moveTo(x, y);
-    ctx.lineTo(x + 50, y - 25);
-    ctx.stroke();
+    ctx.moveTo(x, y - 45);
+    ctx.lineTo(x + 20, y - 50);
+    ctx.lineTo(x + 20, y - 20);
+    ctx.lineTo(x, y - 30);
+    ctx.fill();
 }
 
-function drawGear(x, y, size) {
-    ctx.strokeStyle = "#FFC107";
-    ctx.lineWidth = 4;
+function drawPickaxe(x, y) {
+    // Handle
+    ctx.fillStyle = "#8D6E63";
+    ctx.fillRect(x, y - 45, 6, 45);
+
+    // Head (Curved)
+    ctx.fillStyle = "#B0BEC5";
     ctx.beginPath();
-    ctx.arc(x, y, size, 0, Math.PI * 2);
-    ctx.stroke();
+    ctx.moveTo(x - 25, y - 25);
+    ctx.quadraticCurveTo(x + 3, y - 55, x + 31, y - 25);
+    ctx.lineTo(x + 25, y - 20);
+    ctx.quadraticCurveTo(x + 3, y - 45, x - 19, y - 20);
+    ctx.fill();
+}
 
-    for (let i = 0; i < 8; i++) {
-        const angle = (Math.PI * 2 / 8) * i;
-        const tx = x + Math.cos(angle) * (size + 8);
-        const ty = y + Math.sin(angle) * (size + 8);
+function drawMaterials(x, y) {
+    // Bricks
+    ctx.fillStyle = "#D32F2F";
+    ctx.fillRect(x, y - 10, 20, 10);
+    ctx.fillRect(x + 22, y - 10, 20, 10);
+    ctx.fillRect(x + 11, y - 22, 20, 10);
 
-        ctx.beginPath();
-        ctx.moveTo(x + Math.cos(angle) * size, y + Math.sin(angle) * size);
-        ctx.lineTo(tx, ty);
-        ctx.stroke();
-    }
+    // Wooden plank
+    ctx.fillStyle = "#8D6E63";
+    ctx.fillRect(x + 50, y - 8, 40, 8);
+    ctx.fillRect(x + 48, y - 18, 40, 8);
 }
 
 function animate() {
@@ -88,12 +114,13 @@ function animate() {
 
     drawGround();
 
-    // Left tools (bigger now)
-    drawHammer(80, canvas.height - 60);
-    drawWrench(140, canvas.height - 40);
+    // Tools
+    drawShovel(80, canvas.height - 60);
+    drawAxe(140, canvas.height - 60);
+    drawPickaxe(200, canvas.height - 60);
 
-    // Right tools (bigger gear)
-    drawGear(canvas.width - 100, canvas.height - 50, 25);
+    // Materials
+    drawMaterials(canvas.width - 200, canvas.height - 60);
 
     // Truck movement
     drawTruck();

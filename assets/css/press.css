@@ -1,0 +1,328 @@
+:root {
+    --paper-bg: #f4f1ea;
+    --ink-black: #1a1a1a;
+    --ink-gray: #4a4a4a;
+    --accent-red: #8b0000;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--paper-bg);
+    color: var(--ink-black);
+    font-family: 'Times New Roman', Times, serif;
+    background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100" height="100" filter="url(%23noise)" opacity="0.05"/></svg>');
+}
+
+/* Navigation */
+.navigation {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: var(--ink-black);
+    padding: 0.8rem 0;
+    z-index: 1000;
+    border-bottom: 3px solid var(--paper-bg);
+    font-family: Arial, sans-serif;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.back-link {
+    color: var(--paper-bg);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-link {
+    color: #ccc;
+    text-decoration: none;
+    margin: 0 1rem;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: white;
+}
+
+.nav-login button {
+    padding: 0.4rem 1rem;
+    margin-left: 0.5rem;
+    border-radius: 2px;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: inherit;
+    transition: all 0.3s;
+}
+
+.signin-btn {
+    background: transparent;
+    color: white;
+    border: 1px solid white;
+}
+
+.signin-btn:hover {
+    background: white;
+    color: var(--ink-black);
+}
+
+.signup-btn {
+    background: white;
+    color: var(--ink-black);
+    border: 1px solid white;
+}
+
+/* Newspaper Layout */
+.newspaper-container {
+    max-width: 1100px;
+    margin: 80px auto 40px;
+    padding: 2rem;
+    background: #fffdf9;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Masthead */
+.masthead {
+    text-align: center;
+    border-bottom: 4px double var(--ink-black);
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+}
+
+.masthead-top {
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    font-family: Arial, sans-serif;
+    border-bottom: 1px solid var(--ink-black);
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+.paper-title {
+    font-size: 6rem;
+    font-weight: 900;
+    margin: 0;
+    letter-spacing: -2px;
+    font-family: 'Playfair Display', 'Times New Roman', serif;
+}
+
+.masthead-bottom {
+    font-style: italic;
+    font-size: 1.2rem;
+    border-top: 1px solid var(--ink-black);
+    padding-top: 5px;
+    margin-top: 10px;
+}
+
+/* Layout Grid */
+.page-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+.headline {
+    font-size: 3rem;
+    line-height: 1.1;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.author {
+    font-style: italic;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 0.5rem;
+}
+
+.story-content {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    column-count: 2;
+    column-gap: 2rem;
+    text-align: justify;
+}
+
+.drop-cap {
+    float: left;
+    font-size: 5rem;
+    line-height: 0.8;
+    padding-top: 4px;
+    padding-right: 8px;
+    padding-left: 3px;
+    font-family: 'Playfair Display', serif;
+}
+
+.quote-box {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    border-top: 2px solid var(--ink-black);
+    border-bottom: 2px solid var(--ink-black);
+    font-size: 1.4rem;
+    font-style: italic;
+    text-align: center;
+    break-inside: avoid;
+}
+
+/* Side Column */
+.side-column {
+    border-left: 1px solid #ccc;
+    padding-left: 2rem;
+}
+
+.news-item {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #eee;
+}
+
+.sub-headline {
+    font-size: 1.8rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.action-btn {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--ink-black);
+    color: white;
+    border: none;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background 0.3s;
+}
+
+.action-btn:hover {
+    background-color: var(--accent-red);
+}
+
+.department-list {
+    padding-left: 1.2rem;
+    line-height: 1.5;
+}
+
+.department-list li {
+    margin-bottom: 0.8rem;
+}
+
+/* Community Section */
+.community-section {
+    margin: 3rem 0;
+    border-top: 2px solid var(--ink-black);
+    padding-top: 2rem;
+}
+
+.board-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.board-member {
+    text-align: center;
+}
+
+.board-member .avatar {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.board-member h4 {
+    margin: 0;
+    font-size: 1.3rem;
+    font-family: Arial, sans-serif;
+}
+
+.board-member p {
+    font-style: italic;
+    color: var(--ink-gray);
+    margin: 5px 0 0 0;
+}
+
+/* Gallery / Editions */
+.section-divider {
+    text-align: center;
+    border-bottom: 1px solid var(--ink-black);
+    line-height: 0.1em;
+    margin: 40px 0 30px;
+    font-size: 2rem;
+}
+
+.section-divider span {
+    background: #fffdf9;
+    padding: 0 15px;
+}
+
+.editions-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.edition-card {
+    border: 1px solid var(--ink-black);
+    padding: 1.5rem;
+    text-align: center;
+    background: #fff;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.hover-zoom:hover {
+    transform: scale(1.02);
+    box-shadow: 5px 5px 0px var(--ink-black);
+}
+
+.edition-date {
+    font-family: Arial, sans-serif;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: var(--ink-gray);
+    margin-bottom: 0.5rem;
+}
+
+.edition-card h4 {
+    font-size: 1.4rem;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .page-content {
+        grid-template-columns: 1fr;
+    }
+
+    .story-content {
+        column-count: 1;
+    }
+
+    .side-column {
+        border-left: none;
+        padding-left: 0;
+        border-top: 2px solid var(--ink-black);
+        padding-top: 2rem;
+    }
+
+    .editions-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .paper-title {
+        font-size: 4rem;
+    }
+}
