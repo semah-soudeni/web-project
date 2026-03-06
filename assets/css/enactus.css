@@ -292,6 +292,44 @@ body {
     color: var(--white);
 }
 
+/* Achievements Section */
+.achievements-section {
+    padding: 60px 5%;
+    background-color: var(--white);
+}
+
+.achievements-section h2 {
+    font-size: 3rem;
+    margin-bottom: 50px;
+}
+
+.stats-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.stat-card {
+    text-align: center;
+}
+
+.stat-card h3 {
+    font-size: 4rem;
+    color: var(--enactus-yellow);
+    margin: 0 0 10px;
+}
+
+.stat-card p {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    color: var(--enactus-gray);
+    margin: 0;
+}
+
 /* Board Section */
 .board-section {
     padding: 80px 5%;

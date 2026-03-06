@@ -286,6 +286,37 @@ body {
     margin-top: 0;
 }
 
+/* About Section */
+.full-width {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Achievements */
+.stats-grid {
+    justify-content: center;
+}
+
+.stat-card {
+    text-align: center;
+    min-width: unset;
+    width: 200px;
+}
+
+.stat-card h3 {
+    font-size: 3rem;
+    color: var(--cine-magenta);
+    margin: 0 0 10px;
+}
+
+.stat-card p {
+    color: var(--cine-light);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
 /* Community Section */
 .community-section {
     text-align: center;

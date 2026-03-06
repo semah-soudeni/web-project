@@ -227,6 +227,27 @@ body {
     text-align: center;
 }
 
+.stat-box .subtitle {
+    font-size: 1.2rem;
+    font-weight: 300;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* About Section */
+.about-section {
+    padding: 80px 0 0;
+}
+
+.about-section p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #555;
+}
+
 .stat-box h3 {
     font-size: 4rem;
     color: var(--lions-gold);

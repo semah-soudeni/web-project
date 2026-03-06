@@ -221,6 +221,39 @@ body {
     margin-bottom: 0.8rem;
 }
 
+/* Achievements Section */
+.achievements-section {
+    margin: 3rem 0;
+}
+
+.stats-grid {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.stat-box {
+    background: var(--paper-bg);
+    border: 1px solid var(--ink-gray);
+    padding: 2rem;
+    width: 180px;
+    box-shadow: 2px 2px 0px var(--ink-black);
+}
+
+.stat-box h3 {
+    font-size: 3rem;
+    margin: 0 0 10px;
+    color: var(--headline-red);
+}
+
+.stat-box p {
+    margin: 0;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
 /* Community Section */
 .community-section {
     margin: 3rem 0;

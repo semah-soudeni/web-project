@@ -1,0 +1,392 @@
+:root {
+    --eco-dark: #2d3b2d;
+    --eco-light: #e8f5e9;
+    --eco-green: #4CAF50;
+    --eco-accent: #81c784;
+    --eco-text: #1b5e20;
+}
+
+body {
+    margin: 0;
+    font-family: 'Open Sans', 'Segoe UI', sans-serif;
+    background-color: var(--eco-light);
+    color: var(--eco-text);
+    overflow-x: hidden;
+}
+
+/* Navigation */
+.navigation {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 1rem 0;
+    box-shadow: 0 2px 10px rgba(76, 175, 80, 0.1);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.nav-link,
+.back-link {
+    color: var(--eco-dark);
+    text-decoration: none;
+    margin: 0 1rem;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.nav-link:hover,
+.back-link:hover {
+    color: var(--eco-green);
+}
+
+.signin-btn,
+.signup-btn {
+    padding: 0.5rem 1.2rem;
+    border-radius: 20px;
+    border: 2px solid var(--eco-green);
+    background: transparent;
+    color: var(--eco-green);
+    cursor: pointer;
+    transition: 0.3s;
+    margin-left: 0.5rem;
+    font-weight: bold;
+}
+
+.signup-btn {
+    background: var(--eco-green);
+    color: white;
+}
+
+.signin-btn:hover {
+    background: rgba(76, 175, 80, 0.1);
+}
+
+.signup-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
+}
+
+/* Eco Canvas */
+#eco-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Hero */
+.eco-hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(232, 245, 233, 0.9), rgba(129, 199, 132, 0.4));
+}
+
+.hero-box {
+    background: white;
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(27, 94, 32, 0.1);
+    max-width: 800px;
+    z-index: 10;
+}
+
+.logo-wrapper {
+    width: 150px;
+    margin: 0 auto 1.5rem;
+}
+
+.eco-logo {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.eco-hero h1 {
+    font-size: 3rem;
+    color: var(--eco-dark);
+    margin: 0 0 0.5rem;
+}
+
+.eco-hero h1 span {
+    color: var(--eco-green);
+}
+
+.eco-hero h2 {
+    font-size: 1.5rem;
+    color: var(--eco-accent);
+    margin: 0 0 1rem;
+}
+
+.eco-hero p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 2rem;
+}
+
+.eco-btn {
+    padding: 1rem 2.5rem;
+    background: var(--eco-green);
+    color: white;
+    border: none;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.eco-btn:hover {
+    background: var(--eco-dark);
+    box-shadow: 0 10px 20px rgba(27, 94, 32, 0.2);
+    transform: translateY(-3px);
+}
+
+/* Main Content */
+.eco-main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 2rem;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    color: var(--eco-dark);
+    margin-bottom: 3rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: var(--eco-green);
+    border-radius: 2px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* About & Membership Sections */
+.eco-about {
+    margin-bottom: 5rem;
+}
+
+.eco-membership {
+    margin-top: 5rem;
+}
+
+.eco-about p,
+.eco-membership p {
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #555;
+}
+
+/* Achievements Section */
+.eco-achievements {
+    margin-bottom: 5rem;
+}
+
+.stats-grid {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.stat-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 15px;
+    border: 2px solid var(--eco-green);
+    width: 180px;
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.1);
+}
+
+.stat-card h3 {
+    font-size: 3rem;
+    color: var(--eco-text);
+    margin: 0 0 10px;
+}
+
+.stat-card p {
+    color: var(--eco-green);
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+/* Pillars */
+.pillar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 5rem;
+}
+
+.eco-card {
+    background: white;
+    padding: 2.5rem 2rem;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: 0.3s;
+    border-top: 5px solid var(--eco-green);
+}
+
+.eco-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(76, 175, 80, 0.15);
+}
+
+.eco-card .icon {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.eco-card h3 {
+    color: var(--eco-text);
+    margin: 0 0 1rem;
+}
+
+/* Certificates */
+.certificates-section {
+    background: var(--eco-dark);
+    color: white;
+    padding: 4rem 2rem;
+    border-radius: 20px;
+    margin-bottom: 5rem;
+}
+
+.certificates-section .section-title {
+    color: white;
+}
+
+.certificates-section .section-title::after {
+    background: var(--eco-accent);
+}
+
+.cert-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    font-size: 1.1rem;
+    color: #ddd;
+}
+
+.cert-grid {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.cert-card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(129, 199, 132, 0.3);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    width: 220px;
+    transition: 0.3s;
+}
+
+.cert-card:hover {
+    background: rgba(129, 199, 132, 0.2);
+    border-color: var(--eco-accent);
+    transform: scale(1.05);
+}
+
+.cert-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.cert-card h4 {
+    margin: 0 0 0.5rem;
+    color: var(--eco-accent);
+    font-size: 1.3rem;
+}
+
+.cert-card p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+/* Board */
+.board-section {
+    margin-top: 5rem;
+}
+
+.board-grid {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.board-member {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    width: 200px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.board-member .avatar {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    background: var(--eco-light);
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+}
+
+.board-member h3 {
+    margin: 0 0 0.5rem;
+    color: var(--eco-text);
+}
+
+.board-member p {
+    margin: 0;
+    color: var(--eco-green);
+    font-weight: bold;
+}
+
+/* Footer */
+.eco-footer {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    color: #666;
+    border-top: 2px solid var(--eco-light);
+}

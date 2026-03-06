@@ -215,6 +215,38 @@ body {
     color: var(--theatro-gold);
 }
 
+/* Achievements */
+.stats-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 80px;
+}
+
+.stat-box {
+    background: rgba(212, 175, 55, 0.1);
+    border: 2px solid var(--theatro-gold);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    width: 200px;
+}
+
+.stat-box h3 {
+    font-size: 3rem;
+    color: var(--theatro-gold);
+    margin: 0 0 10px 0;
+}
+
+.stat-box p {
+    color: var(--theatro-light);
+    margin: 0;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
 /* Board Grid */
 .board-grid {
     display: flex;

@@ -345,8 +345,17 @@ body {
 }
 
 .board-member:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 123, 255, 0.3);
+}
+
+/* About Section */
+.jei-about p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #444;
 }
 
 .board-member .avatar {

@@ -217,6 +217,26 @@ body {
     margin-bottom: 60px;
 }
 
+.section-title {
+    font-size: 2.5rem;
+    color: var(--jci-dark);
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+/* About Section */
+.about-section {
+    padding: 80px 2rem 0;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-section p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #444;
+}
+
 .section-header h2 {
     font-size: 2.5rem;
     color: var(--jci-blue);
