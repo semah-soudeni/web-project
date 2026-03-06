@@ -16,10 +16,15 @@
         <a href="../index.html" class="nav-link">Clubs</a>
         <a href="events.html" class="nav-link">Events</a>
         <a href="map.html" class="nav-link active">Map</a>
+        <a href="admin.html" class="nav-link">Admin Dashboard</a>
       </div>
       <div class="nav-login">
-        <button onclick="window.location.href='signin.html'" class="signin-btn">Sign In</button>
-        <button onclick="window.location.href='signup.html'" class="signup-btn">Sign Up</button>
+        <button id="nav-signin-btn" onclick="window.location.href='signin.html'" class="signin-btn">Sign In</button>
+        <button id="nav-signup-btn" onclick="window.location.href='signup.html'" class="signup-btn">Sign Up</button>
+        <div id="nav-user-area" style="display:none;align-items:center;gap:10px;">
+          <span id="nav-user-name" style="font-weight:600;"></span>
+          <button id="nav-logout-btn" class="signin-btn">Logout</button>
+        </div>
       </div>
     </div>
   </nav>
@@ -63,6 +68,7 @@
       <p id="test"></p>
     </div>
   </div>
+  <script src="../assets/js/auth.js"></script>
   <script src="../assets/js/map.js"></script>
 </body>
 

@@ -1,104 +1,165 @@
-/* my-clubs.css */
+/* my-clubs.css - Premium Dark Theme & Glassmorphism */
 
 .my-clubs-main {
-    padding: 60px 20px;
-    min-height: 80vh;
+    padding: 80px 20px;
+    min-height: 100vh;
+    background-color: var(--primary-bg);
 }
 
 .page-header {
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 60px;
 }
 
 .page-header h1 {
-    font-size: 2.5rem;
-    color: #2d3748;
-    margin-bottom: 10px;
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    background: linear-gradient(to right, #fff, #94a3b8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .page-header p {
-    color: #718096;
+    color: var(--text-secondary);
     font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .clubs-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    max-width: 1400px;
     margin: 0 auto;
+    padding: 0 40px;
+    justify-content: center;
 }
 
 .club-card {
-    background: white;
-    border-radius: 15px;
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: var(--shadow);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
 .club-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-8px);
+    border-color: rgba(59, 130, 246, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
 .club-info {
-    padding: 24px;
+    padding: 30px;
     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .club-info h3 {
-    font-size: 1.5rem;
-    color: #1a202c;
-    margin-bottom: 15px;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 20px;
 }
 
 .club-meta {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    color: #4a5568;
-    font-size: 0.95rem;
+    margin-top: auto;
 }
 
 .club-date {
     display: flex;
     align-items: center;
-    gap: 8px;
-    color: #718096;
+    gap: 10px;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 1px solid var(--glass-border);
+}
+
+.club-date svg {
+    color: var(--accent-color);
+    opacity: 0.8;
 }
 
 .club-actions {
-    background: #f7fafc;
-    padding: 15px 24px;
-    border-top: 1px solid #edf2f7;
+    background: rgba(15, 23, 42, 0.4);
+    padding: 20px 30px;
+    border-top: 1px solid var(--glass-border);
 }
 
 .view-btn {
-    display: inline-block;
-    color: #3182ce;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--accent-color);
     text-decoration: none;
     font-weight: 600;
     font-size: 0.95rem;
+    transition: all 0.2s ease;
 }
 
 .view-btn:hover {
-    text-decoration: underline;
+    color: var(--hover-color);
+    transform: translateX(5px);
 }
 
 .loading-state,
 .empty-state {
     grid-column: 1 / -1;
     text-align: center;
-    padding: 100px 20px;
+    padding: 120px 20px;
     font-size: 1.25rem;
-    color: #718096;
+    color: var(--text-secondary);
+    background: var(--card-bg);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
 }
 
 .empty-state a {
-    color: #3182ce;
+    color: var(--accent-color);
     text-decoration: none;
     font-weight: 600;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+}
+
+.empty-state a:hover {
+    border-bottom-color: var(--accent-color);
+}
+
+@media (max-width: 1200px) {
+    .clubs-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 1000px) {
+    .clubs-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .page-header h1 {
+        font-size: 2.2rem;
+    }
+
+    .clubs-grid {
+        grid-template-columns: 1fr;
+        padding: 10px;
+        gap: 20px;
+    }
 }

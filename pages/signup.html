@@ -79,7 +79,7 @@
 
                     <!-- Server-side error banner -->
                     <div id="serverError"
-                        style="display:none;background:#fee2e2;color:#991b1b;border:1px solid #fca5a5;border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:.9rem;">
+                        style="display:none;background:rgba(239,68,68,0.1);color:#ef4444;border:1px solid rgba(239,68,68,0.2);border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:.9rem;">
                     </div>
 
                     <button type="submit" class="submit-btn" id="submitBtn">
@@ -145,7 +145,7 @@
                     const levels = ['Weak', 'Fair', 'Good', 'Strong'];
                     const colors = ['#ef4444', '#f97316', '#eab308', '#22c55e'];
                     strengthBars.forEach(function (bar, i) {
-                        bar.style.background = i < score ? colors[score - 1] : '#e2e8f0';
+                        bar.style.background = i < score ? colors[score - 1] : 'rgba(255,255,255,0.1)';
                     });
                     if (strengthText) strengthText.textContent = levels[score - 1] || 'Weak';
                 });
