@@ -95,7 +95,7 @@ body {
 /* Hero Section */
 .hero-section {
     height: 100vh;
-    background: url('/assets/img/lion.jpg') center/cover no-repeat;
+    background: url('../img/lion.jpg') center/cover no-repeat;
     position: relative;
     display: flex;
     align-items: center;

@@ -1,25 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/css/android.css">
+  <link rel="stylesheet" href="../../assets/css/android.css">
   <title>Android Club INSAT</title>
 </head>
+
 <body>
 
   <!-- NAV -->
   <nav class="navigation">
     <div class="nav-container">
-      <a href="/index.html" class="back-link">← Back to Clubs</a>
+      <a href="../../index.html" class="back-link">← Back to Clubs</a>
       <div class="nav-menu">
-        <a href="/index.html"        class="nav-link">Clubs</a>
-        <a href="/pages/events.html" class="nav-link">Events</a>
-        <a href="/pages/map.html"    class="nav-link">Map</a>
+        <a href="../../index.html" class="nav-link">Clubs</a>
+        <a href="../events.html" class="nav-link">Events</a>
+        <a href="../map.html" class="nav-link">Map</a>
       </div>
       <div class="nav-login">
-        <button onclick="window.location.href='/pages/signin.html'" class="signin-btn">Sign In</button>
-        <button onclick="window.location.href='/pages/signup.html'" class="signup-btn">Sign Up</button>
+        <button id="nav-signin-btn" onclick="window.location.href='../signin.html'" class="signin-btn">Sign
+          In</button>
+        <button id="nav-signup-btn" onclick="window.location.href='../signup.html'" class="signup-btn">Sign
+          Up</button>
+        <div id="nav-user-area" style="display:none;align-items:center;gap:10px;">
+          <span id="nav-user-name" style="font-weight:600;"></span>
+          <button id="nav-logout-btn" class="signin-btn">Logout</button>
+        </div>
       </div>
     </div>
   </nav>
@@ -34,19 +42,17 @@
         We teach, mentor, and build — together.
       </p>
       <div class="hero-btns">
-        <button class="btn-primary"
-          onclick="document.getElementById('join').scrollIntoView({ behavior:'smooth' })">
+        <button class="btn-primary" onclick="document.getElementById('join').scrollIntoView({ behavior:'smooth' })">
           Join the Club
         </button>
-        <button class="btn-secondary"
-          onclick="document.getElementById('events').scrollIntoView({ behavior:'smooth' })">
+        <button class="btn-secondary" onclick="document.getElementById('events').scrollIntoView({ behavior:'smooth' })">
           See Events ↓
         </button>
       </div>
     </div>
     <div class="hero-right">
       <div class="hero-logo-wrapper">
-        <img src="/assets/img/andr.png" alt="Android Club INSAT Logo" class="hero-logo">
+        <img src="../../assets/img/andr.png" alt="Android Club INSAT Logo" class="hero-logo">
         <div class="orbit-ring ring-1"></div>
         <div class="orbit-ring ring-2"></div>
       </div>
@@ -63,10 +69,12 @@
 
       <div class="bento-cell tall fade-in-up">
         <h3>Who We Are</h3>
-        <p>Android Club INSAT is a student-powered tech hub at INSAT. We bridge the gap between classroom theory and real-world engineering across 6 major domains of computer science.</p>
-        <p>Whether you want to crack competitive programming contests, learn to secure systems, containerize apps with Docker, or train your first ML model — we've got you covered.</p>
+        <p>Android Club INSAT is a student-powered tech hub at INSAT. We bridge the gap between classroom theory and
+          real-world engineering across 6 major domains of computer science.</p>
+        <p>Whether you want to crack competitive programming contests, learn to secure systems, containerize apps with
+          Docker, or train your first ML model — we've got you covered.</p>
         <div class="about-img-placeholder">
-          <img src="/assets/img/andr.png" alt="Android Club" class="about-banner-img">
+          <img src="../../assets/img/andr.png" alt="Android Club" class="about-banner-img">
         </div>
       </div>
 
@@ -189,7 +197,7 @@
         <h2 class="section-title">Upcoming Events</h2>
         <p class="section-sub">Join our next session</p>
       </div>
-      <a href="/pages/events.html" class="view-all-btn">View All Events →</a>
+      <a href="../events.html" class="view-all-btn">View All Events →</a>
     </div>
     <div class="events-strip-wrapper">
       <div class="events-strip">
@@ -268,15 +276,17 @@
   <section class="join-section" id="join">
     <div class="join-text fade-in-up">
       <h2>Become a Member</h2>
-      <p>Android Club INSAT is open to all INSAT students. There are no prerequisites — just bring your curiosity and willingness to learn. Membership is free and comes with access to all workshops, events, and our Discord community.</p>
-      <button class="btn-primary join-cta">Apply for Membership →</button>
+      <p>Android Club INSAT is open to all INSAT students. There are no prerequisites — just bring your curiosity and
+        willingness to learn. Membership is free and comes with access to all workshops, events, and our Discord
+        community.</p>
+      <button class="btn-primary join-cta" onclick="window.joinClub('android')">Apply for Membership →</button>
     </div>
     <div class="join-visual fade-in-up">
       <div class="join-graphic">
         <div class="jg-circle c1"></div>
         <div class="jg-circle c2"></div>
         <div class="jg-circle c3"></div>
-        <img src="/assets/img/andr.png" alt="Android Club" class="jg-logo">
+        <img src="../../assets/img/andr.png" alt="Android Club" class="jg-logo">
       </div>
     </div>
   </section>
@@ -289,15 +299,17 @@
         <p>Building the next generation of tech innovators at INSAT, Tunis.</p>
       </div>
       <div class="footer-links">
-        <a href="/index.html">Clubs</a>
-        <a href="/pages/events.html">Events</a>
-        <a href="/pages/map.html">Map</a>
-        <a href="/pages/signin.html">Sign In</a>
+        <a href="../../index.html">Clubs</a>
+        <a href="../events.html">Events</a>
+        <a href="../map.html">Map</a>
+        <a href="../signin.html">Sign In</a>
       </div>
       <p class="footer-copy">© 2026 Android Club INSAT · All rights reserved</p>
     </div>
   </footer>
 
-  <script type="module" src="/assets/js/android.js"></script>
+  <script type="module" src="../../assets/js/android.js"></script>
+  <script src="../../assets/js/auth.js"></script>
 </body>
+
 </html>

@@ -96,7 +96,7 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: linear-gradient(rgba(26, 26, 26, 0.8), rgba(26, 26, 26, 0.9)), url('/assets/img/theatro.jpg') center/cover;
+    background: linear-gradient(rgba(26, 26, 26, 0.8), rgba(26, 26, 26, 0.9)), url('../img/theatro.jpg') center/cover;
     position: relative;
     border-bottom: 5px solid var(--theatro-red);
 }
@@ -292,7 +292,7 @@ body {
 /* Join Section */
 .join-container {
     text-align: center;
-    background: linear-gradient(rgba(139, 0, 0, 0.8), rgba(139, 0, 0, 0.8)), url('/assets/img/theatro.jpg') center/cover;
+    background: linear-gradient(rgba(139, 0, 0, 0.8), rgba(139, 0, 0, 0.8)), url('../img/theatro.jpg') center/cover;
     padding: 60px 20px;
     border-radius: 15px;
     box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);

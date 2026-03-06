@@ -5,21 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3Zero Campus Club INSAT</title>
-    <link rel="stylesheet" href="/assets/css/3zero.css">
+    <link rel="stylesheet" href="../../assets/css/3zero.css">
 </head>
 
 <body>
     <nav class="navigation">
         <div class="nav-container">
-            <a href="/index.html" class="back-link">← Back to Clubs</a>
+            <a href="../../index.html" class="back-link">← Back to Clubs</a>
             <div class="nav-menu">
-                <a href="/index.html" class="nav-link">Clubs</a>
-                <a href="/pages/events.html" class="nav-link">Events</a>
-                <a href="/pages/map.html" class="nav-link">Map</a>
+                <a href="../../index.html" class="nav-link">Clubs</a>
+                <a href="../events.html" class="nav-link">Events</a>
+                <a href="../map.html" class="nav-link">Map</a>
             </div>
             <div class="nav-login">
-                <button onclick="window.location.href='/pages/signin.html'" class="signin-btn">Sign In</button>
-                <button onclick="window.location.href='/pages/signup.html'" class="signup-btn">Sign Up</button>
+                <button id="nav-signin-btn" onclick="window.location.href='../signin.html'" class="signin-btn">Sign
+                    In</button>
+                <button id="nav-signup-btn" onclick="window.location.href='../signup.html'" class="signup-btn">Sign
+                    Up</button>
+                <div id="nav-user-area" style="display:none;align-items:center;gap:10px;">
+                    <span id="nav-user-name" style="font-weight:600;"></span>
+                    <button id="nav-logout-btn" class="signin-btn">Logout</button>
+                </div>
             </div>
         </div>
     </nav>
@@ -30,12 +36,12 @@
     <header class="eco-hero">
         <div class="hero-box">
             <div class="logo-wrapper">
-                <img src="/assets/img/3zero.png" alt="3Zero Logo" class="eco-logo">
+                <img src="../../assets/img/3zero.png" alt="3Zero Logo" class="eco-logo">
             </div>
             <h1>3Zero <span>Campus Club</span></h1>
             <h2>Zero Exclusion | Zero Carbon | Zero Poverty</h2>
             <p>Empowering the campus community towards a fully sustainable future.</p>
-            <button class="eco-btn" onclick="window.location.href='/pages/signup.html'">Join The Movement</button>
+            <button class="eco-btn" onclick="window.joinClub('3zero')">Join The Movement</button>
         </div>
     </header>
 
@@ -144,7 +150,7 @@
             <h2 class="section-title">Be The Change</h2>
             <p>Want to leave a positive footprint? Join us to collaborate on green tech projects and community
                 outreaches.</p>
-            <button class="eco-btn" onclick="window.location.href='/pages/signup.html'">Volunteer Now</button>
+            <button class="eco-btn" onclick="window.joinClub('3zero')">Volunteer Now</button>
         </section>
     </main>
 
@@ -152,7 +158,8 @@
         <p>3Zero Campus Club INSAT &copy; 2024. For a Sustainable Tomorrow.</p>
     </footer>
 
-    <script src="/assets/js/3zero.js"></script>
+    <script src="../../assets/js/3zero.js"></script>
+    <script src="../../assets/js/auth.js"></script>
 </body>
 
 </html>

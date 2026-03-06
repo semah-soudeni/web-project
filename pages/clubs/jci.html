@@ -4,22 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/jci.css">
+    <link rel="stylesheet" href="../../assets/css/jci.css">
     <title>JCI INSAT</title>
 </head>
 
 <body>
     <nav class="navigation">
         <div class="nav-container">
-            <a href="/index.html" class="back-link">← Back to Clubs</a>
+            <a href="../../index.html" class="back-link">← Back to Clubs</a>
             <div class="nav-menu">
-                <a href="/index.html" class="nav-link">Clubs</a>
-                <a href="/pages/events.html" class="nav-link">Events</a>
-                <a href="/pages/map.html" class="nav-link">Map</a>
+                <a href="../../index.html" class="nav-link">Clubs</a>
+                <a href="../events.html" class="nav-link">Events</a>
+                <a href="../map.html" class="nav-link">Map</a>
             </div>
             <div class="nav-login">
-                <button onclick="window.location.href='/pages/signin.html'" class="signin-btn">Sign In</button>
-                <button onclick="window.location.href='/pages/signup.html'" class="signup-btn">Sign Up</button>
+                <button id="nav-signin-btn" onclick="window.location.href='../signin.html'" class="signin-btn">Sign
+                    In</button>
+                <button id="nav-signup-btn" onclick="window.location.href='../signup.html'" class="signup-btn">Sign
+                    Up</button>
+                <div id="nav-user-area" style="display:none;align-items:center;gap:10px;">
+                    <span id="nav-user-name" style="font-weight:600;"></span>
+                    <button id="nav-logout-btn" class="signin-btn">Logout</button>
+                </div>
             </div>
         </div>
     </nav>
@@ -30,13 +36,13 @@
         <div class="hero-inner">
             <div class="hero-text glass-panel">
                 <div class="jci-logo-box">
-                    <img src="/assets/img/juniorc.jpg" alt="JCI Logo" class="jci-logo">
+                    <img src="../../assets/img/juniorc.jpg" alt="JCI Logo" class="jci-logo">
                 </div>
                 <h1>JCI <span>INSAT</span></h1>
                 <h2>Developing Leaders for a Changing World.</h2>
                 <p>Welcome to Junior Chamber International INSAT. We are a global network of young active citizens
                     dedicated to creating positive change in our communities.</p>
-                <button class="jci-btn" onclick="window.location.href='/pages/signup.html'">Become a Member</button>
+                <button class="jci-btn" onclick="window.joinClub('jci')">Become a Member</button>
             </div>
         </div>
     </header>
@@ -130,7 +136,8 @@
         <p>JCI INSAT &copy; 2024. Empowering Young Leaders.</p>
     </footer>
 
-    <script src="/assets/js/jci.js"></script>
+    <script src="../../assets/js/jci.js"></script>
+    <script src="../../assets/js/auth.js"></script>
 </body>
 
 </html>

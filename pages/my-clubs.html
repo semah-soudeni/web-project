@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Clubs - INSAT Clubs</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/my-clubs.css">
+</head>
+
+<body>
+    <nav class="navigation">
+        <div class="nav-container">
+            <div class="nav-menu">
+                <a href="../index.html" class="nav-link">Clubs</a>
+                <a href="events.html" class="nav-link">Events</a>
+                <a href="map.html" class="nav-link">Map</a>
+                <a href="admin.html" class="nav-link">Admin Dashboard</a>
+            </div>
+            <div class="nav-login">
+                <button id="nav-signin-btn" onclick="window.location.href='signin.html'" class="signin-btn">Sign
+                    In</button>
+                <button id="nav-signup-btn" onclick="window.location.href='signup.html'" class="signup-btn">Sign
+                    Up</button>
+                <div id="nav-user-area" style="display:none;align-items:center;gap:10px;">
+                    <span id="nav-user-name" style="font-weight:600;"></span>
+                    <button id="nav-logout-btn" class="signin-btn">Logout</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="my-clubs-main">
+        <header class="page-header">
+            <h1>My Joined Clubs</h1>
+            <p>Here are all the clubs you have successfully joined.</p>
+        </header>
+
+        <section class="container">
+            <div id="clubs-list" class="clubs-grid">
+                <!-- Clubs will be loaded here -->
+                <div class="loading-state">Loading your clubs...</div>
+            </div>
+        </section>
+    </main>
+
+    <script src="../assets/js/auth.js"></script>
+    <script src="../assets/js/my-clubs.js"></script>
+</body>
+
+</html>

@@ -4,22 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/cineradio.css">
+    <link rel="stylesheet" href="../../assets/css/cineradio.css">
     <title>Club Cine Radio Insat</title>
 </head>
 
 <body>
     <nav class="navigation">
         <div class="nav-container">
-            <a href="/index.html" class="back-link">← Back to Clubs</a>
+            <a href="../../index.html" class="back-link">← Back to Clubs</a>
             <div class="nav-menu">
-                <a href="/index.html" class="nav-link">Clubs</a>
-                <a href="/pages/events.html" class="nav-link">Events</a>
-                <a href="/pages/map.html" class="nav-link">Map</a>
+                <a href="../../index.html" class="nav-link">Clubs</a>
+                <a href="../events.html" class="nav-link">Events</a>
+                <a href="../map.html" class="nav-link">Map</a>
             </div>
             <div class="nav-login">
-                <button onclick="window.location.href='/pages/signin.html'" class="signin-btn">Sign In</button>
-                <button onclick="window.location.href='/pages/signup.html'" class="signup-btn">Sign Up</button>
+                <button id="nav-signin-btn" onclick="window.location.href='../signin.html'" class="signin-btn">Sign
+                    In</button>
+                <button id="nav-signup-btn" onclick="window.location.href='../signup.html'" class="signup-btn">Sign
+                    Up</button>
+                <div id="nav-user-area" style="display:none;align-items:center;gap:10px;">
+                    <span id="nav-user-name" style="font-weight:600;"></span>
+                    <button id="nav-logout-btn" class="signin-btn">Logout</button>
+                </div>
             </div>
         </div>
     </nav>
@@ -113,11 +119,12 @@
             </div>
             <p class="join-text">Whether you want to be in front of the mic, behind the camera, or on the editing board,
                 there's a place for you here.</p>
-            <button class="action-button" onclick="window.location.href='/pages/signup.html'">Go On Air</button>
+            <button class="action-button" onclick="window.joinClub('cineradio')">Go On Air</button>
         </section>
     </main>
 
-    <script src="/assets/js/cineradio.js"></script>
+    <script src="../../assets/js/cineradio.js"></script>
+    <script src="../../assets/js/auth.js"></script>
 </body>
 
 </html>

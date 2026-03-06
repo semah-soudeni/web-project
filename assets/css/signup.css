@@ -57,6 +57,7 @@ body {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -86,45 +87,47 @@ body {
     letter-spacing: -0.5px;
 }
 
-.form-box > p {
+.form-box>p {
     color: var(--gray-600);
     margin-bottom: 32px;
     font-size: 15px;
     line-height: 1.5;
 }
+
 .back-btn {
-  position: fixed;
-  top: 24px;
-  left: 24px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
+    position: fixed;
+    top: 24px;
+    left: 24px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 
-  padding: 8px 12px;
-  border-radius: 8px;
-  background: white;
-  color: var(--gray-900);
-  font-size: 14px;
-  font-weight: 600;
-  text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: white;
+    color: var(--gray-900);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
 
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  transition: all 0.2s ease;
-  z-index: 100;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.2s ease;
+    z-index: 100;
 }
 
 .back-btn svg {
-  width: 18px;
-  height: 18px;
-  stroke: currentColor;
-  stroke-width: 2.5;
-  fill: none;
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    stroke-width: 2.5;
+    fill: none;
 }
 
 .back-btn:hover {
-  transform: translateY(-1px);
-  background: var(--gray-50);
+    transform: translateY(-1px);
+    background: var(--gray-50);
 }
+
 /* OAuth buttons */
 .oauth {
     display: flex;
@@ -279,7 +282,7 @@ body {
     display: none;
 }
 
-.input-group input.error ~ .error-message {
+.input-group input.error~.error-message {
     display: block;
 }
 
@@ -403,7 +406,9 @@ body {
 }
 
 @keyframes spin {
-    to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .login-link {
@@ -427,12 +432,10 @@ body {
 
 .image-side {
     flex: 1;
-    background: linear-gradient(
-            135deg,
+    background: linear-gradient(135deg,
             rgba(30, 64, 175, 0.85),
-            rgba(37, 99, 235, 0.85)
-        ),
-        url("/assets/img/signup-bg.jpg") center/cover;
+            rgba(37, 99, 235, 0.85)),
+        url("../img/signup-bg.jpg") center/cover;
     color: white;
     display: flex;
     flex-direction: column;
@@ -460,8 +463,13 @@ body {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 .image-side h2 {
@@ -542,8 +550,9 @@ body {
     .image-side {
         min-height: 40vh;
     }
+
     .back-btn {
-      background: var(--gray-50);
+        background: var(--gray-50);
     }
 }
 

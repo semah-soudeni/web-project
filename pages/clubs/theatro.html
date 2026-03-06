@@ -4,22 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/theatro.css">
+    <link rel="stylesheet" href="../../assets/css/theatro.css">
     <title>Theatro Insat</title>
 </head>
 
 <body>
     <nav class="navigation">
         <div class="nav-container">
-            <a href="/index.html" class="back-link">← Back to Clubs</a>
+            <a href="../../index.html" class="back-link">← Back to Clubs</a>
             <div class="nav-menu">
-                <a href="/index.html" class="nav-link">Clubs</a>
-                <a href="/pages/events.html" class="nav-link">Events</a>
-                <a href="/pages/map.html" class="nav-link">Map</a>
+                <a href="../../index.html" class="nav-link">Clubs</a>
+                <a href="../events.html" class="nav-link">Events</a>
+                <a href="../map.html" class="nav-link">Map</a>
             </div>
             <div class="nav-login">
-                <button onclick="window.location.href='/pages/signin.html'" class="signin-btn">Sign In</button>
-                <button onclick="window.location.href='/pages/signup.html'" class="signup-btn">Sign Up</button>
+                <button id="nav-signin-btn" onclick="window.location.href='../signin.html'" class="signin-btn">Sign
+                    In</button>
+                <button id="nav-signup-btn" onclick="window.location.href='../signup.html'" class="signup-btn">Sign
+                    Up</button>
+                <div id="nav-user-area" style="display:none;align-items:center;gap:10px;">
+                    <span id="nav-user-name" style="font-weight:600;"></span>
+                    <button id="nav-logout-btn" class="signin-btn">Logout</button>
+                </div>
             </div>
         </div>
     </nav>
@@ -32,7 +38,7 @@
     <section class="header-section">
         <div class="header-container">
             <div class="logo-container">
-                <img src="/assets/img/theatro.jpg" alt="Theatro Logo" class="theatro-logo">
+                <img src="../../assets/img/theatro.jpg" alt="Theatro Logo" class="theatro-logo">
             </div>
             <h1 class="header-title">Theatro INSAT</h1>
             <p class="header-subtitle">Where passion meets the stage. Discover the art of acting, directing, and
@@ -125,12 +131,13 @@
             <h2 class="section-title">Act III: Join The Cast</h2>
             <div class="join-container">
                 <p>Are you ready for your standing ovation?</p>
-                <button class="join-btn" onclick="window.location.href='/pages/signup.html'">Audition Now</button>
+                <button class="join-btn" onclick="window.joinClub('theatro')">Audition Now</button>
             </div>
         </section>
     </div>
 
-    <script src="/assets/js/theatro.js"></script>
+    <script src="../../assets/js/theatro.js"></script>
+    <script src="../../assets/js/auth.js"></script>
 </body>
 
 </html>

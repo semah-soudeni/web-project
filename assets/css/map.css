@@ -87,7 +87,8 @@ body {
     border-bottom-color: var(--accent-color);
 }
 
-.signin-btn, .signup-btn {
+.signin-btn,
+.signup-btn {
     padding: 0.5rem 1.5rem;
     border: none;
     border-radius: 8px;
@@ -139,7 +140,7 @@ body {
 
 .main {
     position: relative;
-    background: url("/assets/img/map.png") center/cover no-repeat;
+    background: url("../img/map.png") center/cover no-repeat;
     width: 100%;
     min-height: calc(100vh - 200px);
     overflow: hidden;
@@ -154,4 +155,3 @@ body {
     background-color: white;
     transition: width 0.2s ease-in-out;
 }
-

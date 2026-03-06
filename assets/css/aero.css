@@ -4,6 +4,7 @@
   box-sizing: border-box;
 
   scrollbar-width: none;
+
   &::-webkit-scrollbar {
     display: none;
   }
@@ -107,7 +108,8 @@ body {
   border-bottom-color: var(--accent-color);
 }
 
-.signin-btn, .signup-btn {
+.signin-btn,
+.signup-btn {
   padding: 0.5rem 1.5rem;
   border: none;
   border-radius: 8px;
@@ -155,9 +157,7 @@ body {
   z-index: 1;
 }
 
-#scroll-follower {
-  /*height: 100%;*/
-}
+
 
 .header-section {
   color: white;
@@ -173,12 +173,12 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: url('/assets/img/aero-bg.jpg');
+  background: url('../img/aero-bg.jpg');
   background-repeat: no-repeat;
   background-size: 100% 112%;
   filter: blur(4px);
   opacity: 0.2;
-  z-index:-1;
+  z-index: -1;
 }
 
 .header-title {
@@ -275,9 +275,9 @@ body {
   border-radius: 10px;
 }
 
-.About:first-child ,
+.About:first-child,
 .what,
-.staff{
+.staff {
   background-color: #efefef8f;
 }
 

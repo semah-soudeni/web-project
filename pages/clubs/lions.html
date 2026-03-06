@@ -4,22 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/lions.css">
+    <link rel="stylesheet" href="../../assets/css/lions.css">
     <title>Lions Club INSAT</title>
 </head>
 
 <body>
     <nav class="navigation">
         <div class="nav-container">
-            <a href="/index.html" class="back-link">← Back to Clubs</a>
+            <a href="../../index.html" class="back-link">← Back to Clubs</a>
             <div class="nav-menu">
-                <a href="/index.html" class="nav-link">Clubs</a>
-                <a href="/pages/events.html" class="nav-link">Events</a>
-                <a href="/pages/map.html" class="nav-link">Map</a>
+                <a href="../../index.html" class="nav-link">Clubs</a>
+                <a href="../events.html" class="nav-link">Events</a>
+                <a href="../map.html" class="nav-link">Map</a>
             </div>
             <div class="nav-login">
-                <button onclick="window.location.href='/pages/signin.html'" class="signin-btn">Sign In</button>
-                <button onclick="window.location.href='/pages/signup.html'" class="signup-btn">Sign Up</button>
+                <button id="nav-signin-btn" onclick="window.location.href='../signin.html'" class="signin-btn">Sign
+                    In</button>
+                <button id="nav-signup-btn" onclick="window.location.href='../signup.html'" class="signup-btn">Sign
+                    Up</button>
+                <div id="nav-user-area" style="display:none;align-items:center;gap:10px;">
+                    <span id="nav-user-name" style="font-weight:600;"></span>
+                    <button id="nav-logout-btn" class="signin-btn">Logout</button>
+                </div>
             </div>
         </div>
     </nav>
@@ -27,7 +33,7 @@
     <header class="hero-section">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <img src="/assets/img/lion.jpg" alt="Lions Logo" class="hero-logo dissolve-in">
+            <img src="../../assets/img/lion.jpg" alt="Lions Logo" class="hero-logo dissolve-in">
             <h1 class="slide-up">Lions Club INSAT</h1>
             <p class="subtitle slide-up">We Serve. Empowering volunteers to serve their communities, meet humanitarian
                 needs, encourage peace and promote international understanding.</p>
@@ -119,7 +125,7 @@
                 <h2>Ready to Make an Impact?</h2>
                 <p>Volunteering with Lions Club INSAT means joining a global network of individuals dedicated to making
                     the world a better place. Your journey of service starts here.</p>
-                <button class="cta-button" onclick="window.location.href='/pages/signup.html'">Become a Lion</button>
+                <button class="cta-button" onclick="window.joinClub('lions')">Become a Lion</button>
             </div>
         </section>
     </main>
@@ -128,7 +134,8 @@
         <p>&copy; 2024 Lions Club INSAT. All rights reserved by Lions Clubs International.</p>
     </footer>
 
-    <script src="/assets/js/lions.js"></script>
+    <script src="../../assets/js/lions.js"></script>
+    <script src="../../assets/js/auth.js"></script>
 </body>
 
 </html>

@@ -5,21 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chemistry Club INSAT</title>
-    <link rel="stylesheet" href="/assets/css/chem.css">
+    <link rel="stylesheet" href="../../assets/css/chem.css">
 </head>
 
 <body>
     <nav class="navigation">
         <div class="nav-container">
-            <a href="/index.html" class="back-link">← Back to Clubs</a>
+            <a href="../../index.html" class="back-link">← Back to Clubs</a>
             <div class="nav-menu">
-                <a href="/index.html" class="nav-link">Clubs</a>
-                <a href="/pages/events.html" class="nav-link">Events</a>
-                <a href="/pages/map.html" class="nav-link">Map</a>
+                <a href="../../index.html" class="nav-link">Clubs</a>
+                <a href="../events.html" class="nav-link">Events</a>
+                <a href="../map.html" class="nav-link">Map</a>
             </div>
             <div class="nav-login">
-                <button onclick="window.location.href='/pages/signin.html'" class="signin-btn">Sign In</button>
-                <button onclick="window.location.href='/pages/signup.html'" class="signup-btn">Sign Up</button>
+                <button id="nav-signin-btn" onclick="window.location.href='../signin.html'" class="signin-btn">Sign
+                    In</button>
+                <button id="nav-signup-btn" onclick="window.location.href='../signup.html'" class="signup-btn">Sign
+                    Up</button>
+                <div id="nav-user-area" style="display:none;align-items:center;gap:10px;">
+                    <span id="nav-user-name" style="font-weight:600;"></span>
+                    <button id="nav-logout-btn" class="signin-btn">Logout</button>
+                </div>
             </div>
         </div>
     </nav>
@@ -29,11 +35,11 @@
     <header class="chem-hero">
         <div class="hero-content">
             <div class="flask-container">
-                <img src="/assets/img/chem.png" alt="Chem Club Logo" class="chem-logo">
+                <img src="../../assets/img/chem.png" alt="Chem Club Logo" class="chem-logo">
             </div>
             <h1>Chemistry Club <span>INSAT</span></h1>
             <p class="subtitle">La Chimie, Secret de la Magie !</p>
-            <button class="chem-btn" onclick="window.location.href='/pages/signup.html'">Mix With Us</button>
+            <button class="chem-btn" onclick="window.joinClub('chem')">Mix With Us</button>
         </div>
     </header>
 
@@ -109,7 +115,7 @@
         <section class="chem-membership text-center">
             <h2 class="section-title">Become a Catalyst</h2>
             <p>Ready to ignite a reaction? Join us today and gain access to our weekly labs and networking events.</p>
-            <button class="chem-btn" onclick="window.location.href='/pages/signup.html'">Apply Now</button>
+            <button class="chem-btn" onclick="window.joinClub('chem')">Apply Now</button>
         </section>
     </main>
 
@@ -117,7 +123,8 @@
         <p>Chemistry Club INSAT &copy; 2024. Catalyzing Minds.</p>
     </footer>
 
-    <script src="/assets/js/chem.js"></script>
+    <script src="../../assets/js/chem.js"></script>
+    <script src="../../assets/js/auth.js"></script>
 </body>
 
 </html>

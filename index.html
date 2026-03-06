@@ -19,8 +19,14 @@
                     <a href="pages/admin.html" class="nav-link">Admin Dashboard</a>
                 </div>
                 <div class="nav-login">
-                    <button onclick="window.location.href='pages/signin.html'" class="signin-btn">Sign In</button>
-                    <button onclick="window.location.href='pages/signup.html'" class="signup-btn">Sign Up</button>
+                    <button id="nav-signin-btn" onclick="window.location.href='pages/signin.html'"
+                        class="signin-btn">Sign In</button>
+                    <button id="nav-signup-btn" onclick="window.location.href='pages/signup.html'"
+                        class="signup-btn">Sign Up</button>
+                    <div id="nav-user-area" style="display:none;align-items:center;gap:10px;">
+                        <span id="nav-user-name" style="font-weight:600;"></span>
+                        <button id="nav-logout-btn" class="signin-btn">Logout</button>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -31,7 +37,7 @@
                     <div class="card">
                         <div class="img">
                             <div class="logo">
-                                <img src="/assets/img/aero-logo.png" alt="aerobotix logo">
+                                <img src="assets/img/aero-logo.png" alt="aerobotix logo">
                             </div>
                         </div>
                         <div class="jnab">
@@ -44,7 +50,7 @@
                     <div class="card">
                         <div class="img">
                             <div class="logo secu">
-                                <img src="/assets/img/secu-logo.png" alt="securinets logo">
+                                <img src="assets/img/secu-logo.png" alt="securinets logo">
                             </div>
                         </div>
                         <div class="jnab">
@@ -57,7 +63,7 @@
                     <div class="card">
                         <div class="img">
                             <div class="logo">
-                                <img src="/assets/img/ieee-logo.png" alt="ieee logo">
+                                <img src="assets/img/ieee-logo.png" alt="ieee logo">
                             </div>
                         </div>
                         <div class="jnab">
@@ -70,7 +76,7 @@
                     <div class="card">
                         <div class="img">
                             <div class="logo">
-                                <img src="/assets/img/acm-logo.png" alt="acm logo">
+                                <img src="assets/img/acm-logo.png" alt="acm logo">
                             </div>
                         </div>
                         <div class="jnab">
@@ -83,7 +89,7 @@
                     <div class="card">
                         <div class="img">
                             <div class="logoAnd">
-                                <img src="/assets/img/andr.png" alt="Insat Android Club Logo">
+                                <img src="assets/img/andr.png" alt="Insat Android Club Logo">
                             </div>
                         </div>
                         <div class="jnab">
@@ -96,7 +102,7 @@
                     <div class="card">
                         <div class="img">
                             <div class="logo">
-                                <img src="/assets/img/cim.png" alt="CIM Insat">
+                                <img src="assets/img/cim.png" alt="CIM Insat">
                             </div>
                         </div>
                         <div class="jnab">
@@ -109,7 +115,7 @@
                     <div class="card">
                         <div class="img">
                             <div class="logoth">
-                                <img src="/assets/img/theatro.jpg" alt="Theatro Insat">
+                                <img src="assets/img/theatro.jpg" alt="Theatro Insat">
                             </div>
                         </div>
                         <div class="jnab">
@@ -122,7 +128,7 @@
                     <div class="card">
                         <div class="img">
                             <div class="logoth">
-                                <img src="/assets/img/cine.jpg" alt="CIM Insat">
+                                <img src="assets/img/cine.jpg" alt="CIM Insat">
                             </div>
                         </div>
                         <div class="jnab">
@@ -135,7 +141,7 @@
                     <div class="card">
                         <div class="img">
                             <div class="logoth">
-                                <img src="/assets/img/press.png" alt="Insat Press">
+                                <img src="assets/img/press.png" alt="Insat Press">
                             </div>
                         </div>
                         <div class="jnab">
@@ -148,7 +154,7 @@
                     <div class="card">
                         <div class="img">
                             <div class="logoth">
-                                <img src="/assets/img/lion.jpg" alt="CIM Insat">
+                                <img src="assets/img/lion.jpg" alt="CIM Insat">
                             </div>
                         </div>
                         <div class="jnab">
@@ -161,7 +167,7 @@
                     <div class="card">
                         <div class="img">
                             <div class="logoAnd">
-                                <img src="/assets/img/enactus.png" alt="Club Enactus">
+                                <img src="assets/img/enactus.png" alt="Club Enactus">
                             </div>
                         </div>
                         <div class="jnab">
@@ -174,7 +180,7 @@
                     <div class="card">
                         <div class="img">
                             <div class="logoth">
-                                <img src="/assets/img/junior.jpg" alt="Club JEI">
+                                <img src="assets/img/junior.jpg" alt="Club JEI">
                             </div>
                         </div>
                         <div class="jnab">
@@ -187,7 +193,7 @@
                     <div class="card">
                         <div class="img">
                             <div class="logoth">
-                                <img src="/assets/img/juniorc.jpg" alt="Club JCI">
+                                <img src="assets/img/juniorc.jpg" alt="Club JCI">
                             </div>
                         </div>
                         <div class="jnab">
@@ -200,7 +206,7 @@
                     <div class="card">
                         <div class="img">
                             <div class="logoth">
-                                <img src="/assets/img/chem.png" alt="Chem Club">
+                                <img src="assets/img/chem.png" alt="Chem Club">
                             </div>
                         </div>
                         <div class="jnab">
@@ -213,7 +219,7 @@
                     <div class="card">
                         <div class="img">
                             <div class="logoth">
-                                <img src="/assets/img/astro.png" alt="Astro Club">
+                                <img src="assets/img/astro.png" alt="Astro Club">
                             </div>
                         </div>
                         <div class="jnab">
@@ -226,7 +232,7 @@
                     <div class="card">
                         <div class="img">
                             <div class="logoth">
-                                <img src="/assets/img/3zero.png" alt="3Zero Club">
+                                <img src="assets/img/3zero.png" alt="3Zero Club">
                             </div>
                         </div>
                         <div class="jnab">
@@ -238,6 +244,7 @@
             </div>
         </section>
     </main>
+    <script src="assets/js/auth.js"></script>
 </body>
 
 </html>
