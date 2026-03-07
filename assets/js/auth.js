@@ -66,21 +66,61 @@
             userArea.style.display = 'flex';
             if (userNameEl) userNameEl.textContent = 'Hi, ' + user.first_name;
 
-            // Inject "My Clubs" link if not already present
+            // ── Inject Navigation Links based on role ──────────────────
             const navMenu = document.querySelector('.nav-menu');
-            if (navMenu && !document.getElementById('nav-my-clubs')) {
-                const myClubsLink = document.createElement('a');
-                myClubsLink.id = 'nav-my-clubs';
-                myClubsLink.href = projectUrl('pages/my-clubs.html');
-                myClubsLink.className = 'nav-link';
-                myClubsLink.textContent = 'My Clubs';
-                navMenu.appendChild(myClubsLink);
+            if (navMenu) {
+                // 1. Remove any existing dynamic links to prevent duplication
+                const dynamicLinks = navMenu.querySelectorAll('.nav-link-dynamic');
+                dynamicLinks.forEach(l => l.remove());
+
+                // 2. Inject "My Members" if officer
+                if (user.role && user.role !== 'member' && user.role !== 'admin') {
+                    const membersLink = document.createElement('a');
+                    membersLink.href = projectUrl('pages/my-members.html');
+                    membersLink.textContent = 'My Members';
+                    membersLink.className = 'nav-link nav-link-dynamic';
+                    navMenu.appendChild(membersLink);
+                }
+
+                // 3. Inject "My Clubs" for everyone
+                const clubsLink = document.createElement('a');
+                clubsLink.href = projectUrl('pages/my-clubs.html');
+                clubsLink.textContent = 'My Clubs';
+                clubsLink.className = 'nav-link nav-link-dynamic';
+                navMenu.appendChild(clubsLink);
             }
         } else {
             if (signinBtn) signinBtn.style.display = '';
             if (signupBtn) signupBtn.style.display = '';
             userArea.style.display = 'none';
+
+            // Clean up dynamic links when logged out
+            const navMenu = document.querySelector('.nav-menu');
+            if (navMenu) {
+                const dynamicLinks = navMenu.querySelectorAll('.nav-link-dynamic');
+                dynamicLinks.forEach(l => l.remove());
+            }
         }
+
+        // ── Automatic Active State Detection (Runs for everyone) ───────
+        const currentPath = window.location.pathname;
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            try {
+                const linkPath = new URL(link.href, window.location.origin).pathname;
+                // Handle different home path variations (/ , /index.html, /web-project/)
+                const isHome = (currentPath.endsWith('/') || currentPath.endsWith('index.html')) &&
+                    (linkPath.endsWith('/') || linkPath.endsWith('index.html'));
+
+                if (currentPath === linkPath || isHome) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            } catch (e) {
+                // Ignore external links or invalid URLs
+            }
+        });
 
         if (logoutBtn) {
             logoutBtn.onclick = function () {

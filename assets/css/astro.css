@@ -339,3 +339,39 @@ body {
     color: var(--space-blue);
     border-top: 1px solid rgba(102, 252, 241, 0.1);
 }
+
+
+
+/* USER AREA STANDARDIZATION */
+#nav-user-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 5px 5px 5px 15px;
+    border-radius: 12px;
+    border: 1px solid var(--neon-cyan);
+}
+
+#nav-user-name {
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+#nav-logout-btn {
+    background: transparent;
+    border: 1px solid var(--neon-teal);
+    color: var(--neon-cyan);
+    padding: 0.5rem 1.25rem;
+    font-size: 0.9rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#nav-logout-btn:hover {
+    background: var(--neon-teal);
+    color: white;
+    transform: translateY(-1px);
+}

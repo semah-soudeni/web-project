@@ -24,6 +24,14 @@ if (empty($_SESSION['user_id'])) {
     exit;
 }
 
+// All student roles (member, president, vpa, vpt) can join clubs.
+// Only the global 'admin' role might be restricted if you have one.
+if (($_SESSION['role'] ?? 'member') === 'admin') {
+    http_response_code(403);
+    echo json_encode(['error' => 'Global administrators cannot join clubs as members.']);
+    exit;
+}
+
 require_once __DIR__ . '/db.php';
 
 // Accept JSON body or form POST

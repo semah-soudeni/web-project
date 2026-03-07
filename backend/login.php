@@ -49,6 +49,27 @@ $_SESSION['first_name'] = $user['first_name'];
 $_SESSION['last_name']  = $user['last_name'];
 $_SESSION['email']      = $user['email'];
 
+// Check if this user is a President for any club
+$stmt = $db->prepare('
+    SELECT m.club_id, m.role, c.name as club_name 
+    FROM memberships m
+    JOIN clubs c ON m.club_id = c.id
+    WHERE m.user_id = ? AND m.role = "president" 
+    LIMIT 1
+');
+$stmt->execute([$user['id']]);
+$membership = $stmt->fetch();
+
+if ($membership) {
+    $_SESSION['role']      = 'president';
+    $_SESSION['club_id']   = $membership['club_id'];
+    $_SESSION['club_name'] = $membership['club_name'];
+} else {
+    $_SESSION['role']      = $user['role']; // e.g., 'member' or 'admin' (global)
+    $_SESSION['club_id']   = null;
+    $_SESSION['club_name'] = null;
+}
+
 echo json_encode([
     'success' => true,
     'user'    => [

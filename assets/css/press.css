@@ -359,3 +359,39 @@ body {
         font-size: 4rem;
     }
 }
+
+
+
+/* USER AREA STANDARDIZATION */
+#nav-user-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 5px 5px 5px 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#nav-user-name {
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+#nav-logout-btn {
+    background: var(--accent-red);
+    border: 1px solid var(--accent-red);
+    color: white;
+    padding: 0.5rem 1.25rem;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#nav-logout-btn:hover {
+    background: white;
+    color: var(--accent-red);
+    transform: translateY(-1px);
+}

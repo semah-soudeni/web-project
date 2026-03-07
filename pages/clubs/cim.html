@@ -3,16 +3,15 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>CIM - Club INSAT Maintenance</title>
+    <title>CIM | Infrastructure Division</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../assets/css/cim.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Inter:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
-
-    <!-- ===============================
-     NAVIGATION
-================================= -->
 
     <nav class="navigation">
         <div class="nav-container">
@@ -22,104 +21,191 @@
                 <a href="../../index.html" class="nav-link">Clubs</a>
                 <a href="../events.html" class="nav-link">Events</a>
                 <a href="../map.html" class="nav-link">Map</a>
+                <a href="../admin.html" class="nav-link">Admin Dashboard</a>
             </div>
 
             <div class="nav-login">
-                <button id="nav-signin-btn" onclick="window.location.href='../signin.html'" class="signin-btn">Sign
-                    In</button>
-                <button id="nav-signup-btn" onclick="window.location.href='../signup.html'" class="signup-btn">Sign
-                    Up</button>
                 <div id="nav-user-area" style="display:none;align-items:center;gap:10px;">
                     <span id="nav-user-name" style="font-weight:600;"></span>
                     <button id="nav-logout-btn" class="signin-btn">Logout</button>
+                </div>
+                <div id="nav-guest-area" style="display:flex;gap:15px;">
+                    <button id="nav-signin-btn" onclick="window.location.href='../signin.html'" class="signin-btn">Sign
+                        In</button>
+                    <button id="nav-signup-btn" onclick="window.location.href='../signup.html'" class="signup-btn">Sign
+                        Up</button>
                 </div>
             </div>
         </div>
     </nav>
 
-    <header class="header-section">
-        <div class="header-content">
-            <h1>Club INSAT Maintenance</h1>
-            <p>Building • Repairing • Improving Our Campus</p>
+    <!-- FULL-WIDTH HERO -->
+    <header class="hero-banner">
+        <div class="hero-overlay">
+            <div class="hero-tag">Club INSAT &nbsp;·&nbsp; Infrastructure Division</div>
+            <h1>Club INSAT<br>Maintenance</h1>
+            <p class="hero-sub">Keeping campus infrastructure running since 1996.</p>
+            <div class="hero-pills">
+                <span class="pill">🔧 Repairs</span>
+                <span class="pill">🏗️ Construction</span>
+                <span class="pill">⚡ Logistics</span>
+            </div>
         </div>
     </header>
 
-    <main>
+    <div class="breadcrumb">
+        Home &gt; Clubs &gt; <span>CIM</span>
+    </div>
 
-        <section class="about-section">
-            <h2>About CIM</h2>
-            <p>
-                CIM is the engineering backbone of INSAT.
-                We maintain infrastructure, repair technical systems,
-                and lead construction and improvement projects across campus.
-            </p>
-        </section>
+    <!-- MAIN MAGAZINE GRID -->
+    <main class="magazine-grid">
 
-        <section class="activities-section">
-            <h2>What We Do</h2>
+        <!-- LEFT COLUMN: CONTENT -->
+        <article class="content-area">
 
-            <div class="cards">
-
-                <div class="card">
-                    <h3>🔧 Maintenance</h3>
-                    <p>Repairing classrooms, labs and essential equipment.</p>
+            <section class="mission-section">
+                <h2 class="section-title">Our Mission</h2>
+                <div class="text-block">
+                    The Club INSAT Maintenance is the primary engineering unit responsible for the physical
+                    integrity of the campus. We execute critical repairs, architectural upgrades, and
+                    technical troubleshooting for all departments. Our crew specializes in rapid-response
+                    logistics and long-term infrastructure planning.
                 </div>
+            </section>
 
-                <div class="card">
-                    <h3>🚜 Construction</h3>
-                    <p>Building and upgrading campus facilities.</p>
+            <section class="activities-section">
+                <h2 class="section-title">Recent Activities</h2>
+                <ul class="activity-list">
+                    <li>
+                        <div class="activity-icon">🔨</div>
+                        <div class="activity-info">
+                            <h3>Lecture Hall A — Seating Renovation</h3>
+                            <span class="date">March 2024 &nbsp;·&nbsp; Completed</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="activity-icon">⚡</div>
+                        <div class="activity-info">
+                            <h3>Lab B Electrical System Upgrade</h3>
+                            <span class="date">January 2024 &nbsp;·&nbsp; Completed</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="activity-icon">🏗️</div>
+                        <div class="activity-info">
+                            <h3>Campus Exterior Safety Signage</h3>
+                            <span class="date">November 2023 &nbsp;·&nbsp; Completed</span>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="history-section">
+                <h2 class="section-title">Club History</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <span class="year">1996</span>
+                        <p>CIM founded as the first maintenance-focused student club at INSAT.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <span class="year">2005</span>
+                        <p>Expanded operations to include electrical and plumbing repairs.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <span class="year">2024</span>
+                        <p>24 active members, 100+ completed repair operations.</p>
+                    </div>
                 </div>
+            </section>
 
-                <div class="card">
-                    <h3>⚙️ Technical Support</h3>
-                    <p>Providing logistics and technical assistance to clubs and departments.</p>
+        </article>
+
+        <!-- RIGHT COLUMN: SIDEBAR -->
+        <aside class="sidebar-area">
+
+            <div class="sidebar-block">
+                <h3 class="sidebar-title">Club Stats</h3>
+                <div class="stat-card">
+                    <div class="stat-icon">📦</div>
+                    <div class="stat-info">
+                        <span class="stat-val">50+</span>
+                        <span class="stat-label">Deployments</span>
+                    </div>
                 </div>
-
+                <div class="stat-card">
+                    <div class="stat-icon">🔧</div>
+                    <div class="stat-info">
+                        <span class="stat-val">100+</span>
+                        <span class="stat-label">Repairs Done</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-info">
+                        <span class="stat-val">24</span>
+                        <span class="stat-label">Active Members</span>
+                    </div>
+                </div>
             </div>
-        </section>
 
-        <section class="impact-section">
-            <h2>Our Impact</h2>
-
-            <div class="stats">
-
-                <div class="stat">
-                    <h1>50+</h1>
-                    <p>Projects Completed</p>
+            <div class="sidebar-block">
+                <div class="join-card">
+                    <h3>Join CIM</h3>
+                    <p>Become part of the team keeping INSAT running. Applications open each semester.</p>
+                    <button class="join-btn" onclick="window.joinClub('cim')">Apply Now</button>
                 </div>
-
-                <div class="stat">
-                    <h1>100+</h1>
-                    <p>Repairs Done</p>
-                </div>
-
-                <div class="stat">
-                    <h1>20+</h1>
-                    <p>Active Members</p>
-                </div>
-
             </div>
-        </section>
 
-        <section class="join-section">
-            <h2 style="border-left: none;">Join CIM</h2>
-            <p>Be part of the team that builds INSAT’s future.</p>
-            <button class="join-btn" onclick="window.joinClub('cim')">Join Now</button>
-        </section>
+            <div class="sidebar-block">
+                <h3 class="sidebar-title">Contact & Social</h3>
+                <p class="email">cim@insat.tn</p>
+                <div class="social-links">
+                    <div class="social-icon">fb</div>
+                    <div class="social-icon">ig</div>
+                    <div class="social-icon">In</div>
+                </div>
+            </div>
+
+        </aside>
 
     </main>
 
-
-    <footer class="industrial-footer">
-
-        <div class="footer-content">
-            <h2>CIM - Club INSAT Maintenance</h2>
-            <p>Engineering the Campus Since Day One</p>
+    <!-- FULL-WIDTH CTA -->
+    <section class="cta-band">
+        <h2>Be Part of Something That Matters</h2>
+        <p>Help us maintain the infrastructure that 5000+ students depend on every day.</p>
+        <div class="cta-btns">
+            <button class="btn-primary" onclick="window.joinClub('cim')">Join CIM Now</button>
+            <button class="btn-secondary">View All Activities</button>
         </div>
+    </section>
 
-        <canvas id="construction-canvas"></canvas>
-
+    <!-- FOOTER -->
+    <footer class="footer-grid">
+        <div class="footer-col">
+            <h4>CIM</h4>
+            <p>Club INSAT Maintenance</p>
+            <p>Est. 1996</p>
+        </div>
+        <div class="footer-col">
+            <h4>Navigation</h4>
+            <a href="#">About</a>
+            <a href="#">Activities</a>
+            <a href="#">Join us</a>
+        </div>
+        <div class="footer-col">
+            <h4>INSAT Clubs</h4>
+            <a href="../../index.html">All Clubs</a>
+            <a href="../events.html">Events</a>
+            <a href="../map.html">Campus Map</a>
+        </div>
     </footer>
+    <div class="footer-bottom">
+        &copy; 2024 CIM — Club INSAT Maintenance
+    </div>
 
     <script src="../../assets/js/cim.js"></script>
     <script src="../../assets/js/auth.js"></script>

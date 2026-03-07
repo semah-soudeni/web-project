@@ -329,3 +329,40 @@ body {
     padding: 2rem;
   }
 }
+
+
+
+/* BESPOKE NAV REPAIR - ACM */
+#nav-user-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(0, 255, 200, 0.05);
+    padding: 5px 5px 5px 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 255, 200, 0.3);
+}
+
+#nav-user-name {
+    color: #00ffc8;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+#nav-logout-btn {
+    background: transparent;
+    border: 1px solid #00ffc8;
+    color: #00ffc8;
+    padding: 0.5rem 1.25rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#nav-logout-btn:hover {
+    background: #00ffc8;
+    color: #06080f;
+    box-shadow: 0 0 15px rgba(0, 255, 200, 0.5);
+}

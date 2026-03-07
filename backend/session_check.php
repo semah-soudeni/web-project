@@ -18,6 +18,9 @@ if (!empty($_SESSION['user_id'])) {
             'first_name' => $_SESSION['first_name'],
             'last_name'  => $_SESSION['last_name'],
             'email'      => $_SESSION['email'],
+            'role'       => $_SESSION['role'] ?? 'member',
+            'club_id'    => $_SESSION['club_id'] ?? null,
+            'club_name'  => $_SESSION['club_name'] ?? null
         ]
     ]);
 } else {

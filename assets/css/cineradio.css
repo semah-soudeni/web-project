@@ -486,3 +486,41 @@ body {
     background-size: 30px 20px;
     background-position: center;
 }
+
+
+
+/* USER AREA STANDARDIZATION */
+#nav-user-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(10, 10, 10, 0.6);
+    padding: 5px 5px 5px 15px;
+    border-radius: 12px;
+    border: 1px solid var(--cine-cyan);
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.1);
+}
+
+#nav-user-name {
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+#nav-logout-btn {
+    background: transparent;
+    border: 1px solid var(--cine-magenta);
+    color: var(--cine-magenta);
+    padding: 0.5rem 1.25rem;
+    font-size: 0.9rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#nav-logout-btn:hover {
+    background: var(--cine-magenta);
+    color: white;
+    box-shadow: 0 0 15px var(--cine-magenta);
+    transform: translateY(-1px);
+}

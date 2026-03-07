@@ -384,3 +384,39 @@ body.loaded .curtain-left {
 body.loaded .curtain-right {
     transform: translateX(100%);
 }
+
+
+
+/* USER AREA STANDARDIZATION */
+#nav-user-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 5px 5px 5px 15px;
+    border-radius: 12px;
+    border: 1px solid var(--theatro-gold);
+}
+
+#nav-user-name {
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+#nav-logout-btn {
+    background: var(--theatro-red);
+    border: 1px solid var(--theatro-gold);
+    color: var(--theatro-gold);
+    padding: 0.5rem 1.25rem;
+    font-size: 0.9rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#nav-logout-btn:hover {
+    background: var(--theatro-gold);
+    color: var(--theatro-dark);
+    transform: translateY(-1px);
+}

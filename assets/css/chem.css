@@ -325,3 +325,39 @@ body {
     color: #888;
     border-top: 1px solid rgba(46, 204, 113, 0.2);
 }
+
+
+
+/* USER AREA STANDARDIZATION */
+#nav-user-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(46, 204, 113, 0.05);
+    padding: 5px 5px 5px 15px;
+    border-radius: 12px;
+    border: 1px solid var(--chem-green);
+}
+
+#nav-user-name {
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+#nav-logout-btn {
+    background: transparent;
+    border: 1px solid var(--chem-blue);
+    color: var(--chem-blue);
+    padding: 0.5rem 1.25rem;
+    font-size: 0.9rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#nav-logout-btn:hover {
+    background: var(--chem-blue);
+    color: white;
+    transform: translateY(-1px);
+}

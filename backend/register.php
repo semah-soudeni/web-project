@@ -44,7 +44,19 @@ if (strlen($password) < 8) {
     exit;
 }
 
+$role = trim($data['role'] ?? 'member');
+$allowedRoles = ['member', 'president', 'vp', 'secretary', 'treasurer', 'admin'];
+if (!in_array($role, $allowedRoles)) {
+    $role = 'member';
+}
+
 $db = getDB();
+
+// ── Role & Club Association Logic ─────────────────────────────
+// Everyone registers as a regular member initially.
+// Club leadership roles are assigned via the memberships table by existing presidents.
+$role = 'member';
+$clubId = null;
 
 // ── Check duplicate email ────────────────────────────────────
 $stmt = $db->prepare('SELECT id FROM users WHERE email = ? LIMIT 1');
@@ -58,9 +70,9 @@ if ($stmt->fetch()) {
 // ── Insert ───────────────────────────────────────────────────
 $hash = password_hash($password, PASSWORD_BCRYPT);
 $stmt = $db->prepare(
-    'INSERT INTO users (first_name, last_name, email, phone, password) VALUES (?, ?, ?, ?, ?)'
+    'INSERT INTO users (first_name, last_name, email, phone, password, role) VALUES (?, ?, ?, ?, ?, ?)'
 );
-$stmt->execute([$firstName, $lastName, $email, $phone ?: null, $hash]);
+$stmt->execute([$firstName, $lastName, $email, $phone ?: null, $hash, $role]);
 $userId = (int) $db->lastInsertId();
 
 // ── Auto-login after registration ───────────────────────────
@@ -68,6 +80,9 @@ $_SESSION['user_id']    = $userId;
 $_SESSION['first_name'] = $firstName;
 $_SESSION['last_name']  = $lastName;
 $_SESSION['email']      = $email;
+$_SESSION['role']       = $role;
+$_SESSION['club_id']    = null;
+$_SESSION['club_name']  = null;
 
 echo json_encode([
     'success' => true,
@@ -75,5 +90,6 @@ echo json_encode([
         'first_name' => $firstName,
         'last_name'  => $lastName,
         'email'      => $email,
+        'role'       => $role
     ]
 ]);

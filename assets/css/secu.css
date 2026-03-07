@@ -552,3 +552,41 @@ footer {
 body {
     overflow-x: hidden;
 }
+
+
+
+/* BESPOKE NAV REPAIR - SECURINETS */
+#nav-user-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(255, 0, 0, 0.05);
+    padding: 5px 5px 5px 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 0, 0, 0.3);
+}
+
+#nav-user-name {
+    color: #ff3333;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+#nav-logout-btn {
+    background: #ff0000;
+    border: 1px solid #ff0000;
+    color: white;
+    padding: 0.5rem 1.25rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#nav-logout-btn:hover {
+    background: transparent;
+    color: #ff0000;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+}

@@ -23,7 +23,7 @@
                 <h1>Create Account</h1>
                 <p>Join INSAT students community now</p>
 
-                <div class="success-message" id="successMessage">
+                <div class="success-message" id="successMessage" style="display:none;">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                         <polyline points="22 4 12 14.01 9 11.01"></polyline>
@@ -77,6 +77,21 @@
                         </div>
                     </div>
 
+                    <div class="input-group" id="roleGroup" style="display:none;">
+                        <label for="role">Project Authority / Role <span class="required">*</span></label>
+                        <select id="role" name="role" class="role-select">
+                            <option value="member">Active Member</option>
+                            <option value="president">President</option>
+                            <option value="vp">Vice President</option>
+                            <option value="secretary">Secretary</option>
+                            <option value="treasurer">Treasurer</option>
+                        </select>
+                        <span class="info-message"
+                            style="font-size: 0.75rem; color: var(--text-secondary); display: block; margin-top: 5px;">
+                            Note: Official roles require validation of the club email address.
+                        </span>
+                    </div>
+
                     <!-- Server-side error banner -->
                     <div id="serverError"
                         style="display:none;background:rgba(239,68,68,0.1);color:#ef4444;border:1px solid rgba(239,68,68,0.2);border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:.9rem;">
@@ -102,25 +117,31 @@
                     Connect with fellow students, discover campus events, join clubs,
                     and unlock exclusive opportunities — all in one powerful platform.
                 </p>
-                <div class="features">
+                <div class="features-grid">
                     <div class="feature-item">
-                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        Verified Students
+                        <div class="feature-icon">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <span>Verified Students</span>
                     </div>
                     <div class="feature-item">
-                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path
-                                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                        </svg>
-                        Secure Platform
+                        <div class="feature-icon">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                            </svg>
+                        </div>
+                        <span>Secure Platform</span>
                     </div>
                     <div class="feature-item">
-                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg>
-                        Instant Access
+                        <div class="feature-icon">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                        </div>
+                        <span>Instant Access</span>
                     </div>
                 </div>
             </div>
@@ -151,6 +172,23 @@
                 });
             }
 
+            // ── Club email detection ────────────────────────────────
+            const emailInput = document.getElementById('email');
+            const roleGroup = document.getElementById('roleGroup');
+
+            if (emailInput && roleGroup) {
+                emailInput.addEventListener('input', function () {
+                    const email = emailInput.value.toLowerCase();
+                    // Detect pattern something@insat.com where something matches a club slug
+                    if (email.endsWith('@insat.com')) {
+                        roleGroup.style.display = 'block';
+                    } else {
+                        roleGroup.style.display = 'none';
+                        document.getElementById('role').value = 'member';
+                    }
+                });
+            }
+
             // ── Form submit → register.php ───────────────────────────
             const form = document.getElementById('signupForm');
             const submitBtn = document.getElementById('submitBtn');
@@ -167,6 +205,7 @@
                 const email = document.getElementById('email').value.trim();
                 const phone = document.getElementById('phone').value.trim();
                 const password = document.getElementById('password').value;
+                const role = document.getElementById('role').value;
 
                 // Basic client-side validation
                 if (!firstName || !lastName || !email || !phone || !password) {
@@ -192,7 +231,8 @@
                         last_name: lastName,
                         email,
                         phone,
-                        password
+                        password,
+                        role
                     })
                 })
                     .then(function (r) { return r.json(); })

@@ -868,3 +868,41 @@ a { text-decoration: none; }
   .footer         { padding: 2.5rem 1.5rem; }
   .footer-links   { flex-wrap: wrap; justify-content: center; gap: 1rem; }
 }
+
+
+
+
+/* BESPOKE NAV REPAIR - ANDROID */
+#nav-user-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(122, 226, 58, 0.05);
+    padding: 5px 5px 5px 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(122, 226, 58, 0.3);
+}
+
+#nav-user-name {
+    color: white;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+#nav-logout-btn {
+    background: #7AE23A;
+    border: 1px solid #7AE23A;
+    color: #2C2C2C;
+    padding: 0.5rem 1.25rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#nav-logout-btn:hover {
+    background: white;
+    color: #7AE23A;
+    box-shadow: 0 0 15px rgba(122, 226, 58, 0.5);
+}

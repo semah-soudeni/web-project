@@ -1,136 +1,77 @@
-const canvas = document.getElementById("construction-canvas");
-const ctx = canvas.getContext("2d");
+/**
+ * cim.js - Structural Magazine Interactivity
+ */
 
-function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = 320; // Increased height
-}
-resizeCanvas();
-window.addEventListener("resize", resizeCanvas);
+document.addEventListener('DOMContentLoaded', () => {
 
-let truckX = -200;
-const truckSpeed = 1.5; // Slower truck
+    // 1. Subtle Parallax for Hero
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const hero = document.querySelector('.hero-banner');
+        if (hero) {
+            // Use 50% as base to match 'center' and apply offset
+            hero.style.backgroundPosition = `center calc(50% + ${scrolled * 0.4}px)`;
+        }
+    });
 
-function drawGround() {
-    ctx.fillStyle = "#2a2a2a";
-    ctx.fillRect(0, canvas.height - 60, canvas.width, 60);
-}
+    // 2. Stat Counter Animation
+    const stats = document.querySelectorAll('.stat-val');
 
-function drawWheel(x, y, radius) {
-    ctx.beginPath();
-    ctx.arc(x, y, radius, 0, Math.PI * 2);
-    ctx.fillStyle = "black";
-    ctx.fill();
+    const observerOptions = {
+        threshold: 0.5
+    };
 
-    ctx.beginPath();
-    ctx.arc(x, y, radius / 2, 0, Math.PI * 2);
-    ctx.fillStyle = "#777";
-    ctx.fill();
-}
+    const countUp = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const target = entry.target;
+                const endValue = parseInt(target.innerText.replace('+', ''));
+                let startValue = 0;
+                const duration = 2000;
+                const startTime = performance.now();
 
-function drawTruck() {
-    const baseY = canvas.height - 80;
+                const updateCount = (timestamp) => {
+                    const elapsed = timestamp - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const current = Math.floor(progress * endValue);
 
-    // Truck body
-    ctx.fillStyle = "#FFC107";
-    ctx.fillRect(truckX, baseY - 40, 140, 40);
+                    target.innerText = current + (target.innerText.includes('+') ? '+' : '');
 
-    // Cabin
-    ctx.fillRect(truckX + 100, baseY - 65, 60, 65);
+                    if (progress < 1) {
+                        requestAnimationFrame(updateCount);
+                    }
+                };
 
-    // Window
-    ctx.fillStyle = "#B0BEC5";
-    ctx.fillRect(truckX + 110, baseY - 55, 35, 30);
+                requestAnimationFrame(updateCount);
+                observer.unobserve(target);
+            }
+        });
+    };
 
-    // Wheels
-    drawWheel(truckX + 35, baseY, 18);
-    drawWheel(truckX + 105, baseY, 18);
-}
+    const statObserver = new IntersectionObserver(countUp, observerOptions);
+    stats.forEach(stat => statObserver.observe(stat));
 
-function drawShovel(x, y) {
-    // Handle
-    ctx.fillStyle = "#8D6E63";
-    ctx.fillRect(x, y - 50, 6, 50);
+    // 3. Fade-in for Content Sections
+    const sections = document.querySelectorAll('.section-title, .text-block, .activity-list li, .timeline-item');
 
-    // Blade
-    ctx.fillStyle = "#B0BEC5";
-    ctx.beginPath();
-    ctx.moveTo(x - 8, y - 70);
-    ctx.lineTo(x + 14, y - 70);
-    ctx.lineTo(x + 8, y - 45);
-    ctx.lineTo(x - 2, y - 45);
-    ctx.fill();
+    const fadeIn = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                observer.unobserve(entry.target);
+            }
+        });
+    };
 
-    // Grip
-    ctx.fillStyle = "#8D6E63";
-    ctx.fillRect(x - 4, y - 5, 14, 5);
-}
+    const contentObserver = new IntersectionObserver(fadeIn, { threshold: 0.1 });
 
-function drawAxe(x, y) {
-    // Handle
-    ctx.fillStyle = "#8D6E63";
-    ctx.fillRect(x, y - 50, 6, 50);
+    sections.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+        contentObserver.observe(el);
+    });
 
-    // Head
-    ctx.fillStyle = "#B0BEC5";
-    ctx.beginPath();
-    ctx.moveTo(x, y - 45);
-    ctx.lineTo(x + 20, y - 50);
-    ctx.lineTo(x + 20, y - 20);
-    ctx.lineTo(x, y - 30);
-    ctx.fill();
-}
-
-function drawPickaxe(x, y) {
-    // Handle
-    ctx.fillStyle = "#8D6E63";
-    ctx.fillRect(x, y - 45, 6, 45);
-
-    // Head (Curved)
-    ctx.fillStyle = "#B0BEC5";
-    ctx.beginPath();
-    ctx.moveTo(x - 25, y - 25);
-    ctx.quadraticCurveTo(x + 3, y - 55, x + 31, y - 25);
-    ctx.lineTo(x + 25, y - 20);
-    ctx.quadraticCurveTo(x + 3, y - 45, x - 19, y - 20);
-    ctx.fill();
-}
-
-function drawMaterials(x, y) {
-    // Bricks
-    ctx.fillStyle = "#D32F2F";
-    ctx.fillRect(x, y - 10, 20, 10);
-    ctx.fillRect(x + 22, y - 10, 20, 10);
-    ctx.fillRect(x + 11, y - 22, 20, 10);
-
-    // Wooden plank
-    ctx.fillStyle = "#8D6E63";
-    ctx.fillRect(x + 50, y - 8, 40, 8);
-    ctx.fillRect(x + 48, y - 18, 40, 8);
-}
-
-function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    drawGround();
-
-    // Tools
-    drawShovel(80, canvas.height - 60);
-    drawAxe(140, canvas.height - 60);
-    drawPickaxe(200, canvas.height - 60);
-
-    // Materials
-    drawMaterials(canvas.width - 200, canvas.height - 60);
-
-    // Truck movement
-    drawTruck();
-
-    truckX += truckSpeed;
-    if (truckX > canvas.width + 200) {
-        truckX = -200;
-    }
-
-    requestAnimationFrame(animate);
-}
-
-animate();
+    console.log("%c [CIM_RECONSTRUCTION] %c MAGAZINE_LAYOUT_INITIALIZED", "color: #B87333; font-weight: bold", "color: #708090");
+});
