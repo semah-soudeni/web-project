@@ -6,6 +6,8 @@
 
 session_start();
 require_once __DIR__ . '/cors.php';
+require_once __DIR__ . '/db.php';
+
 header('Content-Type: application/json');
 
 if (empty($_SESSION['user_id'])) {
@@ -25,7 +27,6 @@ if (!in_array($role, $allowedRoles) || !$clubId) {
     exit;
 }
 
-require_once __DIR__ . '/db.php';
 $db = getDB();
 
 try {
