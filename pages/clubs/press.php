@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/css/press.css">
+    <title>INSAT Press</title>
+</head>
+
+<body>
+    <nav class="navigation">
+        <div class="nav-container">
+            <a href="../../index.php" class="back-link">← Back to Clubs</a>
+            <div class="nav-menu">
+                <a href="../../index.php" class="nav-link">Clubs</a>
+                <a href="../events.php" class="nav-link">Events</a>
+                <a href="../map.php" class="nav-link">Map</a>
+            </div>
+            <div class="nav-login">
+                <button id="nav-signin-btn" onclick="window.location.href='../signin.html'" class="signin-btn">Sign
+                    In</button>
+                <button id="nav-signup-btn" onclick="window.location.href='../signup.html'" class="signup-btn">Sign
+                    Up</button>
+                <div id="nav-user-area" style="display:none;">
+          <span id="nav-user-name"></span>
+          <button id="nav-logout-btn">Logout</button>
+        </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="newspaper-container">
+        <header class="masthead">
+            <div class="masthead-top">
+                <span class="date" id="current-date">Vol. 1</span>
+                <span class="edition">The Voice of the Campus</span>
+                <span class="price">Free</span>
+            </div>
+            <h1 class="paper-title">INSAT PRESS</h1>
+            <div class="masthead-bottom">
+                <span>The Premier Student Journalism Club</span>
+            </div>
+        </header>
+
+        <main class="page-content">
+            <div class="main-story">
+                <h2 class="headline">EMPOWERING STUDENT VOICES THROUGH JOURNALISM</h2>
+                <div class="author">By The Editorial Board</div>
+                <div class="story-content">
+                    <p class="drop-cap">W</p>
+                    <p>elcome to INSAT Press, the official journalistic body of our institute. For years, we have been
+                        the bridge between the administration, the clubs, and the student body, ensuring that every
+                        significant event is recorded, analyzed, and shared.</p>
+                    <p>Our mission is to uphold the principles of truth, integrity, and objective reporting. Whether
+                        it's covering a major tech conference, interviewing a notable alumnus, or reviewing the latest
+                        campus play, our reporters are always on the scene.</p>
+
+                    <div class="quote-box">
+                        <p>“Journalism is what maintains democracy in our microcosm. We are the observers, the critics,
+                            and the storytellers.”</p>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="side-column">
+                <div class="news-item">
+                    <h3 class="sub-headline">Join The Newsroom</h3>
+                    <p>We are always looking for passionate writers, meticulous editors, and keen photographers. No
+                        prior journalism experience is fully required, just a sharp eye and a dedication to the truth.
+                    </p>
+                    <button class="action-btn" onclick="window.joinClub('press')">Apply as
+                        Reporter</button>
+                </div>
+
+                <div class="news-item">
+                    <h3 class="sub-headline">Our Departments</h3>
+                    <ul class="department-list">
+                        <li><strong>Editorial:</strong> Writing articles, opinion pieces, and interviews.</li>
+                        <li><strong>Photography:</strong> Capturing the visual essence of campus life.</li>
+                        <li><strong>Design:</strong> Formatting the magazine and digital content.</li>
+                        <li><strong>Social Media:</strong> Keeping the student body updated in real-time.</li>
+                    </ul>
+                </div>
+            </aside>
+        </main>
+
+        <section class="achievements-section">
+            <h2 class="section-divider"><span>Our Impact in Numbers</span></h2>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <h3>50+</h3>
+                    <p>Issues Published</p>
+                </div>
+                <div class="stat-box">
+                    <h3>10K+</h3>
+                    <p>Readers Monthly</p>
+                </div>
+                <div class="stat-box">
+                    <h3>30+</h3>
+                    <p>Active Reporters</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="community-section">
+            <h2 class="section-divider"><span>The Editorial Board</span></h2>
+            <div class="board-grid">
+                <div class="board-member">
+                    <div class="avatar">👨‍💼</div>
+                    <h4>Michael Stone</h4>
+                    <p>Editor-in-Chief</p>
+                </div>
+                <div class="board-member">
+                    <div class="avatar">👩‍💼</div>
+                    <h4>Sarah Connor</h4>
+                    <p>Managing Editor</p>
+                </div>
+                <div class="board-member">
+                    <div class="avatar">👨‍💻</div>
+                    <h4>David Kim</h4>
+                    <p>Lead Photographer</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery-section">
+            <h2 class="section-divider"><span>Latest Editions</span></h2>
+            <div class="editions-grid">
+                <div class="edition-card hover-zoom">
+                    <div class="edition-date">October Edition</div>
+                    <h4>The Tech Innovation Issue</h4>
+                </div>
+                <div class="edition-card hover-zoom">
+                    <div class="edition-date">November Edition</div>
+                    <h4>Campus Life Uncovered</h4>
+                </div>
+                <div class="edition-card hover-zoom">
+                    <div class="edition-date">December Edition</div>
+                    <h4>Year in Review</h4>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="../../assets/js/press.js"></script>
+    <script src="../../assets/js/auth.js"></script>
+</body>
+
+</html>
+
+
+
+

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Securinets</title>
+    <link rel="stylesheet" href="../../assets/css/secu.css">
+</head>
+
+<body>
+    <nav class="navigation">
+        <div class="nav-container">
+            <a href="../../index.php" class="back-link">←Back to Clubs</a>
+            <div class="nav-menu">
+                <a href="../../index.php" class="nav-link">Clubs</a>
+                <a href="../events.php" class="nav-link">Events</a>
+                <a href="../map.php" class="nav-link">Map</a>
+            </div>
+            <div class="nav-login">
+                <button id="nav-signin-btn" onclick="window.location.href='../signin.html'" class="signin-btn">Sign
+                    In</button>
+                <button id="nav-signup-btn" onclick="window.location.href='../signup.html'" class="signup-btn">Sign
+                    Up</button>
+                <div id="nav-user-area" style="display:none;align-items:center;gap:15px;">
+                    <span id="nav-user-name" style="font-weight:600;"></span>
+                    <button id="nav-logout-btn">Logout</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <header>
+            <h1>Securinets Insat</h1>
+            <!-- <h2>National Association of Cybersecurity</h2> -->
+            <h2>The Hub of CybersecurityInnovation and Learning</h2>
+        </header>
+        <!-- Grid background -->
+        <div class="grid-background"></div>
+
+        <!-- Hexagon pattern -->
+        <!-- <div class="hex-pattern"></div> -->
+
+        <!-- Binary rain -->
+        <div class="binary-rain" id="binaryRain"></div>
+
+        <!-- Particles -->
+        <div class="particles" id="particles"></div>
+
+        <!-- Data streams -->
+        <div id="dataStreams"></div>
+
+        <!-- Scanning line -->
+        <div class="scan-line"></div>
+
+        <!-- Logo container -->
+        <div class="logo-container">
+            <div class="logo-wrapper">
+                <!-- Glow rings -->
+                <div class="glow-ring"></div>
+                <div class="glow-ring"></div>
+                <div class="glow-ring"></div>
+
+                <!-- Main logo -->
+                <img src="../../assets/img/secu-logo.png" alt="">
+
+                <!-- Glitch layers -->
+                <div class="glitch">
+                    <img src="../../assets/img/secu-logo.png" alt="Glitch layer">
+                </div>
+                <div class="glitch">
+                    <img src="../../assets/img/secu-logo.png" alt="Glitch layer">
+                </div>
+            </div>
+        </div>
+        <div class="stat">
+            <div class="numb">
+                <h2>200+</h2>
+                <p>active memebers</p>
+            </div>
+            <div class="numb">
+                <h2>50+</h2>
+                <p>Hours of workshops <br>and training</p>
+            </div>
+            <div class="numb">
+                <h2>10+</h2>
+                <p>Award in national and international ctfs</p>
+            </div>
+            <div class="numb">
+                <h2>20K+</h2>
+                <p>followers on social media platforms</p>
+            </div>
+        </div>
+        <div class="content">
+            <h2>Why Securinets</h2>
+            <div class="sec1">
+                <div class="desc">
+                    <div class="par1">
+                        <h3>Build a strong foundation</h3>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos repudiandae recusandae, enim
+                            quo mollitia dolorem sed, nostrum, neque autem totam sunt. Animi dolorum dolore laudantium
+                            nesciunt possimus illum consectetur quo!</p>
+                    </div>
+                    <div class="par2">
+                        <h3>Learn by doing</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem officiis sequi repudiandae
+                            maxime consectetur tempore enim exercitationem nam id totam laboriosam voluptas rerum quis
+                            porro reiciendis, est, commodi magni modi.</p>
+                    </div>
+
+                    <div class="par3">
+                        <h3>Unlock career opportunities</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum earum voluptatum explicabo
+                            sapiente porro quidem aspernatur molestias, a maxime cum et ducimus voluptate! Cumque maxime
+                            totam et fugiat perspiciatis vel.</p>
+                    </div>
+                </div>
+            </div>
+            <h2>OUR categories</h2>
+            <div class="sec2">
+                <div class="card">
+                    <h3>Cryptography</h3>
+                </div>
+                <div class="card">
+                    <h3>OSINT</h3>
+                </div>
+                <div class="card">
+                    <h3>Digital Forensics</h3>
+                </div>
+                <div class="card">
+                    <h3>Reverse engineering</h3>
+                </div>
+                <div class="card">
+                    <h3>Binary exploitation</h3>
+                </div>
+                <div class="card">
+                    <h3>Web exploitation</h3>
+                </div>
+            </div>
+            <h2>OUR events</h2>
+            <div class="sec5">
+                <svg width="100%" height="500" style="margin-top: 500px;overflow:visible">
+                    <path d="M 40 180 C 280 0, 320 -200, 580 0 S 980 300,1280 -100" stroke="red" fill="none"
+                        stroke-width="3" transform="translate(25%,0)" />
+
+                </svg>
+            </div>
+            <h2>OUR Team</h2>
+            <div class="sec3">
+                <div>
+                    <img src="../../assets/img/secu-logo.png" alt="">
+                    <p>John Doe</p>
+                </div>
+                <div>
+                    <img src="../../assets/img/secu-logo.png" alt="">
+                    <p>John Doe</p>
+                </div>
+                <div>
+                    <img src="../../assets/img/secu-logo.png" alt="">
+                    <p>John Doe</p>
+                </div>
+                <div>
+                    <img src="../../assets/img/secu-logo.png" alt="">
+                    <p>John Doe</p>
+                </div>
+                <div>
+                    <img src="../../assets/img/secu-logo.png" alt="">
+                    <p>John Doe</p>
+                </div>
+                <div>
+                    <img src="../../assets/img/secu-logo.png" alt="">
+                    <p>John Doe</p>
+                </div>
+
+            </div>
+            <div class="sec4">
+                <h1>Ready to Secure <br><span>Your Place</span></h1>
+                <p>join the securinets family and Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur,
+                    quasi nemo! Unde quam voluptates amet asperiores ut numquam ab, architecto earum dolore inventore
+                    laudantium quos voluptatibus aliquid facilis dicta! Libero.</p>
+                <button onclick="window.joinClub('secu')">join us!</button>
+
+            </div>
+
+        </div>
+        <footer></footer>
+    </div>
+
+
+
+</body>
+<script src="../../assets/js/secu.js"></script>
+<script src="../../assets/js/auth.js"></script>
+
+</html>
