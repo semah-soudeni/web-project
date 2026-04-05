@@ -10,7 +10,7 @@
         <link href="../assets/css/signup.css" rel="stylesheet">
     </head>
     <body>
-      <a href="../index.html" class="back-btn" aria-label="Go back">
+    <a href="../index.php" class="back-btn" aria-label="Go back">
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M15 18l-6-6 6-6" />
         </svg>

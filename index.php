@@ -36,7 +36,7 @@ if ($isLoggedIn) {
                 </div>
                 <div class="nav-login">
                     <?php if ($isLoggedIn): ?>
-                    <span class="signin-btn" style="cursor: default;">Hi, <?php echo htmlspecialchars($displayName, ENT_QUOTES, 'UTF-8'); ?></span>
+                    <span>Hi, <?php echo htmlspecialchars($displayName, ENT_QUOTES, 'UTF-8'); ?></span>
                     <form action="backend/logout.php" method="POST" style="display:inline;">
                         <button type="submit" class="signout-btn">Sign Out</button>
                     </form>

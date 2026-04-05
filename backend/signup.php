@@ -31,7 +31,11 @@ $req->execute(array('nom' => $lname, 'prenom' => $fname, 'email' => $email, 'pho
 
 $_SESSION["email"] = $email;
 $_SESSION["role"] = "member";
+$_SESSION["logged"] = "yes";
+$_SESSION["user_email"] = $email;
+$_SESSION["user_first_name"] = $fname;
+$_SESSION["user_last_name"] = $lname;
 
-header("Location: ../index.html");
+header("Location: ../index.php");
 exit;
 ?>

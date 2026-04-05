@@ -226,12 +226,14 @@ h1{
     transform: translate(-50%, -50%) scale(2);
 }
 
-.signin-btn, .signup-btn {
+.signin-btn, .signup-btn, .signout-btn {
+    display: inline-block;
     padding: 0.5rem 1.5rem;
     border: none;
     border-radius: 8px;
     font-weight: 500;
     font-size: 1rem;
+    text-decoration: none;
     cursor: pointer;
     transition: all 0.2s;
 }
@@ -258,4 +260,16 @@ h1{
     color: white;
     background-color: var(--accent-color);
     border-color: var(--accent-color);
+}
+
+.signout-btn {
+    border: 2px solid #c62828;
+    color: #c62828;
+    background-color: white;
+}
+
+.signout-btn:hover {
+    color: white;
+    background-color: #c62828;
+    border-color: #c62828;
 }
