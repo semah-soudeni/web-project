@@ -50,7 +50,7 @@ if ($isLoggedIn) {
         <section>
             <h1>Discover our clubs</h1>
             <div class="container">
-                <a href="pages/clubs/aero.html" class="link">
+                <a href="pages/clubs/aero.php" class="link">
                     <div class="card">
                         <div class="img">
                             <div class="logo">
@@ -63,7 +63,7 @@ if ($isLoggedIn) {
                         </div>
                     </div>
                 </a>
-                <a href="pages/clubs/secu.html" class="link">
+                <a href="pages/clubs/secu.php" class="link">
                     <div class="card">
                         <div class="img">
                             <div class="logo secu">
@@ -76,7 +76,7 @@ if ($isLoggedIn) {
                         </div>
                     </div>
                 </a>
-                <a href="pages/clubs/ieee.html" class="link">
+                <a href="pages/clubs/ieee.php" class="link">
                     <div class="card">
                         <div class="img">
                             <div class="logo">
@@ -89,7 +89,7 @@ if ($isLoggedIn) {
                         </div>
                     </div>
                 </a>
-                <a href="pages/clubs/acmtest.html" class="link">
+                <a href="pages/clubs/acmtest.php" class="link">
                     <div class="card">
                         <div class="img">
                             <div class="logo">
@@ -102,20 +102,9 @@ if ($isLoggedIn) {
                         </div>
                     </div>
                 </a>
-                <a href="pages/under-construction.html" class="link">
-                    <div class="card">
-                        <div class="img">
-                            <div class="logoAnd">
-                                <img src="/assets/img/andr.png" alt="Insat Android Club Logo">
-                            </div>
-                        </div>
-                        <div class="jnab">
-                            <h2>Android Club </h2>
-                            <p>Innovate.Code.Transform</p>
-                        </div>
-                    </div>
-                </a>
-                <a href="pages/clubs/cim.html" class="link">
+                
+                
+                <a href="pages/clubs/cim.php" class="link">
                     <div class="card">
                         <div class="img">
                             <div class="logo">
@@ -128,11 +117,11 @@ if ($isLoggedIn) {
                         </div>
                     </div>
                 </a>
-                <a href="pages/under-construction.html" class="link">
+                <a href="pages/clubs/theatro.php" class="link">
                     <div class="card">
                         <div class="img">
                             <div class="logoth">
-                                <img src="/assets/img/theatro.jpg" alt="CIM Insat">
+                                <img src="/assets/img/theatro.jpg">
                             </div>
                         </div>
                         <div class="jnab">
@@ -141,20 +130,10 @@ if ($isLoggedIn) {
                         </div>
                     </div>
                 </a>
-                <a href="pages/under-construction.html" class="link">
-                    <div class="card">
-                        <div class="img">
-                            <div class="logoth">
-                                <img src="/assets/img/cine.jpg" alt="CIM Insat">
-                            </div>
-                        </div>
-                        <div class="jnab">
-                            <h2>Club Cine Radio</h2>
-                            <p>Innovate.Code.Transform</p>
-                        </div>
-                    </div>
+               
+                        
                 </a>
-                <a href="pages/under-construction.html" class="link">
+                <a href="pages/clubs/press.php" class="link">
                     <div class="card">
                         <div class="img">
                             <div class="logoth">
@@ -167,58 +146,10 @@ if ($isLoggedIn) {
                         </div>
                     </div>
                 </a>
-                <a href="pages/under-construction.html" class="link">
-                    <div class="card">
-                        <div class="img">
-                            <div class="logoth">
-                                <img src="/assets/img/lion.jpg" alt="CIM Insat">
-                            </div>
-                        </div>
-                        <div class="jnab">
-                            <h2>Lions Club</h2>
-                            <p>Innovate.Code.Transform</p>
-                        </div>
-                    </div>
-                </a>
-                <a href="pages/under-construction.html" class="link">
-                    <div class="card">
-                        <div class="img">
-                            <div class="logoAnd">
-                                <img src="/assets/img/enactus.png" alt="CIM Insat">
-                            </div>
-                        </div>
-                        <div class="jnab">
-                            <h2>Club Enactus </h2>
-                            <p>Innovate.Code.Transform</p>
-                        </div>
-                    </div>
-                </a>
-                <a href="pages/under-construction.html" class="link">
-                    <div class="card">
-                        <div class="img">
-                            <div class="logoth">
-                                <img src="/assets/img/junior.jpg" alt="CIM Insat">
-                            </div>
-                        </div>
-                        <div class="jnab">
-                            <h2> Club JEI </h2>
-                            <p>Innovate.Code.Transform</p>
-                        </div>
-                    </div>
-                </a>
-                <a href="pages/under-construction.html" class="link">
-                    <div class="card">
-                        <div class="img">
-                            <div class="logoth">
-                                <img src="/assets/img/juniorc.jpg" alt="CIM Insat">
-                            </div>
-                        </div>
-                        <div class="jnab">
-                            <h2>Club JCI</h2>
-                            <p>Innovate.Code.Transform</p>
-                        </div>
-                    </div>
-                </a>
+                
+                
+                
+            
             </div>
         </section>
     </main>

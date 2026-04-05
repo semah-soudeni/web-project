@@ -1,3 +1,19 @@
+<?php
+session_start();
+
+$isLoggedIn = isset($_SESSION['logged']) && $_SESSION['logged'] === 'yes';
+$displayName = '';
+
+if ($isLoggedIn) {
+    $firstName = trim((string)($_SESSION['user_first_name'] ?? ''));
+    $lastName = trim((string)($_SESSION['user_last_name'] ?? ''));
+    $displayName = trim($firstName . ' ' . $lastName);
+
+    if ($displayName === '') {
+        $displayName = (string)($_SESSION['user_email'] ?? 'User');
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,8 +40,12 @@
         </div>
 
         <div class="nav-login">
-            <button onclick="window.location.href='/pages/signin.html'" class="signin-btn">Sign In</button>
-            <button onclick="window.location.href='/pages/signup.html'" class="signup-btn">Sign Up</button>
+            <?php if ($isLoggedIn): ?>
+            <span class="signin-btn" style="cursor: default;">Hi, <?php echo htmlspecialchars($displayName, ENT_QUOTES, 'UTF-8'); ?></span>
+            <?php else: ?>
+            <a href="../signin.php" class="signin-btn">Sign In</a>
+            <a href="../signup.php" class="signup-btn">Sign Up</a>
+            <?php endif; ?>
         </div>
     </div>
 </nav>
