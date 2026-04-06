@@ -38,4 +38,4 @@
 - [x] fix the ugly design
 - [ ] add footer
 - [ ] add glitch effect to text
-- [ ] make nav bar compatible with theme
+- [x] make nav bar compatible with theme
