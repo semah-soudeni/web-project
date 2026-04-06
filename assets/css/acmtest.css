@@ -78,6 +78,7 @@ body {
   backdrop-filter: blur(10px);
   position: sticky;
   top: 0;
+  padding: 20px;
   z-index: 1000;
 }
 

@@ -35,7 +35,7 @@ if ($isLoggedIn) {
             </div>
             <div class="nav-login">
                 <?php if ($isLoggedIn): ?>
-                <span class="signin-btn" style="cursor: default;">Hi, <?php echo htmlspecialchars($displayName, ENT_QUOTES, 'UTF-8'); ?></span>
+                <span style="cursor: default;color:white;">Hi, <?php echo htmlspecialchars($displayName, ENT_QUOTES, 'UTF-8'); ?></span>
                 <?php else: ?>
                 <a href="../signin.php" class="signin-btn">Sign In</a>
                 <a href="../signup.php" class="signup-btn">Sign Up</a>
