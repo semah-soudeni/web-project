@@ -29,7 +29,7 @@ if ($isLoggedIn) {
                 <div class="nav-menu">
                     <a href="index.php" class="nav-link active">Clubs</a>
                     <a href="pages/events.html" class="nav-link">Events</a>
-                    <a href="pages/map.html" class="nav-link">Map</a>
+                    <a href="pages/map.php" class="nav-link">Map</a>
                     <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
                         <a href="pages/admin.html" class="nav-link">Admin Dashboard</a>
                     <?php endif; ?>
@@ -89,7 +89,7 @@ if ($isLoggedIn) {
                         </div>
                     </div>
                 </a>
-                <a href="pages/clubs/acmtest.php" class="link">
+                <a href="pages/clubs/acm.php" class="link">
                     <div class="card">
                         <div class="img">
                             <div class="logo">

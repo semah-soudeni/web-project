@@ -17,10 +17,10 @@ body {
 /* Navigation */
 .navigation {
     position: fixed;
+    padding: 20px;
     top: 0;
     width: 100%;
     background: var(--ink-black);
-    padding: 0.8rem 0;
     z-index: 1000;
     border-bottom: 3px solid var(--paper-bg);
     font-family: Arial, sans-serif;
@@ -60,6 +60,16 @@ body {
     font-weight: bold;
     font-family: inherit;
     transition: all 0.3s;
+}
+
+.signin-btn, .signup-btn {
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
 .signin-btn {

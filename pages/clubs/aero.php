@@ -263,7 +263,10 @@ if ($isLoggedIn) {
           <h1>9999$</h1>
         </div>
         <div class="price">
-          <button class="join-btn" onclick="window.joinClub('aero')">Join</button>
+          <a href="ajouter.php">
+
+            <button class="join-btn">Join</button>
+          </a>
         </div>
       </div>
     </section>

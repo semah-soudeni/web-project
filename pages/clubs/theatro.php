@@ -145,7 +145,10 @@ if ($isLoggedIn) {
             <h2 class="section-title">Act III: Join The Cast</h2>
             <div class="join-container">
                 <p>Are you ready for your standing ovation?</p>
-                <button class="join-btn" onclick="window.joinClub('theatro')">Audition Now</button>
+                <a href="ajouter.php">
+                    <button class="join-btn" onclick="window.joinClub('theatro')">Audition Now</button>
+
+                </a>
             </div>
         </section>
     </div>

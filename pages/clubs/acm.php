@@ -149,7 +149,10 @@ if ($isLoggedIn) {
     <section class="glass section join">
       <h2>Join ACM INSAT</h2>
       <p>Become part of a community that builds the future.</p>
-      <button class="cta-btn big" onclick="window.joinClub('acm')">Join Now — Free</button>
+      <a href="ajouter.php">
+        <button class="cta-btn big" onclick="window.joinClub('acm')">Join Now — Free</button>
+
+      </a>
     </section>
 
   </main>

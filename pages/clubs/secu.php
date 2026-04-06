@@ -192,7 +192,10 @@ if ($isLoggedIn) {
                 <p>join the securinets family and Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur,
                     quasi nemo! Unde quam voluptates amet asperiores ut numquam ab, architecto earum dolore inventore
                     laudantium quos voluptatibus aliquid facilis dicta! Libero.</p>
-                <button onclick="window.joinClub('secu')">join us!</button>
+                <a href="ajouter.php">
+
+                    <button onclick="window.joinClub('secu')">join us!</button>
+                </a>
 
             </div>
 
