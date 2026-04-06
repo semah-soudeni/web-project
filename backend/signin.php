@@ -32,7 +32,7 @@
         $_SESSION["user_email"] = $result["email"];
         $_SESSION["user_first_name"] = $result["first_name"] ?? '';
         $_SESSION["user_last_name"] = $result["last_name"] ?? '';
-        $_SESSION['role'] = 'member';
+        $_SESSION['role'] = $result["role"];
         header("Location:../index.php");
 
     }
