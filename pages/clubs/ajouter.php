@@ -55,6 +55,19 @@ if ($isLoggedIn) {
             width: 100%;
         }
 
+        .back-link {
+            text-decoration: none;
+            color: var(--accent-color);
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--hover-color);
+            transform: translateX(-5px);
+        }
+
         .form-wrapper {
             max-width: 760px;
             margin: 0 auto;
@@ -163,6 +176,7 @@ if ($isLoggedIn) {
     <main>
         <nav class="navigation">
             <div class="nav-container">
+                <a href="../../index.php" class="back-link">←Back to Clubs</a>
                 <div class="nav-menu">
                     <a href="../../index.php" class="nav-link active">Clubs</a>
                     <a href="../events.html" class="nav-link">Events</a>
