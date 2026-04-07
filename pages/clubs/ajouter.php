@@ -1,8 +1,25 @@
+<?php
+session_start();
+
+$isLoggedIn = isset($_SESSION['logged']) && $_SESSION['logged'] === 'yes';
+$displayName = '';
+
+if ($isLoggedIn) {
+    $firstName = trim((string)($_SESSION['user_first_name'] ?? ''));
+    $lastName = trim((string)($_SESSION['user_last_name'] ?? ''));
+    $displayName = trim($firstName . ' ' . $lastName);
+
+    if ($displayName === '') {
+        $displayName = (string)($_SESSION['user_email'] ?? 'User');
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/css/style.css">
     <title>Add Club Member</title>
     <style>
         :root {
@@ -27,7 +44,15 @@
             background: var(--bg-light);
             color: var(--text-primary);
             min-height: 100vh;
-            padding: 2rem 1rem;
+            padding: 90px 1rem 2rem;
+        }
+
+        .navigation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
         }
 
         .form-wrapper {
@@ -135,7 +160,32 @@
     </style>
 </head>
 <body>
-    <main class="form-wrapper">
+    <main>
+        <nav class="navigation">
+            <div class="nav-container">
+                <div class="nav-menu">
+                    <a href="../../index.php" class="nav-link active">Clubs</a>
+                    <a href="../events.html" class="nav-link">Events</a>
+                    <a href="../map.php" class="nav-link">Map</a>
+                    <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
+                        <a href="../admin.html" class="nav-link">Admin Dashboard</a>
+                    <?php endif; ?>
+                </div>
+                <div class="nav-login">
+                    <?php if ($isLoggedIn): ?>
+                    <span>Hi, <?php echo htmlspecialchars($displayName, ENT_QUOTES, 'UTF-8'); ?></span>
+                    <form action="../../backend/logout.php" method="POST" style="display:inline;">
+                        <button type="submit" class="signout-btn">Sign Out</button>
+                    </form>
+                    <?php else: ?>
+                    <a href="../signin.php" class="signin-btn">Sign In</a>
+                    <a href="../signup.php" class="signup-btn">Sign Up</a>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </nav>
+
+        <section class="form-wrapper">
         <h1>Add Member to Club</h1>
         <p class="subtitle">Fill in the form below to register a new club member.</p>
 
@@ -214,6 +264,7 @@
                 </div>
             </div>
         </form>
+        </section>
     </main>
 </body>
 </html>
