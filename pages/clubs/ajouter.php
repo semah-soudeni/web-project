@@ -139,17 +139,19 @@
         <h1>Add Member to Club</h1>
         <p class="subtitle">Fill in the form below to register a new club member.</p>
 
-        <form action="#" method="post">
+        <form action="../../backend/ajouter.php" method="POST">
             <div class="grid">
                 <div class="field">
                     <label for="club">Club</label>
                     <select id="club" name="club" required>
                         <option value="" selected disabled>Select a club</option>
-                        <option value="acm">ACM</option>
-                        <option value="aero">Aero</option>
-                        <option value="cim">CIM</option>
-                        <option value="ieee">IEEE</option>
-                        <option value="secu">SECU</option>
+                        <option value="4">ACM</option>
+                        <option value="1">Aero</option>
+                        <option value="6">CIM</option>
+                        <option value="3">IEEE</option>
+                        <option value="2">SECU</option>
+                        <option value="7">THEA</option>
+                        <option value="9">PRESS</option>
                     </select>
                 </div>
 
@@ -215,6 +217,3 @@
     </main>
 </body>
 </html>
-
-
-
