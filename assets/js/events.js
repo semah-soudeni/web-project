@@ -1,3 +1,5 @@
+const EVENTS_API = '../backend/events.php';
+
 const clubColors = {
   secu: "#E74E25",
   aero: "#3280C2",
@@ -16,148 +18,154 @@ const clubNames = {
   cim: "CIM",
 };
 
-function formatDate(dateString) {
-  const date = new Date(dateString);
-  const months = [
-    "JAN",
-    "FEB",
-    "MAR",
-    "APR",
-    "MAY",
-    "JUN",
-    "JUL",
-    "AUG",
-    "SEP",
-    "OCT",
-    "NOV",
-    "DEC",
-  ];
-  return {
-    day: date.getDate(),
-    month: months[date.getMonth()],
-    year: date.getFullYear(),
-  };
+document.addEventListener('DOMContentLoaded', () => {
+    loadEvents();
+    setupFilters();
+})
+
+async function loadEvents(clubSlug) {
+    const container = document.querySelector('#events-container');
+    
+    container.innerHTML = '<div class="empty-state"><p>Loading events...</p></div>';
+
+    try {
+        const url = clubSlug ? `${EVENTS_API}?club=${encodeURIComponent(clubSlug)}` : EVENTS_API;
+
+        const res = await fetch(
+            url, 
+            { credentials: 'include'}
+        );
+        if (!res.ok) throw new Error(`Server responded with ${res.status}`);
+
+        const events = await res.json();
+        renderEvents(events);
+    } catch (err) {
+        container.innerHTML = `
+            <div class="empty-state">
+                <h3>Could not load events</h3>
+                <p>Make sure XAMPP is running</p>
+            </div>
+        `;
+        console.error('Events fetch error:', err);
+    }
+}
+
+function renderEvents(events) {
+    const container = document.querySelector('#events-container');
+    container.innerHTML = '';
+    
+    if (!events.length) {
+        container.innerHTML = `
+            <div class="empty-state">
+                <h3>No events found</h3>
+                <p>There are no upcoming events for this club at the moment.</p>
+            </div>`;
+        return;
+    }
+
+    const grouped = groupEventsByMonth(events);
+
+    Object.keys(grouped).forEach(monthYear => {
+        const section = document.createElement('div');
+        section.className = 'month-group';
+
+        const title = document.createElement('h2');
+        title.className = 'month-title';
+        title.textContent = monthYear;
+        section.appendChild(title);
+
+        grouped[monthYear].forEach(event => {
+            section.innerHTML += createEventCard(event);
+        })
+
+        container.appendChild(section);
+    });
 }
 
 function groupEventsByMonth(events) {
-  const grouped = {};
-  events.forEach((event) => {
-    const date = new Date(event.date);
-    const monthYear = `${date.toLocaleString("default", { month: "long" })} ${date.getFullYear()}`;
-
-    if (!grouped[monthYear]) {
-      grouped[monthYear] = [];
-    }
-    grouped[monthYear].push(event);
-  });
-  return grouped;
+    const grouped = {};
+    events.forEach(event => {
+        const date = new Date(event.event_date);
+        const monthYear = `${date.toLocaleString('default', { month: 'long' })} ${date.getFullYear()}`;
+        
+        if (!grouped[monthYear]) {
+            grouped[monthYear] = [];
+        }
+        grouped[monthYear].push(event);
+    });
+    return grouped;
 }
 
 function createEventCard(event) {
-  const dateInfo = formatDate(event.date);
-  const clubColor = clubColors[event.club] || "#3182ce";
-  const clubName = clubNames[event.club] || event.club;
+    const date = new Date(event.event_date + 'T00:00');
+    const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+    const day = date.getDate();
+    const month = months[date.getMonth()];
+    
+    const timeStr = formatTime(event.event_time); // hedhi bch 09:00:00 twally 09:00 AM
 
-  return `
-        <div class="event-card" data-club="${event.club}">
+    const slug = event.club_slug;
+    const clubColor = clubColors[slug] || '#3182ce';
+    const clubName = event.club_name || clubNames[slug] || slug;
+    
+    return `
+        <div class="event-card" data-club="${slug}">
             <div class="date-badge">
-                <div class="day-badge">${dateInfo.day}</div>
-                <div class="month-badge">${dateInfo.month}</div>
+                <div class="day-badge">${day}</div>
+                <div class="month-badge">${month}</div>
             </div>
             <div class="event-content">
                 <div class="event-header">
-                    <div class="club-tag ${event.club}" style="background-color: ${clubColor}">
+                    <div class="club-tag ${slug}" style="background-color: ${clubColor}">
                         ${clubName}
                     </div>
                     <div class="event-time">
-                        🕐 ${event.time}
+                        🕐 ${timeStr}
                     </div>
                 </div>
                 <h3 class="event-title">${event.title}</h3>
-                <p class="event-description">${event.description}</p>
+                <p class="event-description">${event.description ?? ''}</p>
                 <div class="event-footer">
                     <div class="event-location">
                         <span class="location-icon">📍</span>
-                        <span>${event.location}</span>
+                        <span>${event.location ?? 'TBA'}</span>
                     </div>
                     <div class="event-attendees">
                         <span>👥</span>
-                        <span>${event.available_places} available places</span>
+                        <span>${event.attendees ?? 0} attendees</span>
                     </div>
-                    <button class="register-btn" onclick="registerForEvent(${event.id})">Register</button>
+                    <button class="register-btn" onclick="registerForEvent(${event.id}, this)">Register</button>
                 </div>
             </div>
         </div>
     `;
 }
 
-function renderEvents(events, filterClub = "all") {
-  const container = document.getElementById("events-container");
+function setupFilters() {
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', function () {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
 
-  if (!container) {
-    console.error("Events container not found");
-    return;
-  }
-  let filteredEvents = events;
-  if (filterClub !== "all") {
-    filteredEvents = events.filter((event) => event.club === filterClub);
-  }
-
-  filteredEvents.sort((a, b) => new Date(a.date) - new Date(b.date));
-
-  const groupedEvents = groupEventsByMonth(filteredEvents);
-  container.innerHTML = "";
-
-  if (filteredEvents.length === 0) {
-    container.innerHTML = `
-            <div class="empty-state">
-                <h3>No events found</h3>
-                <p>There are no upcoming events for this club at the moment.</p>
-            </div>
-        `;
-    return;
-  }
-
-  Object.keys(groupedEvents).forEach((monthYear) => {
-    const monthSection = document.createElement("div");
-    monthSection.className = "month-group";
-
-    const monthTitle = document.createElement("h2");
-    monthTitle.className = "month-title";
-    monthTitle.textContent = monthYear;
-    monthSection.appendChild(monthTitle);
-
-    groupedEvents[monthYear].forEach((event) => {
-      monthSection.innerHTML += createEventCard(event);
+            const slug = this.dataset.club;
+            loadEvents(slug === 'all' ? null : slug);
+        });
     });
-
-    container.appendChild(monthSection);
-  });
 }
 
-document.addEventListener("DOMContentLoaded", async function () {
-  await loadEvents();
+function registerForEvent(eventId, btn) {
+    btn.textContent = 'Registered ✓';
+    btn.disabled = true;
+    btn.style.opacity = '0.6';
+}
 
-  const filterButtons = document.querySelectorAll(".filter-btn");
-  filterButtons.forEach((btn) => {
-    btn.addEventListener("click", async function () {
-      document
-        .querySelectorAll(".filter-btn")
-        .forEach((b) => b.classList.remove("active"));
-      this.classList.add("active");
-      await loadEvents(this.dataset.club);
-    });
-  });
-});
-
-async function loadEvents(club = "all") {
-  try {
-    const res = await fetch(`../backend/events.php?club=${club}`);
-    const data = await res.json();
-    renderEvents(data);
-  } catch (err) {
-    console.log(err);
-    document.querySelector("#events-container").innerHTML =
-      "<p>Failed to load events.</p>";
-  }
+function formatTime(timeStr) {
+    if (!timeStr) return 'TBA';
+    const [hourStr, minStr] = timeStr.split(':');
+    let hour = parseInt(hourStr, 10);
+    const min = minStr;
+    const suffix = hour >= 12 ? 'PM' : 'AM';
+    if (hour >= 12) hour -= 12;
+    if (hour === 0) hour = 12;
+    return `${hour}:${min} ${suffix}`;
 }
