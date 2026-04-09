@@ -22,20 +22,20 @@ if ($isLoggedIn) {
     <link rel="stylesheet" href="assets/css/style.css">
     <title>INSAT Clubs</title>
 </head>
-<body>  
+<body>
     <main>
         <nav class="navigation">
             <div class="nav-container">
                 <div class="nav-menu">
-                    <a href="index.php" class="nav-link active">Clubs</a>
+                    <a href="index.html" class="nav-link">Clubs</a>
                     <a href="pages/events.html" class="nav-link">Events</a>
-                    <a href="pages/map.php" class="nav-link">Map</a>
+                    <a href="pages/map.html" class="nav-link">Map</a>
                     <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
                         <a href="pages/admin.html" class="nav-link">Admin Dashboard</a>
                     <?php endif; ?>
                 </div>
                 <div class="nav-login">
-                    <?php if ($isLoggedIn): ?>
+                   <?php if ($isLoggedIn): ?>
                     <span>Hi, <?php echo htmlspecialchars($displayName, ENT_QUOTES, 'UTF-8'); ?></span>
                     <form action="backend/logout.php" method="POST" style="display:inline;">
                         <button type="submit" class="signout-btn">Sign Out</button>
@@ -54,7 +54,7 @@ if ($isLoggedIn) {
                     <div class="card">
                         <div class="img">
                             <div class="logo">
-                                <img src="/assets/img/aero-logo.png" alt="aerobotix logo">
+                                <img src="assets/img/aero-logo.png" alt="aerobotix logo">
                             </div>
                         </div>
                         <div class="jnab">
@@ -67,12 +67,12 @@ if ($isLoggedIn) {
                     <div class="card">
                         <div class="img">
                             <div class="logo secu">
-                                <img src="/assets/img/secu-logo.png" alt="securinets logo">
+                                <img src="assets/img/secu-logo.png" alt="securinets logo">
                             </div>
                         </div>
                         <div class="jnab">
                             <h2>Securinets</h2>
-                            <p>Innovate.Code.Transform</p>
+                            <p>Cybersecurity & Ethical Hacking</p>
                         </div>
                     </div>
                 </a>
@@ -80,12 +80,12 @@ if ($isLoggedIn) {
                     <div class="card">
                         <div class="img">
                             <div class="logo">
-                                <img src="/assets/img/ieee-logo.png" alt="ieee logo">
+                                <img src="assets/img/ieee-logo.png" alt="ieee logo">
                             </div>
                         </div>
                         <div class="jnab">
                             <h2>IEEE</h2>
-                            <p>Innovate.Code.Transform</p>
+                            <p>Advancing Technology for Humanity</p>
                         </div>
                     </div>
                 </a>
@@ -93,27 +93,26 @@ if ($isLoggedIn) {
                     <div class="card">
                         <div class="img">
                             <div class="logo">
-                                <img src="/assets/img/acm-logo.png" alt="acm logo">
+                                <img src="assets/img/acm-logo.png" alt="acm logo">
                             </div>
                         </div>
                         <div class="jnab">
                             <h2>ACM</h2>
-                            <p>Innovate.Code.Transform</p>
+                            <p>Computing for Innovation</p>
                         </div>
                     </div>
                 </a>
-                
                 
                 <a href="pages/clubs/cim.php" class="link">
                     <div class="card">
                         <div class="img">
                             <div class="logo">
-                                <img src="/assets/img/cim.png" alt="CIM Insat">
+                                <img src="assets/img/cim.png" alt="CIM Insat">
                             </div>
                         </div>
                         <div class="jnab">
                             <h2>CIM </h2>
-                            <p>Innovate.Code.Transform</p>
+                            <p>Industrial Computing & Mechatronics</p>
                         </div>
                     </div>
                 </a>
@@ -121,37 +120,36 @@ if ($isLoggedIn) {
                     <div class="card">
                         <div class="img">
                             <div class="logoth">
-                                <img src="/assets/img/theatro.jpg">
+                                <img src="assets/img/theatro.jpg" alt="Theatro Insat">
                             </div>
                         </div>
                         <div class="jnab">
                             <h2>Theatro</h2>
-                            <p>Innovate.Code.Transform</p>
+                            <p>Unleash Your Inner Actor</p>
                         </div>
                     </div>
                 </a>
-               
-                        
-                </a>
+                
                 <a href="pages/clubs/press.php" class="link">
                     <div class="card">
                         <div class="img">
                             <div class="logoth">
-                                <img src="/assets/img/press.png" alt="CIM Insat">
+                                <img src="assets/img/press.png" alt="Insat Press">
                             </div>
                         </div>
                         <div class="jnab">
                             <h2>Insat Press</h2>
-                            <p>Innovate.Code.Transform</p>
+                            <p>Your Voice in the Campus</p>
                         </div>
                     </div>
                 </a>
                 
                 
                 
-            
             </div>
         </section>
     </main>
+    <script src="assets/js/auth.js"></script>
 </body>
+
 </html>

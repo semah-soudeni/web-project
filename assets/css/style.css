@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -6,35 +7,43 @@
 }
 
 :root {
-    --primary-color: #2d3748;
-    --secondary-color: #4a5568;
-    --accent-color: #3182ce;
-    --hover-color: #2c5282;
-    --text-primary: #1a202c;
-    --text-secondary: #718096;
-    --bg-light: #f7fafc;
-    --border-color: #e2e8f0;
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --primary-bg: #0f172a;
+    --card-bg: rgba(30, 41, 59, 0.7);
+    --nav-bg: rgba(15, 23, 42, 0.8);
+    --accent-color: #3b82f6;
+    --hover-color: #2563eb;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.05);
+    --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    background-color: var(--bg-light);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--primary-bg);
     color: var(--text-primary);
     line-height: 1.6;
+    background-image:
+        radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(37, 99, 235, 0.05) 0%, transparent 50%);
+    background-attachment: fixed;
 }
 
 a {
     text-decoration: none;
+    color: inherit;
 }
 
 .navigation {
-    background-color: rgb(255, 255, 255);
+    background-color: var(--nav-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     position: sticky;
     top: 0;
     z-index: 1000;
+    border-bottom: 1px solid var(--glass-border);
     box-shadow: var(--shadow);
-    line-height: 35px;
 }
 
 .nav-container {
@@ -42,31 +51,32 @@ a {
     justify-content: space-between;
     align-items: center;
     max-width: 1400px;
-    margin: 0px auto;
-    padding: 1rem 2rem;
+    margin: 0 auto;
+    padding: 1.25rem 2rem;
 }
 
 .nav-menu {
     display: flex;
-    gap: 2rem;
+    gap: 2.5rem;
 }
 
 .nav-login {
     display: flex;
-    gap: 1rem;
+    gap: 1.25rem;
 }
 
 .nav-link {
     text-decoration: none;
-    color: var(--secondary-color);
+    color: var(--text-secondary);
     font-weight: 500;
-    font-size: 1rem;
+    font-size: 0.95rem;
+    padding: 0.5rem 0;
     border-bottom: 2px solid transparent;
-    transition: all 0.2s;
+    transition: all 0.3s ease;
 }
 
 .nav-link:hover {
-    color: var(--accent-color);
+    color: var(--text-primary);
 }
 
 .nav-link.active {
@@ -74,44 +84,58 @@ a {
     border-bottom-color: var(--accent-color);
 }
 
-h1{ 
-    margin: 70px 0 90px 0;
+h1 {
+    margin: 80px 0 60px 0;
     text-align: center;
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    background: linear-gradient(to right, #fff, #94a3b8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .container {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px 100px 40px;
 }
 
 .link {
-    width: 70%;
+    width: 100%;
     display: block;
 }
 
 .card {
     width: 100%;
     display: flex;
-    height: 340px;
-    border-radius: 10px;
-    background-color: white;
-    margin-bottom: 50px;
+    flex-direction: column;
+    height: 480px;
+    border-radius: 20px;
+    background-color: var(--card-bg);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--glass-border);
     position: relative;
     overflow: hidden;
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow);
 }
 
-
 .link:hover .card {
-    transform: translateY(-20px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px);
+    border-color: rgba(59, 130, 246, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
 .img {
-    flex: 1 1 auto;
-    transition: flex 0.6s ease;
+    height: 280px;
+    width: 100%;
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -121,156 +145,194 @@ h1{
 .img::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     background-image: url(../img/events-image-tech-club-2x.avif);
+    /* Default placeholder */
     background-size: cover;
     background-position: center;
-    filter: blur(0px);
-    transition: filter 0.6s ease;
+    filter: brightness(0.6) grayscale(0.2);
+    transition: all 0.7s ease;
     z-index: 1;
 }
 
 .link:hover .img::before {
-    filter: blur(5px);
+    filter: brightness(0.3) blur(6px) scale(1.1);
 }
 
 .jnab {
-    box-shadow: -8px 0 15px -15px #80808091;
-    width: 320px;
-    flex-shrink: 0;
     padding: 30px;
-    color: var(--text-primary);
-    transition: width 0.6s ease, opacity 0.3s ease;
-    overflow: hidden;
+    flex-grow: 1;
+    background: linear-gradient(to bottom, rgba(30, 41, 59, 0.95), rgba(30, 41, 59, 0.8));
+    border-top: 1px solid var(--glass-border);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
 }
 
 .jnab h2 {
-    margin: 40px 0 20px 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text-primary);
 }
 
 .jnab p {
     color: var(--text-secondary);
+    font-size: 1rem;
+    font-weight: 400;
 }
 
 .link:hover .jnab {
-    width: 0;
     opacity: 0;
-    padding: 0;
+    transform: translateY(20px);
 }
 
 .link:hover .img {
-    flex: 1 1 100%;
+    height: 100%;
 }
 
-.logo {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0);
-    transition: transform 0.6s ease, opacity 0.6s ease;
-    z-index: 10;
-}
-
-.logoAnd {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0);
-    transition: transform 0.6s ease, opacity 0.6s ease;
-    z-index: 10;
-}
-
+/* Logos & Scaling */
+.logo,
+.logoAnd,
 .logoth {
     position: absolute;
-    top: 52%;
+    top: 50%;
     left: 50%;
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0);
-    transition: transform 0.6s ease, opacity 0.6s ease;
+    transform: translate(-50%, -50%) scale(0.4);
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
     z-index: 10;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
 }
 
-.logo img {
-    width: 120px;
-    height: auto;
-}
-
-.logoth img {
-    width: 120px;
-    height: auto;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
+.logo img,
+.logoth img,
 .logoAnd img {
     width: 120px;
     height: auto;
+    filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.6));
+    object-fit: contain;
 }
 
-.link:hover .logo {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(3);
+.logoth img {
+    border-radius: 50%;
+    width: 110px;
+    /* Standardize circle logos */
 }
 
-.link:hover .logoAnd {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(2);
+/* Image fixes for specific clubs mentioned by user */
+.logoth img[alt*="Theatro"],
+.logoth img[alt*="Radio"],
+.logoth img[alt*="Press"],
+.logoth img[alt*="Lions"],
+.logoAnd img[alt*="Enactus"],
+.logoth img[alt*="JEI"],
+.logoth img[alt*="JCI"],
+.logoth img[alt*="Chem"],
+.logoth img[alt*="Astro"],
+.logoth img[alt*="3Zero"] {
+    width: 100px;
+    /* Slightly smaller for these problematic ones */
 }
 
+.link:hover .logo,
+.link:hover .logoAnd,
 .link:hover .logoth {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(2);
+    transform: translate(-50%, -50%) scale(2.2);
 }
 
-.signin-btn, .signup-btn, .signout-btn {
-    display: inline-block;
-    padding: 0.5rem 1.5rem;
-    border: none;
-    border-radius: 8px;
-    font-weight: 500;
-    font-size: 1rem;
-    text-decoration: none;
+.signin-btn,
+.signup-btn {
+    padding: 0.6rem 1.75rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.95rem;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.3s ease;
 }
 
 .signup-btn {
-    border: 2px solid var(--accent-color);
+    background: linear-gradient(135deg, var(--accent-color), var(--hover-color));
     color: white;
-    background-color: var(--accent-color);
-    transition: all 0.2s;
+    border: none;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
 }
 
 .signup-btn:hover {
-    background-color: var(--hover-color);
-    border-color: var(--hover-color);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
 }
 
 .signin-btn {
-    border: 2px solid var(--accent-color);
-    color: var(--accent-color);
-    background-color: white;
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--glass-border);
 }
 
 .signin-btn:hover {
-    color: white;
-    background-color: var(--accent-color);
-    border-color: var(--accent-color);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--text-primary);
 }
 
-.signout-btn {
-    border: 2px solid #c62828;
-    color: #c62828;
-    background-color: white;
+/* Specific styling for the Logout button to make it look more like a button */
+#nav-logout-btn {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #ef4444;
+    padding: 0.5rem 1.25rem;
+    font-size: 0.9rem;
 }
 
-.signout-btn:hover {
-    color: white;
-    background-color: #c62828;
-    border-color: #c62828;
+#nav-logout-btn:hover {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: #ef4444;
+    transform: translateY(-1px);
+}
+
+#nav-user-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 5px 5px 5px 15px;
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+}
+
+#nav-user-name {
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .link {
+        width: 95%;
+    }
+
+    .card {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .jnab {
+        width: 100%;
+        padding: 25px;
+        border-left: none;
+        border-top: 1px solid var(--glass-border);
+    }
+
+    .img {
+        height: 200px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
 }
