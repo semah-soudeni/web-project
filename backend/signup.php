@@ -23,7 +23,6 @@ if ($result) {
     $_SESSION["error"] = "email already exists";
     header("Location: ../pages/signup.php");
     exit;
-
 }
 
 $req = $conn->prepare("INSERT INTO etudiant(last_name, first_name, email, phone, password) VALUES(:nom, :prenom, :email, :phone, :password)");
@@ -39,4 +38,3 @@ $_SESSION["user_last_name"] = $lname;
 
 header("Location: ../index.html");
 exit;
-?>

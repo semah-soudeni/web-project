@@ -1,16 +1,9 @@
--- ============================================================
--- INSAT Clubs – Database Schema
--- Import via phpMyAdmin or: mysql -u root -p < insat_clubs.sql
--- ============================================================
 CREATE DATABASE IF NOT EXISTS insat_clubs CHARACTER
 SET
     utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 USE insat_clubs;
 
--- ----------------------------------------------------------
--- Drop existing tables to ensure clean state
--- ----------------------------------------------------------
 SET FOREIGN_KEY_CHECKS = 0;
 
 DROP TABLE IF EXISTS memberships;
@@ -19,15 +12,11 @@ DROP TABLE IF EXISTS clubs;
 DROP TABLE IF EXISTS events;
 SET FOREIGN_KEY_CHECKS = 1;
 
--- ----------------------------------------------------------
--- clubs  (pre-seeded — one row per club page)
--- ----------------------------------------------------------
-CREATE TABLE
-    clubs (
+CREATE TABLE clubs (
         id INT AUTO_INCREMENT PRIMARY KEY,
         slug VARCHAR(50) NOT NULL UNIQUE, -- e.g. "aero", "jci"
         name VARCHAR(150) NOT NULL
-    ) ENGINE = InnoDB;
+) ENGINE = InnoDB;
 
 INSERT INTO
     clubs (slug, name)
@@ -62,7 +51,6 @@ CREATE TABLE
         FOREIGN KEY (club_id) REFERENCES clubs (id) ON DELETE CASCADE
     ) ENGINE = InnoDB;
 
--- ── seed a few demo events so the page isn't empty ──────────
 INSERT INTO
     events (
         club_id,
@@ -122,10 +110,7 @@ VALUES
         'Room A110'
     );
 
--- ----------------------------------------------------------
--- ----------------------------------------------------------
--- users
--- ----------------------------------------------------------
+
 CREATE TABLE
     etudiant (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -138,9 +123,6 @@ CREATE TABLE
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     ) ENGINE = InnoDB;
 
--- ----------------------------------------------------------
--- memberships
--- ----------------------------------------------------------
 CREATE TABLE
     memberships (
         user_id INT NOT NULL,
@@ -152,9 +134,6 @@ CREATE TABLE
         FOREIGN KEY (club_id) REFERENCES clubs (id) ON DELETE CASCADE
     ) ENGINE = InnoDB;
 
--- ----------------------------------------------------------
--- 1. Club Officers (Seeded from HTML Roster)
--- ----------------------------------------------------------
 INSERT INTO
     etudiant (first_name, last_name, email, password, phone)
 VALUES
