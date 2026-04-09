@@ -28,10 +28,10 @@ if ($isLoggedIn) {
             <div class="nav-container">
                 <div class="nav-menu">
                     <a href="index.html" class="nav-link">Clubs</a>
-                    <a href="pages/events.html" class="nav-link">Events</a>
-                    <a href="pages/map.html" class="nav-link">Map</a>
+                    <a href="pages/events.php" class="nav-link">Events</a>
+                    <a href="pages/map.php" class="nav-link">Map</a>
                     <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
-                        <a href="pages/admin.html" class="nav-link">Admin Dashboard</a>
+                        <a href="pages/admin.php" class="nav-link">Admin Dashboard</a>
                     <?php endif; ?>
                 </div>
                 <div class="nav-login">
