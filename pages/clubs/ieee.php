@@ -344,7 +344,7 @@ if ($isLoggedIn) {
   <div class="join-wrapper">
     <div class="join-info fade-in">
       <div class="section-label">Become a Member</div>
-      <h2>Join IEEE</h2>
+      <a href="../under-construction.html">Join IEEE</a>
       <p>Ready to level up? Fill out the form and our team will reach out within 48 hours with your onboarding details.</p>
       <div class="join-perk">
         <div class="perk-icon">⚡</div>
@@ -376,69 +376,7 @@ if ($isLoggedIn) {
       </div>
     </div>
 
-    <div class="join-form fade-in">
-      <div class="form-title">Apply Now</div>
-      <div class="form-sub">// IEEE_MEMBERSHIP_FORM_v2025</div>
-
-      <div class="field-row">
-        <div class="field">
-          <label>First Name</label>
-          <input type="text" placeholder="Sami" id="f-first">
-        </div>
-        <div class="field">
-          <label>Last Name</label>
-          <input type="text" placeholder="Rahali" id="f-last">
-        </div>
-      </div>
-      <div class="field">
-        <label>University Email</label>
-        <input type="email" placeholder="s.rahali@uni.edu" id="f-email">
-      </div>
-      <div class="field-row">
-        <div class="field">
-          <label>Study Field</label>
-          <select id="f-field">
-            <option value="">Select…</option>
-            <option>Computer Science</option>
-            <option>Software Engineering</option>
-            <option>Cybersecurity</option>
-            <option>Data Science / AI</option>
-            <option>Electrical Engineering</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div class="field">
-          <label>Year of Study</label>
-          <select id="f-year">
-            <option value="">Select…</option>
-            <option>1st Year</option>
-            <option>2nd Year</option>
-            <option>3rd Year</option>
-            <option>Master's</option>
-            <option>PhD</option>
-          </select>
-        </div>
-      </div>
-      <div class="field">
-        <label>Interests (select one or more)</label>
-        <select id="f-interest">
-          <option value="">Select primary interest…</option>
-          <option>Web Development</option>
-          <option>AI / Machine Learning</option>
-          <option>Cybersecurity / CTF</option>
-          <option>Mobile Development</option>
-          <option>Open Source</option>
-          <option>Competitive Programming</option>
-          <option>DevOps / Cloud</option>
-        </select>
-      </div>
-      <div class="field">
-        <label>Tell us about yourself</label>
-        <textarea placeholder="Brief intro, goals, or anything you'd like us to know..." id="f-bio"></textarea>
-      </div>
-      <button class="submit-btn" onclick="handleJoin()">Submit Application →</button>
-    </div>
-  </div>
+ </div>
 </section>
 
 <!-- FOOTER -->
@@ -499,43 +437,6 @@ if ($isLoggedIn) {
 
   counterObs.observe(document.getElementById('members-live'));
 
-  // Form submission
-  function handleJoin() {
-    const first = document.getElementById('f-first').value.trim();
-    const email = document.getElementById('f-email').value.trim();
-    const field = document.getElementById('f-field').value;
-
-    if (!first || !email || !field) {
-      const toast = document.getElementById('toast');
-      toast.style.borderColor = 'var(--accent3)';
-      toast.style.color = 'var(--accent3)';
-      toast.textContent = '✕ Please fill in all required fields.';
-      toast.classList.add('show');
-      setTimeout(() => {
-        toast.classList.remove('show');
-        setTimeout(() => {
-          toast.style.borderColor = '';
-          toast.style.color = '';
-          toast.textContent = '✓ Application submitted! We\'ll contact you within 48h.';
-        }, 400);
-      }, 3000);
-      return;
-    }
-
-    // Increment member count
-    base++;
-    document.getElementById('member-count').textContent = base;
-    document.getElementById('live-num').textContent = base;
-
-    // Show success toast
-    const toast = document.getElementById('toast');
-    toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 4000);
-
-    // Reset form
-    ['f-first','f-last','f-email','f-field','f-year','f-interest','f-bio']
-      .forEach(id => { document.getElementById(id).value = ''; });
-  }
 
   // Smooth nav active highlighting
   const sections = document.querySelectorAll('section[id]');
