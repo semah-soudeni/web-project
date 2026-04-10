@@ -2,7 +2,7 @@
 class ConnexionBD {
     private static $_db_name = "insat_clubs";
     private static $_user = "root";
-    private static $_psswd = "admin123";
+    private static $_psswd = "";
     private static $_bdd;
 
     private function __construct(){

@@ -1,3 +1,19 @@
+<?php
+session_start();
+
+$isLoggedIn = isset($_SESSION['logged']) && $_SESSION['logged'] === 'yes';
+$displayName = '';
+
+if ($isLoggedIn) {
+  $firstName = trim((string)($_SESSION['user_first_name'] ?? ''));
+  $lastName = trim((string)($_SESSION['user_last_name'] ?? ''));
+  $displayName = trim($firstName . ' ' . $lastName);
+
+  if ($displayName === '') {
+    $displayName = (string)($_SESSION['user_email'] ?? 'User');
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,13 +28,26 @@
             <a href="../index.html" class="back-link">←Back to Clubs</a>
             <div class="nav-menu">
                 <a href="/index.html" class="nav-link">Clubs</a>
-                <a href="/pages/events.html" class="nav-link">Events</a>
-                <a href="/pages/map.html" class="nav-link active">Map</a>
+                <a href="/pages/events.php" class="nav-link">Events</a>
+                <a href="/pages/map.php" class="nav-link active">Map</a>
+                <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
+                        <a href="pages/admin.php" class="nav-link">Admin Dashboard</a>
+                <?php endif; ?>
             </div>
             <div class="nav-login">
-                <button onclick="window.location.href='/pages/signin.html'" class="signin-btn">Sign In</button>
-                <button onclick="window.location.href='/pages/signup.html'" class="signup-btn">Sign Up</button>
+                 <?php if ($isLoggedIn): ?>
+                    <form action="backend/logout.php" method="POST" style="display:flex; align-items:center; gap:20px;">
+                        <span id="nav-user-name" style="font-weight:600;">
+                            <?php echo "Hi, " .htmlspecialchars($displayName, ENT_QUOTES, 'UTF-8'); ?>
+                        </span>
+                        <button id="nav-logout-btn" class="signin-btn">Sign Out</button>
+                        </form>
+                        <?php else: ?>
+                    <a href="./signin.php" class="signin-btn">Sign In</a>
+                    <a href="./signup.php" class="signup-btn">Sign Up</a>
+                    <?php endif; ?>
             </div>
+        </div>
         </div>
     </nav>
 

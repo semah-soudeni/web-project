@@ -1,3 +1,18 @@
+<?php
+session_start();
+$isLoggedIn = isset($_SESSION['logged']) && $_SESSION['logged'] === 'yes';
+$displayName = '';
+
+if ($isLoggedIn) {
+    $firstName = trim((string)($_SESSION['user_first_name'] ?? ''));
+    $lastName = trim((string)($_SESSION['user_last_name'] ?? ''));
+    $displayName = trim($firstName . ' ' . $lastName);
+
+    if ($displayName === '') {
+        $displayName = (string)($_SESSION['user_email'] ?? 'User');
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,19 +28,24 @@
         <div class="nav-container">
             <div class="nav-menu">
                 <a href="../index.html" class="nav-link">Clubs</a>
-                <a href="events.html" class="nav-link">Events</a>
-                <a href="map.html" class="nav-link">Map</a>
-                <a href="admin.html" class="nav-link">Admin Dashboard</a>
+                <a href="events.php" class="nav-link">Events</a>
+                <a href="map.php" class="nav-link">Map</a>
+                <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
+                        <a href="pages/admin.php" class="nav-link">Admin Dashboard</a>
+                <?php endif; ?>
             </div>
             <div class="nav-login">
-                <button id="nav-signin-btn" onclick="window.location.href='signin.html'" class="signin-btn">Sign
-                    In</button>
-                <button id="nav-signup-btn" onclick="window.location.href='signup.html'" class="signup-btn">Sign
-                    Up</button>
-                <div id="nav-user-area" style="display:none;align-items:center;gap:10px;">
-                    <span id="nav-user-name" style="font-weight:600;"></span>
-                    <button id="nav-logout-btn">Logout</button>
-                </div>
+                 <?php if ($isLoggedIn): ?>
+                    <form action="backend/logout.php" method="POST" style="display:flex; align-items:center; gap:20px;">
+                        <span id="nav-user-name" style="font-weight:600;">
+                            <?php echo "Hi, " .htmlspecialchars($displayName, ENT_QUOTES, 'UTF-8'); ?>
+                        </span>
+                        <button id="nav-logout-btn" class="signin-btn">Sign Out</button>
+                        </form>
+                        <?php else: ?>
+                    <a href="./signin.php" class="signin-btn">Sign In</a>
+                    <a href="./signup.php" class="signup-btn">Sign Up</a>
+                    <?php endif; ?>
             </div>
         </div>
     </nav>
