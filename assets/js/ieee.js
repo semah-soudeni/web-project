@@ -37,7 +37,7 @@ var radiusAcc = -1
 function animate(){
     ctx.save()
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    console.log("blurRate ="+blurRate)
+    //console.log("blurRate ="+blurRate)
     if (blurRate == 20)
         blurAcc = -1;
     else if (blurRate <= 0){
@@ -59,7 +59,7 @@ function animate(){
         ctx.shadowColor = "white"
         ctx.shadowBlur = 20
         star.x = (star.x + 0.05) % window.innerWidth
-        console.log(radius)
+        //console.log(radius)
         if (radius >= 4){
             radiusAcc = -1;
         }
@@ -76,11 +76,63 @@ function animate(){
     requestAnimationFrame(animate)
 }
 animate()
-
 window.addEventListener("resize", () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
     generateStars()
 });
 
+const obs = new IntersectionObserver((entries) => {
+entries.forEach((e, i) => {
+  if (e.isIntersecting) {
+    setTimeout(() => e.target.classList.add('visible'), i * 80);
+  }
+});
+}, { threshold: 0.1 });
 
+document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+let base = 148;
+setInterval(() => {
+const delta = Math.random() < 0.3 ? (Math.random() < 0.5 ? 1 : -1) : 0;
+base = Math.max(100, base + delta);
+document.getElementById('member-count').textContent = base;
+document.getElementById('live-num').textContent = base;
+}, 3500);
+
+// Counter animation
+function animateCount(el, target, duration) {
+let start = 0, step = target / (duration / 16);
+const tick = () => {
+  start = Math.min(start + step, target);
+  el.textContent = Math.floor(start);
+  if (start < target) requestAnimationFrame(tick);
+};
+tick();
+}
+
+const counterObs = new IntersectionObserver((entries) => {
+entries.forEach(e => {
+  if (e.isIntersecting) {
+    animateCount(document.getElementById('live-num'), 148, 1200);
+    counterObs.unobserve(e.target);
+  }
+});
+}, { threshold: 0.5 });
+
+counterObs.observe(document.getElementById('members-live'));
+
+// Smooth nav active highlighting
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('nav ul a');
+
+window.addEventListener('scroll', () => {
+let current = '';
+sections.forEach(s => {
+  if (window.scrollY >= s.offsetTop - 120) current = s.id;
+});
+navLinks.forEach(a => {
+  a.style.color = a.getAttribute('href') === '#' + current
+    ? 'var(--accent)' : '';
+});
+});

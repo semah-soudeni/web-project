@@ -24,40 +24,30 @@ if ($isLoggedIn) {
 <body>
 <nav>
   <div class="nav-left">
-    <a href="../../index.html" class="back-link">
-      <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><polyline points="10 4 6 8 10 12"/></svg>
-      Clubs
-    </a>
+    <a href="../../index.php" class="back-link">
+        <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="10 4 6 8 10 12"/>
+        </svg>back</a>
+
     <a href="#" class="nav-brand"><span>IEEE</span></a>
   </div>
-
-  <div class="nav-center">
-    <a href="../../index.html" class="nav-link">Home</a>
-    <a href="../events.html" class="nav-link">Events</a>
-    <a href="../under-construction.html" class="nav-link">Map</a>
-  </div>
-
-  <div class="nav-right">
-    <button class="btn-ghost" onclick="window.location.href='../signin.html'">Sign In</button>
-    <button class="btn-solid" onclick="window.location.href='../signup.html'">Sign Up</button>
-  </div>
-</nav>    <canvas id="rockets"></canvas>
-    <script src="../../assets/js/ieee.js" defer></script>
-<!-- NAV 
-<nav>
-  <a href="#" class="nav-logo"><span>IEEE</span>.dev</a>
-  <ul>
-    <li><a href="#about">About</a></li>
-    <li><a href="#objectives">Objectives</a></li>
-    <li><a href="#activities">Activities</a></li>
-    <li><a href="#team">Team</a></li>
-    <li><a href="#policy">Policy</a></li>
-  </ul>
-  <a href="#join" class="nav-cta">Join Now</a>
+    <div class="nav-center">
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#objectives">Objectives</a></li>
+            <li><a href="#activities">Activities</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#policy">Policy</a></li>
+        </ul>
+    </div>
+    <div class="nav-right">
+        <a href="ajouter.php" class="nav-cta">Join Now</a>
+    </div>
 </nav>
--->
+    <canvas id="rockets"></canvas>
+    <script src="../../assets/js/ieee.js" defer></script>
 
-<!-- HERO -->
+
 <section id="hero">
   <div class="hero-glow"></div>
   <div class="hero-glow2"></div>
@@ -96,7 +86,6 @@ if ($isLoggedIn) {
   </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
   <div class="fade-in">
     <div class="section-label">Who We Are</div>
@@ -119,7 +108,6 @@ if ($isLoggedIn) {
   </div>
 </section>
 
-<!-- OBJECTIVES -->
 <section id="objectives">
   <div class="fade-in">
     <div class="section-label">Our Goals</div>
@@ -160,7 +148,6 @@ if ($isLoggedIn) {
   </div>
 </section>
 
-<!-- ACTIVITIES -->
 <section id="activities">
   <div class="fade-in">
     <div class="section-label">What We Do</div>
@@ -227,7 +214,6 @@ if ($isLoggedIn) {
   </div>
 </section>
 
-<!-- LIVE MEMBERS COUNT -->
 <div id="members-live">
   <div class="section-label" style="justify-content:center;">
     Live Member Count
@@ -236,7 +222,6 @@ if ($isLoggedIn) {
   <div class="members-sub">Verified active members &nbsp;·&nbsp; <span class="live-dot">Updated in real-time</span></div>
 </div>
 
-<!-- TEAM -->
 <section id="team">
   <div class="fade-in">
     <div class="section-label">Leadership</div>
@@ -287,7 +272,6 @@ if ($isLoggedIn) {
   </div>
 </section>
 
-<!-- POLICY -->
 <section id="policy">
   <div class="fade-in">
     <div class="section-label">Rules & Guidelines</div>
@@ -339,7 +323,6 @@ if ($isLoggedIn) {
   </div>
 </section>
 
-<!-- JOIN -->
 <section id="join">
   <div class="join-wrapper">
     <div class="join-info fade-in">
@@ -375,183 +358,13 @@ if ($isLoggedIn) {
         </div>
       </div>
     </div>
-
-    <div class="join-form fade-in">
-      <div class="form-title">Apply Now</div>
-      <div class="form-sub">// IEEE_MEMBERSHIP_FORM_v2025</div>
-
-      <div class="field-row">
-        <div class="field">
-          <label>First Name</label>
-          <input type="text" placeholder="Sami" id="f-first">
-        </div>
-        <div class="field">
-          <label>Last Name</label>
-          <input type="text" placeholder="Rahali" id="f-last">
-        </div>
-      </div>
-      <div class="field">
-        <label>University Email</label>
-        <input type="email" placeholder="s.rahali@uni.edu" id="f-email">
-      </div>
-      <div class="field-row">
-        <div class="field">
-          <label>Study Field</label>
-          <select id="f-field">
-            <option value="">Select…</option>
-            <option>Computer Science</option>
-            <option>Software Engineering</option>
-            <option>Cybersecurity</option>
-            <option>Data Science / AI</option>
-            <option>Electrical Engineering</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div class="field">
-          <label>Year of Study</label>
-          <select id="f-year">
-            <option value="">Select…</option>
-            <option>1st Year</option>
-            <option>2nd Year</option>
-            <option>3rd Year</option>
-            <option>Master's</option>
-            <option>PhD</option>
-          </select>
-        </div>
-      </div>
-      <div class="field">
-        <label>Interests (select one or more)</label>
-        <select id="f-interest">
-          <option value="">Select primary interest…</option>
-          <option>Web Development</option>
-          <option>AI / Machine Learning</option>
-          <option>Cybersecurity / CTF</option>
-          <option>Mobile Development</option>
-          <option>Open Source</option>
-          <option>Competitive Programming</option>
-          <option>DevOps / Cloud</option>
-        </select>
-      </div>
-      <div class="field">
-        <label>Tell us about yourself</label>
-        <textarea placeholder="Brief intro, goals, or anything you'd like us to know..." id="f-bio"></textarea>
-      </div>
-      <button class="submit-btn" onclick="handleJoin()">Submit Application →</button>
-    </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  <a href="#" class="footer-logo">IEEE.dev</a>
-  <ul class="footer-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#activities">Activities</a></li>
-    <li><a href="#policy">Policy</a></li>
-    <li><a href="#join">Join</a></li>
-  </ul>
+  <a href="#" class="footer-logo">IEEE</a>
   <div class="footer-copy">© 2025 IEEE — All rights reserved</div>
 </footer>
-
-<!-- TOAST -->
-<div class="toast" id="toast">✓ Application submitted! We'll contact you within 48h.</div>
-
-<script>
-  // Intersection observer for fade-in
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 80);
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
-
-  // Live member count simulation
-  let base = 148;
-  setInterval(() => {
-    const delta = Math.random() < 0.3 ? (Math.random() < 0.5 ? 1 : -1) : 0;
-    base = Math.max(140, base + delta);
-    document.getElementById('member-count').textContent = base;
-    document.getElementById('live-num').textContent = base;
-  }, 3500);
-
-  // Counter animation
-  function animateCount(el, target, duration) {
-    let start = 0, step = target / (duration / 16);
-    const tick = () => {
-      start = Math.min(start + step, target);
-      el.textContent = Math.floor(start);
-      if (start < target) requestAnimationFrame(tick);
-    };
-    tick();
-  }
-
-  const counterObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        animateCount(document.getElementById('live-num'), 148, 1200);
-        counterObs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.5 });
-
-  counterObs.observe(document.getElementById('members-live'));
-
-  // Form submission
-  function handleJoin() {
-    const first = document.getElementById('f-first').value.trim();
-    const email = document.getElementById('f-email').value.trim();
-    const field = document.getElementById('f-field').value;
-
-    if (!first || !email || !field) {
-      const toast = document.getElementById('toast');
-      toast.style.borderColor = 'var(--accent3)';
-      toast.style.color = 'var(--accent3)';
-      toast.textContent = '✕ Please fill in all required fields.';
-      toast.classList.add('show');
-      setTimeout(() => {
-        toast.classList.remove('show');
-        setTimeout(() => {
-          toast.style.borderColor = '';
-          toast.style.color = '';
-          toast.textContent = '✓ Application submitted! We\'ll contact you within 48h.';
-        }, 400);
-      }, 3000);
-      return;
-    }
-
-    // Increment member count
-    base++;
-    document.getElementById('member-count').textContent = base;
-    document.getElementById('live-num').textContent = base;
-
-    // Show success toast
-    const toast = document.getElementById('toast');
-    toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 4000);
-
-    // Reset form
-    ['f-first','f-last','f-email','f-field','f-year','f-interest','f-bio']
-      .forEach(id => { document.getElementById(id).value = ''; });
-  }
-
-  // Smooth nav active highlighting
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('nav ul a');
-
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(s => {
-      if (window.scrollY >= s.offsetTop - 120) current = s.id;
-    });
-    navLinks.forEach(a => {
-      a.style.color = a.getAttribute('href') === '#' + current
-        ? 'var(--accent)' : '';
-    });
-  });
-</script>
 
 </body>
 </html>
