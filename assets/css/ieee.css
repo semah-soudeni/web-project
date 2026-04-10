@@ -903,7 +903,7 @@ canvas {
     z-index: 1;
     background: var(--bg);
     border-top: 1px solid var(--border);
-    padding: 3rem;
+    padding: 1.5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -915,6 +915,7 @@ canvas {
     font-size: 1.1rem;
     color: var(--accent);
     text-decoration: none;
+    margin-left: 30px;
   }
 
   .footer-copy {

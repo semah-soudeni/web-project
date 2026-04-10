@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 $isLoggedIn = isset($_SESSION['logged']) && $_SESSION['logged'] === 'yes';
 $displayName = '';
 
@@ -36,11 +35,13 @@ if ($isLoggedIn) {
                 </div>
                 <div class="nav-login">
                    <?php if ($isLoggedIn): ?>
-                    <span>Hi, <?php echo htmlspecialchars($displayName, ENT_QUOTES, 'UTF-8'); ?></span>
-                    <form action="backend/logout.php" method="POST" style="display:inline;">
-                        <button type="submit" class="signout-btn">Sign Out</button>
-                    </form>
-                    <?php else: ?>
+                    <form action="backend/logout.php" method="POST" style="display:flex; align-items:center; gap:20px;">
+                        <span id="nav-user-name" style="font-weight:600;">
+                            <?php echo "Hi, " .htmlspecialchars($displayName, ENT_QUOTES, 'UTF-8'); ?>
+                        </span>
+                        <button id="nav-logout-btn" class="signin-btn">Sign Out</button>
+                        </form>
+                        <?php else: ?>
                     <a href="pages/signin.php" class="signin-btn">Sign In</a>
                     <a href="pages/signup.php" class="signup-btn">Sign Up</a>
                     <?php endif; ?>
