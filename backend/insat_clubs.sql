@@ -47,7 +47,7 @@ CREATE TABLE
         event_date DATE NOT NULL,
         event_time TIME DEFAULT NULL,
         location VARCHAR(200) DEFAULT NULL,
-        available_places INT DEFAULT NULL,
+        attendees INT DEFAULT NULL,
         FOREIGN KEY (club_id) REFERENCES clubs (id) ON DELETE CASCADE
     ) ENGINE = InnoDB;
 

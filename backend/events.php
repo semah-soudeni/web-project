@@ -10,7 +10,7 @@ if ($club !== 'all') {
     $req = $conn->prepare("
         SELECT e.id, c.slug AS club, e.title, e.description,
         e.event_date AS date, e.event_time AS time,
-        e.location, e.available_places
+        e.location, e.attendees
         FROM events e
         JOIN clubs c ON e.club_id = c.id
         WHERE c.slug = ?
@@ -21,7 +21,7 @@ if ($club !== 'all') {
     $req = $conn->query("
         SELECT e.id, c.slug AS club, e.title, e.description,
         e.event_date AS date, e.event_time AS time,
-        e.location, e.available_places
+        e.location, e.attendees
         FROM events e
         JOIN clubs c ON e.club_id = c.id
         ORDER BY e.event_date

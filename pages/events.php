@@ -55,7 +55,6 @@
             <div id="events-container"></div>
         </div>
     </section>
-    <script src="../assets/js/auth.js"></script>
     <script src="../assets/js/events.js"></script>
 </body>
 
