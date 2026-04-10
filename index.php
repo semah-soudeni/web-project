@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 $isLoggedIn = isset($_SESSION['logged']) && $_SESSION['logged'] === 'yes';
 $displayName = '';
 

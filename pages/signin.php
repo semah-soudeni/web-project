@@ -1,6 +1,4 @@
-<?php
-  session_start();
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +9,15 @@
   <link rel="stylesheet" href="../assets/css/signin.css" />
 </head>
 <body>
-
+<?php
+    session_start();
+    echo "<script> console.log(".json_encode($_SESSION).")</script>";
+    echo "<script> console.log(".json_encode($_COOKIE).")</script>";
+    echo "<script> console.log(".json_encode($_SERVER).")</script>";
+    if (isset($_SESSION['logged']) && $_SESSION['logged']){
+        header("location:/index.html");   
+    } 
+?>
   <a href="../index.php" class="back-btn" aria-label="Go back">
     <svg viewBox="0 0 24 24" aria-hidden="true">
       <path d="M15 18l-6-6 6-6" />
