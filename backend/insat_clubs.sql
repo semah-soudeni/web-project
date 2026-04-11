@@ -71,6 +71,9 @@ CREATE TABLE
         user_id INT NOT  NULL,
         event_id INT NOT NULL,
         paid BOOLEAN NOT NULL,
+        team_name VARCHAR(300) DEFAULT NULL,
+        team_nb_memebers INT DEFAULT NULL,
+        links VARCHAR(1000) DEFAULT NULL,
         FOREIGN KEY (user_id) REFERENCES etudiant(id),
         FOREIGN KEY (event_id) REFERENCES events(id)
         );
