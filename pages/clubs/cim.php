@@ -31,10 +31,10 @@ if ($isLoggedIn) {
 
 <nav class="navigation">
     <div class="nav-container">
-        <a href="/index.html" class="back-link">← Back to Clubs</a>
+        <a href="/index.php" class="back-link">← Back to Clubs</a>
 
         <div class="nav-menu">
-            <a href="/index.html" class="nav-link">Clubs</a>
+            <a href="/index.php" class="nav-link">Clubs</a>
             <a href="/pages/events.html" class="nav-link">Events</a>
             <a href="/pages/map.html" class="nav-link">Map</a>
         </div>

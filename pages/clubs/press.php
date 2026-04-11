@@ -27,9 +27,9 @@ if ($isLoggedIn) {
 <body>
     <nav class="navigation">
         <div class="nav-container">
-            <a href="../../index.html" class="back-link">← Back to Clubs</a>
+            <a href="../../index.php" class="back-link">← Back to Clubs</a>
             <div class="nav-menu">
-                <a href="../../index.html" class="nav-link">Clubs</a>
+                <a href="../../index.php" class="nav-link">Clubs</a>
                 <a href="../events.html" class="nav-link">Events</a>
                 <a href="../map.html" class="nav-link">Map</a>
             </div>

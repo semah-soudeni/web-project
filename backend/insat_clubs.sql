@@ -37,20 +37,43 @@ VALUES
     ('chem', 'Chem Club'),
     ('astro', 'Astro Club'),
     ('3zero', '3Zero Club');
+CREATE TABLE
+    IF NOT EXISTS staff (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        user_id INT NOT NULL,
+        photo BLOB, 
+        event_id INT NOT NULL,
+        FOREIGN KEY (user_id) REFERENCES etudiant(id),
+        FOREIGN KEY (event_id) REFERENCES events(id)
+    );
+
 
 CREATE TABLE
     IF NOT EXISTS events (
         id INT AUTO_INCREMENT PRIMARY KEY,
-        club_id INT NOT NULL,
+        club_id JSON NOT NULL,
         title VARCHAR(200) NOT NULL,
         description TEXT,
         event_date DATE NOT NULL,
         event_time TIME DEFAULT NULL,
         location VARCHAR(200) DEFAULT NULL,
-        attendees INT DEFAULT NULL,
+        attendees INT DEFAULT NULL CHECK (attendees <= max_attendees),
+        max_attendees INT ,
+        duration INT NOT NULL, --belnhar
+        event_type enum('hackathon','conference','workshop','competition') NOT NULL,
+        prize_pool TEXT DEFAULT NULL,
+
         FOREIGN KEY (club_id) REFERENCES clubs (id) ON DELETE CASCADE
     ) ENGINE = InnoDB;
-
+CREATE TABLE
+    IF NOT EXISTS register (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        user_id INT NOT  NULL,
+        event_id INT NOT NULL,
+        paid BOOLEAN NOT NULL,
+        FOREIGN KEY (user_id) REFERENCES etudiant(id),
+        FOREIGN KEY (event_id) REFERENCES events(id)
+        );
 INSERT INTO
     events (
         club_id,

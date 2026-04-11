@@ -15,7 +15,7 @@
     echo "<script> console.log(".json_encode($_COOKIE).")</script>";
     echo "<script> console.log(".json_encode($_SERVER).")</script>";
     if (isset($_SESSION['logged']) && $_SESSION['logged']){
-        header("location:/index.html");   
+        header("location:/index.php");   
     } 
 ?>
   <a href="../index.php" class="back-btn" aria-label="Go back">

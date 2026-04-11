@@ -27,7 +27,7 @@ if ($isLoggedIn) {
     <nav class="navigation">
         <div class="nav-container">
             <div class="nav-menu">
-                <a href="../index.html" class="nav-link">Clubs</a>
+                <a href="../index.php" class="nav-link">Clubs</a>
                 <a href="events.php" class="nav-link">Events</a>
                 <a href="map.php" class="nav-link">Map</a>
                 <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>

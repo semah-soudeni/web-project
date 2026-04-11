@@ -9,7 +9,7 @@
 <body>
     <nav class="navigation">
         <div class="nav-container">
-            <a href="../index.html" class="back-link">←Back to Clubs</a>
+            <a href="../index.php" class="back-link">←Back to Clubs</a>
             <div class="nav-title">
                 <h1 class="title">Admin Dashboard</h1>
             </div>
