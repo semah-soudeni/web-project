@@ -7,6 +7,7 @@ $lname = $_POST["lastName"] ?? '';
 $phone = $_POST["phone"] ?? '';
 $email = $_POST["email"] ?? '';
 $psswd = $_POST["password"] ?? '';
+$role = 'admin';
 
 if ($email === '' || $psswd === '') {
     echo 'missing credentials';
@@ -25,12 +26,12 @@ if ($result) {
     exit;
 }
 
-$req = $conn->prepare("INSERT INTO etudiant(last_name, first_name, email, phone, password) VALUES(:nom, :prenom, :email, :phone, :password)");
-$req->execute(array('nom' => $lname, 'prenom' => $fname, 'email' => $email, 'phone' => $phone, 'password' => $psswd));
+$req = $conn->prepare("INSERT INTO etudiant(last_name, first_name, email, phone, password, role) VALUES(:nom, :prenom, :email, :phone, :password, :role)");
+$req->execute(array('nom' => $lname, 'prenom' => $fname, 'email' => $email, 'phone' => $phone, 'password' => $psswd , 'role' => $role));
 
 $_SESSION["id"] = $conn->lastInsertId();
 $_SESSION["email"] = $email;
-$_SESSION["role"] = "member";
+$_SESSION["role"] = $role;
 $_SESSION["logged"] = "yes";
 $_SESSION["user_email"] = $email;
 $_SESSION["user_first_name"] = $fname;

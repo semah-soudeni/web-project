@@ -306,7 +306,7 @@ h1 {
 }
 
 #nav-user-name {
-    color: var(--text-primary);
+    color: white;
     font-size: 0.9rem;
     font-weight: 500;
 }
