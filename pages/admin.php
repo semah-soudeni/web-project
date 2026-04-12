@@ -22,7 +22,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/admin.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
     <title>Dashboard</title>
 </head>
 <body>
@@ -51,7 +50,7 @@
     </nav>
 
         <main class="dashboard">
-                <section class="hero">
+            <section class="hero">
                   <div class="grid-overlay"></div>
                   <div class="hero-content">
                     <div class="hero-badge">
@@ -82,6 +81,126 @@
                     </div>
                   </div>
                 </section>
+        <section class="email-broadcast">
+              <div class="eb-grid"></div>
+              <div class="eb-glow"></div>
+
+              <div class="eb-left">
+                <div class="eb-badge">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                  </svg>
+                  Email Broadcast
+                </div>
+                <h2 class="eb-title">Mail your members<br>with one click</h2>
+                <p class="eb-sub">Send announcements, event updates, or newsletters directly to your club members.</p>
+                <button class="eb-open-btn" id="openBtn" onclick="togglePanel()">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                  </svg>
+                  Compose broadcast
+                </button>
+              </div>
+
+              <div class="eb-panel" id="ebPanel">
+                <div class="eb-panel-head">
+                  <div class="eb-panel-title">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                      <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                    New broadcast
+                  </div>
+                  <button class="eb-close-btn" onclick="togglePanel()">&#x2715;</button>
+                </div>
+
+                <form action="backend/broadcast.php" method="POST">
+                  <div class="eb-field">
+                    <label class="eb-label">Receivers</label>
+                    <div class="eb-dropdown" id="receiverDropdown">
+                      <div class="eb-dropdown-trigger" id="dropdownTrigger" onclick="toggleDropdown()">
+                        <span id="dropdownLabel" class="placeholder">Select recipient group…</span>
+                        <svg class="eb-dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2.5">
+                          <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                      </div>
+                      <div class="eb-dropdown-menu" id="dropdownMenu">
+                        <div class="eb-dropdown-option" onclick="selectOption(this, 'all', 'All members')">
+                          <div class="opt-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
+                              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+                              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                          </div>
+                          <div class="opt-meta">
+                            <span class="opt-name">All members</span>
+                            <span class="opt-desc">Every registered club member</span>
+                          </div>
+                        </div>
+                        <div class="eb-dropdown-option" onclick="selectOption(this, 'leaders', 'Club leaders')">
+                          <div class="opt-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
+                              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                            </svg>
+                          </div>
+                          <div class="opt-meta">
+                            <span class="opt-name">Club leaders</span>
+                            <span class="opt-desc">Admins and club presidents only</span>
+                          </div>
+                        </div>
+                        <div class="eb-dropdown-option" onclick="selectOption(this, 'active', 'Active members')">
+                          <div class="opt-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
+                              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                            </svg>
+                          </div>
+                          <div class="opt-meta">
+                            <span class="opt-name">Active members</span>
+                            <span class="opt-desc">Attended at least one event</span>
+                          </div>
+                        </div>
+                        <div class="eb-dropdown-option" onclick="selectOption(this, 'new', 'New members')">
+                          <div class="opt-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
+                              <circle cx="12" cy="12" r="10"/>
+                              <line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/>
+                            </svg>
+                          </div>
+                          <div class="opt-meta">
+                            <span class="opt-name">New members</span>
+                            <span class="opt-desc">Joined in the last 30 days</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <input type="hidden" id="receiverValue" name="receivers" value="">
+                  </div>
+
+                  <div class="eb-field">
+                    <label class="eb-label">Subject</label>
+                    <input class="eb-input" id="subjectInput" type="text" name="subject" placeholder="e.g. Club meeting this Friday" required>
+                  </div>
+
+                  <div class="eb-field">
+                    <label class="eb-label">Message</label>
+                    <textarea class="eb-textarea" id="msgInput" name="message" placeholder="Write your message here…" required></textarea>
+                  </div>
+
+                  <div class="eb-footer">
+                    <span class="eb-char-count" id="charCount">0 characters</span>
+                    <button type="submit" class="eb-send-btn">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="13" height="13">
+                        <line x1="22" y1="2" x2="11" y2="13"/>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                      </svg>
+                      Send
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </section> 
         <section class="events-section">
                 <div class="events-header">
                     <div class="events-header-left">
@@ -122,5 +241,6 @@
                 </div>
             </section>
     </main>
+    <script src="../assets/js/admin.js" dref></script>
 </body>
 </html>
