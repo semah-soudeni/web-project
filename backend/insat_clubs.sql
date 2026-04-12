@@ -43,6 +43,7 @@ CREATE TABLE
         user_id INT NOT NULL,
         photo BLOB, 
         event_id INT NOT NULL,
+        role VARCHAR(40) NOT NULL,
         FOREIGN KEY (user_id) REFERENCES etudiant(id),
         FOREIGN KEY (event_id) REFERENCES events(id)
     );
