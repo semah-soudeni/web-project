@@ -21,24 +21,24 @@ if ($isLoggedIn) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Astro Club INSAT</title>
-    <link rel="stylesheet" href="../../assets/css/astro.css">
+    <link rel="stylesheet" href="/assets/css/astro.css">
 </head>
 
 <body>
     <nav class="navigation">
         <div class="nav-container">
-            <a href="../../index.php" class="back-link">← Back to Clubs</a>
+            <a href="/index.php" class="back-link">← Back to Clubs</a>
             <div class="nav-menu">
-                <a href="../../index.php" class="nav-link">Clubs</a>
-                <a href="../events.php" class="nav-link">Events</a>
-                <a href="../map.php" class="nav-link">Map</a>
+                <a href="/index.php" class="nav-link">Clubs</a>
+                <a href="/pages/events.php" class="nav-link">Events</a>
+                <a href="/pages/map.php" class="nav-link">Map</a>
             </div>
             <div class="nav-login">
                 <?php if ($isLoggedIn): ?>
                 <span style="cursor: default;">Hi, <?php echo htmlspecialchars($displayName, ENT_QUOTES, 'UTF-8'); ?></span>
                 <?php else: ?>
-                <a href="../signin.php" class="signin-btn">Sign In</a>
-                <a href="../signup.php" class="signup-btn">Sign Up</a>
+                <a href="/pages/signin.php" class="signin-btn">Sign In</a>
+                <a href="/pages/signup.php" class="signup-btn">Sign Up</a>
                 <?php endif; ?>
             </div>
         </div>
@@ -50,7 +50,7 @@ if ($isLoggedIn) {
     <header class="astro-hero">
         <div class="glass-container">
             <div class="astro-logo-container">
-                <img src="../../assets/img/astro.png" alt="Astro Club Logo" class="astro-logo">
+                <img src="/assets/img/astro.png" alt="Astro Club Logo" class="astro-logo">
             </div>
             <h1>Astro Club <span>INSAT</span></h1>
             <p class="subtitle">Reach for the Stars, Explore the Cosmos.</p>
@@ -141,8 +141,8 @@ if ($isLoggedIn) {
         <p>Astro Club INSAT &copy; 2024. Ad Astra.</p>
     </footer>
 
-    <script src="../../assets/js/astro.js"></script>
-    <script src="../../assets/js/auth.js"></script>
+    <script src="/assets/js/astro.js"></script>
+    <script src="/assets/js/auth.js"></script>
 </body>
 
 </html>

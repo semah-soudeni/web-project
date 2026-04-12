@@ -21,24 +21,24 @@ if ($isLoggedIn) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Securinets</title>
-    <link rel="stylesheet" href="../../assets/css/secu.css">
+    <link rel="stylesheet" href="/assets/css/secu.css">
 </head>
 
 <body>
     <nav class="navigation">
         <div class="nav-container">
-            <a href="../../index.php" class="back-link">←Back to Clubs</a>
+            <a href="/index.php" class="back-link">←Back to Clubs</a>
             <div class="nav-menu">
-                <a href="../../index.php" class="nav-link">Clubs</a>
-                <a href="../events.php" class="nav-link">Events</a>
-                <a href="../map.php" class="nav-link">Map</a>
+                <a href="/index.php" class="nav-link">Clubs</a>
+                <a href="/pages/events.php" class="nav-link">Events</a>
+                <a href="/pages/map.php" class="nav-link">Map</a>
             </div>
             <div class="nav-login">
                 <?php if ($isLoggedIn): ?>
                 <span style="cursor: default;">Hi, <?php echo htmlspecialchars($displayName, ENT_QUOTES, 'UTF-8'); ?></span>
                 <?php else: ?>
-                <a href="../signin.php" class="signin-btn">Sign In</a>
-                <a href="../signup.php" class="signup-btn">Sign Up</a>
+                <a href="/pages/signin.php" class="signin-btn">Sign In</a>
+                <a href="/pages/signup.php" class="signup-btn">Sign Up</a>
                 <?php endif; ?>
             </div>
         </div>
@@ -76,14 +76,14 @@ if ($isLoggedIn) {
                 <div class="glow-ring"></div>
 
                 <!-- Main logo -->
-                <img src="../../assets/img/secu-logo.png" alt="">
+                <img src="/assets/img/secu-logo.png" alt="">
 
                 <!-- Glitch layers -->
                 <div class="glitch">
-                    <img src="../../assets/img/secu-logo.png" alt="Glitch layer">
+                    <img src="/assets/img/secu-logo.png" alt="Glitch layer">
                 </div>
                 <div class="glitch">
-                    <img src="../../assets/img/secu-logo.png" alt="Glitch layer">
+                    <img src="/assets/img/secu-logo.png" alt="Glitch layer">
                 </div>
             </div>
         </div>
@@ -162,27 +162,27 @@ if ($isLoggedIn) {
             <h2>OUR Team</h2>
             <div class="sec3">
                 <div>
-                    <img src="../../assets/img/secu-logo.png" alt="">
+                    <img src="/assets/img/secu-logo.png" alt="">
                     <p>John Doe</p>
                 </div>
                 <div>
-                    <img src="../../assets/img/secu-logo.png" alt="">
+                    <img src="/assets/img/secu-logo.png" alt="">
                     <p>John Doe</p>
                 </div>
                 <div>
-                    <img src="../../assets/img/secu-logo.png" alt="">
+                    <img src="/assets/img/secu-logo.png" alt="">
                     <p>John Doe</p>
                 </div>
                 <div>
-                    <img src="../../assets/img/secu-logo.png" alt="">
+                    <img src="/assets/img/secu-logo.png" alt="">
                     <p>John Doe</p>
                 </div>
                 <div>
-                    <img src="../../assets/img/secu-logo.png" alt="">
+                    <img src="/assets/img/secu-logo.png" alt="">
                     <p>John Doe</p>
                 </div>
                 <div>
-                    <img src="../../assets/img/secu-logo.png" alt="">
+                    <img src="/assets/img/secu-logo.png" alt="">
                     <p>John Doe</p>
                 </div>
 
@@ -192,8 +192,7 @@ if ($isLoggedIn) {
                 <p>join the securinets family and Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur,
                     quasi nemo! Unde quam voluptates amet asperiores ut numquam ab, architecto earum dolore inventore
                     laudantium quos voluptatibus aliquid facilis dicta! Libero.</p>
-                <a href="ajouter.php">
-
+                <a href="/backend/ajouter.php">
                     <button onclick="window.joinClub('secu')">join us!</button>
                 </a>
 
@@ -206,7 +205,7 @@ if ($isLoggedIn) {
 
 
 </body>
-<script src="../../assets/js/secu.js"></script>
-<script src="../../assets/js/auth.js"></script>
+<script src="/assets/js/secu.js"></script>
+<script src="/assets/js/auth.js"></script>
 
 </html>

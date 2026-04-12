@@ -20,25 +20,25 @@ if ($isLoggedIn) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../assets/css/theatro.css">
+    <link rel="stylesheet" href="/assets/css/theatro.css">
     <title>Theatro Insat</title>
 </head>
 
 <body>
     <nav class="navigation">
         <div class="nav-container">
-            <a href="../../index.php" class="back-link">← Back to Clubs</a>
+            <a href="/index.php" class="back-link">← Back to Clubs</a>
             <div class="nav-menu">
-                <a href="../../index.php" class="nav-link">Clubs</a>
-                <a href="../events.php" class="nav-link">Events</a>
-                <a href="../map.php" class="nav-link">Map</a>
+                <a href="/index.php" class="nav-link">Clubs</a>
+                <a href="/pages/events.php" class="nav-link">Events</a>
+                <a href="/pages/map.php" class="nav-link">Map</a>
             </div>
             <div class="nav-login">
                 <?php if ($isLoggedIn): ?>
                 <span style="cursor: default;">Hi, <?php echo htmlspecialchars($displayName, ENT_QUOTES, 'UTF-8'); ?></span>
                 <?php else: ?>
-                <a href="../signin.php" class="signin-btn">Sign In</a>
-                <a href="../signup.php" class="signup-btn">Sign Up</a>
+                <a href="/pages/signin.php" class="signin-btn">Sign In</a>
+                <a href="/pages/signup.php" class="signup-btn">Sign Up</a>
                 <?php endif; ?>
             </div>
         </div>
@@ -52,7 +52,7 @@ if ($isLoggedIn) {
     <section class="header-section">
         <div class="header-container">
             <div class="logo-container">
-                <img src="../../assets/img/theatro.jpg" alt="Theatro Logo" class="theatro-logo">
+                <img src="/assets/img/theatro.jpg" alt="Theatro Logo" class="theatro-logo">
             </div>
             <h1 class="header-title">Theatro INSAT</h1>
             <p class="header-subtitle">Where passion meets the stage. Discover the art of acting, directing, and
@@ -145,7 +145,7 @@ if ($isLoggedIn) {
             <h2 class="section-title">Act III: Join The Cast</h2>
             <div class="join-container">
                 <p>Are you ready for your standing ovation?</p>
-                <a href="ajouter.php">
+                <a href="/ajouter.php">
                     <button class="join-btn" onclick="window.joinClub('theatro')">Audition Now</button>
 
                 </a>
@@ -153,8 +153,8 @@ if ($isLoggedIn) {
         </section>
     </div>
 
-    <script src="../../assets/js/theatro.js"></script>
-    <script src="../../assets/js/auth.js"></script>
+    <script src="/assets/js/theatro.js"></script>
+    <script src="/assets/js/auth.js"></script>
 </body>
 
 </html>

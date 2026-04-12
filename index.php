@@ -18,7 +18,7 @@ if ($isLoggedIn) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
     <title>INSAT Clubs</title>
 </head>
 <body>
@@ -26,24 +26,24 @@ if ($isLoggedIn) {
         <nav class="navigation">
             <div class="nav-container">
                 <div class="nav-menu">
-                    <a href="index.php" class="nav-link">Clubs</a>
-                    <a href="pages/events.php" class="nav-link">Events</a>
-                    <a href="pages/map.php" class="nav-link">Map</a>
+                    <a href="/index.php" class="nav-link">Clubs</a>
+                    <a href="/pages/events.php" class="nav-link">Events</a>
+                    <a href="/pages/map.php" class="nav-link">Map</a>
                     <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
-                        <a href="pages/admin.php" class="nav-link">Admin Dashboard</a>
+                        <a href="/pages/admin.php" class="nav-link">Admin Dashboard</a>
                     <?php endif; ?>
                 </div>
                 <div class="nav-login">
                    <?php if ($isLoggedIn): ?>
-                    <form action="backend/logout.php" method="POST" style="display:flex; align-items:center; gap:20px;">
+                    <form action="/backend/logout.php" method="POST" style="display:flex; align-items:center; gap:20px;">
                         <span id="nav-user-name" style="font-weight:600;">
                             <?php echo "Hi, " .htmlspecialchars($displayName, ENT_QUOTES, 'UTF-8'); ?>
                         </span>
                         <button id="nav-logout-btn" class="signin-btn">Sign Out</button>
                         </form>
                         <?php else: ?>
-                    <a href="pages/signin.php" class="signin-btn">Sign In</a>
-                    <a href="pages/signup.php" class="signup-btn">Sign Up</a>
+                    <a href="/pages/signin.php" class="signin-btn">Sign In</a>
+                    <a href="/pages/signup.php" class="signup-btn">Sign Up</a>
                     <?php endif; ?>
                 </div>
             </div>
@@ -51,11 +51,11 @@ if ($isLoggedIn) {
         <section>
             <h1>Discover our clubs</h1>
             <div class="container">
-                <a href="pages/clubs/aero.php" class="link">
+                <a href="/pages/clubs/aero.php" class="link">
                     <div class="card">
                         <div class="img">
                             <div class="logo">
-                                <img src="assets/img/aero-logo.png" alt="aerobotix logo">
+                                <img src="/assets/img/aero-logo.png" alt="aerobotix logo">
                             </div>
                         </div>
                         <div class="jnab">
@@ -64,11 +64,11 @@ if ($isLoggedIn) {
                         </div>
                     </div>
                 </a>
-                <a href="pages/clubs/secu.php" class="link">
+                <a href="/pages/clubs/secu.php" class="link">
                     <div class="card">
                         <div class="img">
                             <div class="logo secu">
-                                <img src="assets/img/secu-logo.png" alt="securinets logo">
+                                <img src="/assets/img/secu-logo.png" alt="securinets logo">
                             </div>
                         </div>
                         <div class="jnab">
@@ -77,11 +77,11 @@ if ($isLoggedIn) {
                         </div>
                     </div>
                 </a>
-                <a href="pages/clubs/ieee.php" class="link">
+                <a href="/pages/clubs/ieee.php" class="link">
                     <div class="card">
                         <div class="img">
                             <div class="logo">
-                                <img src="assets/img/ieee-logo.png" alt="ieee logo">
+                                <img src="/assets/img/ieee-logo.png" alt="ieee logo">
                             </div>
                         </div>
                         <div class="jnab">
@@ -90,11 +90,11 @@ if ($isLoggedIn) {
                         </div>
                     </div>
                 </a>
-                <a href="pages/clubs/acm.php" class="link">
+                <a href="/pages/clubs/acm.php" class="link">
                     <div class="card">
                         <div class="img">
                             <div class="logo">
-                                <img src="assets/img/acm-logo.png" alt="acm logo">
+                                <img src="/assets/img/acm-logo.png" alt="acm logo">
                             </div>
                         </div>
                         <div class="jnab">
@@ -104,11 +104,11 @@ if ($isLoggedIn) {
                     </div>
                 </a>
                 
-                <a href="pages/clubs/cim.php" class="link">
+                <a href="/pages/clubs/cim.php" class="link">
                     <div class="card">
                         <div class="img">
                             <div class="logo">
-                                <img src="assets/img/cim.png" alt="CIM Insat">
+                                <img src="/assets/img/cim.png" alt="CIM Insat">
                             </div>
                         </div>
                         <div class="jnab">
@@ -117,11 +117,11 @@ if ($isLoggedIn) {
                         </div>
                     </div>
                 </a>
-                <a href="pages/clubs/theatro.php" class="link">
+                <a href="/pages/clubs/theatro.php" class="link">
                     <div class="card">
                         <div class="img">
                             <div class="logoth">
-                                <img src="assets/img/theatro.jpg" alt="Theatro Insat">
+                                <img src="/assets/img/theatro.jpg" alt="Theatro Insat">
                             </div>
                         </div>
                         <div class="jnab">
@@ -131,11 +131,11 @@ if ($isLoggedIn) {
                     </div>
                 </a>
                 
-                <a href="pages/clubs/press.php" class="link">
+                <a href="/pages/clubs/press.php" class="link">
                     <div class="card">
                         <div class="img">
                             <div class="logoth">
-                                <img src="assets/img/press.png" alt="Insat Press">
+                                <img src="/assets/img/press.png" alt="Insat Press">
                             </div>
                         </div>
                         <div class="jnab">

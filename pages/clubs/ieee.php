@@ -24,7 +24,7 @@ if ($isLoggedIn) {
 <body>
 <nav>
   <div class="nav-left">
-    <a href="../../index.php" class="back-link">
+    <a href="/index.php" class="back-link">
         <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2">
             <polyline points="10 4 6 8 10 12"/>
         </svg>back</a>
@@ -41,11 +41,11 @@ if ($isLoggedIn) {
         </ul>
     </div>
     <div class="nav-right">
-        <a href="ajouter.php" class="nav-cta">Join Now</a>
+        <a href="/backend/ajouter.php" class="nav-cta">Join Now</a>
     </div>
 </nav>
     <canvas id="rockets"></canvas>
-    <script src="../../assets/js/ieee.js" defer></script>
+    <script src="/assets/js/ieee.js" defer></script>
 
 
 <section id="hero">

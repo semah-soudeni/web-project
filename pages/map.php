@@ -18,7 +18,7 @@ if ($isLoggedIn) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/map.css">
+    <link rel="stylesheet" href="/assets/css/map.css">
     <title>Upcoming Events</title>
 </head>
 <body>
@@ -34,7 +34,7 @@ if ($isLoggedIn) {
             </div>
             <div class="nav-login">
                <?php if ($isLoggedIn): ?>
-                <form action="backend/logout.php" method="POST" style="display:flex; align-items:center; gap:20px;">
+                <form action="/backend/logout.php" method="POST" style="display:flex; align-items:center; gap:20px;">
                     <span id="nav-user-name" style="font-weight:600;">
                         <?php echo "Hi, " .htmlspecialchars($displayName, ENT_QUOTES, 'UTF-8'); ?>
                     </span>

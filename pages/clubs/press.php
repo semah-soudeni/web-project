@@ -20,25 +20,25 @@ if ($isLoggedIn) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../assets/css/press.css">
+    <link rel="stylesheet" href="/assets/css/press.css">
     <title>INSAT Press</title>
 </head>
 
 <body>
     <nav class="navigation">
         <div class="nav-container">
-            <a href="../../index.php" class="back-link">← Back to Clubs</a>
+            <a href="/index.php" class="back-link">← Back to Clubs</a>
             <div class="nav-menu">
-                <a href="../../index.php" class="nav-link">Clubs</a>
-                <a href="../events.html" class="nav-link">Events</a>
-                <a href="../map.html" class="nav-link">Map</a>
+                <a href="/index.php" class="nav-link">Clubs</a>
+                <a href="/pages/events.html" class="nav-link">Events</a>
+                <a href="/pages/map.html" class="nav-link">Map</a>
             </div>
             <div class="nav-login">
                 <?php if ($isLoggedIn): ?>
                 <span style="cursor: default;color:white;">Hi, <?php echo htmlspecialchars($displayName, ENT_QUOTES, 'UTF-8'); ?></span>
                 <?php else: ?>
-                <a href="../signin.php" class="signin-btn">Sign In</a>
-                <a href="../signup.php" class="signup-btn">Sign Up</a>
+                <a href="/pages/signin.php" class="signin-btn">Sign In</a>
+                <a href="/pages/signup.php" class="signup-btn">Sign Up</a>
                 <?php endif; ?>
             </div>
         </div>
@@ -157,8 +157,8 @@ if ($isLoggedIn) {
         </section>
     </div>
     
-    <script src="../../assets/js/press.js"></script>
-    <script src="../../assets/js/auth.js"></script>
+    <script src="/assets/js/press.js"></script>
+    <script src="/assets/js/auth.js"></script>
 </body>
 
 </html>

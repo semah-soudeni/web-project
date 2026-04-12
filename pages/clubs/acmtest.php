@@ -46,18 +46,18 @@
 
 <nav class="navigation">
   <div class="nav-container">
-    <a href="../../index.php" class="back-link">← Back to Clubs</a>
+    <a href="/index.php" class="back-link">← Back to Clubs</a>
     <div class="nav-menu">
-      <a href="../../index.php" class="nav-link">Clubs</a>
-      <a href="../events.php" class="nav-link">Events</a>
-      <a href="../map.php" class="nav-link">Map</a>
+      <a href="/index.php" class="nav-link">Clubs</a>
+      <a href="/pages/events.php" class="nav-link">Events</a>
+      <a href="/pages/map.php" class="nav-link">Map</a>
     </div>
     <div class="nav-login">
       <?php if ($isLoggedIn): ?>
       <span class="signin-btn" style="cursor: default;">Hi, <?php echo htmlspecialchars($displayName, ENT_QUOTES, 'UTF-8'); ?></span>
       <?php else: ?>
-      <a href="../signin.php" class="signin-btn">Sign In</a>
-      <a href="../signup.php" class="signup-btn">Sign Up</a>
+      <a href="/pages/signin.php" class="signin-btn">Sign In</a>
+      <a href="/pages/signup.php" class="signup-btn">Sign Up</a>
       <?php endif; ?>
     </div>
   </div>

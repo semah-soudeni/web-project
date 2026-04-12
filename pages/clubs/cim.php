@@ -43,8 +43,8 @@ if ($isLoggedIn) {
             <?php if ($isLoggedIn): ?>
             <span class="signin-btn" style="cursor: default;">Hi, <?php echo htmlspecialchars($displayName, ENT_QUOTES, 'UTF-8'); ?></span>
             <?php else: ?>
-            <a href="../signin.php" class="signin-btn">Sign In</a>
-            <a href="../signup.php" class="signup-btn">Sign Up</a>
+            <a href="/pages/signin.php" class="signin-btn">Sign In</a>
+            <a href="/pages/signup.php" class="signup-btn">Sign Up</a>
             <?php endif; ?>
         </div>
     </div>

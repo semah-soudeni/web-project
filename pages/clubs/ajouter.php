@@ -19,7 +19,7 @@ if ($isLoggedIn) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
     <title>Add Club Member</title>
     <style>
         :root {
@@ -176,13 +176,13 @@ if ($isLoggedIn) {
     <main>
         <nav class="navigation">
             <div class="nav-container">
-                <a href="../../index.php" class="back-link">←Back to Clubs</a>
+                <a href="/index.php" class="back-link">←Back to Clubs</a>
                 <div class="nav-menu">
-                    <a href="../../index.php" class="nav-link active">Clubs</a>
-                    <a href="../events.html" class="nav-link">Events</a>
-                    <a href="../map.php" class="nav-link">Map</a>
+                    <a href="/index.php" class="nav-link active">Clubs</a>
+                    <a href="/pages/events.html" class="nav-link">Events</a>
+                    <a href="/pages/map.php" class="nav-link">Map</a>
                     <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
-                        <a href="../admin.html" class="nav-link">Admin Dashboard</a>
+                        <a href="/pages/admin.html" class="nav-link">Admin Dashboard</a>
                     <?php endif; ?>
                 </div>
                 <div class="nav-login">
@@ -206,7 +206,7 @@ if ($isLoggedIn) {
         <h1>Add Member to Club</h1>
         <p class="subtitle">Fill in the form below to register a new club member.</p>
 
-        <form action="../../backend/ajouter.php" method="POST">
+        <form action="/backend/ajouter.php" method="POST">
             <div class="grid">
                 <div class="field">
                     <label for="club">Club</label>

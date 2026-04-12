@@ -17,7 +17,7 @@ if ($isLoggedIn) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/events.css">
+    <link rel="stylesheet" href="/assets/css/events.css">
     <title>Upcoming Events</title>
 </head>
 
@@ -25,24 +25,24 @@ if ($isLoggedIn) {
     <nav class="navigation">
         <div class="nav-container">
             <div class="nav-menu">
-                <a href="../index.php" class="nav-link">Clubs</a>
-                <a href="events.php" class="nav-link">Events</a>
-                <a href="map.php" class="nav-link">Map</a>
+                <a href="/index.php" class="nav-link">Clubs</a>
+                <a href="/pages/events.php" class="nav-link">Events</a>
+                <a href="/pages/map.php" class="nav-link">Map</a>
                 <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
-                        <a href="admin.php" class="nav-link">Admin Dashboard</a>
+                        <a href="/pages/admin.php" class="nav-link">Admin Dashboard</a>
                 <?php endif; ?>
             </div>
             <div class="nav-login">
                  <?php if ($isLoggedIn): ?>
-                    <form action="backend/logout.php" method="POST" style="display:flex; align-items:center; gap:20px;">
+                    <form action="/backend/logout.php" method="POST" style="display:flex; align-items:center; gap:20px;">
                         <span id="nav-user-name" style="font-weight:600;">
                             <?php echo "Hi, " .htmlspecialchars($displayName, ENT_QUOTES, 'UTF-8'); ?>
                         </span>
                         <button id="nav-logout-btn" class="signin-btn">Sign Out</button>
                         </form>
                         <?php else: ?>
-                    <a href="./signin.php" class="signin-btn">Sign In</a>
-                    <a href="./signup.php" class="signup-btn">Sign Up</a>
+                    <a href="/pages/signin.php" class="signin-btn">Sign In</a>
+                    <a href="/pages/signup.php" class="signup-btn">Sign Up</a>
                     <?php endif; ?>
             </div>
         </div>
@@ -76,7 +76,7 @@ if ($isLoggedIn) {
             <img src="/assets/img/load.gif"/>
         </div>
     </section>
-    <script src="../assets/js/events.js"></script>
+    <script src="/assets/js/events.js"></script>
 </body>
 
 </html>
