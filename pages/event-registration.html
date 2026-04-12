@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Registration</title>
+    <style>
+        :root {
+            --bg-1: #f7f4ec;
+            --bg-2: #e6f0ff;
+            --panel: #ffffff;
+            --ink: #152238;
+            --muted: #5f6b7a;
+            --accent: #0f766e;
+            --accent-dark: #0a5a54;
+            --line: #d8e1eb;
+            --shadow: 0 14px 38px rgba(15, 34, 56, 0.14);
+            --radius: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--ink);
+            background:
+                radial-gradient(circle at 85% 10%, rgba(15, 118, 110, 0.2), transparent 35%),
+                radial-gradient(circle at 15% 90%, rgba(70, 114, 196, 0.18), transparent 35%),
+                linear-gradient(135deg, var(--bg-1), var(--bg-2));
+            display: grid;
+            place-items: center;
+            padding: 24px;
+        }
+
+        .card {
+            width: min(720px, 100%);
+            background: var(--panel);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            padding: 28px;
+        }
+
+        h1 {
+            margin: 0 0 8px;
+            font-size: 1.9rem;
+            line-height: 1.15;
+        }
+
+        .subtitle {
+            margin: 0 0 24px;
+            color: var(--muted);
+        }
+
+        form {
+            display: grid;
+            gap: 16px;
+        }
+
+        .row {
+            display: grid;
+            gap: 16px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .field {
+            display: grid;
+            gap: 8px;
+        }
+
+        label {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 11px 13px;
+            font: inherit;
+            color: var(--ink);
+            background-color: #fbfdff;
+            outline: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(15, 118, 110, 0.15);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 96px;
+        }
+
+        .hint {
+            margin: 0;
+            font-size: 0.84rem;
+            color: var(--muted);
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 4px;
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 10px;
+            padding: 11px 18px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.18s ease, background-color 0.18s ease;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-dark);
+            transform: translateY(-1px);
+        }
+
+        .btn-ghost {
+            background: #eef3fa;
+            color: var(--ink);
+        }
+
+        .btn-ghost:hover {
+            background: #e4ebf5;
+        }
+
+        .required {
+            color: #b42318;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 680px) {
+            .card {
+                padding: 22px;
+            }
+
+            .row {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 1.65rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="card">
+        <h1>Register To Event</h1>
+        <p class="subtitle">Fill this form to submit a registration for an event. This form follows the <strong>register</strong> table structure and intentionally excludes the paid field.</p>
+
+        <form action="#" method="post">
+            <div class="row">
+                <div class="field">
+                    <label for="user_id">User ID <span class="required">*</span></label>
+                    <input type="number" id="user_id" name="user_id" min="1" required placeholder="Ex: 12">
+                </div>
+
+                <div class="field">
+                    <label for="event_id">Event ID <span class="required">*</span></label>
+                    <input type="number" id="event_id" name="event_id" min="1" required placeholder="Ex: 4">
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="team_name">Team Name</label>
+                <input type="text" id="team_name" name="team_name" maxlength="300" placeholder="Optional team name">
+            </div>
+
+            <div class="field">
+                <label for="team_nb_memebers">Team Number Of Members</label>
+                <input type="number" id="team_nb_memebers" name="team_nb_memebers" min="1" placeholder="Optional">
+            </div>
+
+            <div class="field">
+                <label for="links">Links</label>
+                <textarea id="links" name="links" maxlength="1000" placeholder="Portfolio, GitHub, LinkedIn, or any useful links"></textarea>
+                <p class="hint">You can place one or multiple links.</p>
+            </div>
+
+            <div class="actions">
+                <button type="submit" class="btn btn-primary">Submit Registration</button>
+                <a class="btn btn-ghost" href="../index.php">Back To Home</a>
+            </div>
+        </form>
+    </main>
+</body>
+</html>
