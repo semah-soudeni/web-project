@@ -158,3 +158,33 @@ a {
     background-color: white;
     transition: width 0.2s ease-in-out;
 }
+
+#nav-logout-btn {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #ef4444;
+    padding: 0.5rem 1.25rem;
+    font-size: 0.9rem;
+}
+
+#nav-logout-btn:hover {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: #ef4444;
+    transform: translateY(-1px);
+}
+
+#nav-user-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 5px 5px 5px 15px;
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+}
+
+#nav-user-name {
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
