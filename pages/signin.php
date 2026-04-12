@@ -9,10 +9,7 @@
 </head>
 <body>
 <?php
-    session_start();
-    echo "<script> console.log(".json_encode($_SESSION).")</script>";
-    echo "<script> console.log(".json_encode($_COOKIE).")</script>";
-    echo "<script> console.log(".json_encode($_SERVER).")</script>";
+    session_start(); 
     if (isset($_SESSION['logged']) && $_SESSION['logged']){
         header("location:/index.php");   
     } 

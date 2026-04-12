@@ -139,7 +139,9 @@ function createEventCard(event) {
                         <span>👥</span>
                         <span>${event.attendees ?? 0} attendees</span>
                     </div>
+                    <form action='register.php' method="POST">
                     <button class="register-btn" onclick="registerForEvent(${event.id}, this)">Register</button>
+                    </form> 
                 </div> 
             </div>
         </div>

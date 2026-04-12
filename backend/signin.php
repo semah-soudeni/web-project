@@ -25,6 +25,7 @@ if (!$result) {
     header("Location: ../pages/signin.php");
     exit;
 } else {
+    $_SESSION["id"] = $result["id"];
     $_SESSION["logged"] = "yes";
     $_SESSION["user_email"] = $result["email"];
     $_SESSION["user_first_name"] = $result["first_name"] ?? '';

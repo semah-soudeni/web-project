@@ -2,9 +2,8 @@
 class ConnexionBD {
     private static $_db_name = "insat_clubs";
     private static $_user = "root";
-    private static $_psswd = "admin123";
+    private static $_psswd = "";
     private static $_bdd;
-
     private function __construct(){
         try {
             self::$_bdd = new PDO("mysql:host=127.0.0.1;dbname=".self::$_db_name.";charset=utf8mb4", self::$_user, self::$_psswd);
