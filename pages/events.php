@@ -74,6 +74,9 @@ if ($isLoggedIn) {
         <div class="container">
             <div id="events-container"></div>
         </div>
+        <div id="loader" class="loader">
+            <img src="/assets/img/load.gif"/>
+        </div>
     </section>
     <script src="../assets/js/events.js"></script>
 </body>

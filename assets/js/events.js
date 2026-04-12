@@ -27,22 +27,21 @@ document.addEventListener("DOMContentLoaded", () => {
 async function loadEvents(clubSlug = "all") {
   const container = document.querySelector("#events-container");
 
-  /*container.innerHTML =
-    '<div class="empty-state"><p>Loading events...</p></div>';*/
+  document.getElementById('loader').classList.add('active');
 
-  await new Promise(r => setTimeout(r, 1000));
   try {
     const url = clubSlug
       ? `${EVENTS_API}?club=${encodeURIComponent(clubSlug)}`
       : EVENTS_API;
 
     const res = await fetch(url, { credentials: "include" });
+    document.getElementById('loader').classList.remove('active');
     if (!res.ok) throw new Error(`Server responded with ${res.status}`);
 
     const events = await res.json();
-    console.log(events);
     renderEvents(events);
   } catch (err) {
+    document.getElementById('loader').classList.remove('active');
     container.innerHTML = `
             <div class="empty-state">
                 <h3>Could not load events</h3>

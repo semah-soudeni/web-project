@@ -337,6 +337,31 @@ body {
     box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
 }
 
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 9999;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.loader img {
+  width: 60px;
+}
+
+.loader.active {
+  visibility: visible;
+  opacity: 0.4;
+}
+
 /* USER AREA STANDARDIZATION */
 #nav-user-area {
     display: flex;
