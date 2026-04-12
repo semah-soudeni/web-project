@@ -26,7 +26,7 @@ if ($isLoggedIn) {
         <nav class="navigation">
             <div class="nav-container">
                 <div class="nav-menu">
-                    <a href="index.html" class="nav-link">Clubs</a>
+                    <a href="index.php" class="nav-link">Clubs</a>
                     <a href="pages/events.php" class="nav-link">Events</a>
                     <a href="pages/map.php" class="nav-link">Map</a>
                     <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
@@ -150,7 +150,8 @@ if ($isLoggedIn) {
             </div>
         </section>
     </main>
-    <script src="assets/js/auth.js"></script>
+    <script> console.log(<?= json_encode($_SESSION) ?>)</script>
+
 </body>
 
 </html>

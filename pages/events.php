@@ -13,9 +13,7 @@ if ($isLoggedIn) {
     }
 }
 ?>
-<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,7 +29,7 @@ if ($isLoggedIn) {
                 <a href="events.php" class="nav-link">Events</a>
                 <a href="map.php" class="nav-link">Map</a>
                 <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
-                        <a href="pages/admin.php" class="nav-link">Admin Dashboard</a>
+                        <a href="admin.php" class="nav-link">Admin Dashboard</a>
                 <?php endif; ?>
             </div>
             <div class="nav-login">
