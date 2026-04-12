@@ -27,9 +27,10 @@ document.addEventListener("DOMContentLoaded", () => {
 async function loadEvents(clubSlug = "all") {
   const container = document.querySelector("#events-container");
 
-  container.innerHTML =
-    '<div class="empty-state"><p>Loading events...</p></div>';
+  /*container.innerHTML =
+    '<div class="empty-state"><p>Loading events...</p></div>';*/
 
+  await new Promise(r => setTimeout(r, 1000));
   try {
     const url = clubSlug
       ? `${EVENTS_API}?club=${encodeURIComponent(clubSlug)}`
@@ -39,6 +40,7 @@ async function loadEvents(clubSlug = "all") {
     if (!res.ok) throw new Error(`Server responded with ${res.status}`);
 
     const events = await res.json();
+    console.log(events);
     renderEvents(events);
   } catch (err) {
     container.innerHTML = `
@@ -53,7 +55,7 @@ async function loadEvents(clubSlug = "all") {
 
 function renderEvents(events) {
   const container = document.querySelector("#events-container");
-  container.innerHTML = "";
+  const oldlen = container.innerHTML.length;
 
   if (!events.length) {
     container.innerHTML = `
@@ -81,6 +83,7 @@ function renderEvents(events) {
 
     container.appendChild(section);
   });
+  container.innerHTML = container.innerHTML.slice(oldlen);
 }
 
 function groupEventsByMonth(events) {
