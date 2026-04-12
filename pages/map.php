@@ -25,11 +25,11 @@ if ($isLoggedIn) {
     <nav class="navigation">
         <div class="nav-container">
             <div class="nav-menu">
-                <a href="index.html" class="nav-link">Clubs</a>
-                <a href="pages/events.php" class="nav-link">Events</a>
-                <a href="pages/map.php" class="nav-link">Map</a>
+                <a href="/index.php" class="nav-link">Clubs</a>
+                <a href="/pages/events.php" class="nav-link">Events</a>
+                <a href="/pages/map.php" class="nav-link">Map</a>
                 <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
-                    <a href="pages/admin.php" class="nav-link">Admin Dashboard</a>
+                    <a href="/pages/admin.php" class="nav-link">Admin Dashboard</a>
                 <?php endif; ?>
             </div>
             <div class="nav-login">
@@ -41,8 +41,8 @@ if ($isLoggedIn) {
                     <button id="nav-logout-btn" class="signin-btn">Sign Out</button>
                     </form>
                     <?php else: ?>
-                <a href="pages/signin.php" class="signin-btn">Sign In</a>
-                <a href="pages/signup.php" class="signup-btn">Sign Up</a>
+                <a href="/pages/signin.php" class="signin-btn">Sign In</a>
+                <a href="/pages/signup.php" class="signup-btn">Sign Up</a>
                 <?php endif; ?>
             </div>
         </div>
@@ -84,7 +84,7 @@ if ($isLoggedIn) {
 
       <div class="sidebar" id="sidebar">
         <button onclick="closeBar()"> --> </button>
-        <p id="test"></p>
+        <p id="test" style="color: black;"></p>
       </div>
     </div>
     <script src="/assets/js/map.js"></script>
