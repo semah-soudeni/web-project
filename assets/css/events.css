@@ -28,6 +28,11 @@ body {
     background-attachment: fixed;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 .navigation {
     background-color: var(--nav-bg);
     backdrop-filter: blur(12px);
