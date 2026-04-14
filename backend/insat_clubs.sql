@@ -49,9 +49,6 @@ CREATE TABLE
         event_time TIME DEFAULT NULL,
         duration INT NOT NULL, 
         location VARCHAR(200) DEFAULT NULL,
-        attendees INT DEFAULT 0,
-        max_attendees INT DEFAULT NULL,
-        CHECK (max_attendees is NULL or attendees <= max_attendees),
         event_type enum('hackathon','conference','workshop','competition') NOT NULL,
         prize_pool TEXT DEFAULT NULL
 
