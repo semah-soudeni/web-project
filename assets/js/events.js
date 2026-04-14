@@ -145,7 +145,7 @@ function createEventCard(event) {
                     ${
                       event.is_registered
                         ? `<a class="register-btn" aria-disabled="true" style="opacity:0.6; pointer-events:none;">✓ Registered ✓</a>`
-                        : `<a class="register-btn" href="/pages/event-registration.html?event_id=${Number(event.id || 0)}">Register</a>`
+                        : `<a class="register-btn" href="event-registration.html?event_id=${Number(event.id || 0)}">Register</a>`
                     }
                 </div>
             </div>

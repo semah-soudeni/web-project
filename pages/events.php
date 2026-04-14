@@ -145,11 +145,11 @@ $eventsPayload = [
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/events.css">
+    <link rel="stylesheet" href="../assets/css/events.css">
     <script>
         window.PHP_EVENTS_PAYLOAD = <?php echo json_encode($eventsPayload, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
     </script>
-    <script src="/assets/js/events.js" defer></script>
+    <script src="../assets/js/events.js" defer></script>
     <title>Upcoming Events</title>
 </head>
 
@@ -157,24 +157,24 @@ $eventsPayload = [
     <nav class="navigation">
         <div class="nav-container">
             <div class="nav-menu">
-                <a href="/index.php" class="nav-link">Clubs</a>
-                <a href="/pages/events.php" class="nav-link">Events</a>
-                <a href="/pages/map.php" class="nav-link">Map</a>
+                <a href="../index.php" class="nav-link">Clubs</a>
+                <a href="events.php" class="nav-link">Events</a>
+                <a href="map.php" class="nav-link">Map</a>
                 <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
-                        <a href="/pages/admin.php" class="nav-link">Admin Dashboard</a>
+                        <a href="admin.php" class="nav-link">Admin Dashboard</a>
                 <?php endif; ?>
             </div>
             <div class="nav-login">
                  <?php if ($isLoggedIn): ?>
-                    <form action="/backend/logout.php" method="POST" style="display:flex; align-items:center; gap:20px;">
+                    <form action="../backend/logout.php" method="POST" style="display:flex; align-items:center; gap:20px;">
                         <span id="nav-user-name" style="font-weight:600;">
                             <?php echo "Hi, " .htmlspecialchars($displayName, ENT_QUOTES, 'UTF-8'); ?>
                         </span>
                         <button id="nav-logout-btn" class="signin-btn">Sign Out</button>
                         </form>
                         <?php else: ?>
-                    <a href="/pages/signin.php" class="signin-btn">Sign In</a>
-                    <a href="/pages/signup.php" class="signup-btn">Sign Up</a>
+                    <a href="signin.php" class="signin-btn">Sign In</a>
+                    <a href="signup.php" class="signup-btn">Sign Up</a>
                     <?php endif; ?>
             </div>
         </div>
@@ -257,7 +257,7 @@ $eventsPayload = [
                                             </div>
                                             
                                             <?php if (!$event['is_registered']): ?>
-                                                <a class="register-btn" href="/pages/event-registration.html?event_id=<?php echo (int)($event['id'] ?? 0); ?>">Register</a>
+                                                <a class="register-btn" href="event-registration.html?event_id=<?php echo (int)($event['id'] ?? 0); ?>">Register</a>
                                             <?php else: ?>
                                                 <a class="register-btn" aria-disabled="true" style="opacity:0.6; pointer-events:none;">Registered ✓</a>
                                             <?php endif; ?>        
