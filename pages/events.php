@@ -50,7 +50,7 @@ try {
     $stmt = $conn->query(
         "SELECT e.id, c.slug AS club, e.title, e.description,
                 e.event_date AS date, e.event_time AS time,
-                e.location, e.attendees
+                e.location
          FROM events e
          JOIN club_events ce ON e.id = ce.event_id
          JOIN clubs c ON ce.club_id = c.id

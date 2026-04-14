@@ -34,14 +34,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function renderByClub(clubSlug = "all") {
   const container = document.querySelector("#events-container");
-  if (!container) {
-    return;
-  }
+  if (!container) return;
 
   const filteredEvents =
     clubSlug === "all"
       ? allEvents
-      : allEvents.filter((event) => (event.club || "").toLowerCase() === clubSlug);
+      : allEvents.filter((event) => {
+        const slugs = (event.clubs || "").split(',').map(s => s.trim());
+        return slugs.includes(clubSlug);
+      });
 
   renderEvents(filteredEvents);
 }
@@ -104,6 +105,14 @@ function groupEventsByMonth(events) {
 }
 
 function createEventCard(event) {
+  const slugs = event.clubs ? event.clubs.split(',') : [];
+  const names = event.club_names ? event.club_names.split(',') : [];
+
+  const clubTags = slugs.map((slug, index) => {
+    const color = clubColors[slug] || "#3182ce";
+    const name = names[index] || clubNames[slug] || slug;
+    return `<div class="club-tag" style="background-color: ${color}">${name}</div>`;
+  }).join('');
   const date = new Date(event.date + "T00:00");
   const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
   const day = date.getDate();
@@ -111,9 +120,7 @@ function createEventCard(event) {
 
   const timeStr = formatTime(event.time);
 
-  const slug = (event.club || "").toLowerCase();
-  const clubColor = clubColors[slug] || "#3182ce";
-  const clubName = event.club_name || clubNames[slug] || slug;
+  const slug = (event.clubs || "").split(',')[0].trim();
 
   return `
         <div class="event-card" data-club="${slug}">
@@ -123,9 +130,7 @@ function createEventCard(event) {
             </div>
             <div class="event-content">
                 <div class="event-header">
-                    <div class="club-tag ${slug}" style="background-color: ${clubColor}">
-                        ${clubName}
-                    </div>
+                    ${clubTags}
                     <div class="event-time">
                         🕐 ${timeStr}
                     </div>
