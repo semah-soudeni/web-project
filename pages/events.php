@@ -41,6 +41,7 @@ $clubNames = [
 
 $allEvents = [];
 $res2 = [];
+$count = [];
 $queryError = false;
 
 try {
@@ -66,6 +67,16 @@ try {
         $res2 = $stmt2->fetchAll(PDO::FETCH_COLUMN, 0);
     }
 
+    $stmt3 = $conn->prepare(
+        "SELECT event_id,COUNT(*) AS nb 
+        FROM register
+        GROUP BY  event_id;"
+        );
+
+    $stmt3->execute();
+
+    $count = $stmt3->fetchAll(PDO::FETCH_ASSOC);
+
     $allEvents = $stmt ? $stmt->fetchAll(PDO::FETCH_ASSOC) : [];
 } catch (Throwable $e) {
     $queryError = true;
@@ -83,11 +94,29 @@ $registeredIds = array_map('intval', $res2);
 
     foreach ($allEvents as &$evt) {
         $evt['is_registered'] = in_array((int)$evt['id'], $registeredIds, true);
+        
+        $att = 0;
+        foreach($count as $elem) {
+            if($elem["event_id"] == $evt["id"]){
+                $att = $elem["nb"];
+                break;
+            }
+        }
+        $evt['attendees'] = $att;
     }
     unset($evt);
 
     foreach ($events as &$evt2) {
         $evt2['is_registered'] = in_array((int)$evt2['id'], $registeredIds, true);
+        
+        $att2 = 0;
+        foreach($count as $elem) {
+            if($elem["event_id"] == $evt2["id"]){
+                $att2 = $elem["nb"];
+                break;
+            }
+        }
+        $evt2['attendees'] = $att2;
     }
     unset($evt2);
 
@@ -253,7 +282,15 @@ $eventsPayload = [
 
                                             <div class="event-location">
                                                 <span>👥</span>
-                                                <span><?php echo escapeText((string)($event['attendees'] ?? 0)); ?> attendees</span>
+                                                <?php
+                                                    $att = 0;
+                                                    foreach($count as $elem) {
+                                                        if($elem["event_id"] == $event["id"]){
+                                                            $att = $elem["nb"];
+                                                        }
+                                                    }
+                                                ?>
+                                                <span><?php echo escapeText((string)$att); ?> attendees</span>
                                             </div>
                                             
                                             <?php if (!$event['is_registered']): ?>
