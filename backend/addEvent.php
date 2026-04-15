@@ -13,14 +13,14 @@ $location=$_POST["location"];
 $max_attendees= empty($_POST["max_attendees"]) ? null : $_POST["max_attendees"];
 
 $other_participating_clubs=$_POST["other_participating_clubs"] ?? [];
-$STAFF=array_values($_POST["staffmember"]);
-$photos = $_FILES["staffmember"];
+$STAFF=array_values($_POST["staffmember"]) ;
+$photos = $_FILES["staffmember"] ?? null;
 
 if (empty($event_type) || empty($description) || empty($title) || empty($date) || empty($time) || empty($duration) 
-   || empty($location) || empty($STAFF) ){
+   || empty($location) || empty($STAFF)  ){
    echo json_encode([
        'success' => false,
-       'message' => "data is missing",
+       'message' => "Data is missing. Please check again. ",
        'event_type' => json_encode($event_type),
        'description' => json_encode($description),
        'title' => json_encode($title),
@@ -37,6 +37,13 @@ try {
 
     $users_ids = [];
     foreach ($STAFF as $key => $value) {
+        if (empty($value["email"]) || empty($value["role"])){
+            echo json_encode([
+               'success' => false,
+               'message' => "Data is missing. Please check again.",       
+            ]);
+            exit();
+        }
         $check_email = $connexion->prepare("SELECT id FROM etudiant WHERE email = ?");
         $check_email->execute([$value["email"]]);
         $user = $check_email->fetch(PDO::FETCH_ASSOC);
@@ -44,7 +51,7 @@ try {
         if (!$user){
             echo json_encode([
                 "success" => false,
-                "message" => "email does not exist",
+                "message" => $value["role"] . " email does not exist , please make sure staff members have accounts",
                 "email" => $value["email"],
             ]);
             exit();
@@ -74,7 +81,7 @@ try {
         $club_ids= $connexion->prepare("SELECT id FROM clubs WHERE slug = ?");
         $club_ids->execute([$value]);
         $club = $club_ids->fetch(PDO::FETCH_ASSOC);
-
+ 
         $club_event = $connexion->prepare("INSERT INTO club_events(club_id,event_id) VALUES(?,?)");
         $club_event->execute([$club["id"],$event]);
     }
@@ -89,14 +96,35 @@ try {
         $staffInsertion = $connexion->prepare("INSERT INTO staff(user_id,photo,role,event_id) VALUES (?,?,?,?)");
         $staffInsertion->execute([
             $value,
-            $photos[$key]["photo"],
+            $photos[$key]["photo"] ?? null,
             $STAFF[$key]["role"],
             $event
         ]);
     }
+    echo json_encode([
+        "success" => true,
+        "message" => "Event has been added successufully",
+    ]);
+}
+catch (PDOException $exception){
+    $mysqlCode = $exception->errorInfo[1];
+    if ($mysqlCode == 1062){
+        echo json_encode([
+            "success" => false,
+            "message" => "This event already exists"
+        ]);
+    }
+    else {
+        echo json_encode([
+            "success" => false,
+            "message" => $exception->getMessage(),
+        ]);
+    }
 }
 catch (Exception $e){
-    echo $e->getMessage();
+    echo json_encode([
+        "success" => false,
+        "message" => $e->getMessage()]);
 }
 
 

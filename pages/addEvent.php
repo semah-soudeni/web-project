@@ -49,7 +49,7 @@
             </div>
         </div>
     </nav>
-    <section class="">
+    <section class="main-section">
         <div class="add-event-container">
             <h3 class="add-event-title">Add New Event</h3>
             <form  id="add-event" action="javascript:sendData()">
@@ -169,6 +169,24 @@
                 <input type="submit" value="Add Event">
             </form>
         </div>
+            <div id="error" class="panel panel-error">
+              <span class="badge">
+                <span class="badge-dot"></span>
+                Validation error
+              </span>
+              <p class="panel-title">Something went wrong</p>
+              <div class="panel-divider"></div>
+              <p class="panel-message">We couldn't save your changes. Please review the fields below and try again — your progress is safe.</p>
+            </div>
+            <div id="success" class="panel panel-success">
+                <span class="badge">
+                <span class="badge-dot"></span>
+                All good
+                </span>
+                <p class="panel-title">Changes saved</p>
+                <div class="panel-divider"></div>
+                <p class="panel-message">Event has been added successufully. Changes may take a moment to appear everywhere.</p>
+            </div>  
     </section>
     <script src="../assets/js/addEvent.js" dref></script>
 </body>

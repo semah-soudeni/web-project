@@ -151,7 +151,9 @@ a {
 
 
 
-
+.main-section{
+    position:relative;
+}
 
 
 
@@ -530,4 +532,71 @@ select:disabled {
 
 .teammate-file-input::file-selector-button:hover {
     background: #e0e0e0;
+}
+.panel {
+  position: fixed;
+  left:750px;
+  top:400px;
+  width: 460px;
+  min-height: 240px;
+  padding: 28px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  visibility: hidden;
+}
+
+/* Error */
+.panel-error {
+  background: rgba(252, 235, 235);
+  border-color: rgba(226, 75, 74, 0.2);
+}
+.badge       { background: rgba(226, 75, 74, 0.12); color: #A32D2D; }
+.badge-dot   { background: #E24B4A; }
+.panel-title { color: #791F1F; }
+.panel-message { color: #A32D2D; }
+.panel-divider { background: rgba(226, 75, 74, 0.15); }
+
+/* Success */
+.panel-success {
+  background: rgba(234, 243, 222, 0.75);
+  border-color: rgba(99, 153, 34, 0.2);
+}
+.panel-success .badge       { background: rgba(99, 153, 34, 0.12); color: #3B6D11; }
+.panel-success .badge-dot   { background: #639922; }
+.panel-success .panel-title { color: #27500A; }
+.panel-success .panel-message { color: #3B6D11; }
+.panel-success .panel-divider { background: rgba(99, 153, 34, 0.15); }
+
+/* Shared sub-elements */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  width: fit-content;
+}
+.badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+.panel-title   { font-size: 20px; font-weight: 500; margin: 0; line-height: 1.25; }
+.panel-message { font-size: 14px; line-height: 1.65; margin: 0; }
+.panel-divider { height: 1px; margin: 0; }
+.panel-icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+  font-size: 11px;
+  font-weight: 500;
 }

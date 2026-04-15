@@ -98,26 +98,6 @@
 
 })();
 
-function getClubsNames (){
-    const right_block = document.getElementById("right");
-    const participating_clubs = right_block.getElementsByClassName("list");
-    return Array.from(participating_clubs).map( Element => Element.getAttribute("data-club"));
-}
-function sendData(){
-    const form = document.getElementById("add-event");
-    let data = new FormData(form);
-    data.append("other_participating_clubs" , getClubsNames());
-    
-    fetch('../../backend/addEvent.php', {
-        method  : 'POST',
-        body :  data
-    })
-    .then(response => response.text())
-    .then(d => console.log(`DATA: ${d}`))
-    .catch( error => console.error(error))
-}
-
-
 let teammateCount = 0;
 
 document.getElementById('add-teammate-btn').addEventListener('click', function () {
@@ -152,4 +132,56 @@ function previewTeammatePhoto(input, index) {
         };
         reader.readAsDataURL(input.files[0]);
     }
+}
+
+
+
+
+
+function getClubsNames() {
+    const right_block = document.getElementById("right");
+    const participating_clubs = right_block.getElementsByClassName("list");
+    return Array.from(participating_clubs).map(el => el.getAttribute("data-club"));
+}
+
+function sendData() {
+    const form = document.getElementById("add-event");
+    const data = new FormData(form);
+    data.append("other_participating_clubs", getClubsNames());
+
+    fetch('../../backend/addEvent.php', {
+    method: 'POST',
+    body: data
+    })
+    .then(response =>{
+        return response.json();
+    })
+    .then(d => handleRequest(d))
+    .catch(error => console.error(error));
+}
+
+const errorBox   = document.getElementById("error");
+const successBox = document.getElementById("success");  
+const addEventContainer = document.getElementsByClassName("add-event-container")[0];
+function toggleBox(box) {
+    if (box == null) return;
+    setTimeout(() => {
+    function handler(event) {
+      if (!box.contains(event.target)) {
+        box.style.visibility = "hidden";
+        addEventContainer.style.filter = "none";
+        document.removeEventListener('click', handler);
+      }
+    }
+    document.addEventListener('click', handler);
+    }, 0);
+}
+
+function handleRequest(data) {
+    const box = data.success ? successBox : errorBox;
+    
+    document.querySelector(".panel-message").textContent = data.message;
+    box.style.visibility = "visible";
+    addEventContainer.style.filter = "blur(3px)";
+    toggleBox(box);
 }
