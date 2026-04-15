@@ -16,7 +16,9 @@ if ($isLoggedIn) {
 }
 
 $selectedClub = strtolower(trim((string)($_GET['club'] ?? 'all')));
-$allowedClubs = ['all', 'aero', 'secu', 'ieee', 'acm', 'android', 'cim'];
+$allowedClubs = ['all', 'aero', 'secu', 'ieee', 'acm', 'android', 'cim',
+                 'theatro', 'cineradio', 'press', 'lions', 'enactus',
+                 'jei', 'jci', 'chem', 'astro', '3zero'];
 if (!in_array($selectedClub, $allowedClubs, true)) {
     $selectedClub = 'all';
 }
@@ -48,12 +50,18 @@ try {
     $conn = ConnexionBD::getInstance();
 
     $stmt = $conn->query(
-        "SELECT e.id, c.slug AS club, e.title, e.description,
-                e.event_date AS date, e.event_time AS time,
-                e.location
-         FROM events e
+        "SELECT
+            e.id, 
+            GROUP_CONCAT(c.slug ORDER BY c.slug SEPARATOR ',') AS clubs,
+            GROUP_CONCAT(c.name ORDER BY c.slug SEPARATOR ',') AS club_names,
+            e.title,
+            e.description,
+            e.event_date AS date, e.event_time AS time,
+            e.location
+         FROM events e  
          JOIN club_events ce ON e.id = ce.event_id
          JOIN clubs c ON ce.club_id = c.id
+         GROUP BY e.id
          ORDER BY e.event_date, e.event_time"
     );
 
@@ -67,13 +75,11 @@ try {
         $res2 = $stmt2->fetchAll(PDO::FETCH_COLUMN, 0);
     }
 
-    $stmt3 = $conn->prepare(
+    $stmt3 = $conn->query(
         "SELECT event_id,COUNT(*) AS nb 
         FROM register
         GROUP BY  event_id;"
         );
-
-    $stmt3->execute();
 
     $count = $stmt3->fetchAll(PDO::FETCH_ASSOC);
 
@@ -84,20 +90,11 @@ try {
 
 $registeredIds = array_map('intval', $res2);
 
-    $events = $allEvents;
-    if ($selectedClub !== 'all') {
-        $events = array_values(array_filter(
-            $allEvents,
-            static fn(array $event): bool => strtolower((string)($event['club'] ?? '')) === $selectedClub
-    ));
-}
-
     foreach ($allEvents as &$evt) {
         $evt['is_registered'] = in_array((int)$evt['id'], $registeredIds, true);
-        
         $att = 0;
         foreach($count as $elem) {
-            if($elem["event_id"] == $evt["id"]){
+            if ($elem["event_id"] == $evt["id"]){
                 $att = $elem["nb"];
                 break;
             }
@@ -106,19 +103,16 @@ $registeredIds = array_map('intval', $res2);
     }
     unset($evt);
 
-    foreach ($events as &$evt2) {
-        $evt2['is_registered'] = in_array((int)$evt2['id'], $registeredIds, true);
-        
-        $att2 = 0;
-        foreach($count as $elem) {
-            if($elem["event_id"] == $evt2["id"]){
-                $att2 = $elem["nb"];
-                break;
+    $events = $allEvents;
+    if ($selectedClub !== 'all') {
+        $events = array_values(array_filter(
+            $allEvents,
+            static function(array $event) use ($selectedClub) : bool {
+                $slugs = array_map('trim', explode(',', strtolower((string)($event['clubs'] ?? ''))));
+                return in_array($selectedClub, $slugs, true);
             }
-        }
-        $evt2['attendees'] = $att2;
+        ));
     }
-    unset($evt2);
 
     $groupedEvents = [];
     foreach ($events as $event) {
@@ -170,14 +164,12 @@ $eventsPayload = [
     'events' => $allEvents,
 ];
 ?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/events.css">
-    <script>
-        window.PHP_EVENTS_PAYLOAD = <?php echo json_encode($eventsPayload, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
-    </script>
     <script src="../assets/js/events.js" defer></script>
     <title>Upcoming Events</title>
 </head>
@@ -249,15 +241,14 @@ $eventsPayload = [
 
                             <?php foreach ($group['items'] as $event): ?>
                                 <?php
-                                $slug = strtolower((string)($event['club'] ?? ''));
-                                $clubColor = $clubColors[$slug] ?? '#3182ce';
-                                $clubLabel = $clubNames[$slug] ?? strtoupper($slug);
+                                $slugs = explode(',', (string)($event['clubs'] ?? ''));
+                                $cnames = explode(',', (string)($event['club_names'] ?? ''));
 
                                 $eventDate = strtotime((string)($event['date'] ?? ''));
                                 $day = $eventDate !== false ? date('j', $eventDate) : '--';
                                 $month = $eventDate !== false ? strtoupper(date('M', $eventDate)) : 'TBA';
                                 ?>
-                                <div class="event-card" data-club="<?php echo escapeText($slug); ?>">
+                                <div class="event-card" data-club="<?php echo escapeText(implode(',', array_map('trim', $slugs))); ?>">
                                     <div class="date-badge">
                                         <div class="day-badge"><?php echo escapeText((string)$day); ?></div>
                                         <div class="month-badge"><?php echo escapeText($month); ?></div>
@@ -265,8 +256,17 @@ $eventsPayload = [
 
                                     <div class="event-content">
                                         <div class="event-header">
-                                            <div class="club-tag <?php echo escapeText($slug); ?>" style="background-color: <?php echo escapeText($clubColor); ?>;">
-                                                <?php echo escapeText($clubLabel); ?>
+                                            <div class="club-tags" style="display:flex; gap:6px; flex-wrap:wrap;">
+                                                <?php foreach($slugs as $i => $s):
+                                                    $s = trim($s);
+                                                    $color = $clubColors[$s] ?? '#3182ce';
+                                                    $label = $clubNames[$s] ?? strtoupper($s);
+                                                ?>
+                                                <div class="club-tag <?php echo escapeText($s); ?>"
+                                                     style="background-color: <?php echo escapeText($color) ?>">
+                                                    <?php echo escapeText($label); ?>    
+                                                </div>
+                                                <?php endforeach; ?>
                                             </div>
                                             <div class="event-hour">🕐 <?php echo escapeText(formatEventTime($event['time'] ?? null)); ?></div>
                                         </div>
@@ -282,15 +282,7 @@ $eventsPayload = [
 
                                             <div class="event-location">
                                                 <span>👥</span>
-                                                <?php
-                                                    $att = 0;
-                                                    foreach($count as $elem) {
-                                                        if($elem["event_id"] == $event["id"]){
-                                                            $att = $elem["nb"];
-                                                        }
-                                                    }
-                                                ?>
-                                                <span><?php echo escapeText((string)$att); ?> attendees</span>
+                                                <span><?php echo (int)($event['attendees'] ?? 0); ?> attendees</span>
                                             </div>
                                             
                                             <?php if (!$event['is_registered']): ?>
