@@ -35,7 +35,7 @@
             </div>
             <div class="nav-login">
                <?php if ($isLoggedIn): ?>
-                <form action="backend/logout.php" method="POST" style="display:flex; align-items:center; gap:20px;">
+                <form action="../backend/logout.php" method="POST" style="display:flex; align-items:center; gap:20px;">
                     <span id="nav-user-name" style="font-weight:600;">
                         <?php echo "Hi, " .htmlspecialchars($displayName, ENT_QUOTES, 'UTF-8'); ?>
                     </span>
@@ -116,7 +116,7 @@
                   <button class="eb-close-btn" onclick="togglePanel()">&#x2715;</button>
                 </div>
 
-                <form action="backend/broadcast.php" method="POST">
+                <form action="../backend/broadcast.php" method="POST">
                   <div class="eb-field">
                     <label class="eb-label">Receivers</label>
                     <div class="eb-dropdown" id="receiverDropdown">
@@ -180,7 +180,7 @@
 
                   <div class="eb-field">
                     <label class="eb-label">Subject</label>
-                    <input class="eb-input" id="subjectInput" type="text" name="subject" placeholder="e.g. Club meeting this Friday" required>
+                    <input class="eb-input" id="subjectInput" type="text" name="subject" placeholder="e.g. Club meeting this Friday" >
                   </div>
 
                   <div class="eb-field">
@@ -201,46 +201,262 @@
                 </form>
               </div>
             </section> 
-        <section class="events-section">
-                <div class="events-header">
-                    <div class="events-header-left">
-                        <h3 class="title">Upcoming Events</h3>
-                    </div>
+
+
+            <section class="events-section">
+              <div class="events-header">
+                <div>
+                  <h2 class="events-title">Manage Events</h2>
+                  <p class="events-subtitle">View, edit, and delete your club events</p>
                 </div>
-                <div class="events-container">
-                    <div class="event-card">
-                        <div class="event-card-accent"></div>
-                        <div class="event-card-body">
-                            <div class="event-card-header">
-                                <span class="event-tag">General</span>
-                                <div class="more-menu">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#718096"><path d="M480-160q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm0-240q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm0-240q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Z"/></svg>
-                                </div>
-                            </div>
-                            <h4 class="event-title">Weekly General Meeting</h4>
-                            <div class="event-meta-grid">
-                                <div class="event-meta-item">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="16px" fill="#718096"><path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Z"/></svg>
-                                    <span>Feb 10, 2026</span>
-                                </div>
-                                <div class="event-meta-item">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="16px" fill="#718096"><path d="M339.5-108.5q-65.5-28.5-114-77t-77-114Q120-365 120-440t28.5-140.5q28.5-65.5 77-114t114-77Q405-800 480-800t140.5 28.5q65.5 28.5 114 77t77 114Q840-515 840-440t-28.5 140.5q-28.5 65.5-77 114t-114 77Q555-80 480-80t-140.5-28.5ZM480-440Zm112 168 56-56-128-128v-184h-80v216l152 152ZM224-866l56 56-170 170-56-56 170-170Zm512 0 170 170-56 56-170-170 56-56ZM480-160q117 0 198.5-81.5T760-440q0-117-81.5-198.5T480-720q-117 0-198.5 81.5T200-440q0 117 81.5 198.5T480-160Z"/></svg>
-                                    <span>6:00 PM</span>
-                                </div>
-                                <div class="event-meta-item">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="16px" fill="#718096"><path d="M536.5-503.5Q560-527 560-560t-23.5-56.5Q513-640 480-640t-56.5 23.5Q400-593 400-560t23.5 56.5Q447-480 480-480t56.5-23.5ZM480-186q122-112 181-203.5T720-552q0-109-69.5-178.5T480-800q-101 0-170.5 69.5T240-552q0 71 59 162.5T480-186Zm0 106Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Zm0-480Z"/></svg>
-                                    <span>Room 2B6-1</span>
-                                </div>
-                                <div class="event-meta-item">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="16px" fill="#718096"><path d="M40-160v-112q0-34 17.5-62.5T104-378q62-31 126-46.5T360-440q66 0 130 15.5T616-378q29 15 46.5 43.5T680-272v112H40Zm720 0v-120q0-44-24.5-84.5T666-434q51 6 96 20.5t84 35.5q36 20 55 44.5t19 53.5v120H760ZM247-527q-47-47-47-113t47-113q47-47 113-47t113 47q47 47 47 113t-47 113q-47 47-113 47t-113-47Zm466 0q-47 47-113 47-11 0-28-2.5t-28-5.5q27-32 41.5-71t14.5-81q0-42-14.5-81T544-792q14-5 28-6.5t28-1.5q66 0 113 47t47 113q0 66-47 113ZM120-240h480v-32q0-11-5.5-20T580-306q-54-27-109-40.5T360-360q-56 0-111 13.5T140-306q-9 5-14.5 14t-5.5 20v32Zm296.5-343.5Q440-607 440-640t-23.5-56.5Q393-720 360-720t-56.5 23.5Q280-673 280-640t23.5 56.5Q327-560 360-560t56.5-23.5ZM360-240Zm0-400Z"/></svg>
-                                    <span>45 attendees</span>
-                                </div>
-                            </div>
-                        </div>
+              </div>
+
+              <div class="events-grid">
+                <?php 
+                require_once '../backend/getEvents.php';
+
+                $events = fetchEventsData();
+                
+                foreach ($events as $event): 
+                    echo "<script>console.log(".json_encode($event).");</script>";
+                ?>
+                <div class="event-card">
+                  <div class="event-card-header">
+                    <span class="event-type-badge event-type-<?php echo strtolower($event['type']); ?>">
+                      <?php echo htmlspecialchars($event['event_type']); ?>
+                    </span>
+                    <div class="event-actions">
+                      <button class="event-action-btn event-edit-btn" onclick="editEvent(<?php echo $event['id']; ?>)" title="Edit event">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                          <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                        </svg>
+                      </button>
+                      <button class="event-action-btn event-delete-btn" onclick="confirmDeleteEvent(<?php echo $event['id']; ?>, '<?php echo htmlspecialchars($event['title'], ENT_QUOTES); ?>')" title="Delete event">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <polyline points="3 6 5 6 21 6"></polyline>
+                          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                          <line x1="10" y1="11" x2="10" y2="17"></line>
+                          <line x1="14" y1="11" x2="14" y2="17"></line>
+                        </svg>
+                      </button>
                     </div>
+                  </div>
+
+                  <h3 class="event-title"><?php echo htmlspecialchars($event['event']["title"]); ?></h3>
+                  <p class="event-description"><?php echo htmlspecialchars($event["event"]['description']); ?></p>
+
+                  <div class="event-meta-grid">
+                    <div class="event-meta-item">
+                      <svg class="event-meta-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                      </svg>
+                      <span><?php echo date('M d, Y', strtotime($event["event"]['event_date'])); ?></span>
+                    </div>
+
+                    <div class="event-meta-item">
+                      <svg class="event-meta-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                      </svg>
+                      <span><?php echo date('g:i A', strtotime($event["event"]['event_time'])); ?></span>
+                    </div>
+
+                    <?php if (!empty($event["event"]['duration'])): ?>
+                    <div class="event-meta-item">
+                      <svg class="event-meta-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                      </svg>
+                      <span><?php echo $event["event"]['duration']; ?> day<?php echo $event["event"]['duration'] > 1 ? 's' : ''; ?></span>
+                    </div>
+                    <?php endif; ?>
+
+                    <?php if (!empty($event["event"]['location'])): ?>
+                    <div class="event-meta-item">
+                      <svg class="event-meta-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                      </svg>
+                      <span><?php echo htmlspecialchars($event["event"]['location']); ?></span>
+                    </div>
+                    <?php endif; ?>
+
+                    <?php if (!empty($event["event"]['max_attendees'])): ?>
+                    <div class="event-meta-item">
+                      <svg class="event-meta-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                      </svg>
+                      <span>Max <?php echo $event["event"]['max_attendees']; ?> attendees</span>
+                    </div>
+                    <?php endif; ?>
+                  </div>
+
+                  <?php if (!empty($event["event"]['prize_pool'])): ?>
+                  <div class="event-prize">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="8" r="7"></circle>
+                      <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+                    </svg>
+                    <span><?php echo htmlspecialchars($event["event"]['prize_pool']); ?></span>
+                  </div>
+                  <?php endif; ?>
+
+                  <?php if (!empty($event['clubs'])): ?>
+                  <div class="event-clubs">
+                    <span class="event-clubs-label">Participating clubs:</span>
+                    <div class="event-clubs-list">
+                      <?php foreach ($event['clubs'] as $club): ?>
+                        <span class="event-club-tag"><?php echo htmlspecialchars($club); ?></span>
+                      <?php endforeach; ?>
+                    </div>
+                  </div>
+                  <?php endif; ?>
+
+                <?php if (!empty($event['staff'])): ?>
+                    <div class="event-staff-section">
+                      <span class="event-staff-header">Staff members</span>
+                      <div class="event-staff-grid">
+                        <?php foreach ($event['staff'] as $staffMember): ?>
+                          <div class="staff-card">
+                            <div class="staff-photo">
+                              <img src="<?php echo htmlspecialchars($staffMember['photo'] ?? '../assets/img/default-avatar.png'); ?>" alt="<?php echo htmlspecialchars($staffMember['name']); ?>">
+                            </div>
+                            <div class="staff-info">
+                              <p class="staff-name"><?php echo htmlspecialchars($staffMember['name']); ?></p>
+                              <p class="staff-role"><?php echo htmlspecialchars($staffMember['role']); ?></p>
+                            </div>
+                          </div>
+                        <?php endforeach; ?>
+                      </div>
+                    </div>
+                  <?php endif; ?>
                 </div>
+                <?php endforeach; ?>
+
+                <?php if (empty($events)): ?>
+                <div class="events-empty">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                  </svg>
+                  <h3>No events yet</h3>
+                  <p>Create your first event to get started</p>
+                </div>
+                <?php endif; ?>
+              </div>
             </section>
+
+            <div id="deleteModal" class="delete-modal-overlay">
+              <div class="delete-modal">
+                <div class="delete-modal-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2">
+                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                    <line x1="12" y1="9" x2="12" y2="13"></line>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                  </svg>
+                </div>
+                <h3 class="delete-modal-title">Delete Event</h3>
+                <p class="delete-modal-text">Are you sure you want to delete "<span id="deleteEventName"></span>"? This action cannot be undone.</p>
+                <div class="delete-modal-actions">
+                  <button class="delete-modal-cancel" onclick="closeDeleteModal()">Cancel</button>
+                  <button class="delete-modal-confirm" onclick="deleteEvent()">Delete Event</button>
+                </div>
+              </div>
+            </div>
     </main>
+
+    <div id="broadcastModal" class="bm-overlay">
+      <div class="bm-dialog">
+
+        <div class="bm-header">
+          <div class="bm-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2.2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          <div>
+            <p class="bm-title">Confirm broadcast</p>
+            <p class="bm-subtitle">Review before sending</p>
+          </div>
+        </div>
+
+        <div class="bm-summary">
+          <div class="bm-row">
+            <span class="bm-row-label">To</span>
+            <span id="modal-receivers" class="bm-row-value"></span>
+          </div>
+          <div class="bm-row">
+            <span class="bm-row-label">Subject</span>
+            <span id="modal-subject" class="bm-row-value"></span>
+          </div>
+          <div class="bm-row">
+            <span class="bm-row-label">Preview</span>
+            <span id="modal-preview" class="bm-row-value bm-row-value--muted"></span>
+          </div>
+        </div>
+
+        <div class="bm-warning">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#b45309" stroke-width="2.2" class="bm-warning-icon">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+            <line x1="12" y1="9" x2="12" y2="13"/>
+            <line x1="12" y1="17" x2="12.01" y2="17"/>
+          </svg>
+          <span>This email will be sent to all members in the selected group. This action cannot be undone.</span>
+        </div>
+
+        <div class="bm-footer">
+          <button class="bm-btn-cancel" onclick="closeModal()">Cancel</button>
+          <button class="bm-btn-send" onclick="confirmSend()">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="22" y1="2" x2="11" y2="13"/>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+            </svg>
+            Send broadcast
+          </button>
+        </div>
+
+      </div>
+    </div>
+    <div id="toastContainer" class="toast-container">
+
+      <div id="successToast" class="toast toast-success">
+        <div class="toast-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+        </div>
+        <div class="toast-content">
+          <p class="toast-title">Broadcast sent successfully!</p>
+          <p class="toast-message">Your message has been delivered to all selected members.</p>
+        </div>
+        <button class="toast-close" onclick="hideToast('successToast')">&times;</button>
+      </div>
+
+      <div id="errorToast" class="toast toast-error">
+        <div class="toast-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="15" y1="9" x2="9" y2="15"></line>
+            <line x1="9" y1="9" x2="15" y2="15"></line>
+          </svg>
+        </div>
+        <div class="toast-content">
+          <p class="toast-title">Broadcast failed</p>
+          <p class="toast-message">There was an error sending your message. Please try again.</p>
+        </div>
+        <button class="toast-close" onclick="hideToast('errorToast')">&times;</button>
+      </div>
+    </div>
     <script src="../assets/js/admin.js" dref></script>
 </body>
 </html>

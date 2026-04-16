@@ -98,7 +98,7 @@
 
 })();
 
-let teammateCount = 0;
+let teammateCount = -1;
 
 document.getElementById('add-teammate-btn').addEventListener('click', function () {
     teammateCount++;
@@ -141,13 +141,15 @@ function previewTeammatePhoto(input, index) {
 function getClubsNames() {
     const right_block = document.getElementById("right");
     const participating_clubs = right_block.getElementsByClassName("list");
-    return Array.from(participating_clubs).map(el => el.getAttribute("data-club"));
+    const array = Array.from(participating_clubs).map(el => el.getAttribute("data-club"));
+    console.log(array);
+    return array;
 }
 
 function sendData() {
     const form = document.getElementById("add-event");
     const data = new FormData(form);
-    data.append("other_participating_clubs", getClubsNames());
+    data.append("other_participating_clubs", JSON.stringify(getClubsNames()));
 
     fetch('../../backend/addEvent.php', {
     method: 'POST',
@@ -178,6 +180,7 @@ function toggleBox(box) {
 }
 
 function handleRequest(data) {
+    console.log(data);
     const box = data.success ? successBox : errorBox;
     
     document.querySelector(".panel-message").textContent = data.message;

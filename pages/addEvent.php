@@ -99,15 +99,15 @@
                     <div class="clubs-dnd-wrapper">
                         <div class="clubs-column" id="left">
                             <p class="column-label">Available Clubs</p>
-                            <div class="list"  data-club="aero">
+                            <div class="list"  data-club="Aerobotix">
                                 <img src="../assets/img/aero-logo.png" class="logo">
                                 <span>Aerobotix</span>
                             </div>
-                            <div class="list"  data-club="ieee">
+                            <div class="list"  data-club="IEEE">
                                 <img src="../assets/img/ieee-logo.png" class="logo">
                                 <span>IEEE</span>
                             </div>
-                            <div class="list"  data-club="acm">
+                            <div class="list"  data-club="ACM">
                                 <img src="../assets/img/acm-logo.png" class="logo">
                                 <span>ACM</span>
                             </div>

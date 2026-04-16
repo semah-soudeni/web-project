@@ -12,7 +12,7 @@ $prize=$_POST["prize"] ?? '';
 $location=$_POST["location"];
 $max_attendees= empty($_POST["max_attendees"]) ? null : $_POST["max_attendees"];
 
-$other_participating_clubs=$_POST["other_participating_clubs"] ?? [];
+$other_participating_clubs=json_decode($_POST["other_participating_clubs"]) ;
 $STAFF=array_values($_POST["staffmember"]) ;
 $photos = $_FILES["staffmember"] ?? null;
 
@@ -28,7 +28,8 @@ if (empty($event_type) || empty($description) || empty($title) || empty($date) |
        'time' => json_encode($time),
        'duration' => json_encode($duration),
        'location' => json_encode($location),
-       'staff' => json_encode($STAFF)
+       'staff' => json_encode($STAFF),
+       "other_participating_clubs" => json_encode("$other_participating_clubs")
    ]);
    exit();
 }
@@ -76,27 +77,31 @@ try {
         $prize
     ]);
     $event = $connexion->lastInsertId();
-
+     
     foreach($other_participating_clubs as $key => $value){
-        $club_ids= $connexion->prepare("SELECT id FROM clubs WHERE slug = ?");
+        $club_ids= $connexion->prepare("SELECT id FROM clubs WHERE name = ?");
         $club_ids->execute([$value]);
         $club = $club_ids->fetch(PDO::FETCH_ASSOC);
- 
         $club_event = $connexion->prepare("INSERT INTO club_events(club_id,event_id) VALUES(?,?)");
         $club_event->execute([$club["id"],$event]);
     }
 
     foreach ($users_ids as $key => $value){
-        $fileName = $photos["name"][$key]["photo"];
-        $file_path = $photos["tmp_name"][$key]["photo"];
+        $fileName = uniqid() . "_" . basename($photos["name"][$key]["photo"]);
+        $fileTmp = $photos["tmp_name"][$key]["photo"];
 
-        $destination = "/uploads/" . $fileName;
-        move_uploaded_file($file_path,$destination);
+        if ($fileTmp && is_uploaded_file($fileTmp)) {
 
+            $destination = $_SERVER["DOCUMENT_ROOT"] . "/uploaded/" . $fileName;
+
+            move_uploaded_file($fileTmp, $destination);
+        }
+        $relative_path = "/uploaded/" . $fileName;
+        
         $staffInsertion = $connexion->prepare("INSERT INTO staff(user_id,photo,role,event_id) VALUES (?,?,?,?)");
         $staffInsertion->execute([
             $value,
-            $photos[$key]["photo"] ?? null,
+            $relative_path,
             $STAFF[$key]["role"],
             $event
         ]);
@@ -104,6 +109,9 @@ try {
     echo json_encode([
         "success" => true,
         "message" => "Event has been added successufully",
+        "other p_c" => json_encode($other_participating_clubs),
+        "files" => $_FILES,
+        "staff" => $STAFF
     ]);
 }
 catch (PDOException $exception){

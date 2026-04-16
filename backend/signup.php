@@ -7,7 +7,6 @@ $lname = $_POST["lastName"] ?? '';
 $phone = $_POST["phone"] ?? '';
 $email = $_POST["email"] ?? '';
 $psswd = $_POST["password"] ?? '';
-$role = 'admin';
 
 if ($email === '' || $psswd === '') {
     echo 'missing credentials';
