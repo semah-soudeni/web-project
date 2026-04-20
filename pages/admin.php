@@ -218,12 +218,12 @@
                 $events = fetchEventsData();
                 
                 foreach ($events as $event): 
-                    echo "<script>console.log(".json_encode($event).");</script>";
+                    //echo "<script>console.log(".json_encode($event).");</script>";
                 ?>
                 <div class="event-card">
                   <div class="event-card-header">
-                    <span class="event-type-badge event-type-<?php echo strtolower($event['type']); ?>">
-                      <?php echo htmlspecialchars($event['event_type']); ?>
+                    <span class="event-type-badge event-type-<?php echo strtolower($event["event"]['event_type']); ?>">
+                      <?php echo htmlspecialchars($event["event"]['event_type']); ?>
                     </span>
                     <div class="event-actions">
                       <button class="event-action-btn event-edit-btn" onclick="editEvent(<?php echo $event['id']; ?>)" title="Edit event">
@@ -232,7 +232,7 @@
                           <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
                         </svg>
                       </button>
-                      <button class="event-action-btn event-delete-btn" onclick="confirmDeleteEvent(<?php echo $event['id']; ?>, '<?php echo htmlspecialchars($event['title'], ENT_QUOTES); ?>')" title="Delete event">
+                      <button class="event-action-btn event-delete-btn" onclick="confirmDeleteEvent('<?php echo htmlspecialchars($event["event"]['title'], ENT_QUOTES); ?>')" title="Delete event">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                           <polyline points="3 6 5 6 21 6"></polyline>
                           <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>

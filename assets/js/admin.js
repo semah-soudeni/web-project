@@ -116,13 +116,21 @@ function hideToast(toastId) {
 
 let eventToDelete = null;
 
-function editEvent(eventId) {
-  // Redirect to edit page with event ID
-  window.location.href = `editEvent.php?id=${eventId}`;
+function editEvent(eventName) {
+    fetch("../../backend/getEventByName.php",{
+        method: "POST",
+        body: eventName
+    })
+    .then(response => response.json())
+    .then(response => handleEdit(response))
+    .catch(error => console.error(error))
 }
-
-function confirmDeleteEvent(eventId, eventName) {
-  eventToDelete = eventId;
+function handleEdit(data){
+   const URL = `/pages/addEvent.php?Event_Type=${data.event.event_type}&description=${data.event.description}&title=${data.event.title}&date=${data.event.date}&time=${data.event.time}&duration=${data.event.duration}&prize=${data.event.prize_pool}&location=${data.event.location}&max_attendees=${data.event.max_attendees}`; 
+    window.location.href = URL; 
+}
+function confirmDeleteEvent( eventName) {
+  eventToDelete = eventName;
   document.getElementById('deleteEventName').textContent = eventName;
   document.getElementById('deleteModal').classList.add('show');
 }
@@ -135,14 +143,13 @@ function closeDeleteModal() {
 function deleteEvent() {
   if (eventToDelete === null) return;
   
-  // Submit delete request
   const form = document.createElement('form');
   form.method = 'POST';
-  form.action = 'backend/deleteEvent.php';
+  form.action = '../backend/deleteEvent.php';
   
   const input = document.createElement('input');
   input.type = 'hidden';
-  input.name = 'event_id';
+  input.name = 'event_name';
   input.value = eventToDelete;
   
   form.appendChild(input);
@@ -150,14 +157,12 @@ function deleteEvent() {
   form.submit();
 }
 
-// Close modal when clicking outside
 document.getElementById('deleteModal')?.addEventListener('click', function(e) {
   if (e.target === this) {
     closeDeleteModal();
   }
 });
 
-// Close modal with ESC key
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') {
     closeDeleteModal();

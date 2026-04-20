@@ -1,6 +1,5 @@
 <?php
 require_once 'bd.php';
-session_start();
 
 function fetchEventsData(){
     $connexion = ConnexionBD::getInstance();
@@ -9,6 +8,7 @@ function fetchEventsData(){
     $request = $connexion->prepare("select club_id from memberships where user_id = ?");
     $request->execute([$user_id]);
     $club = $request->fetch(PDO::FETCH_ASSOC)["club_id"];
+    echo "<script>console.log(".json_encode($user_id).")</script>" ;
    
 
     $request = $connexion->query("select * from club_events where club_id = $club");
@@ -18,7 +18,6 @@ function fetchEventsData(){
         return $event["event_id"];
     },$events_ids);
     
-    echo "<script>console.log(".json_encode($tmpEvents).")</script>" ;
     $events=[];
     foreach ($tmpEvents as $key => $value) {
         $request = $connexion->prepare("select * from club_events ce join clubs c on c.id = ce.club_id  where event_id = ?");

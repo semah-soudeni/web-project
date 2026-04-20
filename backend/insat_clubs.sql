@@ -50,6 +50,8 @@ CREATE TABLE
         duration INT NOT NULL, 
         location VARCHAR(200) DEFAULT NULL,
         event_type enum('hackathon','conference','workshop','competition') NOT NULL,
+        attendees INT DEFAULT 0,
+        max_attendees INT DEFAULT NULL,
         prize_pool TEXT DEFAULT NULL
 
     ) ;
@@ -83,8 +85,8 @@ CREATE TABLE
         team_name VARCHAR(300) DEFAULT NULL,
         team_nb_memebers INT DEFAULT NULL,
         links VARCHAR(1000) DEFAULT NULL,
-        FOREIGN KEY (user_id) REFERENCES etudiant(id),
-        FOREIGN KEY (event_id) REFERENCES events(id)
+        FOREIGN KEY (user_id) REFERENCES etudiant(id) ON DELETE CASCADE,
+        FOREIGN KEY (event_id) REFERENCES events(id) ON DELETE CASCADE
         );
 CREATE TABLE
     IF NOT EXISTS staff (
@@ -93,8 +95,8 @@ CREATE TABLE
         photo BLOB, 
         event_id INT NOT NULL,
         role VARCHAR(40) NOT NULL,
-        FOREIGN KEY (user_id) REFERENCES etudiant(id),
-        FOREIGN KEY (event_id) REFERENCES events(id)
+        FOREIGN KEY (user_id) REFERENCES etudiant(id) ON DELETE CASCADE,
+        FOREIGN KEY (event_id) REFERENCES events(id) ON DELETE CASCADE
     );
 
 CREATE TABLE
@@ -107,6 +109,9 @@ CREATE TABLE
         FOREIGN KEY (club_id) REFERENCES clubs (id) ON DELETE CASCADE,
         FOREIGN KEY (user_id) REFERENCES etudiant (id) ON DELETE CASCADE
     ) ;
+INSERT INTO etudiant (first_name,last_name,email,password,role,phone)
+    VALUES ("youssef","hadroug","youssef.hadroug@insat.ucar.tn","youssefhadroug","admin","53720535");
+INSERT INTO memberships (user_id,club_id,role) VALUES (1,3,"admin");
 SET
     FOREIGN_KEY_CHECKS = 1;
 
