@@ -1,157 +1,113 @@
 <?php
-session_start();
-$isLoggedIn = isset($_SESSION['logged']) && $_SESSION['logged'] === 'yes';
-$displayName = '';
+require_once __DIR__ . '/includes/init.php';
 
-if ($isLoggedIn) {
-    $firstName = trim((string)($_SESSION['user_first_name'] ?? ''));
-    $lastName = trim((string)($_SESSION['user_last_name'] ?? ''));
-    $displayName = trim($firstName . ' ' . $lastName);
-
-    if ($displayName === '') {
-        $displayName = (string)($_SESSION['user_email'] ?? 'User');
-    }
-}
+$pageTitle = 'INSAT clubs';
+$activePage = 'clubs';
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <title>INSAT Clubs</title>
-</head>
-<body>
-    <main>
-        <nav class="navigation">
-            <div class="nav-container">
-                <div class="nav-menu">
-                    <a href="index.php" class="nav-link">Clubs</a>
-                    <a href="pages/events.php" class="nav-link">Events</a>
-                    <a href="pages/map.php" class="nav-link">Map</a>
-                    <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
-                        <a href="pages/admin.php" class="nav-link">Admin Dashboard</a>
-                    <?php endif; ?>
+
+<?php require_once ROOT_PATH . '/views/header.php'; ?>
+
+<section>
+    <h1>Discover our clubs</h1>
+    <div class="container">
+        <a href="<?= BASE_URL ?>pages/clubs/aero.php" class="link">
+            <div class="card">
+                <div class="img">
+                    <div class="logo">
+                        <img src="<?= BASE_URL ?>assets/img/aero-logo.png" alt="aerobotix logo">
+                    </div>
                 </div>
-                <div class="nav-login">
-                   <?php if ($isLoggedIn): ?>
-                    <form action="backend/logout.php" method="POST" style="display:flex; align-items:center; gap:20px;">
-                        <span id="nav-user-name" style="font-weight:600;">
-                            <?php echo "Hi, " .htmlspecialchars($displayName, ENT_QUOTES, 'UTF-8'); ?>
-                        </span>
-                        <button id="nav-logout-btn" class="signin-btn">Sign Out</button>
-                        </form>
-                        <?php else: ?>
-                    <a href="pages/signin.php" class="signin-btn">Sign In</a>
-                    <a href="pages/signup.php" class="signup-btn">Sign Up</a>
-                    <?php endif; ?>
+                <div class="jnab">
+                    <h2>Aerobotix</h2>
+                    <p>Learn.Create.Innovate</p>
                 </div>
             </div>
-        </nav>
-        <section>
-            <h1>Discover our clubs</h1>
-            <div class="container">
-                <a href="pages/clubs/aero.php" class="link">
-                    <div class="card">
-                        <div class="img">
-                            <div class="logo">
-                                <img src="assets/img/aero-logo.png" alt="aerobotix logo">
-                            </div>
-                        </div>
-                        <div class="jnab">
-                            <h2>Aerobotix</h2>
-                            <p>Learn.Create.Innovate</p>
-                        </div>
+        </a>
+        <a href="<?= BASE_URL ?>pages/clubs/secu.php" class="link">
+            <div class="card">
+                <div class="img">
+                    <div class="logo secu">
+                        <img src="<?= BASE_URL ?>assets/img/secu-logo.png" alt="securinets logo">
                     </div>
-                </a>
-                <a href="pages/clubs/secu.php" class="link">
-                    <div class="card">
-                        <div class="img">
-                            <div class="logo secu">
-                                <img src="assets/img/secu-logo.png" alt="securinets logo">
-                            </div>
-                        </div>
-                        <div class="jnab">
-                            <h2>Securinets</h2>
-                            <p>Cybersecurity & Ethical Hacking</p>
-                        </div>
-                    </div>
-                </a>
-                <a href="pages/clubs/ieee.php" class="link">
-                    <div class="card">
-                        <div class="img">
-                            <div class="logo">
-                                <img src="assets/img/ieee-logo.png" alt="ieee logo">
-                            </div>
-                        </div>
-                        <div class="jnab">
-                            <h2>IEEE</h2>
-                            <p>Advancing Technology for Humanity</p>
-                        </div>
-                    </div>
-                </a>
-                <a href="pages/clubs/acm.php" class="link">
-                    <div class="card">
-                        <div class="img">
-                            <div class="logo">
-                                <img src="assets/img/acm-logo.png" alt="acm logo">
-                            </div>
-                        </div>
-                        <div class="jnab">
-                            <h2>ACM</h2>
-                            <p>Computing for Innovation</p>
-                        </div>
-                    </div>
-                </a>
-                
-                <a href="pages/clubs/cim.php" class="link">
-                    <div class="card">
-                        <div class="img">
-                            <div class="logo">
-                                <img src="assets/img/cim.png" alt="CIM Insat">
-                            </div>
-                        </div>
-                        <div class="jnab">
-                            <h2>CIM </h2>
-                            <p>Industrial Computing & Mechatronics</p>
-                        </div>
-                    </div>
-                </a>
-                <a href="pages/clubs/theatro.php" class="link">
-                    <div class="card">
-                        <div class="img">
-                            <div class="logoth">
-                                <img src="assets/img/theatro.jpg" alt="Theatro Insat">
-                            </div>
-                        </div>
-                        <div class="jnab">
-                            <h2>Theatro</h2>
-                            <p>Unleash Your Inner Actor</p>
-                        </div>
-                    </div>
-                </a>
-                
-                <a href="pages/clubs/press.php" class="link">
-                    <div class="card">
-                        <div class="img">
-                            <div class="logoth">
-                                <img src="assets/img/press.png" alt="Insat Press">
-                            </div>
-                        </div>
-                        <div class="jnab">
-                            <h2>Insat Press</h2>
-                            <p>Your Voice in the Campus</p>
-                        </div>
-                    </div>
-                </a>
-                
-                
-                
+                </div>
+                <div class="jnab">
+                    <h2>Securinets</h2>
+                    <p>Cybersecurity & Ethical Hacking</p>
+                </div>
             </div>
-        </section>
-    </main>
-    <script> console.log(<?= json_encode($_SESSION) ?>)</script>
+        </a>
+        <a href="<?= BASE_URL ?>pages/clubs/ieee.php" class="link">
+            <div class="card">
+                <div class="img">
+                    <div class="logo">
+                        <img src="<?= BASE_URL ?>assets/img/ieee-logo.png" alt="ieee logo">
+                    </div>
+                </div>
+                <div class="jnab">
+                    <h2>IEEE</h2>
+                    <p>Advancing Technology for Humanity</p>
+                </div>
+            </div>
+        </a>
+        <a href="<?= BASE_URL ?>pages/clubs/acm.php" class="link">
+            <div class="card">
+                <div class="img">
+                    <div class="logo">
+                        <img src="<?= BASE_URL ?>assets/img/acm-logo.png" alt="acm logo">
+                    </div>
+                </div>
+                <div class="jnab">
+                    <h2>ACM</h2>
+                    <p>Computing for Innovation</p>
+                </div>
+            </div>
+        </a>
 
-</body>
+        <a href="<?= BASE_URL ?>pages/clubs/cim.php" class="link">
+            <div class="card">
+                <div class="img">
+                    <div class="logo">
+                        <img src="<?= BASE_URL ?>assets/img/cim.png" alt="CIM Insat">
+                    </div>
+                </div>
+                <div class="jnab">
+                    <h2>CIM </h2>
+                    <p>Industrial Computing & Mechatronics</p>
+                </div>
+            </div>
+        </a>
+        <a href="<?= BASE_URL ?>pages/clubs/theatro.php" class="link">
+            <div class="card">
+                <div class="img">
+                    <div class="logoth">
+                        <img src="<?= BASE_URL ?>assets/img/theatro.jpg" alt="Theatro Insat">
+                    </div>
+                </div>
+                <div class="jnab">
+                    <h2>Theatro</h2>
+                    <p>Unleash Your Inner Actor</p>
+                </div>
+            </div>
+        </a>
 
-</html>
+        <a href="<?= BASE_URL ?>pages/clubs/press.php" class="link">
+            <div class="card">
+                <div class="img">
+                    <div class="logoth">
+                        <img src="<?= BASE_URL ?>assets/img/press.png" alt="Insat Press">
+                    </div>
+                </div>
+                <div class="jnab">
+                    <h2>Insat Press</h2>
+                    <p>Your Voice in the Campus</p>
+                </div>
+            </div>
+        </a>
+
+
+
+    </div>
+</section>
+
+
+<?php require_once ROOT_PATH . '/views/footer.php'; ?>

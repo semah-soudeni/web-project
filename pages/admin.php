@@ -1,53 +1,15 @@
 <?php
-    session_start();
-    $isLoggedIn = isset($_SESSION['logged']) && $_SESSION['logged'] === 'yes';
-    $displayName = '';
-    if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin'){
-        header("location:error.php?code=401");    
-        exit;
-    }
-    if ($isLoggedIn) {
-        $firstName = trim((string)($_SESSION['user_first_name'] ?? ''));
-        $lastName = trim((string)($_SESSION['user_last_name'] ?? ''));
-        $displayName = trim($firstName . ' ' . $lastName);
+require_once __DIR__ . '/../includes/init.php';
 
-        if ($displayName === '') {
-            $displayName = (string)($_SESSION['user_email'] ?? 'User');
-        }
-    }
+requireAdmin();
+
+$pageTitle = 'Dashboard';
+$activePage = 'admin';
+$extraCss = [BASE_URL . 'assets/css/admin.css'];
+$extraJs = [BASE_URL . 'assets/js/admin.js'];
+
+require_once ROOT_PATH . '/views/header.php';
 ?>
-
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/admin.css">
-    <title>Dashboard</title>
-</head>
-<body>
-    <nav class="navigation">
-        <div class="nav-container">
-            <div class="nav-menu">
-                <a href="../index.php" class="nav-link">Clubs</a>
-                <a href="events.php" class="nav-link">Events</a>
-                <a href="map.php" class="nav-link">Map</a>
-                <a href="admin.php" class="nav-link">Admin Dashboard</a>
-            </div>
-            <div class="nav-login">
-               <?php if ($isLoggedIn): ?>
-                <form action="../backend/logout.php" method="POST" style="display:flex; align-items:center; gap:20px;">
-                    <span id="nav-user-name" style="font-weight:600;">
-                        <?php echo "Hi, " .htmlspecialchars($displayName, ENT_QUOTES, 'UTF-8'); ?>
-                    </span>
-                    <button id="nav-logout-btn" class="signin-btn">Sign Out</button>
-                    </form>
-                    <?php else: ?>
-                <a href="signin.php" class="signin-btn">Sign In</a>
-                <a href="signup.php" class="signup-btn">Sign Up</a>
-                <?php endif; ?>
-            </div>
-        </div>
-    </nav>
 
         <main class="dashboard">
             <section class="hero">
@@ -457,6 +419,4 @@
         <button class="toast-close" onclick="hideToast('errorToast')">&times;</button>
       </div>
     </div>
-    <script src="../assets/js/admin.js" dref></script>
-</body>
-</html>
+<?php require_once ROOT_PATH . '/views/footer.php'; ?>

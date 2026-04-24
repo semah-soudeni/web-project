@@ -1,8 +1,10 @@
 <?php
-    session_start();
-    if (isset($_SESSION['logged']) && $_SESSION['logged']){
-            header("location:/index.php");   
-    }
+require_once __DIR__ . '/../includes/init.php';
+
+if (isLoggedIn()) {
+    header("Location: " . BASE_URL . "index.php");
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,10 +12,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Sign Up</title>
-        <link href="../assets/css/signup.css" rel="stylesheet">
+        <link href="<?= BASE_URL ?>assets/css/signup.css" rel="stylesheet">
     </head>
     <body>
-    <a href="../index.php" class="back-btn" aria-label="Go back">
+    <a href="<?= BASE_URL ?>index.php" class="back-btn" aria-label="Go back">
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M15 18l-6-6 6-6" />
         </svg>
@@ -35,7 +37,7 @@
                     Account created successfully! Redirecting...
                 </div>
 
-                <form class="signup-form" action="../backend/signup.php" id="signupForm" method="POST">
+                <form class="signup-form" action="<?= BASE_URL ?>backend/signup.php" id="signupForm" method="POST">
                     <?php
                         if (isset($_SESSION['error'])) {
                             echo "<p style='color:red'>" . $_SESSION['error'] . "</p>";
@@ -172,7 +174,7 @@
 
 
                 <div class="login-link">
-                    Already have an account? <a href="signin.html">Sign in</a>
+                    Already have an account? <a href="signin.php">Sign in</a>
                 </div>
             </div>
         </div>

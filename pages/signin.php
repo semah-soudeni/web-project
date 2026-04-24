@@ -1,3 +1,11 @@
+<?php
+require_once __DIR__ . '/../includes/init.php';
+
+if (isLoggedIn()) {
+    header("Location: " . BASE_URL . "index.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,16 +13,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sign In</title>
 
-  <link rel="stylesheet" href="../assets/css/signin.css" />
+  <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/signin.css" />
 </head>
 <body>
-<?php
-    session_start(); 
-    if (isset($_SESSION['logged']) && $_SESSION['logged']){
-        header("location:/index.php");   
-    } 
-?>
-  <a href="../index.php" class="back-btn" aria-label="Go back">
+  <a href="<?= BASE_URL ?>index.php" class="back-btn" aria-label="Go back">
     <svg viewBox="0 0 24 24" aria-hidden="true">
       <path d="M15 18l-6-6 6-6" />
     </svg>
@@ -30,7 +32,7 @@
         <h1>Welcome Back</h1>
         <p>Sign in to continue your academic journey</p>
 
-        <form action="../backend/signin.php" method="POST">
+        <form action="<?= BASE_URL ?>backend/signin.php" method="POST">
           <?php
             if(isset($_SESSION['error'])):
              echo "<p style='color:red'>" . $_SESSION['error'] . "</p>";
@@ -98,7 +100,7 @@
         </div>
 
         <div class="auth-footer">
-          Don’t have an account? <a href="signup.html">Create one</a>
+          Don’t have an account? <a href="signup.php">Create one</a>
         </div>
 
       </div>
