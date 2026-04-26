@@ -9,7 +9,7 @@ $activePage = 'clubs';
 
 <section>
     <h1>Discover our clubs</h1>
-    <div class="container">
+    <div class="container clubs-grid">
         <a href="<?= BASE_URL ?>pages/clubs/aero.php" class="link">
             <div class="card">
                 <div class="img">

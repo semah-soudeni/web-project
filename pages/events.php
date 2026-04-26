@@ -64,7 +64,8 @@ try {
             e.title,
             e.description,
             e.event_date AS date, e.event_time AS time,
-            e.location
+            e.location,
+            (SELECT COUNT(*) FROM register r WHERE r.event_id = e.id) as attendees
          FROM events e  
          JOIN club_events ce ON e.id = ce.event_id
          JOIN clubs c ON ce.club_id = c.id
@@ -82,14 +83,6 @@ try {
         $res2 = $stmt2->fetchAll(PDO::FETCH_COLUMN, 0);
     }
 
-    $stmt3 = $conn->query(
-        "SELECT event_id,COUNT(*) AS nb 
-        FROM register
-        GROUP BY  event_id;"
-    );
-
-    $count = $stmt3->fetchAll(PDO::FETCH_ASSOC);
-
     $allEvents = $stmt ? $stmt->fetchAll(PDO::FETCH_ASSOC) : [];
 } catch (Throwable $e) {
     $queryError = true;
@@ -99,14 +92,6 @@ $registeredIds = array_map('intval', $res2);
 
 foreach ($allEvents as &$evt) {
     $evt['is_registered'] = in_array((int)$evt['id'], $registeredIds, true);
-    $att = 0;
-    foreach ($count as $elem) {
-        if ($elem["event_id"] == $evt["id"]) {
-            $att = $elem["nb"];
-            break;
-        }
-    }
-    $evt['attendees'] = $att;
 }
 unset($evt);
 
