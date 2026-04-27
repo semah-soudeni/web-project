@@ -50,8 +50,8 @@ let car_track = [
   { p: new THREE.Vector3(4.2,-36, 0), r: new THREE.Euler(Math.PI/2, Math.PI, 0), a: 0.03 },
   { p: new THREE.Vector3(4.2,-41, 0), r: new THREE.Euler(Math.PI/2, Math.PI, 0), a: 0.08 },
   { p: new THREE.Vector3(4.2,-47.5, 0), r: new THREE.Euler(Math.PI/2, Math.PI, 0), a: 0.18 },
-  { p: new THREE.Vector3(4.2,-48, 0), r: new THREE.Euler(Math.PI/2,-3*Math.PI/4, 0), a: 0.04 },
-  { p: new THREE.Vector3(4.8,-48.25, 0), r: new THREE.Euler(Math.PI/2,-Math.PI/2, 0), a: 0.04 },
+  { p: new THREE.Vector3(4.2,-48, 0), r: new THREE.Euler(Math.PI/2,-3*Math.PI/4, 0), a: 0.18 },
+  { p: new THREE.Vector3(4.8,-48.25, 0), r: new THREE.Euler(Math.PI/2,-Math.PI/2, 0), a: 0.08 },
   { p: new THREE.Vector3(50.2,-48.7, 0), r: new THREE.Euler(Math.PI/2,-Math.PI/2, 0), a: 0.08 },
   { p: new THREE.Vector3(60.2,-48.7, 0), r: new THREE.Euler(Math.PI/2,-Math.PI/2, 0), a: 0.08 },
   { p: new THREE.Vector3(70.2,-48.7, 0), r: new THREE.Euler(Math.PI/2,-Math.PI/2, 0), a: 0.08 },
@@ -117,6 +117,9 @@ function update_car(dt){
 
   if(posi == 4 && (desired_posi == 4 || loopi != 0)){ // the car is in loop
     acc = 0.4;
+    if(desired_posi != 4){
+      acc = 1.5;
+    }
     if(pos > 1){
       pos--;
       loopi++;
@@ -131,6 +134,8 @@ function update_car(dt){
     to = car_loop_track[(loopi+1)%car_loop_track.length];
     if(desired_posi != 4 && loopi == 0){
       pos = 1.1;
+      update_car(dt);
+      return;
     }
   }else{
     loopi = 0;
