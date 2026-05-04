@@ -46,57 +46,45 @@ for (let i = 0; i < 10; i++) {
 setInterval(() => {
     if (Math.random() > 0.95) {
         const logo = document.getElementById('mainLogo');
-        logo.style.transform = `translate(${Math.random() * 6 - 3}px, ${Math.random() * 6 - 3}px)`;
-        setTimeout(() => {
-            logo.style.transform = 'translate(0, 0)';
-        }, 50);
+        if (logo) {
+            logo.style.transform = `translate(${Math.random() * 6 - 3}px, ${Math.random() * 6 - 3}px)`;
+            setTimeout(() => {
+                logo.style.transform = 'translate(0, 0)';
+            }, 50);
+        }
     }
 }, 100);
 
 const canvas = document.getElementById("rockets")
-canvas.height = window.innerHeight;
-canvas.width = window.innerWidth;
+if (canvas) {
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
 
-const ctx = canvas.getContext('2d')
-//var startX = 400;
-//var startY = 600;
-//var vitesse = {
-    //x:0,
-    //y:0
-//};
-//const rocket = new Image();
-//rocket.src = '/assets/img/rocket.png'
-const stars = []
-for (let index = 0 ; index<500 ; index++){
-    stars.push({
-        x:Math.random() * window.innerWidth,
-        y:Math.random() * window.innerHeight,
-        raduis:Math.random() * 4
-    })
-}
+    const ctx = canvas.getContext('2d')
+    const stars = []
+    for (let index = 0 ; index<500 ; index++){
+        stars.push({
+            x:Math.random() * window.innerWidth,
+            y:Math.random() * window.innerHeight,
+            raduis:Math.random() * 4
+        })
+    }
 
-//var blurAcc = 0;
-//var blurRate = 20;
-var active = false;
-function animate(){
-    ctx.save()
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    //if (blurRate == 20)
-        //blurAcc = -1;
-    //else if (blurRate <= 10)
-        //blurAcc = 1;
-//blurRate += blurAcc*0.1
-    //ctx.shadowBlur = blurRate
-    stars.forEach( star => {
-        ctx.fillStyle = "rgba(255,255,255)"
-        ctx.shadowColor = "white"
-        setInterval( () => active = !active , 5)
-        ctx.shadowBlur = active ? 20 : 15
-        ctx.beginPath()
-        ctx.arc(star.x, star.y, star.raduis , 0, Math.PI * 2 )
-        ctx.fill()
-    }) 
-    ctx.restore()
-    requestAnimationFrame(animate)
+    var active = false;
+    function animate(){
+        ctx.save()
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        stars.forEach( star => {
+            ctx.fillStyle = "rgba(255,255,255)"
+            ctx.shadowColor = "white"
+            setInterval( () => active = !active , 5)
+            ctx.shadowBlur = active ? 20 : 15
+            ctx.beginPath()
+            ctx.arc(star.x, star.y, star.raduis , 0, Math.PI * 2 )
+            ctx.fill()
+        }) 
+        ctx.restore()
+        requestAnimationFrame(animate)
+    }
+    animate()
 }
-animate()

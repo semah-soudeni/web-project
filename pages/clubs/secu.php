@@ -2,11 +2,11 @@
 require_once __DIR__ . '/../../includes/init.php';
 
 $pageTitle  = 'Securinets INSAT';
-$extraCss   = [BASE_URL . 'assets/css/secu.css'];
-$extraJs    = [BASE_URL . 'assets/js/secu.js'];
+$extraCss   = ['/assets/css/secu.css'];
+$extraJs    = ['/assets/js/secu.js'];
 ?>
-
 <?php require_once ROOT_PATH . '/views/header.php'; ?>
+
 
 <div class="container">
     <header>
@@ -41,13 +41,13 @@ $extraJs    = [BASE_URL . 'assets/js/secu.js'];
             <div class="glow-ring"></div>
 
             <!-- Main logo -->
-            <img src="/assets/img/secu-logo.png" alt="">
+            <img src="/assets/img/secu-logo.png" alt="Main Logo" class="secu-logo" id="mainLogo">
 
             <!-- Glitch layers -->
-            <div class="glitch">
+            <div class="glitch glitch-1">
                 <img src="/assets/img/secu-logo.png" alt="Glitch layer">
             </div>
-            <div class="glitch">
+            <div class="glitch glitch-2">
                 <img src="/assets/img/secu-logo.png" alt="Glitch layer">
             </div>
         </div>
@@ -98,32 +98,48 @@ $extraJs    = [BASE_URL . 'assets/js/secu.js'];
         <h2>OUR categories</h2>
         <div class="sec2">
             <div class="card">
+                <div class="icon">
+                    <img src="../../assets/img/image copy 8.png" alt="" srcset="">
+                </div>
                 <h3>Cryptography</h3>
             </div>
             <div class="card">
+                <div class="icon">
+                    <img src="../../assets/img/image copy 7.png" alt="" srcset="">
+                </div>
                 <h3>OSINT</h3>
             </div>
             <div class="card">
+                <div class="icon">
+                    <img src="../../assets/img/image copy 3.png" alt="" srcset="">
+                </div>
                 <h3>Digital Forensics</h3>
             </div>
             <div class="card">
+                <div class="icon"><img src="../../assets/img/image copy 4.png" alt="" srcset=""></div>
                 <h3>Reverse engineering</h3>
             </div>
             <div class="card">
+                <div class="icon">
+                    <img src="../../assets/img/image copy 5.png" alt="" srcset="">
+                </div>
                 <h3>Binary exploitation</h3>
             </div>
             <div class="card">
+                <div class="icon">
+                    <img src="../../assets/img/image copy 6.png" alt="" srcset="">
+                </div>
                 <h3>Web exploitation</h3>
             </div>
         </div>
-        <h2>OUR events</h2>
+        <!-- <h2>OUR events</h2>
         <div class="sec5">
             <svg width="100%" height="500" style="margin-top: 500px;overflow:visible">
                 <path d="M 40 180 C 280 0, 320 -200, 580 0 S 980 300,1280 -100" stroke="red" fill="none"
                     stroke-width="3" transform="translate(25%,0)" />
 
             </svg>
-        </div>
+        </div> -->
         <h2>OUR Team</h2>
         <div class="sec3">
             <div>
