@@ -11,7 +11,7 @@ class ConnexionBD {
             $host = '127.0.0.1';
             $db = 'insat_clubs';
             $user = 'root';
-            $pass = '';
+            $pass = 'admin123';
             $charset = 'utf8mb4';
 
             $dsn = "mysql:host={$host};dbname={$db};charset={$charset}";

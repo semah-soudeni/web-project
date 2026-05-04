@@ -1,10 +1,151 @@
+const query = window.location.search;
+
+const urlParams = new URLSearchParams(query)
+
+if (urlParams.has('eventName')){
+        
+    eventName = urlParams.get('eventName')
+
+    
+    const title = document.getElementById("title"); 
+
+    if (title)
+        title.innerHTML = "Edit " + eventName
+    else 
+        console.error("Could not find title")
+    
+    const button = document.getElementById("submit-btn")
+    if (button)
+        button.value = "Edit event"
+    else 
+        console.error("Could not find submit button")
+    fetch("../../backend/getEventByName.php", {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: `eventName=${encodeURIComponent(eventName)}`
+        })
+    .then(response => response.json())
+    .then(data => setData(data))
+    .catch(error => console.error(error))
+}
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+let teammateCount = -1;
+function setData(data){
+    if (data) {
+        const form = document.getElementById('add-event');
+        if (!form) return;
+
+        console.log(data);
+        // Set select field
+        if (data[0].event_type) {
+            form.querySelector('select[name="Event_Type"]').value = capitalizeFirstLetter(data[0].event_type);
+        }
+
+        // Set simple input/textarea fields
+        const fieldsNames = ['description', 'title', 'date', 'time', 'duration', 'prize', 'location', 'max_attendees'];
+        const fields = ['description', 'title','event_date','event_time','duration','prize_pool','location','max_attendees'];
+        for (let index = 0; index < fields.length; index++) {
+            if (data[0][fields[index]] !== undefined) {
+                const el = form.querySelector(`[name="${fieldsNames[index]}"]`);
+                if (el) el.value = data[0][fields[index]];
+            }
+        }
+
+        // Set participating clubs (drag-and-drop)
+        const leftColumn = document.getElementById('left');
+        const rightColumn = document.getElementById('right');
+        const dropHint = document.getElementById('drop-hint');
+
+        data.clubs.forEach(d => {
+          const clubEl = leftColumn.querySelector(`.list[data-club="${d.name}"]`);
+          if (clubEl) {
+            rightColumn.appendChild(clubEl);
+            if (dropHint) dropHint.style.display = 'none';
+          }
+        });
+
+
+        const teammatesList = document.getElementById('teammates-list');
+        teammatesList.innerHTML = '';
+
+              teammateCount++;
+              let index = teammateCount;
+        data.staff.forEach(member => {
+              const memberEl = document.createElement('div');
+              memberEl.classList.add('teammate-entry');
+              memberEl.dataset.index = index;
+              memberEl.innerHTML = `
+                <input type="email" name="staffmember[${index}][email]" value="${member.email}" required>
+                <input type="text"  name="staffmember[${index}][role]"  value="${member.role}">
+                <div class="teammate-photo-wrapper">
+                    
+                    <img 
+                        id="preview-${index}" 
+                        class="teammate-photo-preview" 
+                        src="${member.photo}" 
+                        alt="Preview"
+                        style="display:block"
+                    >
+
+                    <input 
+                        type="file" 
+                        class="teammate-file-input" 
+                        name="staffmember[${index}][photo]" 
+                        accept="image/*"
+                        onchange="previewTeammatePhoto(this, ${index})"
+                    >
+
+                </div>
+                <button type="button" class="remove-teammate-btn" onclick="this.closest('.teammate-entry').remove()">&#x2715;</button>`;
+
+
+              teammatesList.appendChild(memberEl);
+        });
+        
+        form.onsubmit = function (e) {
+            e.preventDefault();
+            handleEdit(data[0].id , data.staff);
+        };
+    }
+}
+
+function handleEdit(event_id , staff){
+    const form = document.getElementById("add-event");
+    const data = new FormData(form);
+    data.append("other_participating_clubs", JSON.stringify(getClubsNames()));
+    data.append("event_id",event_id);
+
+    for (let index = 0; index < staff.length; index++) {
+        if (!data.get(`staffmember[${index}][photo]`)["name"] && staff[index].photo){
+            let photo = data.get(`staffmember[${index}][photo]`)
+            photo["name"] = staff[index].photo;
+        }
+    }
+    for (let [key, value] of data.entries()) {
+        console.log(key, value);
+    }
+    
+
+    fetch("../../backend/editEvent.php",{
+        method: 'POST',
+        body: data
+    })
+    .then(response => response.json())
+    .then(data => handleRequest(data))
+    .catch(error => console.error(error))
+}
+
 (function () {
     const leftBox  = document.getElementById("left");
     const rightBox = document.getElementById("right");
     const dropHint = document.getElementById("drop-hint");
 
-    let dragged   = null;   // the card being moved
-    let ghost     = null;   // the visual clone following the cursor
+    let dragged   = null;   
+    let ghost     = null;   
     let offsetX   = 0;
     let offsetY   = 0;
 
@@ -98,7 +239,6 @@
 
 })();
 
-let teammateCount = -1;
 
 document.getElementById('add-teammate-btn').addEventListener('click', function () {
     teammateCount++;
@@ -183,8 +323,13 @@ function handleRequest(data) {
     console.log(data);
     const box = data.success ? successBox : errorBox;
     
-    document.querySelector(".panel-message").textContent = data.message;
+    const message = document.getElementById("panel-message") ;
+    message.innerHTML = data.message;
+
     box.style.visibility = "visible";
     addEventContainer.style.filter = "blur(3px)";
     toggleBox(box);
 }
+
+
+

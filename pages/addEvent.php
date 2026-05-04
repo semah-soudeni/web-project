@@ -12,7 +12,7 @@ require_once ROOT_PATH . '/views/header.php';
 ?>
     <section class="main-section">
         <div class="add-event-container">
-            <h3 class="add-event-title">Add New Event</h3>
+            <h3 id="title" class="add-event-title">Add New Event</h3>
             <form  id="add-event" action="javascript:sendData()">
                 <div>    
                     <p>Event Type</p>
@@ -61,55 +61,55 @@ require_once ROOT_PATH . '/views/header.php';
                         <div class="clubs-column" id="left">
                             <p class="column-label">Available Clubs</p>
                             <div class="list"  data-club="Aerobotix">
-                                <img src="../assets/img/aero-logo.png" class="logo">
+                            <img src="<?= BASE_URL ?>assets/img/aero-logo.png" class="logo-club">
                                 <span>Aerobotix</span>
                             </div>
                             <div class="list"  data-club="IEEE">
-                                <img src="../assets/img/ieee-logo.png" class="logo">
+                            <img src="<?= BASE_URL ?>assets/img/ieee-logo.png" class="logo-club">
                                 <span>IEEE</span>
                             </div>
                             <div class="list"  data-club="ACM">
-                                <img src="../assets/img/acm-logo.png" class="logo">
+                            <img src="<?= BASE_URL ?>assets/img/acm-logo.png" class="logo-club">
                                 <span>ACM</span>
                             </div>
                             <div class="list"  data-club="Securinets">
-                                <img src="../assets/img/secu-logo.png" class="logo">
+                            <img src="<?= BASE_URL ?>assets/img/secu-logo.png" class="logo-club">
                                 <span>Securinets</span>
                             </div>
-                            <div class="list"  data-club="Théatro">
-                                <img src="../assets/img/theatro.jpg"  class="logo">
+                            <div class="list"  data-club="Theatro">
+                            <img src="<?= BASE_URL ?>assets/img/theatro.jpg"  class="logo-club">
                                 <span>Théatro</span>
                             </div>
                             <div class="list"  data-club="CIM">
-                                <img src="../assets/img/cim.png"  class="logo">
+                            <img src="<?= BASE_URL ?>assets/img/cim.png"  class="logo-club">
                                 <span>CIM</span>
                             </div>
                             <div class="list"  data-club="junior">
-                                <img src="../assets/img/junior.jpg"  class="logo">
+                            <img src="<?= BASE_URL ?>assets/img/junior.jpg"  class="logo-club">
                                 <span>Junior Entreprise</span>
                             </div>
                             <div class="list"  data-club="android">
-                                <img src="../assets/img/andr.png"  class="logo">
+                            <img src="<?= BASE_URL ?>assets/img/andr.png"  class="logo-club">
                                 <span>Android</span>
                             </div>
                             <div class="list"  data-club="enactus">
-                                <img src="../assets/img/enactus.png"  class="logo">
+                            <img src="<?= BASE_URL ?>assets/img/enactus.png"  class="logo-club">
                                 <span>Enactus</span>
                             </div>
                             <div class="list"  data-club="Press">
-                                <img src="../assets/img/press.png"  class="logo">
+                            <img src="<?= BASE_URL ?>assets/img/press.png"  class="logo-club">
                                 <span>Insat Press</span>
                             </div>
                             <div class="list"  data-club="Lion">
-                                <img src="../assets/img/lion.jpg"  class="logo">
+                            <img src="<?= BASE_URL ?>assets/img/lion.jpg"  class="logo-club">
                                 <span>Lion</span>
                             </div>
                             <div class="list"  data-club="Ciné">
-                                <img src="../assets/img/cine.jpg"  class="logo">
+                            <img src="<?= BASE_URL ?>assets/img/cine.jpg"  class="logo-club">
                                 <span>Ciné Radio</span>
                             </div>
                             <div class="list"  data-club="jci">
-                                <img src="../assets/img/juniorc.jpg"  class="logo">
+                            <img src="<?= BASE_URL ?>assets/img/juniorc.jpg"  class="logo-club">
                                 <span>JCI</span>
                             </div>
                         </div>
@@ -127,7 +127,7 @@ require_once ROOT_PATH . '/views/header.php';
                     <div class="teammates-list" id="teammates-list"></div>
                     <button type="button" class="add-teammate-btn" id="add-teammate-btn">+ Add Staff Member</button>
                 </div>
-                <input type="submit" value="Add Event">
+                <input id="submit-btn" type="submit" value="Add Event">
             </form>
         </div>
             <div id="error" class="panel panel-error">
@@ -146,7 +146,7 @@ require_once ROOT_PATH . '/views/header.php';
                 </span>
                 <p class="panel-title">Changes saved</p>
                 <div class="panel-divider"></div>
-                <p class="panel-message">Event has been added successufully. Changes may take a moment to appear everywhere.</p>
+                <p id="panel-message" class="panel-message">Event has been added successufully. Changes may take a moment to appear everywhere.</p>
             </div>  
     </section>
 <?php require_once ROOT_PATH . '/views/footer.php'; ?>

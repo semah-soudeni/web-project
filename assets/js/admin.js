@@ -117,16 +117,7 @@ function hideToast(toastId) {
 let eventToDelete = null;
 
 function editEvent(eventName) {
-    fetch("../../backend/getEventByName.php",{
-        method: "POST",
-        body: eventName
-    })
-    .then(response => response.json())
-    .then(response => handleEdit(response))
-    .catch(error => console.error(error))
-}
-function handleEdit(data){
-   const URL = `/pages/addEvent.php?Event_Type=${data.event.event_type}&description=${data.event.description}&title=${data.event.title}&date=${data.event.date}&time=${data.event.time}&duration=${data.event.duration}&prize=${data.event.prize_pool}&location=${data.event.location}&max_attendees=${data.event.max_attendees}`; 
+    const URL = `/pages/addEvent.php?eventName=${eventName}`; 
     window.location.href = URL; 
 }
 function confirmDeleteEvent( eventName) {

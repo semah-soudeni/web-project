@@ -344,7 +344,7 @@ select:disabled {
     box-shadow: 0 4px 14px rgba(0,0,0,0.12);
 }
 
-.list .logo {
+.list .logo-club {
     width: 32px;
     height: 32px;
     object-fit: contain;
