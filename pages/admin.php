@@ -287,10 +287,10 @@ require_once ROOT_PATH . '/views/header.php';
                         <?php foreach ($event['staff'] as $staffMember): ?>
                           <div class="staff-card">
                             <div class="staff-photo">
-                              <img src="<?php echo htmlspecialchars($staffMember['photo'] ?? '../assets/img/default-avatar.png'); ?>" alt="<?php echo htmlspecialchars($staffMember['name']); ?>">
+                              <img src="<?php echo htmlspecialchars($staffMember['photo'] ?? '../assets/img/default-avatar.png'); ?>" alt="<?php echo htmlspecialchars($staffMember['email']); ?>">
                             </div>
                             <div class="staff-info">
-                              <p class="staff-name"><?php echo htmlspecialchars($staffMember['name']); ?></p>
+                              <p class="staff-name"><?php echo htmlspecialchars($staffMember['email']); ?></p>
                               <p class="staff-role"><?php echo htmlspecialchars($staffMember['role']); ?></p>
                             </div>
                           </div>

@@ -55,7 +55,6 @@ function setData(data){
             }
         }
 
-        // Set participating clubs (drag-and-drop)
         const leftColumn = document.getElementById('left');
         const rightColumn = document.getElementById('right');
         const dropHint = document.getElementById('drop-hint');
@@ -72,8 +71,8 @@ function setData(data){
         const teammatesList = document.getElementById('teammates-list');
         teammatesList.innerHTML = '';
 
-              teammateCount++;
-              let index = teammateCount;
+        teammateCount++;
+        let index = teammateCount;
         data.staff.forEach(member => {
               const memberEl = document.createElement('div');
               memberEl.classList.add('teammate-entry');
@@ -82,14 +81,6 @@ function setData(data){
                 <input type="email" name="staffmember[${index}][email]" value="${member.email}" required>
                 <input type="text"  name="staffmember[${index}][role]"  value="${member.role}">
                 <div class="teammate-photo-wrapper">
-                    
-                    <img 
-                        id="preview-${index}" 
-                        class="teammate-photo-preview" 
-                        src="${member.photo}" 
-                        alt="Preview"
-                        style="display:block"
-                    >
 
                     <input 
                         type="file" 
@@ -98,7 +89,21 @@ function setData(data){
                         accept="image/*"
                         onchange="previewTeammatePhoto(this, ${index})"
                     >
+                    <div class="photo-container">
+                        <img id="preview-${index}" 
+                             class="teammate-photo-preview" 
+                             src="${member.photo}" 
+                             alt="Preview"
+                            style="display:block">
 
+                        <button type="button" 
+                                id="delete-photo-btn"
+                                class="delete-photo-btn"
+                                onclick="removeTeammatePhoto(${index})"
+                                >
+                            ✕
+                        </button>
+                    </div>
                 </div>
                 <button type="button" class="remove-teammate-btn" onclick="this.closest('.teammate-entry').remove()">&#x2715;</button>`;
 
@@ -120,9 +125,10 @@ function handleEdit(event_id , staff){
     data.append("event_id",event_id);
 
     for (let index = 0; index < staff.length; index++) {
+
         if (!data.get(`staffmember[${index}][photo]`)["name"] && staff[index].photo){
             let photo = data.get(`staffmember[${index}][photo]`)
-            photo["name"] = staff[index].photo;
+            data.set(`staffmember[${index}][existingPhoto]`,staff[index].photo);
         }
     }
     for (let [key, value] of data.entries()) {
@@ -254,8 +260,13 @@ document.getElementById('add-teammate-btn').addEventListener('click', function (
         <div class="teammate-photo-wrapper">
             <input type="file" class="teammate-file-input" name="staffmember[${index}][photo]" accept="image/*" 
                 onchange="previewTeammatePhoto(this, ${index})">
-            <img id="preview-${index}" class="teammate-photo-preview" src="" alt="Preview">
-        </div>
+                <div class="photo-container">
+                    <img id="preview-${index}" 
+                         class="teammate-photo-preview" 
+                         src="" 
+                         alt="Preview">
+                </div>
+    </div>
         <button type="button" class="remove-teammate-btn" onclick="this.closest('.teammate-entry').remove()">&#x2715;</button>
     `;
 
@@ -264,17 +275,30 @@ document.getElementById('add-teammate-btn').addEventListener('click', function (
 
 function previewTeammatePhoto(input, index) {
     const preview = document.getElementById('preview-' + index);
+    const button = document.getElementById("delete-photo-btn");
+
     if (input.files && input.files[0]) {
         const reader = new FileReader();
         reader.onload = e => {
             preview.src = e.target.result;
             preview.style.display = 'block';
+            let hidden = document.querySelector(
+                `input[name="staffmember[${index}][deletePhoto]"]`
+            );
+
+            if (!hidden) {
+                hidden = document.createElement("input");
+                hidden.type = "hidden";
+                hidden.name = `staffmember[${index}][deletePhoto]`;
+                hidden.value = "0";
+                input.parentNode.appendChild(hidden);
+            } else {
+                hidden.value = "0";
+            }
         };
         reader.readAsDataURL(input.files[0]);
     }
 }
-
-
 
 
 
@@ -332,4 +356,28 @@ function handleRequest(data) {
 }
 
 
+function removeTeammatePhoto(index) {
+    const input = document.querySelector(
+        `input[name="staffmember[${index}][photo]"]`
+    );
 
+    const preview = document.getElementById(`preview-${index}`);
+
+    input.value = "";
+
+    preview.src = "";
+
+    let hidden = document.querySelector(
+        `input[name="staffmember[${index}][deletePhoto]"]`
+    );
+
+    if (!hidden) {
+        hidden = document.createElement("input");
+        hidden.type = "hidden";
+        hidden.name = `staffmember[${index}][deletePhoto]`;
+        hidden.value = "1";
+        input.parentNode.appendChild(hidden);
+    } else {
+        hidden.value = "1";
+    }
+}

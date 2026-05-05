@@ -23,7 +23,6 @@ $max_attendees  = empty($_POST["max_attendees"]) ? null : $_POST["max_attendees"
 $other_participating_clubs = json_decode($_POST["other_participating_clubs"]);
 $STAFF          = array_values($_POST["staffmember"]);
 $photos         = $_FILES["staffmember"] ?? null;
-
 if (empty($event_type) || empty($description) || empty($title) || empty($date) || empty($time) || empty($duration)
     || empty($location) || empty($STAFF)) {
     echo json_encode([
@@ -131,14 +130,16 @@ try {
         $fileName = $photos["name"][$key]["photo"] ?? null;
 
         if ($fileTmp && is_uploaded_file($fileTmp)) {
-            // New photo uploaded — save it
+
             $newFileName = uniqid() . "_" . basename($fileName);
             $destination = $_SERVER["DOCUMENT_ROOT"] . "/uploaded/" . $newFileName;
             move_uploaded_file($fileTmp, $destination);
             $photo_path = "/uploaded/" . $newFileName;
+        } else if ($_POST["staffmember"][$key]["deletePhoto"]) {
+            $photo_path = null;
+                
         } else {
-            // No new photo — reuse existing path if sent from client
-            $photo_path = $_POST["staffmember"][$key]["existing_photo"] ?? null;
+            $photo_path = $_POST["staffmember"][$key]["existingPhoto"] ?? null;
         }
 
         $staffInsertion = $connexion->prepare("INSERT INTO staff(user_id, photo, role, event_id) VALUES (?, ?, ?, ?)");
