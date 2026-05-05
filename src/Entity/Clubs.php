@@ -19,6 +19,38 @@ class Clubs
     #[ORM\Column(length: 150)]
     private ?string $name = null;
 
+    #[ORM\ManyToMany(targetEntity: Events::class, mappedBy: 'clubs')]
+    private \Doctrine\Common\Collections\Collection $events;
+
+    public function __construct()
+    {
+        $this->events = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function getEvents(): \Doctrine\Common\Collections\Collection
+    {
+        return $this->events;
+    }
+
+    public function addEvent(Events $event): static
+    {
+        if (!$this->events->contains($event)) {
+            $this->events->add($event);
+            $event->addClub($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvent(Events $event): static
+    {
+        if ($this->events->removeElement($event)) {
+            $event->removeClub($this);
+        }
+
+        return $this;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
