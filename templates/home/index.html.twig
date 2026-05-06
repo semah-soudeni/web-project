@@ -1,14 +1,15 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('assets/styles/style.css') }}?v=1">
-    {% endblock %}
+{% endblock %}
+{% block title %}Home{% endblock %}
 {% block body %}
 <section>
     <h1>Discover our clubs</h1>
 
     <div class="container clubs-grid">
 
-        <a href="{{ path('home') }}" class="link">
+        <a href="{{ path('aero') }}" class="link">
             <div class="card">
                 <div class="img">
                     <div class="logo">
@@ -22,7 +23,7 @@
             </div>
         </a>
 
-        <a href="{{ path('home') }}" class="link">
+        <a href="{{ path('secu') }}" class="link">
             <div class="card">
                 <div class="img">
                     <div class="logo secu">
@@ -35,7 +36,7 @@
                 </div>
             </div>
         </a>
-        <a href="{{ path('home') }}" class="link">
+        <a href="{{ path('ieee') }}" class="link">
             <div class="card">
                 <div class="img">
                     <div class="logo">
@@ -62,7 +63,7 @@
             </div>
         </a>
 
-        <a href="{{ path('home') }}" class="link">
+        <a href="{{ path('cim') }}" class="link">
             <div class="card">
                 <div class="img">
                     <div class="logo">
@@ -75,7 +76,7 @@
                 </div>
             </div>
         </a>
-        <a href="{{ path('home') }}" class="link">
+        <a href="{{ path('theatro') }}" class="link">
             <div class="card">
                 <div class="img">
                     <div class="logoth">
@@ -89,7 +90,7 @@
             </div>
         </a>
 
-        <a href="{{ path('home') }}" class="link">
+        <a href="{{ path('press') }}" class="link">
             <div class="card">
                 <div class="img">
                     <div class="logoth">
