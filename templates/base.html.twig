@@ -16,7 +16,7 @@
             <div class="nav-menu">
                 <a href="{{ path('home') }}" class="nav-link {{ activePage == 'clubs' ? 'active' : '' }}">Clubs</a>
                 <a href="{{ path('events') }}" class="nav-link {{ activePage == 'events' ? 'active' : '' }}">Events</a>
-                <a href="{{ path('home') }}" class="nav-link {{ activePage == 'map' ? 'active' : '' }}">Map</a>
+                <a href="{{ path('map') }}" class="nav-link {{ activePage == 'map' ? 'active' : '' }}">Map</a>
                 {% if is_granted('admin') %}
                     <a href="{{ path('admin') }}" class="nav-link {{ activePage == 'admin' ? 'active' : '' }}">Admin Dashboard</a>
                 {% endif %}
