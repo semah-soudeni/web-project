@@ -14,7 +14,8 @@ final class ClubsController extends AbstractController
     {
         return $this->render('acm/index.html.twig', [
             'controller_name' => 'ClubsController',
-            'activePage' => 'clubs'
+            'activePage' => 'clubs',
+            'pageTitle' => 'ACM',
         ]);
     }
     #[Route('/aero', name: 'aero')]
@@ -22,7 +23,8 @@ final class ClubsController extends AbstractController
     {
         return $this->render('aero/index.html.twig', [
             'controller_name' => 'ClubsController',
-            'activePage' => 'clubs'
+            'activePage' => 'clubs',
+            'pageTitle' => 'Aerobotix',
         ]);
     }
     #[Route('/ieee', name: 'ieee')]
@@ -30,7 +32,8 @@ final class ClubsController extends AbstractController
     {
         return $this->render('ieee/index.html.twig', [
             'controller_name' => 'ClubsController',
-            'activePage' => 'clubs'
+            'activePage' => 'clubs',
+            'pageTitle' => 'IEEE',
         ]);
     }
     #[Route('/theatro', name: 'theatro')]
@@ -38,7 +41,8 @@ final class ClubsController extends AbstractController
     {
         return $this->render('theatro/index.html.twig', [
             'controller_name' => 'ClubsController',
-            'activePage' => 'clubs'
+            'activePage' => 'clubs',
+            'pageTitle' => 'Theatro',
         ]);
     }
     #[Route('/securinets', name: 'secu')]
@@ -46,7 +50,8 @@ final class ClubsController extends AbstractController
     {
         return $this->render('secu/index.html.twig', [
             'controller_name' => 'ClubsController',
-            'activePage' => 'clubs'
+            'activePage' => 'clubs',
+            'pageTitle' => 'Securinets',
         ]);
     }
     #[Route('/cim', name: 'cim')]
@@ -54,7 +59,8 @@ final class ClubsController extends AbstractController
     {
         return $this->render('cim/index.html.twig', [
             'controller_name' => 'ClubsController',
-            'activePage' => 'clubs'
+            'activePage' => 'clubs',
+            'pageTitle' => 'CIM',
         ]);
     }
     #[Route('/insat-press', name: 'press')]
@@ -62,7 +68,8 @@ final class ClubsController extends AbstractController
     {
         return $this->render('press/index.html.twig', [
             'controller_name' => 'ClubsController',
-            'activePage' => 'clubs'
+            'activePage' => 'clubs',
+            'pageTitle' => 'Press',
         ]);
     }
 }
