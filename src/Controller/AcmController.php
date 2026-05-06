@@ -1,0 +1,20 @@
+<?php
+
+namespace App\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
+
+final class AcmController extends AbstractController
+{
+    #[Route('/acm', name: 'acm')]
+    public function index(): Response
+    {
+        return $this->render('acm/index.html.twig', [
+            'controller_name' => 'AcmController',
+            'pageTitle' => 'ACM INSAT',
+            'activePage' => 'acm',
+        ]);
+    }
+}
