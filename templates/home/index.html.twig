@@ -1,0 +1,105 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<section>
+    <h1>Discover our clubs</h1>
+
+    <div class="container clubs-grid">
+
+        <a href="{{ path('home') }}" class="link">
+            <div class="card">
+                <div class="img">
+                    <div class="logo">
+                        <img src="{{ asset('assets/img/aero-logo.png') }}" alt="aerobotix logo">
+                    </div>
+                </div>
+                <div class="jnab">
+                    <h2>Aerobotix</h2>
+                    <p>Learn.Create.Innovate</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="{{ path('home') }}" class="link">
+            <div class="card">
+                <div class="img">
+                    <div class="logo secu">
+                        <img src="{{ asset('assets/img/secu-logo.png') }}" alt="securinets logo">
+                    </div>
+                </div>
+                <div class="jnab">
+                    <h2>Securinets</h2>
+                    <p>Cybersecurity & Ethical Hacking</p>
+                </div>
+            </div>
+        </a>
+        <a href="{{ path('home') }}" class="link">
+            <div class="card">
+                <div class="img">
+                    <div class="logo">
+                        <img src="{{ asset('assets/img/ieee-logo.png') }}" alt="ieee logo">
+                    </div>
+                </div>
+                <div class="jnab">
+                    <h2>IEEE</h2>
+                    <p>Advancing Technology for Humanity</p>
+                </div>
+            </div>
+        </a>
+        <a href="{{ path('home') }}" class="link">
+            <div class="card">
+                <div class="img">
+                    <div class="logo">
+                        <img src="{{ asset('assets/img/acm-logo.png') }}" alt="acm logo">
+                    </div>
+                </div>
+                <div class="jnab">
+                    <h2>ACM</h2>
+                    <p>Computing for Innovation</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="{{ path('home') }}" class="link">
+            <div class="card">
+                <div class="img">
+                    <div class="logo">
+                        <img src="{{ asset('assets/img/cim.png') }}" alt="CIM Insat">
+                    </div>
+                </div>
+                <div class="jnab">
+                    <h2>CIM </h2>
+                    <p>Industrial Computing & Mechatronics</p>
+                </div>
+            </div>
+        </a>
+        <a href="{{ path('home') }}" class="link">
+            <div class="card">
+                <div class="img">
+                    <div class="logoth">
+                        <img src="{{ asset('assets/img/theatro.jpg') }}" alt="Theatro Insat">
+                    </div>
+                </div>
+                <div class="jnab">
+                    <h2>Theatro</h2>
+                    <p>Unleash Your Inner Actor</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="{{ path('home') }}" class="link">
+            <div class="card">
+                <div class="img">
+                    <div class="logoth">
+                        <img src="{{ asset('assets/img/press.png') }}" alt="Insat Press">
+                    </div>
+                </div>
+                <div class="jnab">
+                    <h2>Insat Press</h2>
+                    <p>Your Voice in the Campus</p>
+                </div>
+            </div>
+        </a>
+    </div>
+</section>
+{% endblock %}

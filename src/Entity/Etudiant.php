@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Enum\Role;
 use App\Repository\EtudiantRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity(repositoryClass: EtudiantRepository::class)]
 class Etudiant
@@ -31,6 +32,9 @@ class Etudiant
 
     #[ORM\Column(enumType: Role::class)]
     private ?Role $role = null;
+
+    #[ORM\OneToMany(mappedBy: 'Etudiant', targetEntity: Events::class)]
+    private Collection $registrations;
 
     public function getId(): ?int
     {
@@ -109,6 +113,11 @@ class Etudiant
         return $this->role;
     }
 
+    public function getRoles(): array
+    {
+        return [$this->role];
+    }
+
     public function setRole(Role $role): static
     {
         $this->role = $role;
@@ -116,5 +125,8 @@ class Etudiant
         return $this;
     }
 
-   
+    public function getRegistrations(): Collection
+    {
+        return $this->registrations;
+    }
 }
