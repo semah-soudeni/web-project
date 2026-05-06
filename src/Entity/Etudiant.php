@@ -32,8 +32,9 @@ class Etudiant
 
     #[ORM\Column(enumType: Role::class)]
     private ?Role $role = null;
-
-    #[ORM\OneToMany(mappedBy: 'Etudiant', targetEntity: Events::class)]
+    
+    # not mandatroy,we can remove it if we want
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Register::class)]
     private Collection $registrations;
 
     public function getId(): ?int

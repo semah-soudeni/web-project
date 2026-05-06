@@ -14,7 +14,7 @@ class Register
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(targetEntity: Etudiant::class)]
+    #[ORM\ManyToOne(targetEntity: Etudiant::class, inversedBy: 'registrations')]
     #[ORM\JoinColumn(name: 'user_id', referencedColumnName: 'id', nullable: false, onDelete: 'CASCADE')]
     private ?Etudiant $user = null;
 

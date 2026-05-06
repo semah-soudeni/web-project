@@ -50,9 +50,11 @@ class Events
     #[ORM\JoinTable(name: 'club_events')]
     private Collection $clubs;
 
+    # not mandatory,we can remove it
     #[ORM\OneToMany(mappedBy: 'event', targetEntity: Register::class, orphanRemoval: true)]
     private Collection $registers;
 
+    # not mandatory,we can remove it
     #[ORM\OneToMany(mappedBy: 'event', targetEntity: Staff::class, orphanRemoval: true)]
     private Collection $staff;
 
