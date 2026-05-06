@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
-
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/styles/style.css') }}?v=1">
+    {% endblock %}
 {% block body %}
 <section>
     <h1>Discover our clubs</h1>
