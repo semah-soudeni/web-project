@@ -6,9 +6,11 @@ use App\Enum\Role;
 use App\Repository\EtudiantRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: EtudiantRepository::class)]
-class Etudiant
+class Etudiant implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -32,7 +34,7 @@ class Etudiant
 
     #[ORM\Column(enumType: Role::class)]
     private ?Role $role = null;
-    
+
     # not mandatroy,we can remove it if we want
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Register::class)]
     private Collection $registrations;
@@ -114,10 +116,7 @@ class Etudiant
         return $this->role;
     }
 
-    public function getRoles(): array
-    {
-        return [$this->role];
-    }
+    
 
     public function setRole(Role $role): static
     {
@@ -129,5 +128,23 @@ class Etudiant
     public function getRegistrations(): Collection
     {
         return $this->registrations;
+    }
+
+
+    // these methodes must be implemented in order to use symfony security system(app.user twli treferi to etudiant)
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->email; // Tell Symfony what field identifies the user
+    }
+
+    public function getRoles(): array
+    {
+        // Return at least the 'ROLE_USER' by default
+        return [$this->role->value ?? 'ROLE_USER']; 
+    }
+
+    public function eraseCredentials(): void
+    {
+        // Used to clear temporary, sensitive data if you have plain-text passwords stored temporarily
     }
 }
