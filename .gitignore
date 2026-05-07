@@ -11,6 +11,8 @@ node_modules
 /public/bundles/
 /var/
 /vendor/
+composer.lock
+composer.phar
 ###< symfony/framework-bundle ###
 
 ###> phpunit/phpunit ###
