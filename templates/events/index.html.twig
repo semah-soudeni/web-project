@@ -24,7 +24,6 @@
             <button class="filter-btn {{ selectedClub == 'secu' ? 'active' : '' }}" type="button" data-club="secu">Securinets</button>
             <button class="filter-btn {{ selectedClub == 'ieee' ? 'active' : '' }}" type="button" data-club="ieee">IEEE</button>
             <button class="filter-btn {{ selectedClub == 'acm' ? 'active' : '' }}" type="button" data-club="acm">ACM</button>
-            <button class="filter-btn {{ selectedClub == 'android' ? 'active' : '' }}" type="button" data-club="android">Android Club</button>
             <button class="filter-btn {{ selectedClub == 'cim' ? 'active' : '' }}" type="button" data-club="cim">CIM</button>
         </div>
     </div>
@@ -64,8 +63,8 @@
                                         <div class="club-tags" style="display:flex; gap:6px; flex-wrap:wrap;">
                                             {% for s in slugs %}
                                                 {% set s = s|trim %}
-                                                {% set color = clubColors[s] %}
-                                                {% set label = clubNames[s] %}
+                                                {% set color = clubColors[s] ?? '#3182ce' %}
+                                                {% set label = clubNames[s] ?? s|upper %}
                                                 <div class="club-tag {{ s }}"
                                                     style="background-color: {{ color }}">
                                                     {{ label }}

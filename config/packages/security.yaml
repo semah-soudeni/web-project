@@ -1,15 +1,20 @@
 security:
+    password_hashers:
+        App\Entity\Etudiant:
+            algorithm: auto
+
     providers:
         app_user_provider:
             entity:
                 class: App\Entity\Etudiant
                 property: email
+
     firewalls:
-      main:
-        provider: app_user_provider
-        form_login:
-            login_path: login
-            check_path: login
-        logout:
-            path: logout
-            target: /
+        main:
+            provider: app_user_provider
+            form_login:
+                login_path: login
+                check_path: login
+            logout:
+                path: logout
+                target: /

@@ -21,18 +21,9 @@ final class EventsController extends AbstractController
             'secu',
             'ieee',
             'acm',
-            'android',
             'cim',
             'theatro',
-            'cineradio',
-            'press',
-            'lions',
-            'enactus',
-            'jei',
-            'jci',
-            'chem',
-            'astro',
-            '3zero'
+            'press'
         ];
         if (!in_array($selectedClub, $allowedClubs, true)) {
             $selectedClub = 'all';
@@ -43,7 +34,7 @@ final class EventsController extends AbstractController
             'aero' => '#3280C2',
             'ieee' => '#362B69',
             'acm' => '#7DF0CA',
-            'android' => '#78DE85',
+            'theatro' => '#9B59B6',
             'cim' => '#F6C011',
         ];
 
@@ -52,8 +43,8 @@ final class EventsController extends AbstractController
             'secu' => 'Securinets',
             'ieee' => 'IEEE',
             'acm' => 'ACM',
-            'android' => 'Android Club',
             'cim' => 'CIM',
+            'theatro' => 'Theatro'
         ];
 
         $allEvents = $eventRepository->createQueryBuilder('e')

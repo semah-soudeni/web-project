@@ -16,7 +16,7 @@ class EventsRepository extends ServiceEntityRepository
     public function findByClub(string $club): array
     {
         $qb = $this->createQueryBuilder('e')
-            ->leftJoin('e.club', 'c')
+            ->leftJoin('e.clubs', 'c')
             ->addSelect('c')
             ->orderBy('e.eventDate', 'ASC')
             ->addOrderBy('e.eventTime', 'ASC');
