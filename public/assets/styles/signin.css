@@ -57,7 +57,9 @@ body {
 /* Layout */
 .container {
   display: flex;
-  min-height: 100vh;
+  min-height: 110vh;
+  max-width: none;
+  padding: 0;
   width: 100%;
 }
 
