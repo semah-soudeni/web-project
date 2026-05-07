@@ -231,7 +231,7 @@ class AppFixtures extends Fixture
         $admin = new Etudiant();
         $admin->setFirstName('Admin')
             ->setLastName('User')
-            ->setEmail('admin@insat.tn')
+            ->setEmail('admin@insat.ucar.tn')
             ->setPhone('21600000000')
             ->setRole(Role::ADMIN)
             ->setPassword($this->hasher->hashPassword($admin, $password));
