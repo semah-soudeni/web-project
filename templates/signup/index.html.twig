@@ -26,7 +26,7 @@
                     Account created successfully! Redirecting...
                 </div>
 
-                {{ form_start(Sform, { attr: { class: 'signup-form', id: 'signupForm' } }) }}
+                {{ form_start(Sform, { attr: { class: 'signup-form', id: 'signupForm' }, action: path('add') }) }}
                     <div class="row">
                         <div class="input-group">
                             {{ form_label(Sform.firstName) }}

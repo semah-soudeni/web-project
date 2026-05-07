@@ -24,8 +24,9 @@
             </div>
             <div class="nav-login">
                 {% if app.user %}
-                    <form action="{{ path('logout') }}" method="POST" style="display:flex; align-items:center; gap:20px;">
+                    <form action="{{ path('app_logout') }}" method="POST" style="display:flex; align-items:center; gap:20px;">
                         <span style="font-weight:600;">Hi, {{ app.user.firstName }}</span>
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('logout') }}">
                         <button type="submit" class="signin-btn">Sign Out</button>
                     </form>
                 {% else %}

@@ -15,6 +15,10 @@ security:
             form_login:
                 login_path: signin
                 check_path: signin
+                enable_csrf: true
+                csrf_token_id: authenticate
             logout:
-                path: logout
+                path: app_logout
                 target: /
+                enable_csrf: true
+                csrf_token_id: logout
