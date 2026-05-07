@@ -24,7 +24,7 @@
             </div>
             <div class="nav-login">
                 {% if app.user %}
-                    <form action="<?= BASE_URL ?>backend/logout.php" method="POST" style="display:flex; align-items:center; gap:20px;">
+                    <form action="{{ path('logout') }}" method="POST" style="display:flex; align-items:center; gap:20px;">
                         <span style="font-weight:600;">Hi, {{ app.user.firstName }}</span>
                         <button type="submit" class="signin-btn">Sign Out</button>
                     </form>
