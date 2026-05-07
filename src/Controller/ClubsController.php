@@ -12,7 +12,7 @@ final class ClubsController extends AbstractController
     #[Route('/acm', name: 'acm')]
     public function acm(): Response
     {
-        return $this->render('acm/index.html.twig', [
+        return $this->render('clubs/acm.html.twig', [
             'controller_name' => 'ClubsController',
             'activePage' => 'clubs',
             'pageTitle' => 'ACM',
@@ -21,7 +21,7 @@ final class ClubsController extends AbstractController
     #[Route('/aero', name: 'aero')]
     public function aero(): Response
     {
-        return $this->render('aero/index.html.twig', [
+        return $this->render('clubs/aero.html.twig', [
             'controller_name' => 'ClubsController',
             'activePage' => 'clubs',
             'pageTitle' => 'Aerobotix',
@@ -30,7 +30,7 @@ final class ClubsController extends AbstractController
     #[Route('/ieee', name: 'ieee')]
     public function ieee(): Response
     {
-        return $this->render('ieee/index.html.twig', [
+        return $this->render('clubs/ieee.html.twig', [
             'controller_name' => 'ClubsController',
             'activePage' => 'clubs',
             'pageTitle' => 'IEEE',
@@ -39,7 +39,7 @@ final class ClubsController extends AbstractController
     #[Route('/theatro', name: 'theatro')]
     public function theatro(): Response
     {
-        return $this->render('theatro/index.html.twig', [
+        return $this->render('clubs/theatro.html.twig', [
             'controller_name' => 'ClubsController',
             'activePage' => 'clubs',
             'pageTitle' => 'Theatro',
@@ -48,7 +48,7 @@ final class ClubsController extends AbstractController
     #[Route('/securinets', name: 'secu')]
     public function secu(): Response
     {
-        return $this->render('secu/index.html.twig', [
+        return $this->render('clubs/secu.html.twig', [
             'controller_name' => 'ClubsController',
             'activePage' => 'clubs',
             'pageTitle' => 'Securinets',
@@ -57,7 +57,7 @@ final class ClubsController extends AbstractController
     #[Route('/cim', name: 'cim')]
     public function cim(): Response
     {
-        return $this->render('cim/index.html.twig', [
+        return $this->render('clubs/cim.html.twig', [
             'controller_name' => 'ClubsController',
             'activePage' => 'clubs',
             'pageTitle' => 'CIM',
@@ -66,7 +66,7 @@ final class ClubsController extends AbstractController
     #[Route('/insat-press', name: 'press')]
     public function press(): Response
     {
-        return $this->render('press/index.html.twig', [
+        return $this->render('clubs/press.html.twig', [
             'controller_name' => 'ClubsController',
             'activePage' => 'clubs',
             'pageTitle' => 'Press',

@@ -92,7 +92,7 @@
                                         {% if is_registered[event.getId()] %}
                                             <a class="register-btn" aria-disabled="true" style="opacity:0.6; pointer-events:none;">Registered ✓</a>
                                         {% else %}
-                                            <a class="register-btn" href="event-registration.html?event_id=<?php echo (int)($event['id'] ?? 0); ?>">Register</a>
+                                            <a class="register-btn" href="{{ path('events_registration', {'event_id': event.getId()}) }}">Register</a>
                                         {% endif %}
                                     </div>
                                 </div>
