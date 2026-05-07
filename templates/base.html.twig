@@ -15,9 +15,9 @@
     <nav class="navigation">
         <div class="nav-container">
             <div class="nav-menu">
-                <a href="{{ path('home') }}" class="nav-link {{ activePage == 'clubs' ? 'active' : '' }}">Clubs</a>
-                <a href="{{ path('events') }}" class="nav-link {{ activePage == 'events' ? 'active' : '' }}">Events</a>
-                <a href="{{ path('map') }}" class="nav-link {{ activePage == 'map' ? 'active' : '' }}">Map</a>
+                <a href="{{ path('home') }}" class="nav-link ">Clubs</a>
+                <a href="{{ path('events') }}" class="nav-link ">Events</a>
+                <a href="{{ path('map') }}" class="nav-link ">Map</a>
                 {% if is_granted('admin') %}
                     <a href="{{ path('admin') }}" class="nav-link {{ activePage == 'admin' ? 'active' : '' }}">Admin Dashboard</a>
                 {% endif %}
@@ -29,8 +29,8 @@
                         <button type="submit" class="signin-btn">Sign Out</button>
                     </form>
                 {% else %}
-                    <a href="{{ path('home') }}" class="signin-btn">Sign In</a>
-                    <a href="{{ path('home') }}" class="signup-btn">Sign Up</a>
+                    <a href="{{ path('signin') }}" class="signin-btn">Sign In</a>
+                    <a href="{{ path('signup') }}" class="signup-btn">Sign Up</a>
                 {% endif %}
             </div>
         </div>
