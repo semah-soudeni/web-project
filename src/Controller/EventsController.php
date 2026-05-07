@@ -115,14 +115,50 @@ final class EventsController extends AbstractController
         ]);
     }
 
-    #[Route('/eventsreg', name: 'events_registration')]
-    public function index_register(Request $request): Response
+    #[Route('/eventsreg/{event_id}', name: 'events_registration')]
+    public function index_register(Request $request, EventsRepository $eventsRepository, \Doctrine\ORM\EntityManagerInterface $entityManager, int $event_id): Response
     {
-        $event_id = $request->query->get('event_id'); // unused for some reason (maybe should get removed? idk)
+        if (!$this->getUser()) {
+            return $this->redirectToRoute('signin');
+        }
+
+        if (!$event_id) {
+            return $this->redirectToRoute('events');
+        }
+
+        $event = $eventsRepository->find($event_id);
+        if (!$event) {
+            return $this->redirectToRoute('events');
+        }
+
+        if ($request->isMethod('POST')) {
+            $register = new \App\Entity\Register();
+
+            /** @var \App\Entity\Etudiant $user */
+            $user = $this->getUser();
+            $register->setUser($user);
+
+            $register->setEvent($event);
+            $register->setPaid(false); // default value
+
+            $register->setTeamName($request->request->get('team_name'));
+            $members = $request->request->get('team_nb_memebers');
+            if ($members) {
+                $register->setTeamNbMemebers((int)$members);
+            }
+            $register->setLinks($request->request->get('links'));
+
+            $entityManager->persist($register);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('events');
+        }
+
         return $this->render('events/register.html.twig', [
             'controller_name' => 'EventsController',
-            'pageTitle' => 'Event Registration',
+            'pageTitle' => 'Register - ' . $event->getTitle(),
             'activePage' => 'events_registration',
+            'event' => $event,
         ]);
     }
 }

@@ -37,9 +37,6 @@ class Events
     #[ORM\Column(type: Types::STRING)]
     private ?string $eventType = null;
 
-    #[ORM\Column(nullable: true, options: ['default' => 0])]
-    private ?int $attendees = 0;
-
     #[ORM\Column(nullable: true)]
     private ?int $maxAttendees = null;
 
@@ -150,18 +147,6 @@ class Events
     public function setEventType(string $eventType): static
     {
         $this->eventType = $eventType;
-
-        return $this;
-    }
-
-    public function getAttendees(): ?int
-    {
-        return $this->attendees;
-    }
-
-    public function setAttendees(?int $attendees): static
-    {
-        $this->attendees = $attendees;
 
         return $this;
     }

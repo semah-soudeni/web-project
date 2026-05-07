@@ -71,7 +71,7 @@
                                                 </div>
                                             {% endfor %}
                                         </div>
-                                        <div class="event-hour">🕐 {{ event.getEventTime().format('h-m') }}</div>
+                                        <div class="event-hour">🕐 {{ event.getEventTime() ? event.getEventTime().format('g:i A') : 'TBA' }}</div>
                                     </div>
 
                                     <h3 class="event-title">{{ event.getTitle() }}</h3>
@@ -85,7 +85,7 @@
 
                                         <div class="event-location">
                                             <span>👥</span>
-                                            <span>{{ event.getAttendees() }} attendees</span>
+                                            <span>{{ event.getRegisters()|length }} attendees</span>
                                         </div>
 
                                         {% if is_registered[event.getId()] %}

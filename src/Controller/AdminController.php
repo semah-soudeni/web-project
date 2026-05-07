@@ -13,9 +13,9 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route("/admin")]
 final class AdminController extends AbstractController
 {
-    public function __construct(private EntityManagerInterface $entity_manager , private EventsRepository $events_repository ) {}
+    public function __construct(private EntityManagerInterface $entity_manager, private EventsRepository $events_repository) {}
 
-    #[Route('/', name: 'app_admin')]
+    #[Route('/', name: 'admin')]
     public function index(): Response
     {
 
@@ -27,16 +27,15 @@ final class AdminController extends AbstractController
         ]);
     }
     #[Route('/add', name: 'add_events')]
-    public function add(Request $request): Response 
+    public function add(Request $request): Response
     {
         if ($request->getMethod() == "GET") {
-            return $this->render('admin/addEvent.html.twig',[
+            return $this->render('admin/addEvent.html.twig', [
                 "activePage" => 'admin',
             ]);
-        }
-        else if ($request->getMethod() == "POST"){
+        } else if ($request->getMethod() == "POST") {
             $body = $request->getPayload();
-            error_log(print_r($body,true)); 
+            error_log(print_r($body, true));
             $event = new Events();
             $event->setTitle($body["title"]);
             $event->setDuration($body["duration"]);
@@ -54,8 +53,7 @@ final class AdminController extends AbstractController
                 "success" => true,
                 "message" => "event added successfully"
             ]));
-        } 
-        else 
-            return new Response(status:403);
+        } else
+            return new Response(status: 403);
     }
 }
