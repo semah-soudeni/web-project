@@ -16,6 +16,8 @@ final class SignupController extends AbstractController
 
         return $this->render('signup/index.html.twig', [
             'controller_name' => 'SignupController',
+            'pageTitle' => 'Sign Up',
+            'activePage' => 'signup',
             'Sform' => $form->createView()
         ]);
     }

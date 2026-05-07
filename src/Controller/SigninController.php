@@ -17,6 +17,8 @@ final class SigninController extends AbstractController
 
         return $this->render('signin/index.html.twig', [
             'controller_name' => 'SigninController',
+            'pageTitle' => 'Sign In',
+            'activePage' => 'signin',
             'Sform' => $form->createView(),
         ]);
     }
