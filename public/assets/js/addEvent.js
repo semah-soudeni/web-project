@@ -127,7 +127,6 @@ function handleEdit(event_id , staff){
     for (let index = 0; index < staff.length; index++) {
 
         if (!data.get(`staffmember[${index}][photo]`)["name"] && staff[index].photo){
-            let photo = data.get(`staffmember[${index}][photo]`)
             data.set(`staffmember[${index}][existingPhoto]`,staff[index].photo);
         }
     }
@@ -275,7 +274,6 @@ document.getElementById('add-teammate-btn').addEventListener('click', function (
 
 function previewTeammatePhoto(input, index) {
     const preview = document.getElementById('preview-' + index);
-    const button = document.getElementById("delete-photo-btn");
 
     if (input.files && input.files[0]) {
         const reader = new FileReader();
@@ -315,9 +313,9 @@ function sendData() {
     const data = new FormData(form);
     data.append("other_participating_clubs", JSON.stringify(getClubsNames()));
 
-    fetch('../../backend/addEvent.php', {
-    method: 'POST',
-    body: data
+    fetch('/admin/add', {
+        method: 'POST',
+        body: data
     })
     .then(response =>{
         return response.json();
