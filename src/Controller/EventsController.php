@@ -145,4 +145,15 @@ final class EventsController extends AbstractController
           'groupedEvents' => $groupedEvents,
       ]);
     }
+
+    #[Route('/eventsreg', name: 'events_registration')]
+    public function index_register(Request $request): Response
+    {
+      $event_id = $request->query->get('event_id'); // unused for some reason (maybe should get removed? idk)
+      return $this->render('events/register.html.twig', [
+          'controller_name' => 'EventsController',
+          'pageTitle' => 'Event Registration',
+          'activePage' => 'events_registration',
+      ]);
+    }
 }
