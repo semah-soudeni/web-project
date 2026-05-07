@@ -5,13 +5,9 @@ namespace App\Controller;
 use App\Entity\Events;
 use App\Repository\EventsRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\Persistence\ObjectManager;
-use PHPUnit\TextUI\XmlConfiguration\ReplaceRestrictDeprecationsWithIgnoreDeprecations;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\HttpException;
-use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\Routing\Attribute\Route;
 
 #[Route("/admin")]
@@ -51,7 +47,7 @@ final class AdminController extends AbstractController
             $event->setEventTime($body["time"]);
             $event->setPrizePool($body["prize"]);
             $event->setMaxAttendees($body["max_attendees"]);
-            $event->setParticipatingClubs($body["other_participating_clubs"]);
+            //$event->setParticipatingClubs($body["other_participating_clubs"]);
             //$this->entity_manager->persist($event);
             //$this->entity_manager->flush();
             return new Response(json_encode([
