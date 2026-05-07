@@ -12,4 +12,13 @@ class EtudiantRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Etudiant::class);
     }
+
+    public function findByEmail($email){
+        return $this->createQueryBuilder("e")
+                    ->andWhere("e.email = :val")
+                    ->setParameter('val' , $email)
+                    ->getQuery()
+                    ->getOneOrNullResult();
+    
+    }
 }

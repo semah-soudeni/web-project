@@ -255,7 +255,7 @@ document.getElementById('add-teammate-btn').addEventListener('click', function (
 
     entry.innerHTML = `
         <input type="email" name="staffmember[${index}][email]" placeholder="Email" required>
-        <input type="text"  name="staffmember[${index}][role]"  placeholder="Role ">
+        <input type="text"  name="staffmember[${index}][role]"  placeholder="Role" required>
         <div class="teammate-photo-wrapper">
             <input type="file" class="teammate-file-input" name="staffmember[${index}][photo]" accept="image/*" 
                 onchange="previewTeammatePhoto(this, ${index})">
