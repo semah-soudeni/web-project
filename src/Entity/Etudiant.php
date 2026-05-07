@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Enum\Role;
 use App\Repository\EtudiantRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -39,16 +40,14 @@ class Etudiant implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Register::class)]
     private Collection $registrations;
 
+    public function __construct()
+    {
+        $this->registrations = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function setId(int $id): static
-    {
-        $this->id = $id;
-
-        return $this;
     }
 
     public function getFirstName(): ?string
@@ -116,7 +115,7 @@ class Etudiant implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->role;
     }
 
-    
+
 
     public function setRole(Role $role): static
     {
@@ -139,12 +138,10 @@ class Etudiant implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getRoles(): array
     {
-        // Return at least the 'ROLE_USER' by default
-        return [$this->role->value ?? 'ROLE_USER']; 
+        $roles = [$this->role->value];
+        $roles[] = 'ROLE_USER';
+        return array_unique($roles);
     }
 
-    public function eraseCredentials(): void
-    {
-        // Used to clear temporary, sensitive data if you have plain-text passwords stored temporarily
-    }
+    public function eraseCredentials(): void {}
 }

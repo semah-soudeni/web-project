@@ -18,7 +18,7 @@
                 <a href="{{ path('home') }}" class="nav-link ">Clubs</a>
                 <a href="{{ path('events') }}" class="nav-link ">Events</a>
                 <a href="{{ path('map') }}" class="nav-link ">Map</a>
-                {% if is_granted('admin') %}
+                {% if is_granted('ROLE_ADMIN') %}
                     <a href="{{ path('admin') }}" class="nav-link {{ activePage == 'admin' ? 'active' : '' }}">Admin Dashboard</a>
                 {% endif %}
             </div>

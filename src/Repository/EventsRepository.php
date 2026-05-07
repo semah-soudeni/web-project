@@ -12,4 +12,20 @@ class EventsRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Events::class);
     }
+
+    public function findByClub(string $club): array
+    {
+        $qb = $this->createQueryBuilder('e')
+            ->leftJoin('e.club', 'c')
+            ->addSelect('c')
+            ->orderBy('e.eventDate', 'ASC')
+            ->addOrderBy('e.eventTime', 'ASC');
+
+        if ($club !== 'all') {
+            $qb->where('c.slug = :slug')
+                ->setParameter('slug', $club);
+        }
+
+        return $qb->getQuery()->getResult();
+    }
 }
