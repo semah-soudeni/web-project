@@ -1,0 +1,23 @@
+Index: views/footer.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php if (!empty($extraJs)): ?>\n    <?php foreach ($extraJs as $js): ?>\n        <script src=\"<?= escapeText($js) ?>\"></script>\n    <?php endforeach; ?>\n<?php endif; ?>\n</body>\n</html>
+===================================================================
+diff --git a/views/footer.php b/views/footer.php
+--- a/views/footer.php	(revision 00326e3a70733cdc552c1373be6a6a5b21dbf02e)
++++ b/views/footer.php	(date 1777409324796)
+@@ -1,7 +1,12 @@
+ <?php if (!empty($extraJs)): ?>
+     <?php foreach ($extraJs as $js): ?>
+-        <script src="<?= escapeText($js) ?>"></script>
++        <?php 
++            $src = is_array($js) ? $js[0] : $js;
++            $type = is_array($js) && isset($js[1]) ? $js[1] : 'text/javascript';
++        ?>
++        <script type="<?= escapeText($type) ?>" src="<?= escapeText($src) ?>"></script>
+     <?php endforeach; ?>
+ <?php endif; ?>
+ </body>
++
+ </html>
+\ No newline at end of file

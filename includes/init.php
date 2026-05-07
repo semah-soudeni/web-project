@@ -1,7 +1,7 @@
 <?php
 
 define('ROOT_PATH', dirname(__DIR__));
-define('BASE_URL', '/');
+define('BASE_URL', '/web-project/');
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();

@@ -2,3 +2,6 @@ node_modules
 .taskm
 /backend/bd.php
 /uploaded
+.env.local
+var
+vendor
