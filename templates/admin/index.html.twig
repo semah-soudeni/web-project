@@ -296,15 +296,89 @@
         </div>
     </div>
 
-    {# Broadcast modal — unchanged #}
     <div id="broadcastModal" class="bm-overlay">
-        {# ... same as before ... #}
-    </div>
+      <div class="bm-dialog">
 
-    {# Toast container — unchanged #}
+        <div class="bm-header">
+          <div class="bm-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2.2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          <div>
+            <p class="bm-title">Confirm broadcast</p>
+            <p class="bm-subtitle">Review before sending</p>
+          </div>
+        </div>
+
+        <div class="bm-summary">
+          <div class="bm-row">
+            <span class="bm-row-label">To</span>
+            <span id="modal-receivers" class="bm-row-value"></span>
+          </div>
+          <div class="bm-row">
+            <span class="bm-row-label">Subject</span>
+            <span id="modal-subject" class="bm-row-value"></span>
+          </div>
+          <div class="bm-row">
+            <span class="bm-row-label">Preview</span>
+            <span id="modal-preview" class="bm-row-value bm-row-value--muted"></span>
+          </div>
+        </div>
+
+        <div class="bm-warning">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#b45309" stroke-width="2.2" class="bm-warning-icon">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+            <line x1="12" y1="9" x2="12" y2="13"/>
+            <line x1="12" y1="17" x2="12.01" y2="17"/>
+          </svg>
+          <span>This email will be sent to all members in the selected group. This action cannot be undone.</span>
+        </div>
+
+        <div class="bm-footer">
+          <button class="bm-btn-cancel" onclick="closeModal()">Cancel</button>
+          <button class="bm-btn-send" onclick="confirmSend()">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="22" y1="2" x2="11" y2="13"/>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+            </svg>
+            Send broadcast
+          </button>
+        </div>
+
+      </div>
+    </div>
     <div id="toastContainer" class="toast-container">
-        {# ... same as before ... #}
-    </div>
 
+      <div id="successToast" class="toast toast-success">
+        <div class="toast-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+        </div>
+        <div class="toast-content">
+          <p class="toast-title">Broadcast sent successfully!</p>
+          <p class="toast-message">Your message has been delivered to all selected members.</p>
+        </div>
+        <button class="toast-close" onclick="hideToast('successToast')">&times;</button>
+      </div>
+
+      <div id="errorToast" class="toast toast-error">
+        <div class="toast-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="15" y1="9" x2="9" y2="15"></line>
+            <line x1="9" y1="9" x2="15" y2="15"></line>
+          </svg>
+        </div>
+        <div class="toast-content">
+          <p class="toast-title">Broadcast failed</p>
+          <p class="toast-message">There was an error sending your message. Please try again.</p>
+        </div>
+        <button class="toast-close" onclick="hideToast('errorToast')">&times;</button>
+      </div>
+    </div>
 </main>
 {% endblock %}
