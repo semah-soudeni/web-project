@@ -1,307 +1,106 @@
 <?php
-session_start();
+require_once __DIR__ . '/../includes/init.php';
+requireLogin();
 
-$isLoggedIn = isset($_SESSION['logged']) && $_SESSION['logged'] === 'yes';
-$displayName = '';
+$pageTitle  = 'Join a Club';
+$activePage = 'clubs';
 
-$sclub = $_GET["club"];
-if(!isset($sclub)){
-  $sclub = "";
-}
+$sclub = $_GET['club'] ?? '';
 
-if ($isLoggedIn) {
-    $firstName = trim((string)($_SESSION['user_first_name'] ?? ''));
-    $lastName = trim((string)($_SESSION['user_last_name'] ?? ''));
-    $displayName = trim($firstName . ' ' . $lastName);
+$success = false;
+$error   = '';
 
-    if ($displayName === '') {
-        $displayName = (string)($_SESSION['user_email'] ?? 'User');
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    try {
+        $conn    = ConnexionBD::getInstance();
+        $userId  = (int)$_SESSION['id'];
+        $clubId  = (int)$_POST['club'];
+        $role    = 'member'; // always member when self-registering
+
+        // Check if already a member
+        $check = $conn->prepare("
+            SELECT 1 FROM memberships 
+            WHERE user_id = ? AND club_id = ?
+        ");
+        $check->execute([$userId, $clubId]);
+
+        if ($check->fetch()) {
+            $error = 'You are already a member of this club.';
+        } else {
+            $stmt = $conn->prepare("
+                INSERT INTO memberships (user_id, club_id, role)
+                VALUES (:user_id, :club_id, :role)
+            ");
+            $stmt->execute([
+                ':user_id' => $userId,
+                ':club_id' => $clubId,
+                ':role'    => $role,
+            ]);
+            $success = true;
+        }
+    } catch (Throwable $e) {
+        $error = 'Something went wrong. Please try again.';
     }
 }
+
+require_once ROOT_PATH . '/views/header.php';
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <title>Add Club Member</title>
-    <style>
-        :root {
-            --primary-color: #2d3748;
-            --secondary-color: #4a5568;
-            --accent-color: #3182ce;
-            --hover-color: #2c5282;
-            --text-primary: #1a202c;
-            --bg-light: #f7fafc;
-            --border-color: #e2e8f0;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<div class="reg-page">
+    <div class="reg-card">
+        <h1>Join a Club</h1>
+        <p class="reg-subtitle">
+            Joining as <strong><?= escapeText($displayName) ?></strong>
+        </p>
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: var(--bg-light);
-            color: var(--text-primary);
-            min-height: 100vh;
-            padding: 90px 1rem 2rem;
-        }
-
-        .navigation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            width: 100%;
-        }
-
-        .back-link {
-            text-decoration: none;
-            color: var(--accent-color);
-            font-size: 1rem;
-            font-weight: 500;
-            transition: all 0.2s;
-        }
-
-        .back-link:hover {
-            color: var(--hover-color);
-            transform: translateX(-5px);
-        }
-
-        .form-wrapper {
-            max-width: 760px;
-            margin: 0 auto;
-            background: #fff;
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            padding: 2rem;
-        }
-
-        h1 {
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .subtitle {
-            color: var(--secondary-color);
-            margin-bottom: 1.5rem;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 1rem;
-        }
-
-        .field {
-            display: flex;
-            flex-direction: column;
-            gap: 0.4rem;
-        }
-
-        .field.full {
-            grid-column: 1 / -1;
-        }
-
-        label {
-            color: var(--primary-color);
-            font-weight: 600;
-        }
-
-        input,
-        select,
-        textarea {
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 0.7rem 0.8rem;
-            font: inherit;
-            color: var(--text-primary);
-            background: #fff;
-        }
-
-        textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        input:focus,
-        select:focus,
-        textarea:focus {
-            outline: 2px solid rgba(49, 130, 206, 0.2);
-            border-color: var(--accent-color);
-        }
-
-        .actions {
-            display: flex;
-            gap: 0.75rem;
-            margin-top: 0.25rem;
-        }
-
-        button {
-            border: none;
-            border-radius: 8px;
-            padding: 0.75rem 1rem;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background: var(--accent-color);
-            color: #fff;
-        }
-
-        .btn-primary:hover {
-            background: var(--hover-color);
-        }
-
-        .btn-secondary {
-            background: #fff;
-            color: var(--secondary-color);
-            border: 1px solid var(--border-color);
-        }
-
-        @media (max-width: 700px) {
-            .form-wrapper {
-                padding: 1.2rem;
-            }
-
-            .grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-</head>
-<body>
-    <main>
-        <nav class="navigation">
-            <div class="nav-container">
-                <a href="/index.php" class="back-link">←Back to Clubs</a>
-                <div class="nav-menu">
-                    <a href="/index.php" class="nav-link active">Clubs</a>
-                    <a href="/pages/events.html" class="nav-link">Events</a>
-                    <a href="/pages/map.php" class="nav-link">Map</a>
-                    <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
-                        <a href="/pages/admin.html" class="nav-link">Admin Dashboard</a>
-                    <?php endif; ?>
-                </div>
-                <div class="nav-login">
-                   <?php if ($isLoggedIn): ?>
-                    <form action="backend/logout.php" method="POST" style="display:flex; align-items:center; gap:20px;">
-                        <span id="nav-user-name" style="font-weight:600;color:white;">
-                            <?php echo "Hi, " .htmlspecialchars($displayName, ENT_QUOTES, 'UTF-8'); ?>
-                        </span>
-                        <button id="nav-logout-btn" class="signin-btn">Sign Out</button>
-                        </form>
-                        <?php else: ?>
-                    <a href="pages/signin.php" class="signin-btn">Sign In</a>
-                    <a href="pages/signup.php" class="signup-btn">Sign Up</a>
-                    <?php endif; ?>
-                </div>
-
+        <?php if ($success): ?>
+            <div class="alert-success">
+                You have successfully joined the club!
             </div>
-        </nav>
+            <div class="reg-actions" style="margin-top:1rem;">
+                <a class="reg-btn-ghost" href="<?= BASE_URL ?>index.php">Back to Clubs</a>
+            </div>
 
-        <section class="form-wrapper">
-        <h1>Add Member to Club</h1>
-        <p class="subtitle">Fill in the form below to register a new club member.</p>
+        <?php else: ?>
 
-        <form action="/backend/ajouter.php" method="POST">
-            <div class="grid">
-                <div class="field">
-                    <label for="club">Club</label>
+            <?php if ($error): ?>
+                <div class="alert-error"><?= escapeText($error) ?></div>
+            <?php endif; ?>
+
+            <form class="reg-form" action="" method="POST">
+
+                <div class="reg-field">
+                    <label for="club">Select Club</label>
                     <select id="club" name="club" required>
-                        <option value="" selected disabled>Select a club</option>
-                        <option value="17">Aerobotix  </option>
-                        <option value="18">Securinets </option>
-                        <option value="19">IEEE       </option>
-                        <option value="20">ACM        </option>
-                        <option value="21">CIM        </option>
-                        <option value="22">Theatro    </option>
-                        <option value="23">Insat Press</option>
+                        <option value="" disabled selected>Select a club…</option>
+                        <option value="1" <?= $sclub === 'aero'  ? 'selected' : '' ?>>Aerobotix</option>
+                        <option value="2" <?= $sclub === 'secu'  ? 'selected' : '' ?>>Securinets</option>
+                        <option value="3" <?= $sclub === 'ieee'  ? 'selected' : '' ?>>IEEE</option>
+                        <option value="4" <?= $sclub === 'acm'   ? 'selected' : '' ?>>ACM</option>
+                        <option value="5" <?= $sclub === 'android' ? 'selected' : '' ?>>Android Club</option>
+                        <option value="6" <?= $sclub === 'cim'   ? 'selected' : '' ?>>CIM</option>
+                        <option value="7" <?= $sclub === 'theatro' ? 'selected' : '' ?>>Theatro</option>
+                        <option value="8" <?= $sclub === 'cineradio' ? 'selected' : '' ?>>Club Ciné-Radio</option>
+                        <option value="9" <?= $sclub === 'press' ? 'selected' : '' ?>>Insat Press</option>
+                        <option value="10" <?= $sclub === 'lions' ? 'selected' : '' ?>>Lions Club</option>
+                        <option value="11" <?= $sclub === 'enactus' ? 'selected' : '' ?>>Club Enactus</option>
+                        <option value="12" <?= $sclub === 'jei'   ? 'selected' : '' ?>>Club JEI</option>
+                        <option value="13" <?= $sclub === 'jci'   ? 'selected' : '' ?>>Club JCI</option>
+                        <option value="14" <?= $sclub === 'chem'  ? 'selected' : '' ?>>Chem Club</option>
+                        <option value="15" <?= $sclub === 'astro' ? 'selected' : '' ?>>Astro Club</option>
+                        <option value="16" <?= $sclub === '3zero' ? 'selected' : '' ?>>3Zero Club</option>
                     </select>
                 </div>
 
-                <div class="field">
-                    <label for="role">Member Role</label>
-                    <select id="role" name="role" required>
-                        <option value="" selected disabled>Select role</option>
-                        <option value="member">Member</option>
-                        <option value="lead">Team Lead</option>
-                        <option value="vice-president">Vice President</option>
-                        <option value="president">President</option>
-                    </select>
+                <div class="reg-actions">
+                    <button type="submit" class="reg-btn-primary">✓ Join Club</button>
+                    <a class="reg-btn-ghost" href="<?= BASE_URL ?>index.php">← Back to Clubs</a>
                 </div>
 
-                <div class="field">
-                    <label for="firstName">First Name</label>
-                    <input type="text" id="firstName" name="firstName" placeholder="Enter first name" required>
-                </div>
+            </form>
+        <?php endif; ?>
 
-                <div class="field">
-                    <label for="lastName">Last Name</label>
-                    <input type="text" id="lastName" name="lastName" placeholder="Enter last name" required>
-                </div>
+    </div>
+</div>
 
-                <div class="field">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="member@example.com" required>
-                </div>
-
-                <div class="field">
-                    <label for="phone">Phone</label>
-                    <input type="tel" id="phone" name="phone" placeholder="+216 XX XXX XXX">
-                </div>
-
-                <div class="field">
-                    <label for="studentId">Student ID</label>
-                    <input type="text" id="studentId" name="studentId" placeholder="Enter student ID" required>
-                </div>
-
-                <div class="field">
-                    <label for="year">Academic Year</label>
-                    <select id="year" name="year" required>
-                        <option value="" selected disabled>Select year</option>
-                        <option value="1">1st Year</option>
-                        <option value="2">2nd Year</option>
-                        <option value="3">3rd Year</option>
-                        <option value="4">4th Year</option>
-                        <option value="5">5th Year</option>
-                    </select>
-                </div>
-
-                <div class="field full">
-                    <label for="notes">Notes</label>
-                    <textarea id="notes" name="notes" placeholder="Add optional notes about the member"></textarea>
-                </div>
-
-                <div class="field full actions">
-                    <button type="submit" class="btn-primary">Add Member</button>
-                    <button type="reset" class="btn-secondary">Reset</button>
-                </div>
-            </div>
-        </form>
-        </section>
-    </main>
-  <script>
-    let club_selector = document.getElementById("club");
-    let numbs = {
-      "": "",
-      "acm":"20",
-      "aero":"17",
-      "cim":"21",
-      "ieee":"19",
-      "secu":"18",
-      "thea":"22",
-      "press":"23"}
-    if("<?= $sclub ?>"){
-      club_selector.value = numbs["<?= $sclub ?>"];
-    }
-  </script>
-</body>
-</html>
+<?php require_once ROOT_PATH . '/views/footer.php'; ?>
