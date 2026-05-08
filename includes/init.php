@@ -1,7 +1,7 @@
 <?php
 
 define('ROOT_PATH', dirname(__DIR__));
-define('BASE_URL', '/web-project/');
+define('BASE_URL', '/');
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -25,7 +25,7 @@ function isLoggedIn(): bool
 
 function isAdmin(): bool
 {
-    return isLoggedIn() && ($_SESSION['role'] ?? '') === 'admin';
+    return isLoggedIn() && ($_SESSION['role'] ?? '') === 'ROLE_ADMIN';
 }
 
 function requireLogin(string $redirect = BASE_URL . '/pages/signin.php'): void

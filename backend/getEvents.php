@@ -8,19 +8,17 @@ function fetchEventsData(){
     $request = $connexion->prepare("select club_id from memberships where user_id = ?");
     $request->execute([$user_id]);
     $club = $request->fetch(PDO::FETCH_ASSOC)["club_id"];
-    echo "<script>console.log(".json_encode($user_id).")</script>" ;
-   
 
-    $request = $connexion->query("select * from club_events where club_id = $club");
+    $request = $connexion->query("select * from club_events where clubs_id = $club");
     $events_ids = $request->fetchAll(PDO::FETCH_ASSOC);
     
     $tmpEvents = array_map(function($event){
-        return $event["event_id"];
+        return $event["events_id"];
     },$events_ids);
     
     $events=[];
     foreach ($tmpEvents as $key => $value) {
-        $request = $connexion->prepare("select * from club_events ce join clubs c on c.id = ce.club_id  where event_id = ?");
+        $request = $connexion->prepare("select * from club_events ce join clubs c on c.id = ce.clubs_id  where events_id = ?");
         $request->execute([$value]);
         $clubs = $request->fetchAll(PDO::FETCH_ASSOC);
         $clubs = array_map(function($club){
@@ -42,7 +40,4 @@ function fetchEventsData(){
        
     }
     return $events;  
-    
-     
-
 }

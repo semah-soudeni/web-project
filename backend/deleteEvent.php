@@ -9,7 +9,7 @@ if (empty($event_name)){
 }
 $connexion = ConnexionBD::getInstance();
 try {
-    $request = $connexion->prepare("Delete From events where title = ?");
+    $request = $connexion->prepare("delete From events where title = ?");
     $request->execute([$event_name]);
     echo json_encode([
         "success" => true,
