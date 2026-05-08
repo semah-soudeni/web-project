@@ -117,7 +117,7 @@ function hideToast(toastId) {
 let eventToDelete = null;
 
 function editEvent(eventName) {
-    const URL = `/pages/addEvent.php?eventName=${eventName}`; 
+    const URL = `/admin/add?eventName=${eventName}`; 
     window.location.href = URL; 
 }
 function confirmDeleteEvent( eventName) {
