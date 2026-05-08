@@ -109,7 +109,7 @@ $extraJs    = [BASE_URL . 'assets/js/theatro.js'];
         <h2 class="section-title">Act III: Join The Cast</h2>
         <div class="join-container">
             <p>Are you ready for your standing ovation?</p>
-            <a href="/ajouter.php">
+            <a href="/pages/ajouter.php?club=thea">
                 <button class="join-btn" onclick="window.joinClub('theatro')">Audition Now</button>
 
             </a>

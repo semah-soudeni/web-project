@@ -1,8 +1,13 @@
 <?php
+    require_once __DIR__ . '/../includes/init.php';
     require_once 'bd.php';
     session_start();
     $conn = ConnexionBD::getInstance();
 
+    if(!isset($_SESSION["id"])){
+      header("LOCATION: ".BASE_URL."pages/signin.php");
+      exit();
+    }
     $selectedClub = $_POST["club"];
     $selectedRole = $_POST["role"];
 

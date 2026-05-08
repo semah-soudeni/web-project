@@ -47,8 +47,9 @@ $extraJs    = [BASE_URL . 'assets/js/press.js'];
                 <p>We are always looking for passionate writers, meticulous editors, and keen photographers. No
                     prior journalism experience is fully required, just a sharp eye and a dedication to the truth.
                 </p>
-                <button class="action-btn" onclick="window.joinClub('press')">Apply as
-                    Reporter</button>
+              <a href="/pages/ajouter.php?club=press" class="action-btn">
+                  Apply As Reporter
+              </a>
             </div>
 
             <div class="news-item">

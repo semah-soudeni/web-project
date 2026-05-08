@@ -217,7 +217,7 @@ $extraJs    = [];
       </div>
     </div>
     <div style="flex: 1;">
-      <a href="<?= BASE_URL ?>backend/ajouter.php" style="position: absolute; right:25%; top: 100px;">
+      <a href="<?= BASE_URL ?>pages/ajouter.php?club=aero" style="position: absolute; right:25%; top: 100px;">
         <button class="join-btn">Join</button>
       </a>
     </div>

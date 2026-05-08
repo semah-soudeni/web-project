@@ -4,6 +4,11 @@ session_start();
 $isLoggedIn = isset($_SESSION['logged']) && $_SESSION['logged'] === 'yes';
 $displayName = '';
 
+$sclub = $_GET["club"];
+if(!isset($sclub)){
+  $sclub = "";
+}
+
 if ($isLoggedIn) {
     $firstName = trim((string)($_SESSION['user_first_name'] ?? ''));
     $lastName = trim((string)($_SESSION['user_last_name'] ?? ''));
@@ -212,13 +217,13 @@ if ($isLoggedIn) {
                     <label for="club">Club</label>
                     <select id="club" name="club" required>
                         <option value="" selected disabled>Select a club</option>
-                        <option value="4">ACM</option>
-                        <option value="1">Aero</option>
-                        <option value="6">CIM</option>
-                        <option value="3">IEEE</option>
-                        <option value="2">SECU</option>
-                        <option value="7">THEA</option>
-                        <option value="9">PRESS</option>
+                        <option value="17">Aerobotix  </option>
+                        <option value="18">Securinets </option>
+                        <option value="19">IEEE       </option>
+                        <option value="20">ACM        </option>
+                        <option value="21">CIM        </option>
+                        <option value="22">Theatro    </option>
+                        <option value="23">Insat Press</option>
                     </select>
                 </div>
 
@@ -283,5 +288,20 @@ if ($isLoggedIn) {
         </form>
         </section>
     </main>
+  <script>
+    let club_selector = document.getElementById("club");
+    let numbs = {
+      "": "",
+      "acm":"20",
+      "aero":"17",
+      "cim":"21",
+      "ieee":"19",
+      "secu":"18",
+      "thea":"22",
+      "press":"23"}
+    if("<?= $sclub ?>"){
+      club_selector.value = numbs["<?= $sclub ?>"];
+    }
+  </script>
 </body>
 </html>

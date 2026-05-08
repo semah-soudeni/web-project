@@ -100,7 +100,7 @@ $extraJs    = [BASE_URL . 'assets/js/acm.js'];
   <section class="glass section join">
     <h2>Join ACM INSAT</h2>
     <p>Become part of a community that builds the future.</p>
-    <a href="<?= BASE_URL ?>backend/ajouter.php">
+    <a href="<?= BASE_URL ?>pages/ajouter.php?club=acm">
       <button class="cta-btn big" onclick="window.joinClub('acm')">Join Now — Free</button>
 
     </a>

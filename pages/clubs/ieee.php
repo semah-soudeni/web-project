@@ -31,7 +31,7 @@ require_once __DIR__ . '/../../includes/init.php';
       </ul>
     </div>
     <div class="nav-right">
-      <a href="/backend/ajouter.php" class="nav-cta">Join Now</a>
+      <a href="/pages/ajouter.php?club=ieee" class="nav-cta">Join Now</a>
     </div>
   </nav>
   <canvas id="rockets"></canvas>
