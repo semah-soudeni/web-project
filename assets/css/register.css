@@ -1,3 +1,4 @@
+/* ── Page layout ───────────────────────────────────────── */
 .reg-page {
     min-height: calc(100vh - 64px);
     display: flex;
@@ -7,17 +8,20 @@
     background: #f7f9fc;
 }
 
+/* ── Card ──────────────────────────────────────────────── */
 .reg-card {
     width: min(680px, 100%);
     background: #fff;
     border: 1px solid #e2e8f0;
     border-radius: 16px;
     padding: 2rem 2.5rem;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
 }
 
 .reg-card h1 {
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #1e293b;
     margin: 0 0 0.375rem;
 }
 
@@ -27,12 +31,19 @@
     font-size: 0.95rem;
 }
 
+.reg-subtitle strong {
+    color: #1e293b;
+    font-weight: 600;
+}
+
+/* ── Form ──────────────────────────────────────────────── */
 .reg-form {
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
 }
 
+/* ── Fields ────────────────────────────────────────────── */
 .reg-field {
     display: flex;
     flex-direction: column;
@@ -52,7 +63,8 @@
 }
 
 .reg-field input,
-.reg-field textarea {
+.reg-field textarea,
+.reg-field select {
     width: 100%;
     border: 1px solid #cbd5e1;
     border-radius: 10px;
@@ -64,12 +76,27 @@
     outline: none;
     transition: border-color 0.15s, box-shadow 0.15s;
     box-sizing: border-box;
+    appearance: none;
+}
+
+.reg-field select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.85rem center;
+    padding-right: 2.5rem;
+    cursor: pointer;
 }
 
 .reg-field input:focus,
-.reg-field textarea:focus {
+.reg-field textarea:focus,
+.reg-field select:focus {
     border-color: #0f766e;
     box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.12);
+}
+
+.reg-field input::placeholder,
+.reg-field textarea::placeholder {
+    color: #94a3b8;
 }
 
 .reg-field textarea {
@@ -83,19 +110,22 @@
     margin: 0;
 }
 
+/* ── Actions ───────────────────────────────────────────── */
 .reg-actions {
     display: flex;
     gap: 0.75rem;
     margin-top: 0.5rem;
     flex-wrap: wrap;
+    align-items: center;
 }
 
+/* ── Primary button ────────────────────────────────────── */
 .reg-btn-primary {
     background: #0f766e;
-    color: #fff;
+    color: #fff !important;
     border: none;
     border-radius: 10px;
-    padding: 0.6rem 1.4rem;
+    padding: 0.65rem 1.5rem;
     font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
@@ -104,6 +134,8 @@
     align-items: center;
     gap: 6px;
     transition: background 0.15s, transform 0.15s;
+    line-height: 1.5;
+    white-space: nowrap;
 }
 
 .reg-btn-primary:hover {
@@ -111,12 +143,17 @@
     transform: translateY(-1px);
 }
 
+.reg-btn-primary:active {
+    transform: translateY(0);
+}
+
+/* ── Ghost button ──────────────────────────────────────── */
 .reg-btn-ghost {
     background: #f1f5f9;
-    color: #1e293b;
+    color: #1e293b !important;
     border: 1px solid #e2e8f0;
     border-radius: 10px;
-    padding: 0.6rem 1.4rem;
+    padding: 0.65rem 1.5rem;
     font-size: 0.95rem;
     font-weight: 500;
     cursor: pointer;
@@ -125,12 +162,15 @@
     align-items: center;
     gap: 6px;
     transition: background 0.15s;
+    line-height: 1.5;
+    white-space: nowrap;
 }
 
 .reg-btn-ghost:hover {
     background: #e2e8f0;
 }
 
+/* ── Alerts ────────────────────────────────────────────── */
 .alert-error {
     background: #fef2f2;
     color: #dc2626;
@@ -139,4 +179,48 @@
     padding: 0.75rem 1rem;
     margin-bottom: 1rem;
     font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.alert-success {
+    background: #f0fdf4;
+    color: #16a34a;
+    border: 1px solid #bbf7d0;
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ── Divider ───────────────────────────────────────────── */
+.reg-divider {
+    border: none;
+    border-top: 1px solid #e2e8f0;
+    margin: 1.5rem 0;
+}
+
+/* ── Responsive ────────────────────────────────────────── */
+@media (max-width: 600px) {
+    .reg-card {
+        padding: 1.5rem 1.25rem;
+    }
+
+    .reg-card h1 {
+        font-size: 1.35rem;
+    }
+
+    .reg-actions {
+        flex-direction: column;
+    }
+
+    .reg-btn-primary,
+    .reg-btn-ghost {
+        width: 100%;
+        justify-content: center;
+    }
 }
