@@ -5,6 +5,8 @@ requireLogin();
 $pageTitle  = 'Join a Club';
 $activePage = 'clubs';
 
+$extraCss   = [BASE_URL . 'assets/css/register.css'];
+
 $sclub = $_GET['club'] ?? '';
 
 $success = false;
@@ -73,22 +75,13 @@ require_once ROOT_PATH . '/views/header.php';
                     <label for="club">Select Club</label>
                     <select id="club" name="club" required>
                         <option value="" disabled selected>Select a club…</option>
-                        <option value="1" <?= $sclub === 'aero'  ? 'selected' : '' ?>>Aerobotix</option>
-                        <option value="2" <?= $sclub === 'secu'  ? 'selected' : '' ?>>Securinets</option>
-                        <option value="3" <?= $sclub === 'ieee'  ? 'selected' : '' ?>>IEEE</option>
-                        <option value="4" <?= $sclub === 'acm'   ? 'selected' : '' ?>>ACM</option>
-                        <option value="5" <?= $sclub === 'android' ? 'selected' : '' ?>>Android Club</option>
-                        <option value="6" <?= $sclub === 'cim'   ? 'selected' : '' ?>>CIM</option>
-                        <option value="7" <?= $sclub === 'theatro' ? 'selected' : '' ?>>Theatro</option>
-                        <option value="8" <?= $sclub === 'cineradio' ? 'selected' : '' ?>>Club Ciné-Radio</option>
-                        <option value="9" <?= $sclub === 'press' ? 'selected' : '' ?>>Insat Press</option>
-                        <option value="10" <?= $sclub === 'lions' ? 'selected' : '' ?>>Lions Club</option>
-                        <option value="11" <?= $sclub === 'enactus' ? 'selected' : '' ?>>Club Enactus</option>
-                        <option value="12" <?= $sclub === 'jei'   ? 'selected' : '' ?>>Club JEI</option>
-                        <option value="13" <?= $sclub === 'jci'   ? 'selected' : '' ?>>Club JCI</option>
-                        <option value="14" <?= $sclub === 'chem'  ? 'selected' : '' ?>>Chem Club</option>
-                        <option value="15" <?= $sclub === 'astro' ? 'selected' : '' ?>>Astro Club</option>
-                        <option value="16" <?= $sclub === '3zero' ? 'selected' : '' ?>>3Zero Club</option>
+                        <option value="17" <?= $sclub === "aero" ? 'selected' : '' ?>>Aerobotix</option>
+                        <option value="18" <?= $sclub === "secu" ? 'selected' : '' ?>>Securinets</option>
+                        <option value="19" <?= $sclub === "ieee" ? 'selected' : '' ?>>IEEE</option>
+                        <option value="20" <?= $sclub === "acm" ? 'selected' : '' ?>>ACM</option>
+                        <option value="21" <?= $sclub === "cim" ? 'selected' : '' ?>>CIM</option>
+                        <option value="22" <?= $sclub === "theatro" ? 'selected' : '' ?>>Theatro</option>
+                        <option value="23" <?= $sclub === "press" ? 'selected' : '' ?>>Insat Press</option>
                     </select>
                 </div>
 

@@ -1,7 +1,7 @@
 <?php
 
 define('ROOT_PATH', dirname(__DIR__));
-define('BASE_URL', '/web-project/');
+define('BASE_URL', '/');
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -42,18 +42,6 @@ function requireAdmin(string $redirect = BASE_URL . 'pages/error.php?code=401'):
         header("Location: $redirect");
         exit;
     }
-}
-
-function flashSet(string $key, string $msg): void
-{
-    $_SESSION['flash'][$key] = $msg;
-}
-
-function flashGet(string $key): string
-{
-    $msg = $_SESSION['flash'][$key] ?? '';
-    unset($_SESSION['flash'][$key]);
-    return $msg;
 }
 
 function escapeText(?string $value): string
