@@ -119,8 +119,6 @@ if (isLoggedIn()) {
         </div>
       </div>
     </div>
-
   </div>
-    <script> console.log("<?= $_SESSION ?>")</script>
 </body>
 </html>

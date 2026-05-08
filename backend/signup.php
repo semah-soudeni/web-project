@@ -8,6 +8,8 @@ $phone = $_POST["phone"] ?? '';
 $email = $_POST["email"] ?? '';
 $psswd = $_POST["password"] ?? '';
 
+$psswd = password_hash($psswd, PASSWORD_BCRYPT, ['cost' => 13]);
+
 if ($email === '' || $psswd === '') {
     echo 'missing credentials';
     exit;

@@ -9,9 +9,9 @@ class ConnexionBD {
     public static function getInstance() {
         if (self::$instance === null) {
             $host = '127.0.0.1';
-            $db = 'insat_clubs';
-            $user = 'root';
-            $pass = 'admin123';
+            $db = 'app';
+            $user = 'app';
+            $pass = '!insat_clubs!';
             $charset = 'utf8mb4';
 
             $dsn = "mysql:host={$host};dbname={$db};charset={$charset}";

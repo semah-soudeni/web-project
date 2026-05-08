@@ -16,11 +16,10 @@ $req->execute(array('email' => $email));
 $result = $req->fetch(PDO::FETCH_ASSOC);
 
 if (!$result) {
-
     $_SESSION["error"] = "user doesn't exists";
     header("Location: ../pages/signin.php");
     exit;
-} elseif ($result["password"] != $psswd) {
+} elseif (!password_verify($psswd, $result["password"])){
     $_SESSION["error"] = "wrong password";
     header("Location: ../pages/signin.php");
     exit;
