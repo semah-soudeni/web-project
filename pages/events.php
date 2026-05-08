@@ -241,7 +241,7 @@ $eventsPayload = [
                                         </div>
 
                                         <?php if (!$event['is_registered']): ?>
-                                            <a class="register-btn" href="event-registration.html?event_id=<?php echo (int)($event['id'] ?? 0); ?>">Register</a>
+                                            <a class="register-btn" href="event-registration.php?event_id=<?php echo (int)($event['id'] ?? 0); ?>">Register</a>
                                         <?php else: ?>
                                             <a class="register-btn" aria-disabled="true" style="opacity:0.6; pointer-events:none;">Registered ✓</a>
                                         <?php endif; ?>
