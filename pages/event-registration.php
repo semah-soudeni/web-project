@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$queryError) {
         $stmt->execute([
             ':user_id'         => $_SESSION['id'],
             ':event_id'        => $event_id,
-            ':paid'            => false,
+            ':paid'            => 0,
             ':team_name'       => $teamName ?: null,
             ':team_nb_memebers'=> $teamMembers ?: null,
             ':links'           => $links ?: null,
@@ -80,6 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$queryError) {
 
     } catch (Throwable $e) {
         $registerError = 'Registration failed. You may already be registered.';
+        error_log($e->getMessage());
     }
 }
 
