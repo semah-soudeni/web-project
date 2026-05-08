@@ -53,6 +53,7 @@ a {
     max-width: none;
     margin: 0 auto;
     padding: 1.25rem 2rem;
+    max-width: 1400px;
 }
 
 .nav-menu {

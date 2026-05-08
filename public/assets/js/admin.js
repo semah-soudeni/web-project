@@ -136,11 +136,11 @@ function deleteEvent() {
   
   const form = document.createElement('form');
   form.method = 'POST';
-  form.action = '../backend/deleteEvent.php';
+  form.action = '/admin/delete';
   
   const input = document.createElement('input');
   input.type = 'hidden';
-  input.name = 'event_name';
+  input.name = 'title';
   input.value = eventToDelete;
   
   form.appendChild(input);

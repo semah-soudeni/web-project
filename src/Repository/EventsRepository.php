@@ -28,4 +28,12 @@ class EventsRepository extends ServiceEntityRepository
 
         return $qb->getQuery()->getResult();
     }
+    public function findByTitle(string $title): Events
+    {
+        return $this->createQueryBuilder("e")
+                    ->andWhere("e.title = :val")
+                    ->setParameter("val",$title)
+                    ->getQuery()
+                    ->getOneOrNullResult();
+    }
 }
