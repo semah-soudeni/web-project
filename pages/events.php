@@ -67,8 +67,8 @@ try {
             e.location,
             (SELECT COUNT(*) FROM register r WHERE r.event_id = e.id) as attendees
          FROM events e  
-         JOIN club_events ce ON e.id = ce.event_id
-         JOIN clubs c ON ce.club_id = c.id
+         JOIN club_events ce ON e.id = ce.events_id
+         JOIN clubs c ON ce.clubs_id = c.id
          GROUP BY e.id
          ORDER BY e.event_date, e.event_time"
     );
@@ -86,6 +86,7 @@ try {
     $allEvents = $stmt ? $stmt->fetchAll(PDO::FETCH_ASSOC) : [];
 } catch (Throwable $e) {
     $queryError = true;
+    error_log($e->getMessage());
 }
 
 $registeredIds = array_map('intval', $res2);
